@@ -9,18 +9,19 @@ forgetting tells you when to show data so the model keeps it, without a sweep.
 
 ## Data
 
-`data.jsonl.gz`: 375 real runs, decoder-only transformers trained with Muon.
+`data/llm.jsonl.gz`: 375 real runs, decoder-only transformers trained with Muon.
 
 | setting | values |
 |---|---|
 | width | 64 (227 runs), 128, 256, 384, 512, 768, 1024 |
 | layers | 3-12 |
 | steps | 512-4096 (295 runs at 1024) |
-| fact window | A = 20%-45% (275 runs), B = 45%-70% (99) |
+| fact window | A = 20%-45% (275 runs), B = 45%-70% (99), 1 run with facts shown through all of training (`const`) |
 | peak learning rate, weight decay, min_lr_frac, schedule | swept |
 
-Target: `kept[-1]`. Each row also holds the whole curve (`kept` at every step after the window) and
-the learning rate at every step (`lr`), so a formula may use the schedule shape.
+Target: `kept[-1]`. Each row also holds the whole curve (`kept` at each reading after the window) and
+the learning rate at every step after the window (`lr`; for example 564 values in a 1,024-step run with
+window A), so a formula may use the schedule shape. Columns: [core/columns.yaml](../../core/columns.yaml).
 
 Allowed inputs: everything except `kept`, `C`, `b0`, `rms_w` and `wnorm` (those are measured during
 the run). Formulas that use `rms_w` are listed separately.

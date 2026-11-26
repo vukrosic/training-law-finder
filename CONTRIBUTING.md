@@ -1,7 +1,8 @@
 # Contributing
 
 Three kinds of pull request. Searching is slow and checking is fast, so every contribution comes
-with the command that checks it.
+with the command that checks it. Every pull request must pass `python3 tools/check.py`
+(`pip install numpy scipy pyyaml`); GitHub runs it on each PR.
 
 ## 1. A better formula
 
@@ -10,13 +11,16 @@ with the command that checks it.
 3. Rebuild the table: `python3 core/leaderboard.py <problem>`
 4. Open a PR with the formula file, the new line in `scores.jsonl` and `LEADERBOARD.md`. The PR text says the idea in one sentence.
 
+A formula may import only math, numpy, scipy, statistics, itertools, functools and collections, and may
+not read the run's id or the problem's target. `tools/check.py` enforces this.
+
 A reviewer reruns step 2. The score must match to 4 decimals. The rules (constants count, 0.005 per
 constant, floor, settings-only inputs) are in [problems/README.md](problems/README.md).
 
 ## 2. New runs
 
 1. Train with `families/llm/testbed-facts-v1/` (or your own code, described in the PR).
-2. Add rows in the format of [data/llm/SCHEMA.md](data/llm/SCHEMA.md) to a new file `data/llm/contrib/<github-name>-<date>.jsonl.gz`.
+2. Add the training script's output lines, unchanged, to a new file `data/llm/contrib/<github-name>-<date>.jsonl.gz` (under 5 MB; split larger sets). No conversion is needed: a maintainer turns them into rows of [data/llm/SCHEMA.md](data/llm/SCHEMA.md) and adds them to the Hugging Face tables at the next refresh.
 3. The PR lists the exact commands and the machine (GPU model or CPU).
 
 Verification: a maintainer reruns about 2% of the rows, at least one, on another machine. Same-seed
@@ -25,8 +29,8 @@ until explained.
 
 ## 3. A new problem
 
-A folder `problems/<name>/` with `problem.py`, `README.md` (question, allowed inputs, the published
-law to beat) and at least one baseline formula. The main README lists problems waiting for a folder.
+Read "When a question gets its own folder" and "Add a problem" in [problems/README.md](problems/README.md).
+A question that does not pass the five tests yet goes in an issue with the `question` label.
 
 ## Credit
 

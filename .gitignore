@@ -10,3 +10,5 @@ logs/
 !problems/**/*.jsonl
 !examples/**/*.jsonl
 !agents/**/*.jsonl
+/data/llm/*.jsonl.gz
+!rounds/**/*.jsonl

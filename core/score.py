@@ -2,6 +2,7 @@
 
     python3 core/score.py forgetting problems/forgetting/formulas/end_z2.py
     python3 core/score.py forgetting my_formula.py --name "my idea" --author yourname --record
+    python3 core/score.py forgetting my_formula.py --family llm   # one model family only (default: all combined)
 
 A formula file defines three things:
 
@@ -71,12 +72,13 @@ def main():
     ap.add_argument("--name", default=None)
     ap.add_argument("--author", default="anonymous")
     ap.add_argument("--record", action="store_true")
+    ap.add_argument("--family", default=None, help="score on one model family (file in problems/<problem>/data/); default all")
     a = ap.parse_args()
     problem = load_problem(a.problem)
     formula = load_module(a.formula, "formula")
-    res = score(problem, formula)
+    res = score(problem, formula, problem.rows(a.family))
     k = getattr(formula, "CONSTANTS", None)
-    print(f"problem   {a.problem}  ({res['n_rows']} rows, {res['n_groups']} groups by {problem.GROUP_BY})")
+    print(f"problem   {a.problem}  family={a.family or 'all'}  ({res['n_rows']} rows, {res['n_groups']} groups by {problem.GROUP_BY})")
     print(f"formula   {a.formula}  constants={k}")
     print(f"score 1   {res['score']:.4f}  (mean held-out RMSE per group; floor {problem.FLOOR})")
     print(f"worst     {res['worst']:.4f}  at {problem.GROUP_BY}={res['worst_group']}")
@@ -86,7 +88,7 @@ def main():
         sha = hashlib.sha256(open(a.formula, "rb").read()).hexdigest()[:12]
         rec = {"date": datetime.date.today().isoformat(), "name": a.name or os.path.basename(a.formula),
                "author": a.author, "formula": os.path.relpath(os.path.abspath(a.formula), ROOT),
-               "sha": sha, "constants": k, **{x: res[x] for x in ("score", "worst", "worst_group", "in_sample", "n_rows")}}
+               "sha": sha, "constants": k, "family": a.family or "all", **{x: res[x] for x in ("score", "worst", "worst_group", "in_sample", "n_rows")}}
         with open(os.path.join(ROOT, "problems", a.problem, "scores.jsonl"), "a") as f:
             f.write(json.dumps(rec) + "\n")
         print("recorded  problems/%s/scores.jsonl" % a.problem)

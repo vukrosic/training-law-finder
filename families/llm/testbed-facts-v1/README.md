@@ -8,19 +8,25 @@ code; this folder is the current version.
 
 ## Set up
 
+Run every command from this folder (`cd families/llm/testbed-facts-v1`).
+
 ```bash
-sh data/download.sh                 # pinned official code + FineWeb-Edu shard 0 (94.5 MB)
-python3 -I data/prepare.py          # 8,192-token vocabulary (MoE benchmark)
+sh data/download.sh                 # pinned official code (needed for dense runs too) + FineWeb-Edu shard 0 (94.5 MB)
 python3 -I tools/prep_vocab.py 1024 # 1,024-token vocabulary (most rows in the run table)
+python3 -I data/prepare.py          # only for the 8,192-token vocabulary (MoE benchmark)
 ```
 
 ## One run
 
 ```bash
 python3 -I env/train.py --method dense --data fineweb_v1024 --steps 1024 \
-  --set vocab=1024 --set facts=64 --set fkmax=128 --set fwlo=0.2 --set fwhi=0.45 \
+  --set vocab=1024 facts=64 fkmax=128 fwlo=0.2 fwhi=0.45 \
   --out experiments/runs/mine.jsonl
 ```
+
+Give all overrides after one `--set`: a second `--set` replaces the first. This run takes about
+160 s on a laptop CPU. Keep `--steps` at 1024 or more with these facts: shorter runs cannot fit
+64 facts x up to 128 repeats into the window and stop with "too many bios per step".
 
 `--set key=value` overrides any config field (`env/train.py` lists them: width `d_model`,
 `n_layers`, `lr`, `sched`, `min_lr_frac`, `mwd`, ...). Each run appends one JSON line with the

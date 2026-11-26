@@ -35,9 +35,9 @@ The paper-writing method is in [skill/writing-conference-paper](skill/writing-co
 | problem | predict | runs | best so far (score 1, lower is better) | noise floor |
 |---|---|---|---|---|
 | [forgetting](problems/forgetting/) | share of facts a model still knows at the end of training | 375 | 0.0441, 10 constants | 0.0126 |
-| [final-loss](problems/final-loss/) | final validation loss from the training settings | 22,068 | 0.1852, 8 constants | 0.0001 |
+| [final-loss](problems/final-loss/) | final validation loss from the training settings | 22,231 | 0.1476, 8 constants | 0.0001 |
 
-runs = runs that measure that number. Forgetting needs a special run (64 facts shown in one window, then plain text), so only 695 of the 23,932 runs can measure it; 375 of those are the frozen fit table, and the newer ones join it at the next update. Another 6,700 runs track forgetting under different setups (replayed facts, a changed optimizer), so they are not mixed in. The rest record final loss.
+runs = runs that measure that number. Forgetting needs a special run (64 facts shown in one window, then plain text), so only 775 of the 24,012 runs can measure it; 375 of those are the frozen fit table, and the newer ones join it at the next update. Another 6,700 runs track forgetting under different setups (replayed facts, a changed optimizer), so they are not mixed in. The rest record final loss.
 
 Both are far from their floor. Rules, scores and how to add a problem: [problems/README.md](problems/README.md).
 
@@ -51,26 +51,30 @@ cp core/formula_template.py problems/forgetting/formulas/my_idea.py   # edit fit
 python3 core/score.py forgetting problems/forgetting/formulas/my_idea.py
 ```
 
-No GPU and no training needed: the runs are already in the repo.
+No GPU and no training needed. Each problem's data is frozen in the repo (`problems/<name>/data/`), so a score never changes when new runs arrive. To score on one model family only, add `--family llm`.
+
+For a light clone, use `git clone --depth 1`. Before a pull request, run `python3 tools/check.py` (it needs `pip install pyyaml`); GitHub runs the same checks.
 
 ## The data
 
 | file | rows | what |
 |---|---|---|
-| [data/llm/runs.jsonl.gz](data/llm/SCHEMA.md) | 24,012 | real training runs of small decoder-only language models: settings, final loss, a fact-memory probe, and for 7,395 runs the full forgetting curve |
-| [data/llm/other_searches.jsonl.gz](data/llm/SCHEMA.md) | 15,586 | real runs from the other searches (compute, data mix, init, learning rate, mixture of experts, residual, loss target, vocabulary): settings and final loss |
-| [data/llm/sim.jsonl.gz](data/llm/SCHEMA.md) | 4,944 | runs of a fast fact-memory simulator |
+| [runs.jsonl.gz](https://huggingface.co/datasets/vukrosic/training-laws-research/blob/main/runs.jsonl.gz) | 24,012 | real training runs of small decoder-only language models: settings, final loss, a fact-memory probe, and for 7,412 runs the full forgetting curve |
+| [other_searches.jsonl.gz](https://huggingface.co/datasets/vukrosic/training-laws-research/blob/main/other_searches.jsonl.gz) | 15,586 | real runs from the other searches (compute, data mix, init, learning rate, mixture of experts, residual, loss target, vocabulary): settings and final loss |
+| [sim.jsonl.gz](https://huggingface.co/datasets/vukrosic/training-laws-research/blob/main/sim.jsonl.gz) | 4,944 | runs of a fast fact-memory simulator |
 
-Widths 32-1024, 1-12 layers, 160-32,000 steps, mostly Muon, constant / cosine / WSD
+Widths 24-2048, 1-12 layers, 160-32,000 steps, mostly Muon, constant / cosine / WSD
 schedules, dense and mixture-of-experts. Every column: [data/llm/SCHEMA.md](data/llm/SCHEMA.md).
 The code that produced them: [families/llm/testbed-facts-v1](families/llm/testbed-facts-v1/).
 
-**Where everything is kept.** GitHub holds code and the summary tables above. Hugging Face holds the
-bulk data: [vukrosic/training-laws-research](https://huggingface.co/datasets/vukrosic/training-laws-research)
-has the same tables, every raw result line (`raw/`), every job file with the exact config each run was
-queued with (`jobs/`), and the code snapshot that goes with each upload (`code/`). The training code of
-every search is also here in [families/llm/search-code/](families/llm/search-code/). Both are refreshed
-together, so any row can be traced to its config and code.
+**Where everything is kept.** GitHub holds code, the problems with their frozen data, formulas and
+leaderboards; it stays small. Hugging Face holds the bulk data:
+[vukrosic/training-laws-research](https://huggingface.co/datasets/vukrosic/training-laws-research) has the
+tables above, every raw result line (`raw/`), every job file with the exact config each run was queued
+with (`jobs/`), and the code snapshot that goes with each upload (`code/`). `core.rows.load()` downloads
+a table into `data/llm/` the first time you ask for it. The training code of every search is also here in
+[families/llm/search-code/](families/llm/search-code/). Both are refreshed together, so any row can be
+traced to its config and code.
 
 ```python
 from datasets import load_dataset
@@ -92,7 +96,7 @@ command that checks it. See [CONTRIBUTING.md](CONTRIBUTING.md), including how cr
 
 | family | status |
 |---|---|
-| language models (`families/llm/`) | open now: 2 problems, 39,518 runs |
+| language models (`families/llm/`) | open now: 2 problems, 39,598 runs |
 | world models | planned |
 | reinforcement learning | planned |
 
@@ -191,11 +195,11 @@ If the download fails, download `shard_00000.parquet` from [karpathy/fineweb-edu
 
 ## The worked example
 
-**Example:** final loss from model size and training length, a small known case that runs end to end on a laptop in 20 minutes: `sh examples/loss-law/run.sh`.
+**Example:** final loss from model size and training length, a small known case that runs end to end on a laptop in 20 minutes: `sh examples/loss-law/run.sh`. The script refits on every row in `results.jsonl` and overwrites the committed `fits/`, so to reproduce the table below from scratch, move `results.jsonl`, `fits/` and `predictions_*.jsonl` aside first.
 
 20 training runs (widths 48-128, 100-700 steps), then 6 new runs predicted before they ran, 3 of them at width 160, wider than any fit run.
 
-| Formula | Score 1 (held out) | Score 2 (predicted in advance) |
+| Formula | Score 1, R² (held out, higher is better) | Score 2, R² (predicted in advance, higher is better) |
 |---|---|---|
 | Sum of two power laws: $L = E + A N^{-a} + B D^{-b}$ | 0.964 | 0.939 |
 | Log-linear with interaction: $\log L = c + \alpha \log N + \beta \log D + \gamma \log N \log D$ | 0.963 | **0.985** |
@@ -230,9 +234,10 @@ python3 fit/laws.py results.jsonl --y reward --vars LR=lr W=width \
 
 | Folder | What it holds |
 |---|---|
-| [problems/](problems/README.md) | One folder per open problem: data, `problem.py`, baseline formulas, scores and leaderboard |
-| [core/](core/) | `score.py` (score 1), `leaderboard.py`, `round_score.py` (score 2), `formula_template.py`, `rows.py` (load the run table) |
-| [data/llm/](data/llm/SCHEMA.md) | All run data, gzipped JSON lines |
+| [problems/](problems/README.md) | One folder per predicted number: `data/<model family>.jsonl.gz`, `problem.py`, baseline formulas, scores and leaderboard |
+| [core/](core/) | `score.py` (score 1), `leaderboard.py`, `round_score.py` (score 2), `formula_template.py`, `rows.py` (load problem data and the run tables), `columns.yaml` (one meaning per column across model families) |
+| [data/llm/](data/llm/SCHEMA.md) | Column guide for the full run tables; the tables themselves download from Hugging Face |
+| [tools/](tools/) | `check.py` (the checks every pull request must pass) and `build_problem_data.py` (freeze a problem's data) |
 | [rounds/](rounds/README.md) | Prediction rounds: predictions committed before the runs |
 | [families/llm/testbed-facts-v1/](families/llm/testbed-facts-v1/README.md) | The training code behind the run table: dense and MoE transformers, Muon, facts probe |
 | [families/llm/search-code/](families/llm/search-code/) | Current training code of each search (compute, data, init, ...), copied with every data refresh |

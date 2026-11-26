@@ -1,0 +1,62 @@
+# Every column that appears in problem data (problems/*/data/*.jsonl.gz), with one meaning across all
+# model families. A column used by two families means the same thing in both, so a formula can be
+# scored on each family or on all of them combined. tools/check.py fails if problem data holds a
+# column that is not listed here.
+#
+# kind:  id       names the run; formulas must not read it
+#        setting  chosen before training; predict() may read it
+#        measured measured during or after training; a formula that reads it is listed separately (problems/README.md rule 4)
+#        target   what a problem predicts; predict() must not read the target of its own problem
+# For the full run tables (data/llm/*.jsonl.gz), data/llm/SCHEMA.md lists every column.
+
+# added by the loader
+model_family: {kind: setting, unit: name, meaning: "model family the row comes from: the data file name, for example llm"}
+
+# run identity
+tag:     {kind: id, unit: name, meaning: "run name"}
+family:  {kind: id, unit: name, meaning: "llm rows: the tag up to the first underscore (a group of related runs), not the model family"}
+file:    {kind: id, unit: name, meaning: "results file the row came from"}
+machine: {kind: id, unit: name, meaning: "gpu, mac, cpu or kaggle"}
+device:  {kind: id, unit: name, meaning: "cpu, cuda or mps"}
+sname:   {kind: id, unit: name, meaning: "short name of the learning-rate schedule"}
+
+# model size
+width:  {kind: setting, unit: count, meaning: "model width (size of the residual stream)"}
+layers: {kind: setting, unit: count, meaning: "number of transformer blocks"}
+heads:  {kind: setting, unit: count, meaning: "attention heads per block"}
+hidden: {kind: setting, unit: count, meaning: "MLP hidden size"}
+params:        {kind: setting, unit: count, meaning: "all trainable weights"}
+nonemb_params: {kind: setting, unit: count, meaning: "trainable weights outside the embedding and output tables"}
+
+# data and length
+batch:  {kind: setting, unit: sequences, meaning: "sequences per step"}
+seq:    {kind: setting, unit: tokens, meaning: "tokens per sequence"}
+steps:  {kind: setting, unit: count, meaning: "optimizer steps"}
+tokens: {kind: setting, unit: tokens, meaning: "training tokens seen (batch * seq * steps)"}
+
+# optimizer and schedule
+sched:       {kind: setting, unit: name, meaning: "learning-rate schedule: const, cos, wsd or cosrw"}
+peak:        {kind: setting, unit: lr, meaning: "peak learning rate of the Adam part (embeddings, norms, scalars)"}
+mlr:         {kind: setting, unit: lr, meaning: "peak learning rate of the Muon part (block matrices)"}
+wd:          {kind: setting, unit: ratio, meaning: "weight decay"}
+min_lr_frac: {kind: setting, unit: ratio, meaning: "final learning rate as a share of the peak; 1 = no decay"}
+warmup:      {kind: setting, unit: steps, meaning: "warmup steps"}
+decay:       {kind: setting, unit: ratio, meaning: "share of steps spent in the decay phase (wsd)"}
+momentum:    {kind: setting, unit: ratio, meaning: "Muon momentum"}
+lr:          {kind: setting, unit: "list of lr", meaning: "learning rate at each step after the fact window (known before training)"}
+
+# facts protocol (llm forgetting)
+window:  {kind: setting, unit: name, meaning: "where the facts are shown: A = 20-45% of steps, B = 45-70%"}
+fwlo:    {kind: setting, unit: ratio, meaning: "start of the fact window as a share of steps"}
+fwhi:    {kind: setting, unit: ratio, meaning: "end of the fact window as a share of steps"}
+fmarg:   {kind: setting, unit: steps, meaning: "steps between the fact window end and the first reading"}
+gsplice: {kind: setting, unit: flag, meaning: "1 if the run was branched from a checkpoint at the window end"}
+
+# measured
+val_loss: {kind: measured, unit: nats per token, meaning: "validation loss at the end (target of final-loss)"}
+val_bpb:  {kind: measured, unit: bits per byte, meaning: "validation loss at the end in bits per byte"}
+b0:       {kind: measured, unit: bits, meaning: "fact knowledge at the end of the fact window"}
+C:        {kind: measured, unit: bits, meaning: "fact knowledge at the end, mean over repeat counts 1, 2 and 4"}
+rms_w:    {kind: measured, unit: ratio, meaning: "weight RMS at the end of the fact window"}
+wnorm:    {kind: measured, unit: ratio, meaning: "weight norm at the end"}
+kept:     {kind: target, unit: "list of ratio", meaning: "share of the learned fact bits still there at each reading (target of forgetting: the last value)"}

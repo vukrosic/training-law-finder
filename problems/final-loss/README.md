@@ -8,9 +8,11 @@ sweep. Chinchilla answers it for the best learning rate only; real runs are ofte
 
 ## Data
 
-Every dense Muon run with a 1,024-token vocabulary in `data/llm/runs.jsonl.gz`, with diverged runs
-removed: 22,068 runs, widths 32-1024, 1-12 layers, 160-2048 steps, constant / cosine / WSD
-schedules and many learning rates. Grouped by width.
+`data/llm.jsonl.gz`: a frozen copy of every dense Muon run with a 1,024-token vocabulary in the full
+run table, with diverged runs removed: 22,231 runs, widths 24-2048, 1-12 layers, 160-4096 steps,
+constant / cosine / WSD schedules and many learning rates. Grouped by width. Frozen on 2026-11-26 with
+`python3 tools/build_problem_data.py final-loss`; new runs join only when a maintainer rebuilds it
+and rescores every formula. Columns: [core/columns.yaml](../../core/columns.yaml).
 
 Allowed inputs: every setting column (see `data/llm/SCHEMA.md`). Not allowed: val_loss, val_bpb,
 the fact-probe columns, wnorm.
@@ -22,9 +24,9 @@ families (`eval_seqs`). That is part of the problem; a formula may use those col
 
 | formula | constants | score 1 | idea |
 |---|---|---|---|
-| [chinchilla_lr](formulas/chinchilla_lr.py) | 8 | 0.1852 | Chinchilla + a bowl in ln(learning rate) + a decay term |
-| [chinchilla](formulas/chinchilla.py) | 5 | 0.2696 | L = E + A/N^a + B/D^b (Hoffmann et al. 2022) |
-| [mean](formulas/mean.py) | 1 | 0.3291 | constant |
+| [chinchilla_lr](formulas/chinchilla_lr.py) | 8 | 0.1476 | Chinchilla + a bowl in ln(learning rate) + a decay term |
+| [chinchilla](formulas/chinchilla.py) | 5 | 0.2552 | L = E + A/N^a + B/D^b (Hoffmann et al. 2022) |
+| [mean](formulas/mean.py) | 1 | 0.4398 | constant |
 
 Floor 0.0001 (115 runs repeated on different machines agree within 0.00006). The best formula is
 1,800 times the floor away: this problem is wide open. The largest errors are at width 1024 and 768.

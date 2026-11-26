@@ -1,6 +1,9 @@
 # LLM run data
 
-Three gzipped JSON-lines files, one run per line. Load them with `core/rows.py`.
+Three gzipped JSON-lines files, one run per line. They live on Hugging Face
+([vukrosic/training-laws-research](https://huggingface.co/datasets/vukrosic/training-laws-research)), not in git;
+`core.rows.load()` downloads them into this folder the first time. Row counts are from the 2026-11-26
+refresh; `MANIFEST.json` on Hugging Face has the counts of the latest one.
 
 | file | rows | what |
 |---|---|---|
@@ -18,7 +21,7 @@ Older rows came from earlier versions of the training code; the current code is
 
 | column | meaning |
 |---|---|
-| tag, family, file, line, machine, device, prec | run id; family = tag up to the first `_`; machine = gpu / mac / cpu / kaggle |
+| tag, family, file, line, machine, device, prec | run id; family = tag up to the first `_` (a group of related runs, not the model family); file = the results file in the search folder, which is `raw/<search>/<file>.gz` on Hugging Face; line = 1-based line number in that file; machine = gpu / mac / cpu / kaggle |
 | width, layers, heads, hidden, n_experts, batch, seq, steps | model and data size |
 | method | `dense` or `dsv3` (DeepSeek-V3 style mixture of experts, 56 rows) |
 | sched, peak, mlr, wd, min_lr_frac, warmup, decay | learning-rate schedule (const / cos / wsd / cosrw); min_lr_frac 1 = no decay |
@@ -46,7 +49,7 @@ Rows with a per-step trace after the fact window also have:
 
 ## protocol
 
-- `lf` (695 rows): the clean forgetting protocol (64 facts, k 1-128, window A or B, plain text after the window, Muon). Comparable with each other. `problems/forgetting/data.jsonl.gz` is 375 of these.
+- `lf` (775 rows at this refresh): the clean forgetting protocol (64 facts, k 1-128, window A or B, plain text after the window, Muon). Comparable with each other. `problems/forgetting/data/llm.jsonl.gz` is 375 of these, frozen.
 - `other` (6,700 rows): a per-step trace under a different protocol (branch from a checkpoint, replayed facts, changed optimizer after the window). `dev` says what differs.
 - `end_only` (16,537 rows): fact probe at the end only, no curve. 14,242 are from a learning-rate schedule search.
 
