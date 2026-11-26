@@ -12,3 +12,4 @@ logs/
 !agents/**/*.jsonl
 /data/llm/*.jsonl.gz
 !rounds/**/*.jsonl
+/work/

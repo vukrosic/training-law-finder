@@ -1,0 +1,2 @@
+# Two pull requests that each add a score keep both lines instead of conflicting.
+problems/*/scores.jsonl merge=union

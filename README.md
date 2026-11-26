@@ -18,7 +18,7 @@ come with all of our run data, one scoring command and a leaderboard.
 Open Claude Code, Codex or another coding agent in an empty folder and paste:
 
 ```text
-Clone https://github.com/vukrosic/training-law-finder and read README.md, problems/README.md, METHOD.md and agents/manager.md.
+Clone https://github.com/vukrosic/training-law-finder (if it is already cloned, run `git pull --rebase --autostash` in it first) and read README.md, problems/README.md, METHOD.md, agents/README.md and agents/manager.md. Keep all project files in `work/<topic>/`, which git ignores, and pull again at every 15-minute check.
 
 You are the manager of a research project whose goal is a paper with one new formula about AI training, tested on runs it never saw (score 1) and on runs predicted before they existed (score 2).
 
@@ -53,7 +53,7 @@ python3 core/score.py forgetting problems/forgetting/formulas/my_idea.py
 
 No GPU and no training needed. Each problem's data is frozen in the repo (`problems/<name>/data/`), so a score never changes when new runs arrive. To score on one model family only, add `--family llm`.
 
-For a light clone, use `git clone --depth 1`. Before a pull request, run `python3 tools/check.py` (it needs `pip install pyyaml`); GitHub runs the same checks.
+For a light clone, use `git clone --depth 1`. To update a clone, run `git pull --rebase --autostash`; if that fails because the history was rewritten (once, on 2026-11-26), see "Keep your copy of the repo current" in [agents/README.md](agents/README.md). Before a pull request, run `python3 tools/check.py` (it needs `pip install pyyaml`); GitHub runs the same checks.
 
 ## The data
 

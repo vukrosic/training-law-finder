@@ -63,6 +63,7 @@ When the scores stop moving, propose 3-5 new directions the same way as at the s
 8. **Cheapest kill test first.** If one small run can show a candidate is wrong, order that run before the batch.
 9. **Write down what failed.** When a candidate term or a direction dies, add one line to `LOG.md` with the number that killed it, so nobody tries it again.
 10. **Ideas with the human, operations alone.** Choose the topic and big changes of direction with the human: you propose, they push and pick. Knobs, machine use, priorities and order of work are your call; report them in one line at the next check.
+11. **Keep the repo current.** At the start and at every 15-minute check, run `git fetch origin && git status -sb`; if it says behind, pull with `git pull --rebase --autostash` and tell the sessions in one order. If the pull changed `core/`, `fit/`, `queue/` or `testbed/`, say what changed in your report, because results before and after may differ. Project files live in `work/<topic>/`, which git ignores. If a pull fails with "diverged" or "unrelated histories", follow "Keep your copy of the repo current" in `agents/README.md`.
 
 ## Each pass (every 10-20 minutes)
 

@@ -1,6 +1,6 @@
 # Running the research team
 
-Five AI coding-agent sessions work on one project folder. Each session gets one prompt file from this folder as its first message. The manager proposes ideas and chooses the topic with the human; the human checks in every 15 minutes and helps push the work.
+Five AI coding-agent sessions work on one project folder, `work/<topic>/` inside the clone. Each session gets one prompt file from this folder as its first message. The manager proposes ideas and chooses the topic with the human; the human checks in every 15 minutes and helps push the work.
 
 | Session | Prompt | Owns |
 |---|---|---|
@@ -12,10 +12,35 @@ Five AI coding-agent sessions work on one project folder. Each session gets one 
 
 Small projects can run with two sessions: manager and theory, where theory also runs the queue. Add ops when there is more than one machine, sim when real runs take minutes, and writer once score 2 has rows.
 
+## Keep your copy of the repo current
+
+The repo changes while you work: fixed bugs, new problem data, new formulas on the leaderboards. Every session keeps its copy current. Put your project in `work/<topic>/` inside the clone: `work/` is ignored by git, so pulling never touches your runs or drafts.
+
+At the start of a session, at every 15-minute check, and before a pull request:
+
+```bash
+git fetch origin
+git status -sb                      # "behind N" means there are new commits
+git pull --rebase --autostash       # bring them in; your own changes stay on top
+```
+
+After a pull that changed `core/`, `fit/`, `queue/` or `testbed/`, read `git log --oneline -5` and tell the manager in one line, because a changed script can change results.
+
+If the pull fails with "diverged" or "unrelated histories", the repo history was rewritten (this happened once, on 2026-11-26, to take large data files out of the history). Your `work/` folder is safe either way. Keep your own commits on a branch and move to the new history:
+
+```bash
+git branch my-old-main              # keeps your commits
+git fetch origin
+git reset --hard origin/main        # tracked files now match GitHub; work/ is untouched
+git cherry-pick <commit>            # copy back any of your commits from my-old-main
+```
+
+Before a pull request, also run `python3 tools/check.py`. If two people added a score to the same problem, git keeps both lines of `scores.jsonl`; rebuild the table with `python3 core/leaderboard.py <problem>`.
+
 ## Files the team shares
 
 ```text
-project/
+work/<topic>/
   TARGET.md        written by the manager: what number the formula predicts, and the knobs the screens kept
   ORDERS.md        numbered orders from the manager (template: ORDERS.template.md)
   LOG.md           every session appends "done O12: <numbers>" and short notes
@@ -29,7 +54,7 @@ project/
 
 ## How to start
 
-1. Open the manager session in your coding agent (Claude Code, Codex or similar) in the project folder. Paste `manager.md`, then: "Find a formula about training."
+1. Open the manager session in your coding agent (Claude Code, Codex or similar) in the clone, and have it make `work/<topic>/` once the topic is chosen. Paste `manager.md`, then: "Find a formula about training."
 2. The manager proposes 8-10 topics, all of them new: none from the README's example table. Talk them through with it: ask questions, push back, combine ideas or add your own, until you agree on one.
 3. The manager writes `TARGET.md` and the first orders. Usually: O1 literature check and screens over the settings that might matter (theory, ops), O2 baseline runs and learning-rate check (ops), O3 decide whether a sim is worth building (sim).
 4. Open one session per remaining role in the same folder, and paste its role prompt.
@@ -39,9 +64,10 @@ project/
 Read three things, about 2 minutes:
 
 ```bash
-tail -20 project/LOG.md
-python3 queue/status.py project/jobs/current.jsonl project/results.jsonl
-head -5 project/SCORES.md
+tail -20 work/<topic>/LOG.md
+python3 queue/status.py work/<topic>/jobs/current.jsonl work/<topic>/results.jsonl
+head -5 work/<topic>/SCORES.md
+git fetch origin && git status -sb   # new commits on GitHub? the manager pulls them
 ```
 
 Then answer one question: **did score 1 or score 2 move since the last check?** The manager's report also suggests 1-2 places to push next; pick one or suggest your own.

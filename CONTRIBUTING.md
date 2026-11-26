@@ -1,7 +1,7 @@
 # Contributing
 
 Three kinds of pull request. Searching is slow and checking is fast, so every contribution comes
-with the command that checks it. Every pull request must pass `python3 tools/check.py`
+with the command that checks it. Before a pull request, update your clone (`git pull --rebase --autostash`). Every pull request must pass `python3 tools/check.py`
 (`pip install numpy scipy pyyaml`); GitHub runs it on each PR.
 
 ## 1. A better formula
