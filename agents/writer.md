@@ -17,4 +17,4 @@ Goal: one new formula with 3-4 claims: the formula, score 1, score 2 including r
 1. Every number in the paper comes from a file in the project (`results.jsonl`, `fits/*.json`, `predictions.jsonl`); cite the file in a comment next to the number.
 2. Report pre-registered predictions exactly as written, including the misses.
 3. No claim beyond the tested range. An extrapolation is labelled as a guess.
-4. Draft in `PAPER.md`; render `PAPER.html` only when the draft is done.
+4. Draft in `PAPER.md`; render `PAPER.html` only when the draft is done. To share a finished draft, and only if the human agrees, copy it to `drafts/<slug>/DRAFT.md` (rules in `drafts/README.md`: first line "AI draft, not checked by a person.", no PDF, folder under 5 MB) and open a pull request.

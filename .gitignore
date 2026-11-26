@@ -13,3 +13,8 @@ logs/
 /data/llm/*.jsonl.gz
 !rounds/**/*.jsonl
 /work/
+*.pdf
+*.aux
+*.fls
+*.fdb_latexmk
+*.synctex.gz

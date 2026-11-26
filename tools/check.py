@@ -12,6 +12,7 @@
              calls no open/exec/eval; reads no id or target column (a measured column is a warning)
 6. scores    every line in scores.jsonl reproduces to 4 decimals on the current data and file
 7. tables    LEADERBOARD.md equals what core/leaderboard.py builds
+8. papers    no .pdf anywhere; in papers/ and drafts/, images under 500 KB and each paper folder under 5 MB
 """
 import ast
 import gzip
@@ -64,6 +65,22 @@ def check_size(files):
             errors.append(f"size: {f} is {n / MB:.1f} MB (problem data limit 3 MB)")
     if total > 100 * MB:
         errors.append(f"size: tracked files total {total / MB:.0f} MB (limit 100 MB)")
+
+
+def check_papers(files):
+    folders = {}
+    for f in files:
+        n = os.path.getsize(os.path.join(ROOT, f))
+        if f.lower().endswith(".pdf"):
+            errors.append(f"papers: {f} is a PDF; attach PDFs to a GitHub release instead (papers/README.md)")
+        parts = f.split("/")
+        if parts[0] in ("papers", "drafts") and len(parts) > 2:
+            folders[parts[0] + "/" + parts[1]] = folders.get(parts[0] + "/" + parts[1], 0) + n
+            if f.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".webp")) and n > 0.5 * MB:
+                errors.append(f"papers: {f} is {n / MB:.1f} MB (image limit 0.5 MB)")
+    for d, n in sorted(folders.items()):
+        if n > 5 * MB:
+            errors.append(f"papers: {d}/ is {n / MB:.1f} MB (paper folder limit 5 MB)")
 
 
 def scan(name, text):
@@ -198,6 +215,7 @@ def main():
     files = tracked()
     check_size(files)
     check_privacy(files)
+    check_papers(files)
     cols = columns()
     safe = set()
     for name in problem_names():

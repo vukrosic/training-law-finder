@@ -241,6 +241,8 @@ python3 fit/laws.py results.jsonl --y reward --vars LR=lr W=width \
 | [rounds/](rounds/README.md) | Prediction rounds: predictions committed before the runs |
 | [families/llm/testbed-facts-v1/](families/llm/testbed-facts-v1/README.md) | The training code behind the run table: dense and MoE transformers, Muon, facts probe |
 | [families/llm/search-code/](families/llm/search-code/) | Current training code of each search (compute, data, init, ...), copied with every data refresh |
+| [papers/](papers/README.md) | Finished papers checked and written by people; PDFs are attached to GitHub releases |
+| [drafts/](drafts/README.md) | Paper drafts written by AI agents, not checked by a person |
 | [agents/](agents/README.md) | Prompts for the manager, ops, theory, sim and writer sessions |
 | [testbed/](testbed/) | A minimal single-file trainer for your first runs (used by the worked example) |
 | [queue/](queue/) | `run_jobs.py` runs a job file a few jobs at a time; `status.py` prints a one-screen status |
