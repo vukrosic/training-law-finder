@@ -2,6 +2,18 @@
 
 Write a research paper with a team of AI agents in a few days. The agents propose new ideas about AI training, you talk them through and push toward the most interesting one, and then the agents decide which training settings matter, run hundreds of small experiments, discover a formula that predicts the result, and write the paper with you. Every formula has to predict new runs before they happen, so the paper reports a rule that holds, not a curve fit to old data.
 
+## Start here: paste this into your coding agent
+
+Open Claude Code, Codex or another coding agent in an empty folder and paste:
+
+```text
+Clone https://github.com/vukrosic/training-law-finder and read README.md, METHOD.md and agents/manager.md.
+
+You are the manager of a research project whose goal is a paper with one new formula about AI training, tested on runs it never saw and on runs predicted before they existed.
+
+Do not run anything yet. First propose 8-10 paper topics, at least half of them new: not in the README's example table and with no published formula you can find. For each topic give one line each on: the number the formula would predict, why a formula might exist, the fastest test on this testbed, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick the topic together, then you follow agents/manager.md.
+```
+
 ![Predicted vs actual loss for 6 runs predicted before they ran](examples/loss-law/predicted_vs_actual.png)
 
 *Two formulas fit the old runs equally well. Asked to predict 6 new runs in advance, including a model wider than any they were fit on, one formula was clearly better (right).*
