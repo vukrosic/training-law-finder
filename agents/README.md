@@ -1,6 +1,6 @@
 # Running the research team
 
-Five AI coding-agent sessions work on one project folder. Each session gets one prompt file from this folder as its first message, plus the target sentence. The human checks in every 15 minutes.
+Five AI coding-agent sessions work on one project folder. Each session gets one prompt file from this folder as its first message. The manager picks the topic; the human checks in every 15 minutes.
 
 | Session | Prompt | Owns |
 |---|---|---|
@@ -16,7 +16,7 @@ Small projects can run with two sessions: manager and theory, where theory also 
 
 ```text
 project/
-  TARGET.md        one sentence: what number the formula predicts, from which knobs
+  TARGET.md        written by the manager: what number the formula predicts, and the knobs the screens kept
   ORDERS.md        numbered orders from the manager (template: ORDERS.template.md)
   LOG.md           every session appends "done O12: <numbers>" and short notes
   jobs/*.jsonl     job files (queue/run_jobs.py); withdrawn files move to jobs/withdrawn/
@@ -29,9 +29,9 @@ project/
 
 ## How to start
 
-1. Write `TARGET.md`. Example: "Predict final validation loss from width, depth, steps and peak learning rate, for Muon-trained dense transformers, at widths not used for fitting."
-2. Open one session per role in your coding agent (Claude Code, Codex or similar) in the project folder, and paste the role prompt followed by `TARGET.md`.
-3. The manager writes the first orders. Usually: O1 baseline grid and learning-rate check (ops), O2 first candidate list (theory), O3 decide whether a sim is worth building (sim).
+1. Open the manager session in your coding agent (Claude Code, Codex or similar) in the project folder. Paste `manager.md`, then: "Find a formula about training."
+2. The manager picks the topic, writes `TARGET.md`, and writes the first orders. Usually: O1 literature check and screens over the settings that might matter (theory, ops), O2 baseline runs and learning-rate check (ops), O3 decide whether a sim is worth building (sim).
+3. Open one session per remaining role in the same folder, and paste its role prompt.
 
 ## The 15-minute check (human)
 
@@ -46,7 +46,7 @@ head -5 project/SCORES.md
 Then answer one question: **did score 1 or score 2 move since the last check?**
 
 - Yes: let it run.
-- No for 2-3 checks in a row: tell the manager the direction is stuck and choose the next one together (a new term family, a new knob, a different target).
+- No for 2-3 checks in a row: tell the manager the direction is stuck. The manager picks the next one (a new term family, a new knob, a different topic).
 - A queue is idle, a job keeps failing, or a session is waiting for an answer: tell the manager in one line.
 
-The human picks the direction; the agents do the literature check, the runs and the fitting. A fully autonomous search tends to produce many ideas and few results, because nothing stops it from testing variants that cannot raise the score.
+The agents pick the topic and do the literature check, the screens, the runs and the fitting. The one rule that keeps them productive is one topic at a time: a search spread over many unrelated ideas produces many ideas and few results, because nothing stops it from testing variants that cannot raise the score.

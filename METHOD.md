@@ -14,13 +14,15 @@ In-sample R² is printed by the tools but is never a score.
 
 ## Phases
 
-**0. Set up (1-2 hours).**
-- Write the target in one sentence: what number, from which knobs, over what range. Example: "final validation loss from width, steps and peak lr, widths 64-384, 200-4000 steps".
-- Search the literature for existing laws of that number. Your formula should beat or extend the best published one; put it in as the first candidate.
+**0. Pick the topic and set up (1-2 hours).**
+- The project starts with one instruction: "Find a formula about training." The manager agent picks the topic: a number about training that a formula could predict, that the testbed can measure in a short run, and that has no settled published formula yet. The README lists example topics.
+- Search the literature for existing laws of that number. The formula should beat or extend the best published one; put it in as the first candidate.
+- Write the target in one sentence in `TARGET.md`: what number, over what range. Example: "final validation loss of Muon-trained dense transformers, widths 64-384, 200-4000 steps".
 - Run one job, open its row, and confirm every input and the target are logged.
 - Run the largest planned job alone to measure its time and memory.
 
-**1. First data (half a day).**
+**1. Find which settings matter, then first data (half a day).**
+- Quick screens over every setting that might matter (learning rate, schedule, warmup, width, depth, batch size, data, optimizer settings, plus logged quantities such as weight norm or update size). A setting that moves the target less than run-to-run noise is fixed and dropped from the search. The ones that remain are the formula's inputs, called knobs below.
 - Random draws over the knobs (not a crossed grid): every run adds a new combination, so each knob gets many distinct values for the same compute.
 - A learning-rate bracket at a few sizes, so no candidate is fitting badly tuned runs.
 - First fit of the published law and of a log-linear model with pairwise interactions. Measure the tree ceiling (`--ceiling`).
@@ -44,11 +46,11 @@ In-sample R² is printed by the tools but is never a score.
 
 ## The human's role
 
-The human sets the target, picks the direction when the scores stop moving, and checks in every 15 minutes (`agents/README.md`). The agents do the literature checks, the runs, the fits and the writing.
+The human starts the project, checks in every 15 minutes (`agents/README.md`), and works with the writer on the paper. The agents pick the topic, find which settings matter, do the literature checks, the runs and the fits, and change direction when the scores stop moving.
 
 ## Lessons from the project this method came from
 
-- **A fully autonomous search found nothing.** Agents generating and testing their own ideas ran about 15,000 runs over about 2,400 ideas with no idea beating the baseline. Progress came after a human chose one direction and the agents searched inside it.
+- **One topic at a time.** A search spread over about 2,400 unrelated ideas ran about 15,000 runs with no idea beating the baseline. Progress came once the project committed to one topic and every run served the formula for it. So the manager picks one topic at the start and keeps the whole team inside it until the scores stop moving.
 - **A score keeps the search honest.** Before the two scores existed, sessions reported many partial results that did not add up to a formula. After every order had to name the score it raised, work that could not raise a score stopped being ordered.
 - **Check the logging before the batch.** 30 cloud jobs once ran with the logging flag off. One finished row, checked first, would have caught it.
 - **Cheapest kill test first.** One simulator run showed that a candidate quantity was proportional to the peak learning rate, which removed it as an independent input and saved 15 GPU runs.
