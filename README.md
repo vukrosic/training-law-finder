@@ -33,41 +33,9 @@ It is a search for a new formula about AI training, plus a check that the formul
 
 *Two formulas fit the old runs equally well. Asked to predict 6 new runs in advance, including a model wider than any they were fit on, one formula was clearly better (right).*
 
-## The goal of the paper
+## What it can find
 
-One paper, one new formula. The formula predicts a number about training that nobody could predict before, such as how much a model forgets or which learning rate is best, and it is tested on runs it never saw and on runs predicted before they existed. A lab can then use it to set a value without a sweep, or to know the result of a large run from small ones.
-
-The paper makes 3-4 claims:
-
-1. The formula, in one line.
-2. How well it predicts runs it was not fit on (score 1).
-3. How well its predictions, written before the runs, came true, including runs outside the fit range (score 2).
-4. The range where it holds, and where it fails.
-
-## How a project runs
-
-1. **You start it:** "Find a formula about training."
-2. **The agent proposes new ideas.** It checks the literature and suggests 8-10 topics, all of them new: none from the table below, and none with a published formula. Each comes with a guess at why a formula might exist and the fastest way to test it.
-3. **You talk it through with the agent.** Ask questions, push back, combine two ideas, or add your own. The agent helps you pick the one most worth a paper.
-4. **The agents find which settings matter.** They run quick screens over learning rate, schedule, width, data, batch size and more, and drop what has no effect.
-5. **They search for the formula.** A formula survives only if it predicts runs it was not fit on (score 1) and runs that didn't exist yet when it made its prediction (score 2).
-6. **You check in every 15 minutes.** The agent reports the scores and suggests where to push next; you steer.
-7. **They write the paper with you** once a formula scores high on both.
-
-Agent roles and prompts are in [agents/](agents/README.md): manager, ops, theory, sim, writer. The method in full: [METHOD.md](METHOD.md).
-
-## How a formula is judged
-
-Each candidate formula gets two scores, both R² (1.0 = perfect):
-
-- **Score 1, held out:** fit the formula without some runs (for example, all runs of one width), then check how well it predicts the runs it did not see. The score is the worst of these checks.
-- **Score 2, predicted in advance:** write the formula's predictions for new runs to a time-stamped file, then run them. The score is how well the predictions came true.
-
-A formula you can trust scores high on both.
-
-## Example topics the agents can pick
-
-Each topic is a number about training that a formula could predict. The agents decide which training settings and measurements go into the formula. These are starting points: the best paper topic is often one that is not on this list.
+In theory, every row below is a formula this tool could find: a number about AI training that a formula could predict. The agents decide which training settings and measurements go into each formula. These are examples of the kind of topic that fits; your agent will propose new ones that are not on this list.
 
 | Topic | The formula predicts |
 |---|---|
@@ -143,6 +111,38 @@ Each topic is a number about training that a formula could predict. The agents d
 
 > [!NOTE]
 > The included testbed covers most loss, learning-rate, optimizer, batch, facts, stability and architecture topics on a laptop. Mixture of experts, fine-tuning, RL and compression topics need your own training script (see below).
+
+## The goal of the paper
+
+One paper, one new formula. The formula predicts a number about training that nobody could predict before, such as how much a model forgets or which learning rate is best, and it is tested on runs it never saw and on runs predicted before they existed. A lab can then use it to set a value without a sweep, or to know the result of a large run from small ones.
+
+The paper makes 3-4 claims:
+
+1. The formula, in one line.
+2. How well it predicts runs it was not fit on (score 1).
+3. How well its predictions, written before the runs, came true, including runs outside the fit range (score 2).
+4. The range where it holds, and where it fails.
+
+## How a project runs
+
+1. **You start it:** "Find a formula about training."
+2. **The agent proposes new ideas.** It checks the literature and suggests 8-10 topics, all of them new: none from the table below, and none with a published formula. Each comes with a guess at why a formula might exist and the fastest way to test it.
+3. **You talk it through with the agent.** Ask questions, push back, combine two ideas, or add your own. The agent helps you pick the one most worth a paper.
+4. **The agents find which settings matter.** They run quick screens over learning rate, schedule, width, data, batch size and more, and drop what has no effect.
+5. **They search for the formula.** A formula survives only if it predicts runs it was not fit on (score 1) and runs that didn't exist yet when it made its prediction (score 2).
+6. **You check in every 15 minutes.** The agent reports the scores and suggests where to push next; you steer.
+7. **They write the paper with you** once a formula scores high on both.
+
+Agent roles and prompts are in [agents/](agents/README.md): manager, ops, theory, sim, writer. The method in full: [METHOD.md](METHOD.md).
+
+## How a formula is judged
+
+Each candidate formula gets two scores, both R² (1.0 = perfect):
+
+- **Score 1, held out:** fit the formula without some runs (for example, all runs of one width), then check how well it predicts the runs it did not see. The score is the worst of these checks.
+- **Score 2, predicted in advance:** write the formula's predictions for new runs to a time-stamped file, then run them. The score is how well the predictions came true.
+
+A formula you can trust scores high on both.
 
 ## For AI agents reading this repo
 
