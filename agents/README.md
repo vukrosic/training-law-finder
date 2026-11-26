@@ -1,6 +1,6 @@
 # Running the research team
 
-Five AI coding-agent sessions work on one project folder. Each session gets one prompt file from this folder as its first message. The manager picks the topic; the human checks in every 15 minutes.
+Five AI coding-agent sessions work on one project folder. Each session gets one prompt file from this folder as its first message. The manager proposes ideas and chooses the topic with the human; the human checks in every 15 minutes and helps push the work.
 
 | Session | Prompt | Owns |
 |---|---|---|
@@ -30,8 +30,9 @@ project/
 ## How to start
 
 1. Open the manager session in your coding agent (Claude Code, Codex or similar) in the project folder. Paste `manager.md`, then: "Find a formula about training."
-2. The manager picks the topic, writes `TARGET.md`, and writes the first orders. Usually: O1 literature check and screens over the settings that might matter (theory, ops), O2 baseline runs and learning-rate check (ops), O3 decide whether a sim is worth building (sim).
-3. Open one session per remaining role in the same folder, and paste its role prompt.
+2. The manager proposes 8-10 topics, at least half of them new. Talk them through with it: ask questions, push back, combine ideas or add your own, until you agree on one.
+3. The manager writes `TARGET.md` and the first orders. Usually: O1 literature check and screens over the settings that might matter (theory, ops), O2 baseline runs and learning-rate check (ops), O3 decide whether a sim is worth building (sim).
+4. Open one session per remaining role in the same folder, and paste its role prompt.
 
 ## The 15-minute check (human)
 
@@ -43,10 +44,10 @@ python3 queue/status.py project/jobs/current.jsonl project/results.jsonl
 head -5 project/SCORES.md
 ```
 
-Then answer one question: **did score 1 or score 2 move since the last check?**
+Then answer one question: **did score 1 or score 2 move since the last check?** The manager's report also suggests 1-2 places to push next; pick one or suggest your own.
 
 - Yes: let it run.
-- No for 2-3 checks in a row: tell the manager the direction is stuck. The manager picks the next one (a new term family, a new knob, a different topic).
+- No for 2-3 checks in a row: tell the manager the direction is stuck. It proposes 3-5 new directions (a new term family, a new knob, a different topic), and you choose together.
 - A queue is idle, a job keeps failing, or a session is waiting for an answer: tell the manager in one line.
 
-The agents pick the topic and do the literature check, the screens, the runs and the fitting. The one rule that keeps them productive is one topic at a time: a search spread over many unrelated ideas produces many ideas and few results, because nothing stops it from testing variants that cannot raise the score.
+The agents propose the ideas and do the literature check, the screens, the runs and the fitting; the human helps choose and push. The one rule that keeps them productive is one topic at a time: a search spread over many unrelated ideas produces many ideas and few results, because nothing stops it from testing variants that cannot raise the score.

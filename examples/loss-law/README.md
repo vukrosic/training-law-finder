@@ -16,8 +16,8 @@ The result files from our run are committed here, so you can read the numbers wi
 
 | Candidate | Held out: width | Held out: steps | Score 1 |
 |---|---|---|---|
-| E + A·N^-a + B·D^-b | 0.964 | 0.970 | **0.964** |
-| log L = c + α log N + β log D + γ log N · log D | 0.990 | 0.963 | **0.963** |
+| $L = E + A N^{-a} + B D^{-b}$ | 0.964 | 0.970 | **0.964** |
+| $\log L = c + \alpha \log N + \beta \log D + \gamma \log N \log D$ | 0.990 | 0.963 | **0.963** |
 
 The two-power form puts its width exponent on the lower bound (a = 0.05): 48-128 is too narrow a range of widths to pin it down from runs this short.
 
@@ -27,10 +27,10 @@ Both fits predicted 6 new runs before they ran. 3 of them use width 160, wider t
 
 | Candidate | Score 2 (R²) | Mean abs. error | Worst miss |
 |---|---|---|---|
-| E + A·N^-a + B·D^-b | 0.939 | 0.044 | 0.090 (width 160, 825 steps) |
+| $L = E + A N^{-a} + B D^{-b}$ | 0.939 | 0.044 | 0.090 (width 160, 825 steps) |
 | log-linear with interaction | **0.985** | **0.019** | 0.059 (width 128, 1000 steps) |
 
-The power-law sum underpredicts how much the wider model gains from longer training. The interaction term log N · log D captures that gain. This is the decision rule the agents follow: when candidates tie on held-out slices, order the runs where their predictions differ, predict them first, and keep the candidate that predicts better.
+The power-law sum underpredicts how much the wider model gains from longer training. The interaction term $\log N \log D$ captures that gain. This is the decision rule the agents follow: when candidates tie on held-out slices, order the runs where their predictions differ, predict them first, and keep the candidate that predicts better.
 
 > [!NOTE]
 > The tree "ceiling" from `--ceiling` is low for the step-count slices (0.23) because trees cannot extrapolate beyond the range they were fit on. Read it as a ceiling only for slices inside the training range.

@@ -1,19 +1,31 @@
 # Training Law Finder
 
-Tell a team of AI agents to find a formula about AI training. They pick what to study, decide which training settings matter, run hundreds of small experiments, discover a formula that predicts the result, and write the paper with you. Every formula has to predict new runs before they happen, so the paper reports a rule that holds, not a curve fit to old data.
+Write a research paper with a team of AI agents in a few days. The agents propose new ideas about AI training, you talk them through and push toward the most interesting one, and then the agents decide which training settings matter, run hundreds of small experiments, discover a formula that predicts the result, and write the paper with you. Every formula has to predict new runs before they happen, so the paper reports a rule that holds, not a curve fit to old data.
 
 ![Predicted vs actual loss for 6 runs predicted before they ran](examples/loss-law/predicted_vs_actual.png)
 
 *Two formulas fit the old runs equally well. Asked to predict 6 new runs in advance, including a model wider than any they were fit on, one formula was clearly better (right).*
 
+## The goal of the paper
+
+One paper, one new formula. The formula predicts a number about training that nobody could predict before, such as how much a model forgets or which learning rate is best, and it is tested on runs it never saw and on runs predicted before they existed. A lab can then use it to set a value without a sweep, or to know the result of a large run from small ones.
+
+The paper makes 3-4 claims:
+
+1. The formula, in one line.
+2. How well it predicts runs it was not fit on (score 1).
+3. How well its predictions, written before the runs, came true, including runs outside the fit range (score 2).
+4. The range where it holds, and where it fails.
+
 ## How a project runs
 
 1. **You start it:** "Find a formula about training."
-2. **The agents pick the topic.** They check the literature and choose something a formula could predict, such as how fast a model forgets facts or what sets the best learning rate.
-3. **They find which settings matter.** They run quick screens over learning rate, schedule, width, data, batch size and more, and drop what has no effect.
-4. **They search for the formula.** A formula survives only if it predicts runs it was not fit on (score 1) and runs that didn't exist yet when it made its prediction (score 2).
-5. **You check in every 15 minutes.**
-6. **They write the paper with you** once a formula scores high on both.
+2. **The agent proposes new ideas.** It checks the literature and suggests 8-10 topics, at least half of them new: not in the table below and with no published formula. Each comes with a guess at why a formula might exist and the fastest way to test it.
+3. **You talk it through with the agent.** Ask questions, push back, combine two ideas, or add your own. The agent helps you pick the one most worth a paper.
+4. **The agents find which settings matter.** They run quick screens over learning rate, schedule, width, data, batch size and more, and drop what has no effect.
+5. **They search for the formula.** A formula survives only if it predicts runs it was not fit on (score 1) and runs that didn't exist yet when it made its prediction (score 2).
+6. **You check in every 15 minutes.** The agent reports the scores and suggests where to push next; you steer.
+7. **They write the paper with you** once a formula scores high on both.
 
 Agent roles and prompts are in [agents/](agents/README.md): manager, ops, theory, sim, writer. The method in full: [METHOD.md](METHOD.md).
 
@@ -28,7 +40,7 @@ A formula you can trust scores high on both.
 
 ## Example topics the agents can pick
 
-Each topic is a number about training that a formula could predict. The agents decide which training settings and measurements go into the formula.
+Each topic is a number about training that a formula could predict. The agents decide which training settings and measurements go into the formula. These are starting points: the best paper topic is often one that is not on this list.
 
 | Topic | The formula predicts |
 |---|---|
@@ -105,6 +117,19 @@ Each topic is a number about training that a formula could predict. The agents d
 > [!NOTE]
 > The included testbed covers most loss, learning-rate, optimizer, batch, facts, stability and architecture topics on a laptop. Mixture of experts, fine-tuning, RL and compression topics need your own training script (see below).
 
+## For AI agents reading this repo
+
+If a user pointed you at this repo, start by proposing ideas, not by running the example.
+
+1. Suggest 5 new paper topics that are **not** in the table above. For each, give one line on:
+   - the number the formula would predict,
+   - why a formula might exist (your guess at the mechanism),
+   - the fastest test on this testbed,
+   - the closest published work, and how this differs.
+2. Say which one you would pick and why.
+3. Ask the user to talk it through with you: which ideas sound interesting, what they would change or combine, and whether they have an idea of their own.
+4. Once the user agrees on a topic, follow [agents/manager.md](agents/manager.md) from "Starting the project".
+
 ## Try it in 2 minutes
 
 ```bash
@@ -125,10 +150,10 @@ If the download fails, download `shard_00000.parquet` from [karpathy/fineweb-edu
 
 | Formula | Score 1 (held out) | Score 2 (predicted in advance) |
 |---|---|---|
-| L = E + A·N^-a + B·D^-b | 0.964 | 0.939 |
-| log L = c + α log N + β log D + γ log N · log D | 0.963 | **0.985** |
+| Sum of two power laws: $L = E + A N^{-a} + B D^{-b}$ | 0.964 | 0.939 |
+| Log-linear with interaction: $\log L = c + \alpha \log N + \beta \log D + \gamma \log N \log D$ | 0.963 | **0.985** |
 
-N is non-embedding parameters and D is training tokens. Both formulas fit the old runs equally well, and only the predictions made in advance separate them. The second formula's log N · log D term captures that wider models gain more from longer training. Details: [examples/loss-law](examples/loss-law/README.md).
+$N$ is non-embedding parameters, $D$ is training tokens, and $E, A, a, B, b, c, \alpha, \beta, \gamma$ are fitted constants. Both formulas fit the old runs equally well, and only the predictions made in advance separate them. The second formula's $\log N \log D$ term captures that wider models gain more from longer training. Details: [examples/loss-law](examples/loss-law/README.md).
 
 ## Use it for your own problem
 

@@ -19,8 +19,8 @@ def rows(name):
 
 actual = {r["tag"]: r for r in rows("results.jsonl")}
 panels = [
-    ("predictions_two_power.jsonl", "L = E + A·N^-a + B·D^-b"),
-    ("predictions_loglinear.jsonl", "log L = c + α log N + β log D + γ log N·log D"),
+    ("predictions_two_power.jsonl", r"$L = E + A N^{-a} + B D^{-b}$"),
+    ("predictions_loglinear.jsonl", r"$\log L = c + \alpha \log N + \beta \log D + \gamma \log N \log D$"),
 ]
 max_fit_width = max(r["config"]["d"] for t, r in actual.items() if t.startswith("fit_"))
 

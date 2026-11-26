@@ -15,7 +15,7 @@ In-sample R² is printed by the tools but is never a score.
 ## Phases
 
 **0. Pick the topic and set up (1-2 hours).**
-- The project starts with one instruction: "Find a formula about training." The manager agent picks the topic: a number about training that a formula could predict, that the testbed can measure in a short run, and that has no settled published formula yet. The README lists example topics.
+- The project starts with one instruction: "Find a formula about training." The manager agent proposes 8-10 topics, at least half of them new (not in the README's table, no published formula), each with a guess at the mechanism and the fastest test. The human talks them through with it until they agree on one: a number the testbed can measure in a short run, with no settled published formula yet.
 - Search the literature for existing laws of that number. The formula should beat or extend the best published one; put it in as the first candidate.
 - Write the target in one sentence in `TARGET.md`: what number, over what range. Example: "final validation loss of Muon-trained dense transformers, widths 64-384, 200-4000 steps".
 - Run one job, open its row, and confirm every input and the target are logged.
@@ -46,11 +46,15 @@ In-sample R² is printed by the tools but is never a score.
 
 ## The human's role
 
-The human starts the project, checks in every 15 minutes (`agents/README.md`), and works with the writer on the paper. The agents pick the topic, find which settings matter, do the literature checks, the runs and the fits, and change direction when the scores stop moving.
+The human starts the project, talks through the agent's ideas and helps pick the topic, checks in every 15 minutes (`agents/README.md`) to push the work where it looks most promising, and works with the writer on the paper. The agents propose the ideas, find which settings matter, and do the literature checks, the runs and the fits.
+
+## The goal of the paper
+
+One new formula that predicts a number about training nobody could predict before, with 3-4 claims: the formula, score 1, score 2 including runs outside the fit range, and the range where it holds.
 
 ## Lessons from the project this method came from
 
-- **One topic at a time.** A search spread over about 2,400 unrelated ideas ran about 15,000 runs with no idea beating the baseline. Progress came once the project committed to one topic and every run served the formula for it. So the manager picks one topic at the start and keeps the whole team inside it until the scores stop moving.
+- **One topic at a time.** A search spread over about 2,400 unrelated ideas ran about 15,000 runs with no idea beating the baseline. Progress came once the project committed to one topic and every run served the formula for it. So the manager and the human agree on one topic at the start, and the manager keeps the whole team inside it until the scores stop moving.
 - **A score keeps the search honest.** Before the two scores existed, sessions reported many partial results that did not add up to a formula. After every order had to name the score it raised, work that could not raise a score stopped being ordered.
 - **Check the logging before the batch.** 30 cloud jobs once ran with the logging flag off. One finished row, checked first, would have caught it.
 - **Cheapest kill test first.** One simulator run showed that a candidate quantity was proportional to the peak learning rate, which removed it as an independent input and saved 15 GPU runs.

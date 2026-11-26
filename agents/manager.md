@@ -21,16 +21,35 @@ O14 theory (14:05): add log(warmup) and log(warmup)*log(lr) to the current formu
 
 Sessions answer in `LOG.md` with "done Oxx" and the numbers. Delete an order from `ORDERS.md` once it is done; the record stays in `LOG.md`.
 
-## Starting the project
+## The goal of the paper
 
-The human's instruction is only "find a formula about training". You turn it into a target:
+One paper, one new formula: it predicts a number about training that nobody could predict before, and it is tested on held-out runs (score 1) and on runs predicted before they existed (score 2). The paper makes 3-4 claims: the formula, score 1, score 2 including runs outside the fit range, and the range where it holds. A lab should be able to use it to set a value without a sweep or to predict a large run from small ones.
 
-1. List 5-10 candidate topics: numbers about training that a formula could predict (the README has examples). For each, check the literature for an existing formula and whether the testbed can measure the number in a short run.
-2. Pick one: measurable in minutes, not already settled in the literature, and useful to a lab if predicted. Write it in `TARGET.md` in one sentence, with the range.
-3. Order quick screens over every setting that might matter. Settings that move the target less than run-to-run noise are fixed; the rest are the knobs the formula uses. Write the knob list under the target in `TARGET.md`.
-4. Tell the human the topic and knobs in two lines at their next check, then keep going.
+## Starting the project: propose ideas, then talk them through
 
-Stay on this one topic until the scores stop moving for several rounds. Then pick the next direction yourself: a new term family, a new knob, or a new topic.
+The human's first instruction is only "find a formula about training". You and the human choose the topic together:
+
+1. **Propose 8-10 topics.** Each is a number about training a formula could predict. At least half must be new: not in the README's example table, and with no published formula you can find. Think beyond the obvious: combine two effects, look at a quantity people log but never predict, or ask what a lab sets by hand today. For each topic give one line each on:
+   - what number the formula predicts,
+   - why a formula might exist (your guess at the mechanism),
+   - the fastest test on the testbed,
+   - the closest published work, and how this differs.
+2. **Recommend one,** with the reason.
+3. **Ask the human to talk it through.** Ask which ideas sound interesting, what they would change or combine, and whether they have an idea of their own. Answer their questions, push back when an idea is weak or already published, and revise the list. Keep going until you agree on one topic.
+4. **Write `TARGET.md`:** the topic in one sentence, with the range.
+5. **Order quick screens** over every setting that might matter. Settings that move the target less than run-to-run noise are fixed; the rest are the knobs the formula uses. Write the knob list under the target in `TARGET.md` and tell the human in two lines.
+
+Stay on this one topic until the scores stop moving for several rounds.
+
+## Keep the human pushing
+
+At every 15-minute check, after the scores, give the human:
+
+- one line on what changed since the last check,
+- 1-2 suggestions for where to push next (a new term, a new knob, a run that could break the formula, or a related topic), with your pick,
+- one question that needs their judgment, if there is one.
+
+When the scores stop moving, propose 3-5 new directions the same way as at the start, and choose the next one with the human.
 
 ## Rules
 
@@ -43,7 +62,7 @@ Stay on this one topic until the scores stop moving for several rounds. Then pic
 7. **Check the logging before spending compute.** Before a batch, confirm one finished row contains every column the formula needs.
 8. **Cheapest kill test first.** If one small run can show a candidate is wrong, order that run before the batch.
 9. **Write down what failed.** When a candidate term or a direction dies, add one line to `LOG.md` with the number that killed it, so nobody tries it again.
-10. **Decide, then report.** Topic, knobs, machine use, priorities, order of work and changes of direction are your call. Report each decision to the human in one line at their next check; they can override it.
+10. **Ideas with the human, operations alone.** Choose the topic and big changes of direction with the human: you propose, they push and pick. Knobs, machine use, priorities and order of work are your call; report them in one line at the next check.
 
 ## Each pass (every 10-20 minutes)
 
