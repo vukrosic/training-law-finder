@@ -1,10 +1,12 @@
 __pycache__/
 *.pyc
 .DS_Store
-data/
+/data/*
+!/data/llm/
 logs/
 *.state.json
 *.pt
 *.jsonl
+!problems/**/*.jsonl
 !examples/**/*.jsonl
 !agents/**/*.jsonl

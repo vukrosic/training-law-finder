@@ -1,43 +1,107 @@
 # Training Law Finder
 
-This tool helps you write an AI research paper in 3-5 days.
+Write papers for top AI conferences & help solve intelligence.
 
-It works almost autonomously.
+<sub>Funded by Vuk Rosić's community, [Become AI Researcher](https://www.skool.com/become-ai-researcher-2669).</sub>
 
-You supervise it and talk to it a little.
+We are discovering all rules of LLM training, soon expanding to world models, JEPA and everything else, with a goal to solve intelligence.
 
-AI agents do the experiments, the math and the writing.
+Find a rule of training, give it a formula that predicts runs it never saw, and you have the core of a
+research paper. Pick one of the open problems or topics below, or bring your own idea. The open problems
+come with all of our run data, one scoring command and a leaderboard.
 
-## Start here
+- **Main goal: your paper.** Write an AI research paper in days, submit it to a conference, and use it to get a research job or a PhD place.
+- **Bigger goal: find every rule of training.** Each problem is one rule, for example how much a model forgets or what loss a run will reach. Many people searching in parallel, with checking automated, can find them far faster than one lab.
 
-Open Claude Code, Codex or another coding agent in an empty folder, then copy and paste this prompt:
+## Write a paper with an AI agent
+
+Open Claude Code, Codex or another coding agent in an empty folder and paste:
 
 ```text
-Clone https://github.com/vukrosic/training-law-finder and read README.md, METHOD.md and agents/manager.md.
+Clone https://github.com/vukrosic/training-law-finder and read README.md, problems/README.md, METHOD.md and agents/manager.md.
 
-You are the manager of a research project whose goal is a paper with one new formula about AI training, tested on runs it never saw and on runs predicted before they existed.
+You are the manager of a research project whose goal is a paper with one new formula about AI training, tested on runs it never saw (score 1) and on runs predicted before they existed (score 2).
 
-Do not run anything yet. First propose 8-10 paper topics, all of them new: none from the README's example table, and none with a published formula you can find. For each topic give one line each on: the number the formula would predict, why a formula might exist, the fastest test on this testbed, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick the topic together, then you follow agents/manager.md.
+Do not run anything yet. First propose 8-10 options: beating the leaderboard on one of the open problems in problems/, a topic from the list in README.md, or a new idea of your own (a rule the data in data/llm/ can already answer, or one that needs new runs). For each give one line each on: the number the formula would predict, why a formula might exist, the fastest test, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick together, then you follow agents/manager.md.
 
-Talk to me short and simple the whole time: plain words, short sentences, no jargon. Keep each topic to 4 short lines and the whole list under 500 words. Give details only when I ask.
+Talk to me short and simple the whole time: plain words, short sentences, no jargon. Keep each option to 4 short lines and the whole list under 500 words. Give details only when I ask.
 ```
 
-The agent will suggest new paper ideas. Pick one with it, then check in every 15 minutes.
+Check in every 15 minutes. The agents run the search; you steer and decide what goes in the paper.
+The paper-writing method is in [skill/writing-conference-paper](skill/writing-conference-paper/SKILL.md).
 
-## How it works
+## Open problems
 
-It is a search for a new formula about AI training, plus a check that the formula is right.
+| problem | predict | runs | best so far (score 1, lower is better) | noise floor |
+|---|---|---|---|---|
+| [forgetting](problems/forgetting/) | share of facts a model still knows at the end of training | 375 | 0.0441, 10 constants | 0.0126 |
+| [final-loss](problems/final-loss/) | final validation loss from the training settings | 22,068 | 0.1852, 8 constants | 0.0001 |
 
-- **Search:** the agents run hundreds of small training runs and try many candidate formulas, for example one that predicts how much a model forgets, or which learning rate is best.
-- **Verify:** a formula is kept only if it predicts runs it was never fit on, and runs that did not exist yet when it made its prediction. So the paper reports a rule that holds, not a curve fit to old data.
+runs = runs that measure that number. Forgetting needs a special run (64 facts shown in one window, then plain text), so only 695 of the 23,932 runs can measure it; 375 of those are the frozen fit table, and the newer ones join it at the next update. Another 6,700 runs track forgetting under different setups (replayed facts, a changed optimizer), so they are not mixed in. The rest record final loss.
 
-![Predicted vs actual loss for 6 runs predicted before they ran](examples/loss-law/predicted_vs_actual.png)
+Both are far from their floor. Rules, scores and how to add a problem: [problems/README.md](problems/README.md).
 
-*Two formulas fit the old runs equally well. Asked to predict 6 new runs in advance, including a model wider than any they were fit on, one formula was clearly better (right).*
+## Score a formula in one minute
 
-## What it can find
+```bash
+git clone https://github.com/vukrosic/training-law-finder && cd training-law-finder
+pip install numpy scipy
+python3 core/score.py forgetting problems/forgetting/formulas/end_z2.py
+cp core/formula_template.py problems/forgetting/formulas/my_idea.py   # edit fit() and predict()
+python3 core/score.py forgetting problems/forgetting/formulas/my_idea.py
+```
 
-In theory, every row below is a formula this tool could find: a number about AI training that a formula could predict. The agents decide which training settings and measurements go into each formula. These are examples of the kind of topic that fits; your agent will propose new ones that are not on this list.
+No GPU and no training needed: the runs are already in the repo.
+
+## The data
+
+| file | rows | what |
+|---|---|---|
+| [data/llm/runs.jsonl.gz](data/llm/SCHEMA.md) | 24,012 | real training runs of small decoder-only language models: settings, final loss, a fact-memory probe, and for 7,395 runs the full forgetting curve |
+| [data/llm/other_searches.jsonl.gz](data/llm/SCHEMA.md) | 15,586 | real runs from the other searches (compute, data mix, init, learning rate, mixture of experts, residual, loss target, vocabulary): settings and final loss |
+| [data/llm/sim.jsonl.gz](data/llm/SCHEMA.md) | 4,944 | runs of a fast fact-memory simulator |
+
+Widths 32-1024, 1-12 layers, 160-32,000 steps, mostly Muon, constant / cosine / WSD
+schedules, dense and mixture-of-experts. Every column: [data/llm/SCHEMA.md](data/llm/SCHEMA.md).
+The code that produced them: [families/llm/testbed-facts-v1](families/llm/testbed-facts-v1/).
+
+**Where everything is kept.** GitHub holds code and the summary tables above. Hugging Face holds the
+bulk data: [vukrosic/training-laws-research](https://huggingface.co/datasets/vukrosic/training-laws-research)
+has the same tables, every raw result line (`raw/`), every job file with the exact config each run was
+queued with (`jobs/`), and the code snapshot that goes with each upload (`code/`). The training code of
+every search is also here in [families/llm/search-code/](families/llm/search-code/). Both are refreshed
+together, so any row can be traced to its config and code.
+
+```python
+from datasets import load_dataset
+runs = load_dataset("vukrosic/training-laws-research", "summary", split="train")
+```
+
+## How a result counts
+
+- **Score 1, held out.** Fit without one model width, predict that width, repeat for every width, average the error. A formula that only memorizes the table fails.
+- **Score 2, predicted before the runs exist.** Commit predictions for new settings, then train them. The git commit time proves the predictions came first. This is what makes a paper convincing. See [rounds/](rounds/README.md).
+- **Fewer constants win ties.** Each added constant must lower the error by at least 0.005.
+
+## Contribute
+
+Three kinds of pull request: a better formula, new runs, or a new problem. Every one comes with the
+command that checks it. See [CONTRIBUTING.md](CONTRIBUTING.md), including how credit and co-authorship work.
+
+## Where this goes
+
+| family | status |
+|---|---|
+| language models (`families/llm/`) | open now: 2 problems, 39,518 runs |
+| world models | planned |
+| reinforcement learning | planned |
+
+Problems that the current data can already start on, waiting for a folder: fact memorization
+(bits stored per repeat count, `bits_by_k`), best learning rate per width, schedule shape at a fixed
+learning-rate sum, mixture-of-experts load balance. Pull requests welcome.
+
+<details>
+<summary>60 more topics a formula could answer</summary>
 
 | Topic | The formula predicts |
 |---|---|
@@ -111,53 +175,7 @@ In theory, every row below is a formula this tool could find: a number about AI 
 | KV-cache eviction | accuracy when the cache keeps only some tokens |
 | Speculative decoding | how many draft tokens get accepted |
 
-> [!NOTE]
-> The included testbed covers most loss, learning-rate, optimizer, batch, facts, stability and architecture topics on a laptop. Mixture of experts, fine-tuning, RL and compression topics need your own training script (see below).
-
-## The goal of the paper
-
-One paper, one new formula. The formula predicts a number about training that nobody could predict before, such as how much a model forgets or which learning rate is best, and it is tested on runs it never saw and on runs predicted before they existed. A lab can then use it to set a value without a sweep, or to know the result of a large run from small ones.
-
-The paper makes 3-4 claims:
-
-1. The formula, in one line.
-2. How well it predicts runs it was not fit on (score 1).
-3. How well its predictions, written before the runs, came true, including runs outside the fit range (score 2).
-4. The range where it holds, and where it fails.
-
-## How a project runs
-
-1. **You start it:** "Find a formula about training."
-2. **The agent proposes new ideas.** It checks the literature and suggests 8-10 topics, all of them new: none from the table below, and none with a published formula. Each comes with a guess at why a formula might exist and the fastest way to test it.
-3. **You talk it through with the agent.** Ask questions, push back, combine two ideas, or add your own. The agent helps you pick the one most worth a paper.
-4. **The agents find which settings matter.** They run quick screens over learning rate, schedule, width, data, batch size and more, and drop what has no effect.
-5. **They search for the formula.** A formula survives only if it predicts runs it was not fit on (score 1) and runs that didn't exist yet when it made its prediction (score 2).
-6. **You check in every 15 minutes.** The agent reports the scores and suggests where to push next; you steer.
-7. **They write the paper with you** once a formula scores high on both.
-
-Agent roles and prompts are in [agents/](agents/README.md): manager, ops, theory, sim, writer. The method in full: [METHOD.md](METHOD.md).
-
-## How a formula is judged
-
-Each candidate formula gets two scores, both R² (1.0 = perfect):
-
-- **Score 1, held out:** fit the formula without some runs (for example, all runs of one width), then check how well it predicts the runs it did not see. The score is the worst of these checks.
-- **Score 2, predicted in advance:** write the formula's predictions for new runs to a time-stamped file, then run them. The score is how well the predictions came true.
-
-A formula you can trust scores high on both.
-
-## For AI agents reading this repo
-
-If a user pointed you at this repo, start by proposing ideas, not by running the example.
-
-1. Suggest 5 new paper topics that are **not** in the table above. For each, give one line on:
-   - the number the formula would predict,
-   - why a formula might exist (your guess at the mechanism),
-   - the fastest test on this testbed,
-   - the closest published work, and how this differs.
-2. Say which one you would pick and why.
-3. Ask the user to talk it through with you: which ideas sound interesting, what they would change or combine, and whether they have an idea of their own.
-4. Once the user agrees on a topic, follow [agents/manager.md](agents/manager.md) from "Starting the project".
+</details>
 
 ## Try it in 2 minutes
 
@@ -212,15 +230,21 @@ python3 fit/laws.py results.jsonl --y reward --vars LR=lr W=width \
 
 | Folder | What it holds |
 |---|---|
-| [agents/](agents/README.md) | Prompts for the manager, ops, theory, sim and writer sessions, the orders template, and the 15-minute check |
-| [testbed/](testbed/) | `train.py`: a small modern transformer (RMSNorm, RoPE, QK-norm, SwiGLU), Muon for hidden matrices and Adam for the rest, cosine / constant / warmup-stable-decay schedules, every setting a flag, one JSON row out. `facts.py`: made-up people with five facts each, mixed into training at chosen counts, with per-person recall. `prepare_data.py`: FineWeb-Edu shard and BPE tokenizer |
-| [queue/](queue/) | `run_jobs.py` runs a job file a few jobs at a time and skips jobs that already finished; `status.py` prints a one-screen status |
-| [fit/](fit/) | `laws.py` fits formulas and computes score 1, with a gradient-boosted-tree baseline for comparison; `prereg.py` writes predictions before runs and computes score 2 |
+| [problems/](problems/README.md) | One folder per open problem: data, `problem.py`, baseline formulas, scores and leaderboard |
+| [core/](core/) | `score.py` (score 1), `leaderboard.py`, `round_score.py` (score 2), `formula_template.py`, `rows.py` (load the run table) |
+| [data/llm/](data/llm/SCHEMA.md) | All run data, gzipped JSON lines |
+| [rounds/](rounds/README.md) | Prediction rounds: predictions committed before the runs |
+| [families/llm/testbed-facts-v1/](families/llm/testbed-facts-v1/README.md) | The training code behind the run table: dense and MoE transformers, Muon, facts probe |
+| [families/llm/search-code/](families/llm/search-code/) | Current training code of each search (compute, data, init, ...), copied with every data refresh |
+| [agents/](agents/README.md) | Prompts for the manager, ops, theory, sim and writer sessions |
+| [testbed/](testbed/) | A minimal single-file trainer for your first runs (used by the worked example) |
+| [queue/](queue/) | `run_jobs.py` runs a job file a few jobs at a time; `status.py` prints a one-screen status |
+| [fit/](fit/) | `laws.py` and `prereg.py`: fit and score formulas on your own result files (R² version of the two scores) |
 | [skill/](skill/writing-conference-paper/SKILL.md) | A paper-writing skill for coding agents: one finding, simple writing, controls, gates |
-| [examples/loss-law/](examples/loss-law/README.md) | The worked example with its results and chart |
+| [examples/loss-law/](examples/loss-law/README.md) | A worked example end to end on a laptop in 20 minutes |
 
 > [!NOTE]
-> The testbed is small on purpose: widths of tens to a few hundred and a few thousand steps fit on a laptop or one GPU. A formula found here holds for that range; state the range in any paper.
+> All runs are small scale: widths up to 1024 and a few thousand steps, on laptops and one GPU. A formula found here holds for that range; state the range in any paper.
 
 ## Data
 
