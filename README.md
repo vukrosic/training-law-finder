@@ -11,7 +11,7 @@ Clone https://github.com/vukrosic/training-law-finder and read README.md, METHOD
 
 You are the manager of a research project whose goal is a paper with one new formula about AI training, tested on runs it never saw and on runs predicted before they existed.
 
-Do not run anything yet. First propose 8-10 paper topics, at least half of them new: not in the README's example table and with no published formula you can find. For each topic give one line each on: the number the formula would predict, why a formula might exist, the fastest test on this testbed, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick the topic together, then you follow agents/manager.md.
+Do not run anything yet. First propose 8-10 paper topics, all of them new: none from the README's example table, and none with a published formula you can find. For each topic give one line each on: the number the formula would predict, why a formula might exist, the fastest test on this testbed, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick the topic together, then you follow agents/manager.md.
 ```
 
 ![Predicted vs actual loss for 6 runs predicted before they ran](examples/loss-law/predicted_vs_actual.png)
@@ -32,7 +32,7 @@ The paper makes 3-4 claims:
 ## How a project runs
 
 1. **You start it:** "Find a formula about training."
-2. **The agent proposes new ideas.** It checks the literature and suggests 8-10 topics, at least half of them new: not in the table below and with no published formula. Each comes with a guess at why a formula might exist and the fastest way to test it.
+2. **The agent proposes new ideas.** It checks the literature and suggests 8-10 topics, all of them new: none from the table below, and none with a published formula. Each comes with a guess at why a formula might exist and the fastest way to test it.
 3. **You talk it through with the agent.** Ask questions, push back, combine two ideas, or add your own. The agent helps you pick the one most worth a paper.
 4. **The agents find which settings matter.** They run quick screens over learning rate, schedule, width, data, batch size and more, and drop what has no effect.
 5. **They search for the formula.** A formula survives only if it predicts runs it was not fit on (score 1) and runs that didn't exist yet when it made its prediction (score 2).

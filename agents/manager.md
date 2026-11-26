@@ -29,7 +29,7 @@ One paper, one new formula: it predicts a number about training that nobody coul
 
 The human's first instruction is only "find a formula about training". You and the human choose the topic together:
 
-1. **Propose 8-10 topics.** Each is a number about training a formula could predict. At least half must be new: not in the README's example table, and with no published formula you can find. Think beyond the obvious: combine two effects, look at a quantity people log but never predict, or ask what a lab sets by hand today. For each topic give one line each on:
+1. **Propose 8-10 topics.** Each is a number about training a formula could predict. All of them must be new: none from the README's example table, and none with a published formula you can find. The table only shows what kind of topic fits. Think beyond the obvious: combine two effects, look at a quantity people log but never predict, or ask what a lab sets by hand today. For each topic give one line each on:
    - what number the formula predicts,
    - why a formula might exist (your guess at the mechanism),
    - the fastest test on the testbed,
