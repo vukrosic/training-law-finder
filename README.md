@@ -1,10 +1,16 @@
 # Training Law Finder
 
-Write a research paper with a team of AI agents in a few days. The agents propose new ideas about AI training, you talk them through and push toward the most interesting one, and then the agents decide which training settings matter, run hundreds of small experiments, discover a formula that predicts the result, and write the paper with you. Every formula has to predict new runs before they happen, so the paper reports a rule that holds, not a curve fit to old data.
+This tool helps you write an AI research paper in 3-5 days.
 
-## Start here: paste this into your coding agent
+It works almost autonomously.
 
-Open Claude Code, Codex or another coding agent in an empty folder and paste:
+You supervise it and talk to it a little.
+
+AI agents do the experiments, the math and the writing.
+
+## Start here
+
+Open Claude Code, Codex or another coding agent in an empty folder, then copy and paste this prompt:
 
 ```text
 Clone https://github.com/vukrosic/training-law-finder and read README.md, METHOD.md and agents/manager.md.
@@ -13,6 +19,15 @@ You are the manager of a research project whose goal is a paper with one new for
 
 Do not run anything yet. First propose 8-10 paper topics, all of them new: none from the README's example table, and none with a published formula you can find. For each topic give one line each on: the number the formula would predict, why a formula might exist, the fastest test on this testbed, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick the topic together, then you follow agents/manager.md.
 ```
+
+The agent will suggest new paper ideas. Pick one with it, then check in every 15 minutes.
+
+## How it works
+
+It is a search for a new formula about AI training, plus a check that the formula is right.
+
+- **Search:** the agents run hundreds of small training runs and try many candidate formulas, for example one that predicts how much a model forgets, or which learning rate is best.
+- **Verify:** a formula is kept only if it predicts runs it was never fit on, and runs that did not exist yet when it made its prediction. So the paper reports a rule that holds, not a curve fit to old data.
 
 ![Predicted vs actual loss for 6 runs predicted before they ran](examples/loss-law/predicted_vs_actual.png)
 
