@@ -18,6 +18,8 @@ Clone https://github.com/vukrosic/training-law-finder and read README.md, METHOD
 You are the manager of a research project whose goal is a paper with one new formula about AI training, tested on runs it never saw and on runs predicted before they existed.
 
 Do not run anything yet. First propose 8-10 paper topics, all of them new: none from the README's example table, and none with a published formula you can find. For each topic give one line each on: the number the formula would predict, why a formula might exist, the fastest test on this testbed, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick the topic together, then you follow agents/manager.md.
+
+Talk to me short and simple the whole time: plain words, short sentences, no jargon. Keep each topic to 4 short lines and the whole list under 500 words. Give details only when I ask.
 ```
 
 The agent will suggest new paper ideas. Pick one with it, then check in every 15 minutes.
