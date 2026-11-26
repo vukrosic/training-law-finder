@@ -17,3 +17,7 @@ version kept in git would stay in the history and every clone forever.
 
 Limits, checked by `tools/check.py`: no `.pdf` files, figures under 500 KB, the whole folder under 5 MB.
 An AI-written draft goes in [drafts/](../drafts/README.md) until a person has checked and rewritten it.
+
+## Papers so far
+
+- [A Rough Formula for Forgetting Facts in LLM Pretraining](forgetting-formula/) (Vuk Rosić, November 2026)
