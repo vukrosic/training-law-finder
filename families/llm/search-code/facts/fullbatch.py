@@ -35,7 +35,7 @@ PREC = "fp32"   # set by --prec in main()
 IGNORE = ("wlog",)   # handled per model, does not change training
 MUST_DEFAULT = ("gsplice", "fmarg", "fevery", "ftrace", "fchoice", "rpfile", "rpadd", "sm2file", "gckpt", "gfreeze", "fdrift", "flog",
                 "pfscreen", "rsp", "zcheap", "zfree", "zrare", "gmom", "gmb", "gb1", "gbs", "gsgd", "gnoclip", "glrx", "fsplit",
-                "wsig", "amp", "ce_chunk", "branches", "seen_c", "skip_until", "skip_from", "type_balance", "prof", "tf32")
+                "wsig", "amp", "ce_chunk", "branches", "seen_c", "skip_until", "skip_from", "type_balance", "prof", "tf32", "gacc", "dwin", "dwrows", "dwev")   # gacc (O113, 2026-11-26): gradient accumulation lives in train.py only
 
 
 def group_key(a, c):
@@ -299,7 +299,8 @@ def run_group(jobs, out, dev, threads):
             x, y = xyv[:-1].view(n_, cfg.seq_len).to(dev), xyv[1:].view(n_, cfg.seq_len).to(dev)
             tmpl.eval()
             with torch.no_grad():
-                l = torch.cat([tmpl(x[k:k + 32], y[k:k + 32])[1].reshape(-1, cfg.seq_len) for k in range(0, n_, 32)])
+                ek_ = max(1, 8192 // cfg.seq_len)   # O113: chunk by tokens (32 seqs at s256) so s1024 logits fit the MPS cap
+                l = torch.cat([tmpl(x[k:k + ek_], y[k:k + ek_])[1].reshape(-1, cfg.seq_len) for k in range(0, n_, ek_)])
             tmpl.train(); fe = {}
             for nm, ids in (("in", x), ("tgt", y)):
                 b = bk[ids]

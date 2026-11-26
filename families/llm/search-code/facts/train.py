@@ -57,7 +57,7 @@ BASE = dict(vocab=8192, d_model=128, n_layers=4, n_heads=4, seq_len=256, batch=1
             # branches "2000,4000" = also finish a decayed copy at those step counts (one row each, fact sightings
             # exact per branch); amp 1 = bf16 autocast on cuda; ce_chunk N = exact loss in chunks of N tokens
             attn="softmax",   # attn=linear: causal linear attention, model.LinearAttention (2026-11-25 replay-ceiling search)
-            sched="cos", decay=0.2, branches="", amp=0, ce_chunk=0, prof=0, tf32=0)
+            sched="cos", decay=0.2, branches="", amp=0, ce_chunk=0, prof=0, tf32=0, gacc=0, dwin='', dwrows=0, dwev=16)
 
 PRESETS = {
     # dense SwiGLU, hidden 512 = the active FFN width of every MoE preset
@@ -237,6 +237,8 @@ def main(argv=None):
                 return mn + (cfg.lr - mn) * (s - P + 1) / cfg.rww
             p = (s - P - cfg.rww) / max(1, T - P - cfg.rww)
             return mn + (cfg.lr - mn) * 0.5 * (1 + math.cos(math.pi * p))
+        if cfg.sched == "linear":   # O119 (2026-11-27): linear decay from peak (end of warmup) to min_lr_frac*peak at T
+            p = (s - cfg.warmup) / max(1, T - cfg.warmup); return cfg.lr * (1 - (1 - cfg.min_lr_frac) * p)
         assert cfg.sched == "cos", cfg.sched
         p = (s - cfg.warmup) / max(1, T - cfg.warmup)
         return cfg.lr * (cfg.min_lr_frac + (1 - cfg.min_lr_frac) * 0.5 * (1 + math.cos(math.pi * p)))
@@ -327,6 +329,24 @@ def main(argv=None):
             return n
         return t
 
+    _dw = None   # O114 (2026-11-27): domain window. dwin = uint16 token .bin (held-out = same path with train -> val); dwrows rows per step replaced in [fwlo, fwhi)
+    if cfg.dwin:
+        _dp = cfg.dwin.split(",")   # O119: comma list; window rows come from the first path, held-out loss is read on every path (loss_by, keyed by folder)
+        _dw = dict(tr=np.fromfile(_dp[0], dtype=np.uint16), w0=int(cfg.fwlo * a.steps), w1=int(cfg.fwhi * a.steps), steps=[], loss=[], slr=[], s=0.0, hv={}, loss_by={})
+        for _p in _dp:
+            _hv = np.fromfile(_p.replace("train", "val"), dtype=np.uint16); _n = min(64, len(_hv) // (cfg.seq_len + 1))
+            _k = os.path.basename(os.path.dirname(_p)); _dw["loss_by"][_k] = []
+            _dw["hv"][_k] = torch.from_numpy(_hv[:_n * (cfg.seq_len + 1)].astype(np.int64).reshape(_n, cfg.seq_len + 1))
+        _dw["rng"] = np.random.default_rng([cfg.seed, 114])
+
+    def _dweval(n_done):   # O114: mean loss on fixed held-out domain sequences; slr = summed lr over steps done
+        model.eval()
+        with torch.no_grad():
+            for i_, (k_, x_) in enumerate(_dw["hv"].items()):
+                x_ = x_.to(dev); _, l_ = model(x_[:, :-1], x_[:, 1:]); v_ = round(float(l_.float().mean()), 5); _dw["loss_by"][k_].append(v_)
+                if i_ == 0: _dw["loss"].append(v_)
+        model.train(); _dw["steps"].append(n_done); _dw["slr"].append(round(_dw["s"], 6))
+
     def one_step(step, T_end, trunk=True):
         nonlocal bio_tok, seen
         tp = tick("other", time.perf_counter()) if cfg.prof else 0.0
@@ -335,6 +355,9 @@ def main(argv=None):
         nb = cfg.gbs if (cfg.gbs and fw is not None and step >= fw.w1) else cfg.batch   # 2026-11-26 phase-2 batch rows (count vs share test)
         starts = rng.integers(0, len(train) - cfg.seq_len - 1, nb)
         xy = np.stack([train[s:s + cfg.seq_len + 1] for s in starts]).astype(np.int64)
+        if _dw is not None and cfg.dwrows and _dw["w0"] <= step < _dw["w1"]:   # O114 domain window rows
+            W_ = cfg.seq_len + 1; dst_ = _dw["rng"].integers(0, len(_dw["tr"]) - W_, cfg.dwrows)
+            xy[:cfg.dwrows] = np.stack([_dw["tr"][s_:s_ + W_] for s_ in dst_]).astype(np.int64)
         if fw is not None:
             bt = fw.step_bios(step) if len(fws) == 1 else [t_ for w_ in fws for t_ in w_.step_bios(step)]
             if bt and cfg.rpadd:   # 2026-11-26 r8 control arm b: fact rows ADDED on top of the nb web rows (no web text displaced);
@@ -392,8 +415,17 @@ def main(argv=None):
                     g_ = w_.fact_grad(model, dev, _PN, only=[(q, ai) for q in pp_ for ai in range(5)], sep=True)
                     spl.append((j_, g_, w_.last_fact_loss))
             spl = spl or None
-        with amp():
-            _, loss = model(xy[:, :-1], xy[:, 1:])
+        acc_ = cfg.gacc > 1 and lw is None and fm is None and not spl   # gacc N (2026-11-26, O113 facts-mac-theory): N chunks of the batch, same mean loss and summed gradient, less memory; 0/1 = unchanged
+        if acc_:
+            n_ = xy.shape[0]; ch_ = -(-n_ // cfg.gacc); tot_ = n_ * (xy.shape[1] - 1); ls_ = []
+            for i_ in range(0, n_, ch_):
+                with amp():
+                    _, l_ = model(xy[i_:i_ + ch_, :-1], xy[i_:i_ + ch_, 1:])
+                (l_.sum() / tot_).backward(); ls_.append(l_.detach())
+            loss = torch.cat(ls_)
+        else:
+            with amp():
+                _, loss = model(xy[:, :-1], xy[:, 1:])
         lm = (loss * lw).mean() if lw is not None else loss.mean()
         if fm is not None:   # filler tokens marked 1, fact tokens 2, web 0; sums in nats
             with torch.no_grad():
@@ -401,7 +433,8 @@ def main(argv=None):
                 flog_rows.append([step, float(L_[fm == 1].sum()), int((fm == 1).sum()), float(L_[fm == 2].sum()), int((fm == 2).sum()), float(L_[fm == 0].mean()), lr_at(step, T_end)])
         aux, parts = model.aux_loss()
         tp = tick("fwd", tp)
-        (lm + aux).backward()
+        if not acc_: (lm + aux).backward()
+        else: assert not torch.is_tensor(aux), "gacc needs a model without aux loss"
         tp = tick("bwd", tp)
         pb_ = {n_: w.detach().float().clone() for n_, w in model.named_parameters()} if spl else None
         sg = _dr.get("sgd")   # 2026-11-26 phase-2 plain SGD with momentum: no clipping, no update normalisation
@@ -763,7 +796,8 @@ def main(argv=None):
             x, y = xy[:-1].view(n, cfg.seq_len).to(dev), xy[1:].view(n, cfg.seq_len).to(dev)
             model.eval()
             with torch.no_grad():
-                l = torch.cat([model(x[i:i + 32], y[i:i + 32])[1].reshape(-1, cfg.seq_len) for i in range(0, n, 32)])
+                ek_ = max(1, 8192 // cfg.seq_len)   # O113: chunk by tokens (32 seqs at s256) so s1024 logits fit the MPS cap
+                l = torch.cat([model(x[i:i + ek_], y[i:i + ek_])[1].reshape(-1, cfg.seq_len) for i in range(0, n, ek_)])
             fe = {}
             for nm, ids in (("in", x), ("tgt", y)):
                 b = bk[ids]
@@ -772,6 +806,7 @@ def main(argv=None):
                     fe[f"{nm}{lab}"] = round(l[m].mean().item(), 4)
                     fe[f"{nm}{lab}_frac"] = round(m.float().mean().item(), 3)
             res["freq_eval"] = fe
+        if _dw is not None: res["dwin"] = {k: _dw[k] for k in ("w0", "w1", "steps", "loss", "slr", "loss_by")}   # O114
         if fw is not None:
             res["facts_eval"] = fw.evaluate(model, dev, n_done)
             res["facts_eval"]["curve"] = fcurve
@@ -1003,6 +1038,9 @@ def main(argv=None):
                     _gtr(j_)
         if one_step(step, a.steps):
             break
+        if _dw is not None:   # O114
+            _dw["s"] += lr_at(step, a.steps)
+            if (step + 1) % cfg.dwev == 0 or step + 1 in (_dw["w0"], _dw["w1"]): _dweval(step + 1)
         for j_ in _dr.get("gt", {}):
             if step >= fws[j_].w1: _gtr(j_)
         if "gs" in _dr:
