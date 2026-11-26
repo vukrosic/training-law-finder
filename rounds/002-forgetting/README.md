@@ -23,3 +23,15 @@ before the runs on 2026-11-26/27:
 |---|---|---|---|
 | o112_w2048L12_b32_p0.008 | 0.241 | 0.180 | 0.157 |
 | o112_w2048L12_b32_p0.004 | 0.388 | 0.304 | 0.288 |
+
+## Results (2026-11-27)
+
+The 503M run `o112_w2048L12_b32_p0.008` measured kept = 0.2416. The 4e-3 run was withdrawn before it ran.
+
+| run | measured | end+z2 | hA | a+hA |
+|---|---|---|---|---|
+| o112_w2048L12_b32_p0.008 (predicted first) | 0.2416 | 0.2414 (-0.0002) | 0.2228 (-0.0187) | 0.1891 (-0.0525) |
+| o112_w768L10_b96_p0.0086_T2048_wd0.3_A (known miss) | 0.1043 | +0.19 | +0.19 | +0.19 |
+
+`core/round_score.py` over both runs: end+z2 RMSE 0.130, hA 0.135, a+hA 0.145; the known miss dominates all three.
+On the one run predicted before it existed, four times wider than any fit run, end+z2 is off by 0.0002.

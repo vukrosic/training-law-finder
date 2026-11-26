@@ -22,7 +22,7 @@ A round's runs then join the problem's data for the next score 1.
 |---|---|---|---|
 | internal-1 | 3 | width 512-1024, 3 layers | end+z2 RMSE 0.0258, every run overpredicted (+0.019 to +0.046); schedule-share variant 0.0112 |
 | internal-2 | 1 | width 2048, 3 layers (pending) | predictions: end+z2 0.203, end+z2+batch 0.268, schedule-share 0.227, abs-width 0.306 |
-| [002](002-forgetting/) | 3 | two runs at width 2048, 12 layers (503M non-embedding params), plus one finished 768-wide run (a known miss) | pending; predictions from end_z2, hA, a_hA |
+| [002](002-forgetting/) | 3 | two runs at width 2048, 12 layers (503M non-embedding params), plus one finished 768-wide run (a known miss) | 503M run measured 0.2416; end+z2 predicted 0.2414 (-0.0002), hA -0.019, a_hA -0.053. With the known miss: RMSE 0.130 / 0.135 / 0.145 |
 
 These two were logged in our own notebook before the runs finished, not in this repo, so they are
 history, not proof. Rounds from here on go through git.
