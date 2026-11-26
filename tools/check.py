@@ -9,7 +9,9 @@
              scores.jsonl and LEADERBOARD.md
 4. columns   every column in problem data is listed in core/columns.yaml
 5. formulas  a formula imports only math, numpy, scipy, statistics, itertools, functools, collections;
-             calls no open/exec/eval; reads no id or target column (a measured column is a warning)
+             calls no open/exec/eval and no numpy/scipy file reader (load*, save*, genfromtxt, ...);
+             reads no id or target column (a measured column is a warning). core/score.py also hides
+             those columns from the rows a formula gets.
 6. scores    every line in scores.jsonl reproduces to 4 decimals on the current data and file
 7. tables    LEADERBOARD.md equals what core/leaderboard.py builds
 8. papers    no .pdf anywhere; in papers/ and drafts/, images under 500 KB and each paper folder under 5 MB
@@ -33,6 +35,9 @@ MB = 1e6
 IMPORTS = {"math", "numpy", "scipy", "statistics", "itertools", "functools", "collections"}
 BANNED = {"open", "exec", "eval", "compile", "__import__", "globals", "locals", "vars", "getattr", "setattr",
           "delattr", "input", "breakpoint", "memoryview"}
+# file readers and writers in numpy / scipy: a formula must not read the data files or write anything
+BANNED_ATTR = {"genfromtxt", "fromfile", "tofile", "memmap", "DataSource", "fromregex", "lib", "io"}
+BANNED_PREFIX = ("load", "save")
 PRIVATE = [
     (re.compile(r"/Users/[A-Za-z0-9._-]+"), "local macOS path"),
     (re.compile(r"/home/[A-Za-z0-9._-]+/"), "local Linux path"),
@@ -50,7 +55,8 @@ errors, warnings = [], []
 
 
 def tracked():
-    out = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT, capture_output=True, text=True).stdout
+    # tracked files plus new files not yet added (but not gitignored), so the check runs before git add
+    out = subprocess.run(["git", "ls-files", "-z", "-co", "--exclude-standard"], cwd=ROOT, capture_output=True, text=True).stdout
     return [f for f in out.split("\0") if f and os.path.isfile(os.path.join(ROOT, f))]
 
 
@@ -124,7 +130,7 @@ def check_problem(name, cols):
     except Exception as e:  # noqa: BLE001
         errors.append(f"problems: problems/{name}/problem.py does not load: {e}")
         return
-    for attr in ("rows", "target", "group", "GROUP_BY", "FLOOR"):
+    for attr in ("rows", "target", "group", "GROUP_BY", "FLOOR", "TARGET"):
         if not hasattr(p, attr):
             errors.append(f"problems: problems/{name}/problem.py has no {attr}")
     for fam in families(name):
@@ -147,14 +153,22 @@ def check_formula(path, cols, target_cols):
         else:
             mods = []
         for m in mods:
-            if m.split(".")[0] not in IMPORTS:
-                errors.append(f"formulas: {rel} imports {m} (allowed: {', '.join(sorted(IMPORTS))})")
+            if m.split(".")[0] not in IMPORTS or any(p in BANNED_ATTR for p in m.split(".")[1:]):
+                errors.append(f"formulas: {rel} imports {m} (allowed: {', '.join(sorted(IMPORTS))}, no file modules)")
                 ok = False
+        if isinstance(node, ast.ImportFrom):
+            for a in node.names:
+                if a.name in BANNED_ATTR or a.name.startswith(BANNED_PREFIX):
+                    errors.append(f"formulas: {rel} imports {a.name} (file readers and writers are not allowed)")
+                    ok = False
         if isinstance(node, ast.Name) and node.id in BANNED:
             errors.append(f"formulas: {rel} uses {node.id}()")
             ok = False
         if isinstance(node, ast.Attribute) and node.attr.startswith("__"):
             errors.append(f"formulas: {rel} reads {node.attr}")
+            ok = False
+        if isinstance(node, ast.Attribute) and (node.attr in BANNED_ATTR or node.attr.startswith(BANNED_PREFIX)):
+            errors.append(f"formulas: {rel} uses .{node.attr} (file readers and writers are not allowed)")
             ok = False
         key = None
         if isinstance(node, ast.Subscript) and isinstance(node.slice, ast.Constant) and isinstance(node.slice.value, str):
@@ -179,9 +193,10 @@ def check_formula(path, cols, target_cols):
 
 
 def target_columns(name):
-    src = open(os.path.join(ROOT, "problems", name, "problem.py")).read()
-    m = re.search(r"def target\(r\):\s*return r\[\"(\w+)\"\]", src)
-    return {m.group(1)} if m else set()
+    try:
+        return {load_problem(name).TARGET}
+    except Exception:  # noqa: BLE001  (check_problem reports a broken problem.py)
+        return set()
 
 
 def check_scores(name, safe):
@@ -205,7 +220,7 @@ def check_scores(name, safe):
         if len(cache[fam]) != r["n_rows"]:
             errors.append(f"scores: {where}: scored on {r['n_rows']} rows, the data now has {len(cache[fam])}; score it again")
             continue
-        got = score(p, load_module(path, "formula_check"), cache[fam])["score"]
+        got = score(p, load_module(path, "formula_check"), cache[fam], r.get("measured", False))["score"]
         if abs(got - r["score"]) > 5e-5:
             errors.append(f"scores: {where}: recorded {r['score']:.5f}, rescored {got:.5f}")
 
@@ -220,7 +235,11 @@ def main():
     safe = set()
     for name in problem_names():
         check_problem(name, cols)
-        for f in sorted(os.listdir(os.path.join(ROOT, "problems", name, "formulas"))):
+        fdir = os.path.join(ROOT, "problems", name, "formulas")
+        if not os.path.isdir(fdir) or not os.path.exists(os.path.join(ROOT, "problems", name, "scores.jsonl")) \
+                or not os.path.exists(os.path.join(ROOT, "problems", name, "LEADERBOARD.md")):
+            continue  # check_problem already reported what is missing
+        for f in sorted(os.listdir(fdir)):
             if f.endswith(".py"):
                 path = os.path.join(ROOT, "problems", name, "formulas", f)
                 if check_formula(path, cols, target_columns(name)):

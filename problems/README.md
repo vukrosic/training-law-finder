@@ -8,17 +8,19 @@ world models lives in one folder, with one data file per model family:
 ```text
 problems/forgetting/
   README.md          the question, allowed inputs, the published law to beat
-  problem.py         rows(family), target(row), group(row), GROUP_BY, FLOOR
+  problem.py         rows(family), target(row), group(row), TARGET, GROUP_BY, FLOOR
   data/llm.jsonl.gz  frozen rows from language models; data/cifar.jsonl.gz would hold image models
   formulas/          mean.py (baseline) and every submitted formula
   scores.jsonl       one line per recorded score
   LEADERBOARD.md     built from scores.jsonl, one table per model family plus "all"
-``` Beat the best formula and you have the core of a paper.
+```
+
+Beat the best formula and you have the core of a paper.
 
 | problem | predict | rows | best score 1 | floor | leaderboard |
 |---|---|---|---|---|---|
 | [forgetting](forgetting/) | share of facts a model still knows at the end of training | 375 | 0.0441 (end+z2, 10 constants) | 0.0126 | [LEADERBOARD](forgetting/LEADERBOARD.md) |
-| [final-loss](final-loss/) | final validation loss from the training settings | 22,231 | 0.1476 (Chinchilla + lr bowl, 8 constants) | 0.0001 | [LEADERBOARD](final-loss/LEADERBOARD.md) |
+| [final-loss](final-loss/) | final validation loss from the training settings | 22,221 | 0.1979 (Chinchilla + lr bowl, 8 constants) | 0.0001 | [LEADERBOARD](final-loss/LEADERBOARD.md) |
 
 ## Score it
 
@@ -39,7 +41,7 @@ Start a new formula from `core/formula_template.py`.
 1. **Count constants.** Every number `fit()` learns counts, and the leaderboard shows the count.
 2. **Each added constant must lower score 1 by at least 0.005.** A 12-constant formula that beats a 10-constant one by 0.004 does not take the top spot.
 3. **Below the floor is noise.** The floor is the error between repeated measurements of the same setting.
-4. **Predict from settings only.** `predict()` may read the run's settings (width, steps, learning rate schedule, ...), not measurements of the run you are predicting (final loss, weight norms). A formula that needs a measured quantity is allowed but listed separately.
+4. **Predict from settings only.** `predict()` may read the run's settings (width, steps, learning rate schedule, ...), not measurements of the run you are predicting (final loss, weight norms). `core/score.py` enforces this: `fit()` and `predict()` get rows with only the setting columns of `core/columns.yaml`. A formula that needs a measured quantity is allowed: score it with `--measured` and it goes in a separate table (the problem's own `TARGET` stays hidden).
 5. **Beat the published law.** Each problem names the published formula it must beat (Chinchilla for final loss). A new rule that does not beat it is not a finding.
 
 ## When a question gets its own folder
@@ -48,8 +50,8 @@ A new folder needs all five. Otherwise open an issue with the `question` label; 
 runs until it qualifies.
 
 1. **A new number.** It predicts something no existing folder predicts. A new model family for an existing number is a new data file in that folder, not a new folder.
-2. **Measurable with a floor.** Two runs of the same setting give the floor; without one, measure it first.
-3. **At least 200 runs** that measure the number, spread over at least 4 values of the group column.
+2. **Measurable with a floor.** Train 10 or more settings twice each (same settings, a different machine or a restart counts), then the floor is the RMS of (first - second) / sqrt(2) over the pairs. Write it as `FLOOR` in `problem.py`.
+3. **At least 200 runs** that measure the number, spread over at least 4 values of the group column, with at least 5 runs in each group (set `MIN_GROUP = 5` in `problem.py`; smaller groups are left out, because score 1 weighs every group the same).
 4. **A baseline formula** in `formulas/mean.py`, plus the published law to beat if one exists.
 5. **One line on who would use the answer**, in the README.
 

@@ -8,7 +8,7 @@ refresh; `MANIFEST.json` on Hugging Face has the counts of the latest one.
 | file | rows | what |
 |---|---|---|
 | `runs.jsonl.gz` | 24,012 | real training runs of small decoder-only language models (CPU, Mac, Kaggle and one RTX A4000) |
-| `other_searches.jsonl.gz` | 15,586 | real runs from the other searches (compute, data mix, init, learning rate, mixture of experts, Muon scaling, residual, loss target, vocabulary): settings and final loss, no fact probe |
+| `other_searches.jsonl.gz` | 15,586 | real runs from the other searches (compute, data mix, init, learning rate, mixture of experts, Muon scaling, residual, the 125M check of a DeepSeek-V3 style baseline, loss target, vocabulary): settings and final loss, no fact probe |
 | `sim.jsonl.gz` | 4,944 | runs of a fast fact-memory simulator; never mix with real rows without saying so |
 
 All real runs train on FineWeb text with a few synthetic facts mixed in (a "fact" is a random
@@ -24,7 +24,7 @@ Older rows came from earlier versions of the training code; the current code is
 | tag, family, file, line, machine, device, prec | run id; family = tag up to the first `_` (a group of related runs, not the model family); file = the results file in the search folder, which is `raw/<search>/<file>.gz` on Hugging Face; line = 1-based line number in that file; machine = gpu / mac / cpu / kaggle |
 | width, layers, heads, hidden, n_experts, batch, seq, steps | model and data size |
 | method | `dense` or `dsv3` (DeepSeek-V3 style mixture of experts, 56 rows) |
-| sched, peak, mlr, wd, min_lr_frac, warmup, decay | learning-rate schedule (const / cos / wsd / cosrw); min_lr_frac 1 = no decay |
+| sched, peak, mlr, wd, min_lr_frac, warmup, decay | learning-rate schedule (const / cos / wsd / crw / cosrw; crw and cosrw drop the rate and then warm it back up at share rwp of training, over rww steps); min_lr_frac 1 = no decay |
 | window, fwlo, fwhi | where in training the facts are shown, as a share of steps; A = 0.20-0.45, B = 0.45-0.70 |
 | k, F | [min, max] repeats per fact; number of facts |
 | amp, clip, momentum, eval_seqs, opt, gaplr, glrx, gstep, fref, wlog | other training arguments |
@@ -42,6 +42,7 @@ Rows with a per-step trace after the fact window also have:
 |---|---|
 | w1, n_read | step where the facts stop; number of readings after it |
 | b0, b_end, b | fact bits at the window end, at the end, and at each reading |
+| ref0, ref_end | bits on a reference set of fref facts the model never saw (the chance level), at the window end and at the end |
 | kept | kept[i] = share of the learned fact bits still there at reading i |
 | end_kept | kept[-1] |
 | lr, S, S_end | learning rate at each step after the window; its running sum; the final sum |

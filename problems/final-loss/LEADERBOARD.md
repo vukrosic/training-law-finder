@@ -7,6 +7,6 @@ Score 1 = mean held-out RMSE per group (lower is better). Rebuilt by `python3 co
 
 | # | Formula | Constants | Score 1 | Worst group | In-sample | Rows | Author | Date |
 |---|---|---|---|---|---|---|---|---|
-| 1 | [chinchilla_lr.py](../../problems/final-loss/formulas/chinchilla_lr.py) | 8 | 0.1476 | 0.5059 (1024) | 0.1493 | 22231 | vukrosic | 2026-11-26 |
-| 2 | [chinchilla.py](../../problems/final-loss/formulas/chinchilla.py) | 5 | 0.2552 | 0.5871 (1024) | 0.1907 | 22231 | vukrosic | 2026-11-26 |
-| 3 | [mean.py](../../problems/final-loss/formulas/mean.py) | 1 | 0.4398 | 0.8018 (160) | 0.2796 | 22231 | vukrosic | 2026-11-26 |
+| 1 | [chinchilla_lr.py](../../problems/final-loss/formulas/chinchilla_lr.py) | 8 | 0.1979 | 0.5062 (1024) | 0.1493 | 22221 | vukrosic | 2026-11-26 |
+| 2 | [chinchilla.py](../../problems/final-loss/formulas/chinchilla.py) | 5 | 0.2598 | 0.5869 (1024) | 0.1906 | 22221 | vukrosic | 2026-11-26 |
+| 3 | [mean.py](../../problems/final-loss/formulas/mean.py) | 1 | 0.2990 | 0.4745 (384) | 0.2795 | 22221 | vukrosic | 2026-11-26 |

@@ -3,6 +3,7 @@
     python3 core/leaderboard.py forgetting
 
 Keeps the best score per (model family, formula sha), one table per family, sorted by score 1.
+Formulas scored with --measured (they read measured columns) get their own table per family.
 The 0.005-per-extra-constant rule (problems/README.md) is applied by reviewers, not by this script;
 the Constants column is there so they can.
 """
@@ -18,7 +19,7 @@ def build(name):
     best = {}
     for line in open(os.path.join(d, "scores.jsonl")):
         r = json.loads(line)
-        key = (r.get("family", "all"), r["sha"])
+        key = (r.get("family", "all") + (" (reads measured columns)" if r.get("measured") else ""), r["sha"])
         if key not in best or r["score"] < best[key]["score"]:
             best[key] = r
     out = [f"# Leaderboard: {name}", "",

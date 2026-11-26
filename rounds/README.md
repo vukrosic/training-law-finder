@@ -6,8 +6,10 @@ predict runs that do not exist yet, and the git commit time proves the predictio
 ## How a round works
 
 1. Pick 10-50 new settings, ideally outside the table (wider, longer, a new schedule).
-2. Every competing formula predicts each one. Commit `rounds/<NNN>-<problem>/predictions.jsonl`:
-   one line per run, `{"tag": ..., "settings": {...}, "pred": {"formula_name": value, ...}}`.
+2. Write the settings to `rounds/<NNN>-<problem>/settings.jsonl` (`{"tag": ..., "settings": {...}}` per run),
+   then let every competing formula predict each one and commit the result:
+   `python3 core/predict.py <problem> rounds/<NNN>-<problem>/settings.jsonl <formula files> > rounds/<NNN>-<problem>/predictions.jsonl`.
+   Each line is `{"tag": ..., "settings": {...}, "pred": {"formula_name": value, ...}}`.
 3. Only after that commit, train the runs and commit `results.jsonl`: `{"tag": ..., "actual": value}`.
 4. Score: `python3 core/round_score.py rounds/<NNN>-<problem>`. It prints each formula's RMSE and bias.
 

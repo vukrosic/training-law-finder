@@ -12,6 +12,8 @@ Everything the team does is judged by two numbers. Every report starts with them
 
 In-sample R² is printed by the tools but is never a score.
 
+**Open problems use a different unit.** On a problem in `problems/` (forgetting, final-loss), score 1 is computed by `core/score.py`: the mean held-out RMSE over the left-out groups, where lower is better. On your own project, score 1 is the worst held-out R² from `fit/laws.py`, where higher is better. Every report names the unit, for example "score 1 = 0.0441 RMSE" or "score 1 = 0.87 R²".
+
 ## Phases
 
 **0. Pick the topic and set up (1-2 hours).**

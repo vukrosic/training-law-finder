@@ -19,6 +19,10 @@ python3 fit/prereg.py write --fit fits/f07.json --jobs jobs/next.jsonl --out pre
 python3 fit/prereg.py score --pred predictions.jsonl --results results.jsonl
 ```
 
+## Working on an open problem
+
+If `TARGET.md` names a problem from `problems/`, write each candidate as a formula file (`core/formula_template.py`) and score it with `python3 core/score.py <problem> <file>`. The score is the mean held-out RMSE per group, lower is better. `fit()` and `predict()` see only the setting columns. Record a formula with `--record --author <name>` only when it beats the leaderboard top by at least 0.005 per added constant, then rebuild the table with `python3 core/leaderboard.py <problem>` and run `python3 tools/check.py`. `fit/laws.py` is still useful for quick screens of terms on `core.rows.load()` rows.
+
 ## Rules
 
 1. **Report scores first.** Every `LOG.md` entry starts with score 1 (worst held-out R², and which column) and score 2 (pre-registered R², and n).

@@ -1,10 +1,10 @@
 """Problem: predict a language model's final validation loss from its training settings.
 
 Data: data/llm.jsonl.gz, a frozen copy of every dense Muon run with a 1,024-token vocabulary
-(diverged runs removed, widths 32-1024, 1-12 layers, 160-2048 steps, constant / cosine / WSD schedules,
+(diverged runs removed, widths 32-1024 (each with 5+ runs), 1-12 layers, 160-4,096 steps, constant / cosine / WSD schedules,
 many learning rates). tools/build_problem_data.py made it from the full run table with select() below.
 Target: val_loss (nats per token on held-out FineWeb text) at the end of training.
-Grouped by width, so a formula must predict model sizes it never saw.
+Grouped by width (only widths with at least 5 runs), so a formula must predict model sizes it never saw.
 """
 import math
 import os
@@ -15,6 +15,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(HERE)))
 from core.rows import problem_rows, vocab  # noqa: E402
 
 GROUP_BY = "width"
+TARGET = "val_loss"   # column target() reads; never shown to a formula
+MIN_GROUP = 5  # widths with fewer runs are left out when the data is built: one run cannot weigh as much as 10,000
 FLOOR = 0.0001  # 115 duplicate tags (CPU, Kaggle, Mac, GPU) agree within 0.00006 RMS
 
 # Used only by tools/build_problem_data.py to make data/llm.jsonl.gz from data/llm/runs.jsonl.gz.

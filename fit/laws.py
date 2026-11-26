@@ -186,6 +186,9 @@ def holdout(make_and_fit, predict, rows, y, cols, min_train=4):
     """Out-of-fold predictions per holdout column. Returns {col: (r2, [(slice, n, rmse)])}."""
     out = {}
     for col in cols:
+        if len(folds_for(rows, col)) < 2:
+            print(f"held out {col}: skipped, the rows have only one value of it (nothing to extrapolate to)")
+            continue
         pred = np.full(len(rows), np.nan)
         detail = []
         for name, idx in folds_for(rows, col):

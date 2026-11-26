@@ -22,7 +22,7 @@ Clone https://github.com/vukrosic/training-law-finder (if it is already cloned, 
 
 You are the manager of a research project whose goal is a paper with one new formula about AI training, tested on runs it never saw (score 1) and on runs predicted before they existed (score 2).
 
-Do not run anything yet. First propose 8-10 options: beating the leaderboard on one of the open problems in problems/, a topic from the list in README.md, or a new idea of your own (a rule the data in data/llm/ can already answer, or one that needs new runs). For each give one line each on: the number the formula would predict, why a formula might exist, the fastest test, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick together, then you follow agents/manager.md.
+Do not run anything yet. First propose 8-10 options: beating the leaderboard on one of the open problems in problems/, a topic from the list in README.md, or a new idea of your own (a rule the full run tables can already answer, or one that needs new runs; `core.rows.load()` downloads those tables from Hugging Face into data/llm/ on first use). For each give one line each on: the number the formula would predict, why a formula might exist, the fastest test, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick together, then you follow agents/manager.md.
 
 Talk to me short and simple the whole time: plain words, short sentences, no jargon. Keep each option to 4 short lines and the whole list under 500 words. Give details only when I ask.
 ```
@@ -35,7 +35,7 @@ The paper-writing method is in [skill/writing-conference-paper](skill/writing-co
 | problem | predict | runs | best so far (score 1, lower is better) | noise floor |
 |---|---|---|---|---|
 | [forgetting](problems/forgetting/) | share of facts a model still knows at the end of training | 375 | 0.0441, 10 constants | 0.0126 |
-| [final-loss](problems/final-loss/) | final validation loss from the training settings | 22,231 | 0.1476, 8 constants | 0.0001 |
+| [final-loss](problems/final-loss/) | final validation loss from the training settings | 22,221 | 0.1979, 8 constants | 0.0001 |
 
 runs = runs that measure that number. Forgetting needs a special run (64 facts shown in one window, then plain text), so only 775 of the 24,012 runs can measure it; 375 of those are the frozen fit table, and the newer ones join it at the next update. Another 6,700 runs track forgetting under different setups (replayed facts, a changed optimizer), so they are not mixed in. The rest record final loss.
 
@@ -251,7 +251,7 @@ python3 fit/laws.py results.jsonl --y reward --vars LR=lr W=width \
 | [examples/loss-law/](examples/loss-law/README.md) | A worked example end to end on a laptop in 20 minutes |
 
 > [!NOTE]
-> All runs are small scale: widths up to 1024 and a few thousand steps, on laptops and one GPU. A formula found here holds for that range; state the range in any paper.
+> All runs are small scale: widths up to 2048 and at most 32,000 steps, on laptops and one GPU. A formula found here holds for that range; state the range in any paper.
 
 ## Data
 

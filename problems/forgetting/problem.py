@@ -13,6 +13,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(HERE)))
 from core.rows import problem_rows  # noqa: E402
 
 GROUP_BY = "width"
+TARGET = "kept"   # column target() reads; never shown to a formula
 FLOOR = 0.0126   # RMSE between two measurements of the same setting; below this is noise
 
 
