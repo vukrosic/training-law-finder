@@ -1,0 +1,6 @@
+{"tag": "predict_d96_s325", "prio": 2, "args": {"d": 96, "heads": 3, "steps": 325}}
+{"tag": "predict_d160_s825", "prio": 2, "args": {"d": 160, "heads": 5, "steps": 825}}
+{"tag": "predict_d160_s400", "prio": 2, "args": {"d": 160, "heads": 5, "steps": 400}}
+{"tag": "predict_d128_s625", "prio": 2, "args": {"d": 128, "heads": 4, "steps": 625}}
+{"tag": "predict_d128_s1000", "prio": 2, "args": {"d": 128, "heads": 4, "steps": 1000}}
+{"tag": "predict_d160_s800", "prio": 2, "args": {"d": 160, "heads": 5, "steps": 800}}

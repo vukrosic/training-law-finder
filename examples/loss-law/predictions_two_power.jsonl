@@ -1,0 +1,6 @@
+{"tag": "predict_d96_s325", "y": "val_loss", "pred": 5.37547, "written": 1795673353.6, "fit": "examples/loss-law/fits/two_power.json", "fit_sha": "dfd7ee757145"}
+{"tag": "predict_d160_s825", "y": "val_loss", "pred": 4.92728, "written": 1795673353.6, "fit": "examples/loss-law/fits/two_power.json", "fit_sha": "dfd7ee757145"}
+{"tag": "predict_d160_s400", "y": "val_loss", "pred": 5.24954, "written": 1795673353.6, "fit": "examples/loss-law/fits/two_power.json", "fit_sha": "dfd7ee757145"}
+{"tag": "predict_d128_s625", "y": "val_loss", "pred": 5.05879, "written": 1795673353.7, "fit": "examples/loss-law/fits/two_power.json", "fit_sha": "dfd7ee757145"}
+{"tag": "predict_d128_s1000", "y": "val_loss", "pred": 4.85867, "written": 1795673353.7, "fit": "examples/loss-law/fits/two_power.json", "fit_sha": "dfd7ee757145"}
+{"tag": "predict_d160_s800", "y": "val_loss", "pred": 4.94033, "written": 1795673353.7, "fit": "examples/loss-law/fits/two_power.json", "fit_sha": "dfd7ee757145"}

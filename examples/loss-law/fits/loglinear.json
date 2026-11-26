@@ -1,0 +1,27 @@
+{
+ "spec": {
+  "kind": "linear",
+  "terms": [
+   "log(N)",
+   "log(D)",
+   "log(N)*log(D)"
+  ],
+  "y": "val_loss",
+  "log_y": true,
+  "vars": {
+   "N": "nonemb_params",
+   "D": "tokens"
+  }
+ },
+ "params": [
+  0.9141118272651306,
+  0.16590059435534213,
+  0.06106503130307136,
+  -0.012657160380884793
+ ],
+ "score1": {
+  "config.d": 0.9901,
+  "config.steps": 0.9632
+ },
+ "n_rows": 20
+}

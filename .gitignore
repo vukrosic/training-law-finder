@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.DS_Store
+data/
+logs/
+*.state.json
+*.pt
+*.jsonl
+!examples/**/*.jsonl
+!agents/**/*.jsonl
