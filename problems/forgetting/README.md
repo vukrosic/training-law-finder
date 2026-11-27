@@ -7,7 +7,7 @@ knows at the end, from the training settings alone.**
 Why it matters: labs add data in phases (code, math, instruction data near the end). A formula for
 forgetting tells you when to show data so the model keeps it, without a sweep.
 
-Paper on this problem: [Rules for How Language Models Forget Facts During Training](../../papers/forgetting-rules/), DOI [10.5281/zenodo.24575889](https://doi.org/10.5281/zenodo.24575889).
+Draft paper on this problem (AI-written, not yet checked by a person): [Rules for How Language Models Forget Facts During Training](../../drafts/forgetting-rules/), DOI [10.5281/zenodo.24575889](https://doi.org/10.5281/zenodo.24575889).
 
 ## Data
 

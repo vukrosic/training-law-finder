@@ -28,12 +28,12 @@ The paper-writing method is in [skill/writing-conference-paper](skill/writing-co
 
 Both are far from their floor. Rules and scoring: [problems/README.md](problems/README.md).
 
-## Paper
+## Draft paper
 
-The forgetting problem is written up as a paper: **Rules for How Language Models Forget Facts During Training**
+The forgetting problem is written up as a draft paper, AI-written and not yet checked by a person: **Rules for How Language Models Forget Facts During Training**
 (Vuk Rosić, November 2026). [PDF on Zenodo](https://zenodo.org/records/24575890) ·
 DOI [10.5281/zenodo.24575889](https://doi.org/10.5281/zenodo.24575889) ·
-[source, figures and reproduce script](papers/forgetting-rules/).
+[source, figures and reproduce script](drafts/forgetting-rules/).
 
 ```bibtex
 @misc{rosic2026forgetting,

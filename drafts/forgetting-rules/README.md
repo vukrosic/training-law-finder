@@ -1,3 +1,5 @@
+AI draft, not checked by a person.
+
 # Rules for How Language Models Forget Facts During Training
 
 Vuk Rosić, 27 November 2026
@@ -38,7 +40,7 @@ We give seven rules for how a small language model forgets facts it stops seeing
 | [reproduce.sh](reproduce.sh) | runs all of the above, no training |
 
 ```text
-sh papers/forgetting-rules/reproduce.sh
+sh drafts/forgetting-rules/reproduce.sh
 ```
 
 ## Problem and formula
@@ -47,5 +49,3 @@ sh papers/forgetting-rules/reproduce.sh
 - The paper's formula: [end_z2.py](../../problems/forgetting/formulas/end_z2.py), ten constants, 0.0441 on held-out widths
 - The prediction committed before the 503M run: [rounds/002-forgetting](../../rounds/002-forgetting/)
 - Future work (repeated facts, the cause, other optimizers) is Table 3 of the paper. Each row can be run and sent as a pull request.
-
-An earlier write-up on a larger internal table is in [forgetting-formula](../forgetting-formula/).
