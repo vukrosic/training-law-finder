@@ -10,5 +10,5 @@ A small modern GPT trained with 9.989e13 of the 1e14 FLOPs.
 - Batch 64 x 256 tokens, 415 steps, 6.8M tokens, default sp1024 tokenizer.
 - FLOPs per step 2.407e11 (FlopCounterMode): 6N gives 1.935e11, attention 3.87e10, Muon Newton-Schulz the rest.
 
-Run from `speedrun/`: `python3 records/2026-11-27_baseline/train.py`.
+Run from `speedrun/tracks/lm-fineweb-1e14/`: `python3 records/2026-11-27_baseline/train.py`.
 Training took 435 s on a MacBook Pro M4 (mps) with two other jobs using the GPU; evaluation 33 s. Peak memory 1.8 GB.

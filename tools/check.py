@@ -16,7 +16,8 @@
              track: not ignored, so not work/), and reproduces to 4 decimals on the current data and file
 7. tables    LEADERBOARD.md equals what core/leaderboard.py builds
 8. papers    no .pdf anywhere; in papers/ and drafts/, images under 500 KB and each paper folder under 5 MB
-9. speedrun  no data in speedrun/ (it goes to Hugging Face); each file in speedrun/records/ under 50 KB
+9. speedrun  no data in speedrun/ (it goes to Hugging Face); each record in speedrun/tracks/<track>/records/
+             passes speedrun/common/check_submission.py (files present, under 50 KB, within the budget)
 """
 import ast
 import gzip
@@ -92,14 +93,19 @@ def check_papers(files):
 
 
 def check_speedrun(files):
+    records = set()
     for f in files:
         if not f.startswith("speedrun/"):
             continue
-        n = os.path.getsize(os.path.join(ROOT, f))
         if f.endswith((".bin", ".model", ".jsonl", ".gz", ".parquet", ".npy", ".pt")):
-            errors.append(f"speedrun: {f} is data; data goes to Hugging Face (speedrun/prepare_data.py)")
-        elif f.startswith("speedrun/records/") and n > 50_000:
-            errors.append(f"speedrun: {f} is {n / 1000:.0f} KB (records limit 50 KB; trim the log)")
+            errors.append(f"speedrun: {f} is data; data goes to Hugging Face (each track's prepare_data.py)")
+        parts = f.split("/")  # speedrun/tracks/<track>/records/<run>/<file>
+        if len(parts) >= 6 and parts[1] == "tracks" and parts[3] == "records":
+            records.add("/".join(parts[:5]))
+    sys.path.insert(0, os.path.join(ROOT, "speedrun", "common"))
+    import check_submission
+    for r in sorted(records):
+        errors.extend("speedrun: " + e for e in check_submission.check(os.path.join(ROOT, r)))
 
 
 def scan(name, text):

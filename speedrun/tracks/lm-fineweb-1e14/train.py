@@ -1,6 +1,6 @@
 """Speedrun baseline: train a small GPT on FineWeb-Edu until the FLOP budget is used, then report validation bpb.
 
-    python3 train.py                  # from speedrun/, after python3 prepare_data.py
+    python3 train.py                  # from speedrun/tracks/lm-fineweb-1e14/, after python3 prepare_data.py
     python3 train.py --budget 1e13    # shorter run, not a record
 
 Model: RMSNorm, RoPE, QK-norm, SwiGLU, no biases, untied head. Muon on block matrices, Adam on the rest.
@@ -18,10 +18,10 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-SPEEDRUN = os.path.dirname(os.path.abspath(__file__))
-while not os.path.exists(os.path.join(SPEEDRUN, "flops.py")):  # a copy in records/<run>/ finds speedrun/
-    SPEEDRUN = os.path.dirname(SPEEDRUN)
-sys.path.insert(0, SPEEDRUN)
+TRACK = os.path.dirname(os.path.abspath(__file__))
+while not os.path.exists(os.path.join(TRACK, "eval.py")):  # a copy in records/<run>/ finds the track folder
+    TRACK = os.path.dirname(TRACK)
+sys.path[:0] = [TRACK, os.path.join(os.path.dirname(os.path.dirname(TRACK)), "common")]  # eval.py, common/flops.py
 import eval as ev  # noqa: E402
 import flops  # noqa: E402
 

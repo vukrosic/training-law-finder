@@ -1,10 +1,10 @@
-"""Get the speedrun data into speedrun/data/.
+"""Get the speedrun data into speedrun/tracks/lm-fineweb-1e14/data/.
 
     python3 prepare_data.py            # download the prepared data from Hugging Face and check sha256
     python3 prepare_data.py --build    # rebuild it from FineWeb-Edu (maintainers; same files)
-    python3 prepare_data.py --upload   # upload speedrun/data/ to Hugging Face (maintainers)
+    python3 prepare_data.py --upload   # upload speedrun/tracks/lm-fineweb-1e14/data/ to Hugging Face (maintainers)
 
-Files (all in speedrun/data/, never in git):
+Files (all in speedrun/tracks/lm-fineweb-1e14/data/, never in git):
     train_docs.jsonl.gz   fixed training text: the first documents of FineWeb-Edu sample-10BT shard 000
     val_docs.jsonl        fixed validation text: the first VAL_DOCS documents of shard 013 (never train on it)
     sp1024.model          default tokenizer: SentencePiece BPE, 1024 tokens, lossless (byte fallback)
