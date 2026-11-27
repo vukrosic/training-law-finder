@@ -3,7 +3,8 @@
     python3 drafts/forgetting-rules/next_steps_checks.py
 
 Needs numpy and scipy. Takes about one minute on a laptop CPU. Prints three parts:
-  1. ten constants against nine (no depth term) on seven held-out slices
+  1. ten constants against nine (no depth term) on seven held-out slices, and ten constants
+     times the published weight decay bound (end_z2_wd.py)
   2. the formula on the readings inside each run, not only the end point
   3. a schedule picker, tested on groups of runs that differ only in schedule (and peak)
 
@@ -34,34 +35,38 @@ X = np.array([feats(r) for r in rows])
 lnS = np.array([math.log(sum(r["lr"])) for r in rows])   # S = learning rate summed after the facts
 y = np.array([r["kept"][-1] for r in rows])              # share of facts kept at the end
 W = np.array([r["width"] for r in rows])
+BOUND = np.array([np.prod(1 - np.asarray(r["lr"]) * r["wd"]) for r in rows])  # Bordt et al. (2025); 1 when wd is 0
 ALL = list(range(9))
 NO_DEPTH = [c for c in ALL if c != 6]
 rmse = lambda a: float(np.sqrt(np.mean(np.square(a))))
 
 
-def pred(p, X, lnS, cols=ALL):
-    return 1 / (1 + np.exp(np.minimum(50, np.exp(p[-1]) * (X[:, cols] @ p[:-1] + lnS))))
+def pred(p, X, lnS, cols=ALL, b=1.0):
+    return b / (1 + np.exp(np.minimum(50, np.exp(p[-1]) * (X[:, cols] @ p[:-1] + lnS))))
 
 
-def fit(X, lnS, y, cols=ALL):
+def fit(X, lnS, y, cols=ALL, b=1.0):
     p0 = np.array([FROZEN[c] for c in cols] + [FROZEN[9]])
-    return least_squares(lambda p: pred(p, X, lnS, cols) - y, p0).x
+    return least_squares(lambda p: pred(p, X, lnS, cols, b) - y, p0).x
 
 
-def heldout(groups, cols):  # leave one group out, fit on the rest, mean error over the groups
-    per = []
+def heldout(groups, cols, b=np.ones(len(rows)), each=False):  # leave one group out, fit on the rest
+    per = {}
     for g in sorted(set(groups), key=str):
         te = np.array([x == g for x in groups])
-        per.append(rmse(pred(fit(X[~te], lnS[~te], y[~te], cols), X[te], lnS[te], cols) - y[te]))
-    return float(np.mean(per))
+        per[g] = rmse(pred(fit(X[~te], lnS[~te], y[~te], cols, b[~te]), X[te], lnS[te], cols, b[te]) - y[te])
+    return per if each else float(np.mean(list(per.values())))
 
 
-print("PART 1. Error on a held-out group, in points: ten constants, and nine (no depth term)")
+print("PART 1. Error on a held-out group, in points: ten constants, nine (no depth term), ten with the bound")
 for name, key in [("width", "width"), ("layers", "layers"), ("steps", "steps"), ("peak", "peak"),
                   ("schedule", "sname"), ("weight decay", "wd"), ("window", "window")]:
     g = [r[key] if (key != "window" or r[key] != "const") else "A" for r in rows]
-    a, b = heldout(g, ALL), heldout(g, NO_DEPTH)
-    print(f"  hold out {name:13s} ten {100 * a:5.2f}   nine {100 * b:5.2f}   difference {100 * (b - a):+5.2f}")
+    a, b, c = heldout(g, ALL), heldout(g, NO_DEPTH), heldout(g, ALL, BOUND)
+    print(f"  hold out {name:13s} ten {100 * a:5.2f}   nine {100 * b:5.2f}   difference {100 * (b - a):+5.2f}   with bound {100 * c:5.2f}")
+    if key in ("wd", "window"):
+        for v, e in heldout(g, ALL, each=True).items():
+            print(f"      {name} {v}: {g.count(v):3d} runs, ten {100 * e:5.2f}   with bound {100 * heldout(g, ALL, BOUND, each=True)[v]:5.2f}")
 pairs = collections.Counter((r["width"], r["layers"]) for r in rows)
 print("  runs per (width, layers):", dict(sorted(pairs.items())))
 

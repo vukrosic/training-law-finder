@@ -38,7 +38,7 @@ We give seven rules for how a small language model forgets facts it stops seeing
 | [paper_numbers.py](paper_numbers.py) | computes every number in the text from the public table |
 | [make_figs.py](make_figs.py) | draws the six figures |
 | [reproduce.sh](reproduce.sh) | runs all of the above, no training |
-| [NEXT-STEPS.md](NEXT-STEPS.md) | five checks already done, and open directions for anyone who wants to continue |
+| [NEXT-STEPS.md](NEXT-STEPS.md) | six checks already done, open directions, and the runs the table is missing |
 | [next_steps_checks.py](next_steps_checks.py) | prints the numbers of those checks from the public table |
 
 ```text
@@ -49,6 +49,7 @@ sh drafts/forgetting-rules/reproduce.sh
 
 - Problem and scoring: [problems/forgetting](../../problems/forgetting/), 375 runs
 - The paper's formula: [end_z2.py](../../problems/forgetting/formulas/end_z2.py), ten constants, 0.0441 on held-out widths
+- Since the paper: [end_z2_wd.py](../../problems/forgetting/formulas/end_z2_wd.py) multiplies the paper's formula by the weight decay bound of Bordt et al. (2025). Same ten constants, 0.0411 on held-out widths
 - The prediction committed before the 503M run: [rounds/002-forgetting](../../rounds/002-forgetting/)
 - Closest published work: the cumulative weight decay of Bordt et al. (2025) and the moving-average weights of Bergsma et al. (2026). Both are in the paper's related work and in [problems/forgetting](../../problems/forgetting/#published-work-to-beat) with what this formula adds. The related-work text here is newer than the PDF on Zenodo.
 - Future work: [NEXT-STEPS.md](NEXT-STEPS.md) lists open directions by the hardware they need, and Table 3 of the paper lists more. Each one can be run and sent as a pull request.
