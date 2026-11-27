@@ -1,19 +1,10 @@
 # Ideas to work on
 
-Pick one, or bring your own. Before you start, search for the closest published paper and say how yours differs. Open questions that are not ready for a problem folder go in an issue with the `question` label.
+Pick one or bring your own. First find the closest published paper and say how yours differs. Questions not ready for a problem folder go in an issue with the `question` label.
 
-## Ready to start
+**Ready:** the open problems in [problems/](problems/README.md); open directions for forgetting, from no training to one GPU, in [NEXT-STEPS.md](drafts/forgetting-rules/NEXT-STEPS.md).
 
-The two open problems in [problems/](problems/README.md) have data, a scoring command and a leaderboard.
-
-The forgetting problem also has a list of open directions, from no training to one GPU:
-[drafts/forgetting-rules/NEXT-STEPS.md](drafts/forgetting-rules/NEXT-STEPS.md).
-
-## Waiting for a folder
-
-Problems that the current data can already start on, waiting for a folder: fact memorization
-(bits stored per repeat count, `bits_by_k`), best learning rate per width (one number per sweep, not per run: see [GUIDE.md](GUIDE.md#1-pick-one-target)), schedule shape at a fixed
-learning-rate sum, mixture-of-experts load balance. Pull requests welcome.
+**Waiting for a folder** (current data is enough to start; PRs welcome): fact memorization (bits stored per repeat count, `bits_by_k`), best learning rate per width (one number per sweep, see [GUIDE.md](GUIDE.md#1-pick-one-target)), schedule shape at a fixed learning-rate sum, mixture-of-experts load balance.
 
 <details>
 <summary>60 more topics a formula could answer</summary>
