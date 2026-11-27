@@ -1,6 +1,6 @@
 # Workflow: from idea to finished draft
 
-You are the student's AI agent. This file lists the stages in order. Do them one at a time. Before stage 1, ask the start questions in [manager.md](manager.md#first-ask-how-the-student-wants-to-work).
+You are the student's AI agent. This file lists the stages in order. Do them one at a time. Before stage 1, ask the start questions in [manager.md](manager.md#first-ask-how-the-student-wants-to-work) and find out the machine ([manager.md](manager.md#know-the-machine)).
 
 Project files live in `work/<topic>/` (git ignores it). If you are the only session, you do every role yourself: manager, theory, ops and writer.
 
