@@ -44,7 +44,8 @@ checks it, and the leaderboard records who found what first. How: [CONTRIBUTING.
 | [DATA.md](DATA.md) | the 39,598 real runs on Hugging Face, and how new runs flow in from GitHub to Hugging Face |
 | [METHOD.md](METHOD.md) | the full method |
 
-All runs are small scale (widths up to 2048, at most 32,000 steps), so state that range in any paper.
+All runs are small scale. The range differs per problem: each problem README has a "Tested range:" line
+(final-loss: widths 24 to 1024, 512 to 16,384 steps), and a paper states the range of its own data.
 
 ## License
 

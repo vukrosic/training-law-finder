@@ -15,7 +15,7 @@ The draft, and the project files it cites: `SCORES.md`, `score1.txt`, `FREEZE.md
 3. **Score 2.** If reported: was the predictions file frozen (sha256 and time in `FREEZE.md`) before any of its runs existed? Are misses reported as written? Are some runs outside the fit range? If not reported, does the paper say so plainly and claim nothing that needs it?
 4. **Constants.** Does each constant earn its place (it lowers score 1 by at least 0.005, `problems/README.md`)? Is the score above the problem's floor?
 5. **Baselines.** Is the strongest published formula in the main table, fitted on the same rows?
-6. **Range.** Does every claim stay inside the tested range (width up to 2048, at most 32,000 steps)? Is any guess about larger models labelled as a guess?
+6. **Range.** Does every claim stay inside the tested range (the `Tested range:` line in `TARGET.md` or the problem README)? Is any guess about larger models labelled as a guess?
 7. **Held-out design.** Are the groups left out by a setting (for example width), not at random? Could the formula have seen the held-out runs in any way?
 8. **Closest work.** Are the 3-5 closest papers named, each with what differs?
 9. **Writing.** Abstract at most 180 words. Short sentences, one idea each. Every term defined at first use with a small example. One figure per claim, each caption stating the takeaway. Could any section lose a third of its words without losing a fact?

@@ -18,7 +18,7 @@ If a stage fails, say so in one line in `LOG.md`, go back to the stage named, an
 
 - **Do:** check what others are working on. Run `gh issue list --state open --search "Working on"` (or read the Issues page on GitHub) and `gh pr list --state open`. Read every `problems/*/LEADERBOARD.md`. Then propose 8-10 ideas as in [manager.md](manager.md#starting-the-project-propose-ideas-then-talk-them-through), skip any idea with an open "Working on" issue younger than 14 days, and recommend one.
 - **Read:** `README.md`, `IDEAS.md`, `problems/README.md`, `problems/*/LEADERBOARD.md`, open issues and pull requests.
-- **Produce:** `work/<topic>/TARGET.md`: the number to predict, in one sentence, with its range. Example: "final validation loss from width, steps and peak learning rate, widths 64-2048, up to 32,000 steps". If the student allowed it, open an issue titled "Working on: <idea>" with 2-3 lines.
+- **Produce:** `work/<topic>/TARGET.md`: the number to predict, in one sentence, and a line `Tested range: ...` with the range of the data. On an open problem, copy that line from the problem README (final-loss: "Tested range: widths 24 to 1024, 512 to 16,384 steps."). On your own idea, write the range of the rows you use. If the student allowed it, open an issue titled "Working on: <idea>" with 2-3 lines.
 - **Done when:** `TARGET.md` exists and no open issue claims the same idea.
 - **Stop:** b, c.
 
@@ -64,7 +64,7 @@ If a stage fails, say so in one line in `LOG.md`, go back to the stage named, an
 
 ## 7. Write the draft
 
-- **Do:** write `work/<topic>/PAPER.md` with `skill/writing-conference-paper/SKILL.md` and `agents/writer.md`. It must contain: an Abstract of 180 words or fewer; score 1 with its unit; a "Closest work" section; and the line "All runs are small scale: width up to 2048 and at most 32,000 steps." If it reports score 2, add the line `Score 2 predictions: <file>, sha256 <hash>, frozen <time>` copied from `FREEZE.md`.
+- **Do:** write `work/<topic>/PAPER.md` with `skill/writing-conference-paper/SKILL.md` and `agents/writer.md`. It must contain: an Abstract of 180 words or fewer; score 1 with its unit; a "Closest work" section; and one line that states the tested range with the same numbers as the `Tested range:` line in `TARGET.md` (for example "All runs are small scale: widths 24 to 1024, 512 to 16,384 steps."). If it reports score 2, add the line `Score 2 predictions: <file>, sha256 <hash>, frozen <time>` copied from `FREEZE.md`.
 - **Read:** the skill, `agents/writer.md`, `SCORES.md`, `LITERATURE.md`, `FREEZE.md`.
 - **Produce:** `PAPER.md` and its figures.
 - **Done when:** every section is written and every number cites the file it came from.
@@ -72,7 +72,7 @@ If a stage fails, say so in one line in `LOG.md`, go back to the stage named, an
 
 ## 8. Self-check
 
-- **Do:** run [reviewer.md](reviewer.md) on the draft and fix what it finds, up to 3 rounds. Then run `python3 tools/check_paper.py work/<topic>/PAPER.md --scores work/<topic>/score1.txt` and fix every failure.
+- **Do:** run [reviewer.md](reviewer.md) on the draft and fix what it finds, up to 3 rounds. Then run `python3 tools/check_paper.py work/<topic>/PAPER.md --scores work/<topic>/score1.txt` (add `--problem <name>` if the paper does not name its problem) and fix every failure.
 - **Read:** `agents/reviewer.md`.
 - **Produce:** `work/<topic>/REVIEW-<n>.md` for each round, and the fixed `PAPER.md`.
 - **Done when:** the reviewer lists no major issue and `check_paper.py` prints 0 failures.

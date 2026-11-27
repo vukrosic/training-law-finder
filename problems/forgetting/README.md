@@ -26,6 +26,8 @@ window A), so a formula may use the schedule shape. Columns: [core/columns.yaml]
 Allowed inputs: everything except `kept`, `C`, `b0`, `rms_w` and `wnorm` (those are measured during
 the run). Formulas that use `rms_w` are listed separately.
 
+Tested range: widths 64 to 1024, 512 to 4,096 steps. A paper on this problem states this range.
+
 ## Best formulas
 
 | formula | constants | score 1 | idea |
