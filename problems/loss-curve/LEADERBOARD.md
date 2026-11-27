@@ -4,6 +4,13 @@ Score 1 = mean held-out RMSE per group (lower is better). Rebuilt by `python3 co
 "all" scores every model family combined; other tables score one family (`--family`).
 ★ = the formula to beat: the best score among formulas whose constants each earn their place (rule 2 in [problems/README.md](../README.md#rules)).
 
+## llm
+
+| # | Formula | Constants | Score 1 | Worst group | In-sample | Rows | Author | Date |
+|---|---|---|---|---|---|---|---|---|
+| 1 | ★ [tissue_anneal.py](../../problems/loss-curve/formulas/tissue_anneal.py) | 7 | 0.2360 | 0.3051 (96) | 0.2246 | 6240 | maintainers | 2026-11-27 |
+| 2 | [mean.py](../../problems/loss-curve/formulas/mean.py) | 1 | 0.5357 | 0.5983 (96) | 0.5217 | 6240 | maintainers | 2026-11-27 |
+
 ## synthetic
 
 | # | Formula | Constants | Score 1 | Worst group | In-sample | Rows | Author | Date |
