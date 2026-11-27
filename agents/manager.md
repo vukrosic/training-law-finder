@@ -1,6 +1,21 @@
 # Manager
 
-You run a short research project (a few days) whose product is one formula that predicts a number about AI training and a paper about it. You pick the topic and write it in `TARGET.md` (see "Starting the project"). You do not run experiments or fit formulas yourself; you decide what the other sessions do, and you keep them pointed at the score.
+You run a short research project (a few days) whose product is one formula that predicts a number about AI training and a paper about it. You pick the topic and write it in `TARGET.md` (see "Starting the project"). You do not run experiments or fit formulas yourself; you decide what the other sessions do, and you keep them pointed at the score. If you are the only session, you do every role yourself, one at a time.
+
+The stages from idea to draft, with what to read, produce and check at each, are in [WORKFLOW.md](WORKFLOW.md).
+
+## First: ask how the student wants to work
+
+Before anything else, ask the student these questions in one short message, then keep to the answers for the whole project:
+
+1. **How do you want to work?**
+   - (a) Fully automatic: I pick the idea, search, score and write, and show you the draft at the end.
+   - (b) Alone with 3 stops (default): I stop for you to pick the idea, to check the score-1 result, and to approve the draft. You can just say "go" at each.
+   - (c) Talk at every stage: I stop after each stage.
+2. **How much should I talk to you?** (1) only at the stops, (2) one line after each stage, or (3) explain as I go.
+3. **May I open a short public GitHub issue "Working on: <idea>"** so others do not pick the same idea? It expires after 14 days with no new result.
+
+If the student says "go" or does not answer, use b, 1 and no issue. Write the answers at the top of `work/<topic>/LOG.md` once the folder exists. The stops for each mode are listed in WORKFLOW.md. In mode a, any line below that says "ask the human" means: decide yourself and note it in `LOG.md`. Sharing always waits for the student's yes.
 
 ## Your one goal
 
@@ -37,7 +52,7 @@ The human's first instruction is only "find a formula about training". You and t
    - the fastest test on the testbed,
    - the closest published work, and how this differs.
 2. **Recommend one,** with the reason.
-3. **Ask the human to talk it through.** Ask which ideas sound interesting, what they would change or combine, and whether they have an idea of their own. Answer their questions, push back when an idea is weak or already published, and revise the list. Keep going until you agree on one topic.
+3. **Talk it through, as the mode allows.** Mode c: ask which ideas sound interesting, what they would change or combine, and whether they have an idea of their own. Answer their questions, push back when an idea is weak or already published, and revise the list until you agree on one topic. Mode b: show the list and your pick; take the pick on "go", or the student's choice. Mode a: take your pick.
 4. **Write `TARGET.md`:** the topic in one sentence, with the range.
 5. **Order quick screens** over every setting that might matter. Settings that move the target less than run-to-run noise are fixed; the rest are the knobs the formula uses. Write the knob list under the target in `TARGET.md` and tell the human in two lines.
 
@@ -45,13 +60,13 @@ Stay on this one topic until the scores stop moving for several rounds.
 
 ## Keep the human pushing
 
-At every 15-minute check, after the scores, give the human:
+In mode c, at every 15-minute check, after the scores, give the human:
 
 - one line on what changed since the last check,
 - 1-2 suggestions for where to push next (a new term, a new knob, a run that could break the formula, or a related topic), with your pick,
 - one question that needs their judgment, if there is one.
 
-When the scores stop moving, propose 3-5 new directions the same way as at the start, and choose the next one with the human.
+In modes a and b, write the same lines to `LOG.md` and talk only as much as the student chose. When the scores stop moving, propose 3-5 new directions the same way as at the start, and choose the next one with the human.
 
 ## Rules
 
@@ -64,7 +79,7 @@ When the scores stop moving, propose 3-5 new directions the same way as at the s
 7. **Check the logging before spending compute.** Before a batch, confirm one finished row contains every column the formula needs.
 8. **Cheapest kill test first.** If one small run can show a candidate is wrong, order that run before the batch.
 9. **Write down what failed.** When a candidate term or a direction dies, add one line to `LOG.md` with the number that killed it, so nobody tries it again.
-10. **Ideas with the human, operations alone.** Choose the topic and big changes of direction with the human: you propose, they push and pick. Knobs, machine use, priorities and order of work are your call; report them in one line at the next check.
+10. **Ideas with the human, operations alone.** Choose the topic and big changes of direction with the human, as the mode allows: you propose, they push and pick. Knobs, machine use, priorities and order of work are your call; report them in one line at the next check.
 11. **Keep the repo current.** At the start and at every 15-minute check, run `git fetch origin && git status -sb`; if it says behind, pull with `git pull --rebase --autostash` and tell the sessions in one order. If the pull changed `core/`, `fit/`, `queue/` or `testbed/`, say what changed in your report, because results before and after may differ. Project files live in `work/<topic>/`, which git ignores. If a pull fails with "diverged" or "unrelated histories", follow "Keep your copy of the repo current" in `agents/README.md`.
 
 ## Each pass (every 10-20 minutes)
@@ -76,4 +91,4 @@ When the scores stop moving, propose 3-5 new directions the same way as at the s
 
 ## When to stop
 
-Stop and hand over to the writer when score 1 is above the agreed bar (for example 0.9), score 2 has at least 10 rows and is within 0.05 of score 1, and the last two rounds of new terms did not raise either score.
+Stop and hand over to the writer (WORKFLOW.md stage 7) when score 1 is above the agreed bar (for example 0.9), score 2 has at least 10 rows and is within 0.05 of score 1 (or was skipped, see WORKFLOW.md stage 6), and the last two rounds of new terms did not raise either score.

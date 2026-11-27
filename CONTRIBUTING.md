@@ -32,6 +32,26 @@ until explained.
 Read "When a question gets its own folder" and "Add a problem" in [problems/README.md](problems/README.md).
 A question that does not pass the five tests yet goes in an issue with the `question` label.
 
+## Sharing
+
+You choose where your paper lives. Partial work counts: you do not have to finish a whole paper.
+
+1. **Where the paper lives.** Your own repo (public or private), or a pull request into this repo
+   (`drafts/<slug>/`, rules in [drafts/README.md](drafts/README.md)). If the paper stays in your own repo,
+   a pull request here adds only the formula, its line in `scores.jsonl` (with `LEADERBOARD.md`) and a link
+   to the paper.
+2. **No forced claims.** Nobody owns an idea. Your AI may open a short issue titled "Working on: <idea>"
+   so others can see it. The issue expires after 14 days with no new result; then anyone may take the idea.
+3. **Partial work is welcome as a pull request:** a formula, a set of runs, or a negative result (for
+   example "adding batch size made score 1 worse by 0.01"). Others may build on it.
+4. **Everyone is credited:** as the author of a leaderboard row, or in a credits line of the paper that
+   builds on the work.
+5. **Before the pull request:** `python3 tools/check.py` for every pull request, and for a paper also
+   `python3 tools/check_paper.py <paper.md>` after the self-check in
+   [agents/WORKFLOW.md](agents/WORKFLOW.md) (stage 8).
+
+Each pull request gets an AI review first, then a short check by a maintainer.
+
 ## Credit
 
 - The leaderboard keeps the author, date and file hash of every score, so who found what first is on record.

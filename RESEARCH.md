@@ -68,13 +68,13 @@ python3 fit/laws.py results.jsonl --y reward --vars LR=lr W=width \
 | [problems/](problems/README.md) | One folder per predicted number: `data/<model family>.jsonl.gz`, `problem.py`, baseline formulas, scores and leaderboard |
 | [core/](core/) | `score.py` (score 1), `leaderboard.py`, `round_score.py` (score 2), `formula_template.py`, `rows.py` (load problem data and the run tables), `columns.yaml` (one meaning per column across model families) |
 | [data/llm/](data/llm/SCHEMA.md) | Column guide for the full run tables; the tables themselves download from Hugging Face |
-| [tools/](tools/) | `check.py` (the checks every pull request must pass) and `build_problem_data.py` (freeze a problem's data) |
+| [tools/](tools/) | `check.py` (the checks every pull request must pass), `check_paper.py` (the checks a paper draft must pass) and `build_problem_data.py` (freeze a problem's data) |
 | [rounds/](rounds/README.md) | Prediction rounds: predictions committed before the runs |
 | [families/llm/testbed-facts-v1/](families/llm/testbed-facts-v1/README.md) | The training code behind the run table: dense and MoE transformers, Muon, facts probe |
 | [families/llm/search-code/](families/llm/search-code/) | Current training code of each search (compute, data, init, ...), copied with every data refresh |
 | [papers/](papers/README.md) | Finished papers checked and written by people; PDFs are attached to GitHub releases |
 | [drafts/](drafts/README.md) | Paper drafts written by AI agents, not checked by a person |
-| [agents/](agents/README.md) | Prompts for the manager, ops, theory, sim and writer sessions |
+| [agents/](agents/README.md) | Prompts for the manager, ops, theory, sim, writer and reviewer sessions, and the stage-by-stage [WORKFLOW.md](agents/WORKFLOW.md) |
 | [testbed/](testbed/) | A minimal single-file trainer for your first runs (used by the worked example) |
 | [queue/](queue/) | `run_jobs.py` runs a job file a few jobs at a time; `status.py` prints a one-screen status |
 | [fit/](fit/) | `laws.py` and `prereg.py`: fit and score formulas on your own result files (R² version of the two scores) |
