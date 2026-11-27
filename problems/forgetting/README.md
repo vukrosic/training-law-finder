@@ -28,6 +28,50 @@ the run). Formulas that use `rms_w` are listed separately.
 
 Tested range: widths 64 to 1024, 512 to 4,096 steps. A paper on this problem states this range.
 
+## Train a run from a settings line (score 2)
+
+A round (see [rounds/README.md](../../rounds/README.md)) lists settings such as
+`{"tag": "r1_w96", "settings": {"width": 96, "layers": 3, ...}}`. This command trains one of them the
+same way as the frozen runs. Each `<name>` is that column of the settings line; everything else is
+fixed by the frozen data (1,024-token vocabulary, Muon, 64 facts shown 1 to 128 times, clipping at 1.0).
+Use `sched` = `cos`, `wsd` or `const` with `fmarg` 0 and `gsplice` 0: the restart settings of the 26
+`crw` runs are not in the data.
+
+```bash
+cd families/llm/testbed-facts-v1
+# once: sh data/download.sh && python3 -I tools/prep_vocab.py 1024   (1-6 min, about 1.3 GB memory)
+nice -n 15 python3 -I env/train.py --method dense --data fineweb_v1024 --device auto --threads 1 \
+  --tag <tag> --steps <steps> --set vocab=1024 opt=muon \
+  d_model=<width> n_layers=<layers> n_heads=<heads> dense_hidden=<hidden> batch=<batch> seq_len=<seq> \
+  sched=<sched> lr=<peak> mlr=<mlr> mwd=<wd> min_lr_frac=<min_lr_frac> warmup=<warmup> decay=0.5 \
+  facts=64 fkmax=128 fwlo=<fwlo> fwhi=<fwhi> gstep=1 wlog=32 clip=1.0 \
+  --out experiments/runs/round.jsonl
+```
+
+`warmup` is in steps, not a share. `decay` (the share of a `wsd` run spent decaying) is not a column
+here: all 50 frozen `wsd` runs used 0.5 (`sname` = `wsd50`); `cos` and `const` ignore it. If the run stops with
+"too many bios per step", the setting is too short or the batch too small to hold the facts; use
+more steps or a larger batch. Then write the results file the round needs. `actual` is the share of
+fact bits still there at the end: `1 - (b_end - b0) / (C - b0)`, where b0 and b_end are the fact bits
+at the window end and at the last step, and C is the bits of facts seen only 1, 2 or 4 times:
+
+```bash
+python3 -c "
+import json
+for r in map(json.loads, open('experiments/runs/round.jsonl')):
+    if 'facts_eval' not in r: continue
+    b = [sum(x) / len(x) for x in r['facts_eval']['gstep']['bits']]
+    k = r['facts_eval']['bits_by_k']; C = sum(k[i] for i in ('1', '2', '4')) / 3
+    print(json.dumps({'tag': r['tag'], 'actual': round(1 - (b[-1] - b[0]) / (C - b[0]), 5)}))
+" > ../../../rounds/<NNN>-forgetting/results.jsonl
+```
+
+Checked on 2026-11-27 with the frozen run `xg_w64_T512_L3_p1.6e-2_wd01_mf0` (width 64, 3 layers, 1 head,
+hidden 128, batch 64, seq 64, 512 steps, `cos`, peak 0.016, wd 0.1, min_lr_frac 0, warmup 20, window A):
+actual 0.08508 against 0.08506 in the
+frozen row (floor 0.0126), val_loss 3.729 the same. It took 137 s on mps and 171 s on cpu on a busy Mac;
+peak memory 1.7 GB on mps, 0.35 GB on cpu.
+
 ## Best formulas
 
 | formula | constants | score 1 | idea |

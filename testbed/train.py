@@ -118,8 +118,10 @@ def main(argv=None):
     if a.threads:
         torch.set_num_threads(a.threads)
     device = a.device
-    if device == "auto":
-        device = "cuda" if torch.cuda.is_available() else "cpu"
+    if device == "auto":   # NVIDIA GPU, then Mac GPU, then CPU
+        device = ("cuda" if torch.cuda.is_available()
+                  else "mps" if torch.backends.mps.is_available() else "cpu")
+    print(f"device {device}", flush=True)
     torch.manual_seed(a.seed)
     t0 = time.time()
 
@@ -180,7 +182,7 @@ def main(argv=None):
                                   if k not in ("out", "tag", "save", "facts_dump", "device", "threads")},
                vocab=vocab, params=model.n_params(False), nonemb_params=model.n_params(True),
                tokens=a.steps * a.batch * a.seq, val_loss=round(vl, 5), val_bpb=round(bpb, 5),
-               train_loss=round(float(np.mean(recent)), 5), diverged=not math.isfinite(vl))
+               train_loss=round(float(np.mean(recent)), 5), diverged=not math.isfinite(vl), device=device)
     if curve:
         curve.append(dict(step=a.steps, val_loss=round(vl, 4)))
         row["curve"] = curve
