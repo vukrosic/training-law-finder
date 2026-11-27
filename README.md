@@ -34,6 +34,7 @@ The forgetting problem is written up as a draft paper, AI-written and not yet ch
 (Vuk Rosić, November 2026). [PDF on Zenodo](https://zenodo.org/records/24575890) ·
 DOI [10.5281/zenodo.24575889](https://doi.org/10.5281/zenodo.24575889) ·
 [source, figures and reproduce script](drafts/forgetting-rules/).
+Want to continue this work? Open directions, from no training to one GPU: [NEXT-STEPS.md](drafts/forgetting-rules/NEXT-STEPS.md).
 
 ```bibtex
 @misc{rosic2026forgetting,

@@ -6,6 +6,9 @@ Pick one, or bring your own. Before you start, search for the closest published 
 
 The two open problems in [problems/](problems/README.md) have data, a scoring command and a leaderboard.
 
+The forgetting problem also has a list of open directions, from no training to one GPU:
+[drafts/forgetting-rules/NEXT-STEPS.md](drafts/forgetting-rules/NEXT-STEPS.md).
+
 ## Waiting for a folder
 
 Problems that the current data can already start on, waiting for a folder: fact memorization
