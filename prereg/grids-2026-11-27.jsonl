@@ -1,0 +1,1299 @@
+{"tag": "tlfg1_w64_T1024_win0.002_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.011816, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.002_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.035703, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.002_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.004893, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.002_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.035703, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.002_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.002018, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.002_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.035703, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.002_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.000831, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.002_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.035703, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.004_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.024583, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.004_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.063873, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.004_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.010258, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.004_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.063873, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.004_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.004244, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.004_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.063873, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.004_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.00175, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.004_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.063873, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.008_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.050442, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.008_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.114269, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.008_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.021379, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.008_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.114269, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.008_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.008904, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.008_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.114269, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.008_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.003681, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.008_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.114269, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.016_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.100696, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.016_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.204428, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.016_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.04402, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.016_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.204428, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.016_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.018585, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.016_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.204428, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T1024_win0.016_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.007727, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T1024_win0.016_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.204428, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.002_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.013178, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.002_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.077768, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.002_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.005462, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.002_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.077768, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.002_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.002253, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.002_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.077768, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.002_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.000928, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.002_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.077768, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.004_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.027378, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.004_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.139128, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.004_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.011443, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.004_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.139128, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.004_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.004738, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.004_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.139128, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.004_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.001954, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.004_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.139128, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.008_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.056008, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.008_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.2489, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.008_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.023819, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.008_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.2489, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.008_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.009935, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.008_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.2489, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.008_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.00411, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.008_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.2489, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.016_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.111158, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.016_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.445283, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.016_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.048914, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.016_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.445283, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.016_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.020712, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.016_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.445283, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w64_T2048_win0.016_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.008623, "formula": "end_z2"}
+{"tag": "tlfg1_w64_T2048_win0.016_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.445283, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.002_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.029467, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.002_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.07386, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.002_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.012332, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.002_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.07386, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.002_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.005109, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.002_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.07386, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.002_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.002107, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.002_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.07386, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.004_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.054252, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.004_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.121326, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.004_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.023047, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.004_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.121326, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.004_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.009608, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.004_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.121326, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.004_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.003974, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.004_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.121326, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.008_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.097784, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.008_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.199298, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.008_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.04267, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.008_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.199298, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.008_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.018, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.008_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.199298, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.008_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.007482, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.008_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.199298, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.016_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.169968, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.016_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.327379, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.016_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.077671, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.016_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.327379, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.016_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.033473, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.016_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.327379, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T1024_win0.016_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.014042, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T1024_win0.016_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.327379, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.002_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.032798, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.002_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.160881, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.002_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.013754, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.002_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.160881, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.002_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.005702, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.002_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.160881, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.002_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.002353, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.002_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.160881, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.004_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.060211, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.004_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.264272, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.004_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.025672, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.004_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.264272, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.004_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.010719, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.004_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.264272, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.004_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.004436, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.004_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.264272, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.008_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.107979, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.008_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.43411, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.008_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.047421, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.008_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.43411, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.008_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.020062, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.008_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.43411, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.008_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.008349, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.008_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.43411, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.016_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.186138, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.016_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.713096, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.016_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.08597, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.016_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.713096, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.016_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.037239, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.016_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.713096, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w128_T2048_win0.016_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.015658, "formula": "end_z2"}
+{"tag": "tlfg1_w128_T2048_win0.016_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.713096, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.002_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.054811, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.002_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.122357, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.002_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.023292, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.002_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.122357, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.002_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.009712, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.002_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.122357, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.002_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.004017, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.002_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.122357, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.004_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.089427, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.004_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.18455, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.004_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.03882, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.004_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.18455, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.004_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.016338, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.004_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.18455, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.004_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.006784, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.004_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.18455, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.008_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.142606, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.008_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.278355, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.008_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.064021, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.008_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.278355, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.008_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.02736, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.008_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.278355, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.008_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.011436, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.008_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.278355, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.016_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.219777, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.016_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.419841, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.016_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.103816, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.016_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.419841, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.016_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.045473, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.016_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.419841, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T1024_win0.016_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.019215, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T1024_win0.016_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.419841, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.002_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.060828, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.002_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.266518, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.002_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.025944, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.002_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.266518, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.002_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.010835, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.002_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.266518, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.002_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.004484, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.002_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.266518, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.004_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.098847, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.004_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.401986, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.004_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.043162, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.004_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.401986, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.004_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.018213, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.004_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.401986, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.004_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.007571, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.004_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.401986, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.008_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.156664, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.008_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.606312, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.008_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.070974, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.008_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.606312, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.008_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.03046, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.008_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.606312, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.008_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.012755, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.008_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.606312, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.016_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.239319, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.016_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.914495, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.016_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.11456, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.016_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.914495, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.016_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.05052, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.016_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.914495, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w256_T2048_win0.016_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.021413, "formula": "end_z2"}
+{"tag": "tlfg1_w256_T2048_win0.016_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.914495, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.002_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.076903, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.002_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.162321, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.002_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.033126, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.002_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.162321, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.002_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.013894, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.002_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.162321, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.002_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.005761, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.002_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.162321, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.004_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.112272, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.004_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.2248, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.004_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.049439, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.004_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.2248, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.004_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.020941, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.004_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.2248, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.004_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.008719, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.004_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.2248, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.008_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.161069, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.008_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.311328, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.008_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.073178, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.008_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.311328, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.008_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.031449, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.008_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.311328, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.008_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.013177, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.008_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.311328, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.016_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.225682, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.016_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.431162, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.016_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.107032, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.016_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.431162, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.016_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.046977, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.016_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.431162, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w512_T1024_win0.016_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.019868, "formula": "end_z2"}
+{"tag": "tlfg1_w512_T1024_win0.016_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.431162, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.002_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.082591, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.002_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.172441, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.002_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.035701, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.002_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.172441, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.002_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.014997, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.002_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.172441, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.002_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.006222, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.002_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.172441, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.004_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.109135, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.004_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.219281, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.004_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.047963, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.004_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.219281, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.004_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.020298, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.004_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.219281, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.004_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.008448, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.004_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.219281, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.008_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.142881, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.008_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.278843, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.008_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.064156, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.008_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.278843, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.008_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.02742, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.008_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.278843, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.008_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.011461, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.008_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.278843, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.016_aft0.002", "claim": "C06", "quantity": "kept", "predicted": 0.184896, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.016_aft0.002", "claim": "C10", "quantity": "s0", "predicted": 0.354584, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.016_aft0.004", "claim": "C06", "quantity": "kept", "predicted": 0.085326, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.016_aft0.004", "claim": "C10", "quantity": "s0", "predicted": 0.354584, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.016_aft0.008", "claim": "C06", "quantity": "kept", "predicted": 0.036946, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.016_aft0.008", "claim": "C10", "quantity": "s0", "predicted": 0.354584, "formula": "end_z2_curve"}
+{"tag": "tlfg1_w1024_T1024_win0.016_aft0.016", "claim": "C06", "quantity": "kept", "predicted": 0.015532, "formula": "end_z2"}
+{"tag": "tlfg1_w1024_T1024_win0.016_aft0.016", "claim": "C10", "quantity": "s0", "predicted": 0.354584, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L2_p0.002", "claim": "C06", "quantity": "kept", "predicted": 0.134396, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L2_p0.002", "claim": "C10", "quantity": "s0", "predicted": 0.058703, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L2_p0.002", "claim": "C01", "quantity": "kept", "predicted": 0.162263, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L2_p0.00283", "claim": "C06", "quantity": "kept", "predicted": 0.126285, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L2_p0.00283", "claim": "C10", "quantity": "s0", "predicted": 0.078554, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L2_p0.00283", "claim": "C01", "quantity": "kept", "predicted": 0.152767, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L2_p0.004", "claim": "C06", "quantity": "kept", "predicted": 0.11862, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L2_p0.004", "claim": "C10", "quantity": "s0", "predicted": 0.10502, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L2_p0.004", "claim": "C01", "quantity": "kept", "predicted": 0.14376, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L2_p0.00566", "claim": "C06", "quantity": "kept", "predicted": 0.111339, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L2_p0.00566", "claim": "C10", "quantity": "s0", "predicted": 0.140533, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L2_p0.00566", "claim": "C01", "quantity": "kept", "predicted": 0.135172, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L2_p0.008", "claim": "C06", "quantity": "kept", "predicted": 0.104473, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L2_p0.008", "claim": "C10", "quantity": "s0", "predicted": 0.187881, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L2_p0.008", "claim": "C01", "quantity": "kept", "predicted": 0.127047, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L2_p0.0113", "claim": "C06", "quantity": "kept", "predicted": 0.097996, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L2_p0.0113", "claim": "C10", "quantity": "s0", "predicted": 0.251042, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L2_p0.0113", "claim": "C01", "quantity": "kept", "predicted": 0.119356, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L2_p0.016", "claim": "C06", "quantity": "kept", "predicted": 0.091838, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L2_p0.016", "claim": "C10", "quantity": "s0", "predicted": 0.336119, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L2_p0.016", "claim": "C01", "quantity": "kept", "predicted": 0.112022, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L2_p0.0226", "claim": "C06", "quantity": "kept", "predicted": 0.086068, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L2_p0.0226", "claim": "C10", "quantity": "s0", "predicted": 0.449115, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L2_p0.0226", "claim": "C01", "quantity": "kept", "predicted": 0.105132, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L4_p0.002", "claim": "C06", "quantity": "kept", "predicted": 0.147787, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L4_p0.002", "claim": "C10", "quantity": "s0", "predicted": 0.063991, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L4_p0.002", "claim": "C01", "quantity": "kept", "predicted": 0.162263, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L4_p0.00283", "claim": "C06", "quantity": "kept", "predicted": 0.138998, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L4_p0.00283", "claim": "C10", "quantity": "s0", "predicted": 0.085631, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L4_p0.00283", "claim": "C01", "quantity": "kept", "predicted": 0.152767, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L4_p0.004", "claim": "C06", "quantity": "kept", "predicted": 0.130677, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L4_p0.004", "claim": "C10", "quantity": "s0", "predicted": 0.114481, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L4_p0.004", "claim": "C01", "quantity": "kept", "predicted": 0.14376, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L4_p0.00566", "claim": "C06", "quantity": "kept", "predicted": 0.122759, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L4_p0.00566", "claim": "C10", "quantity": "s0", "predicted": 0.153194, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L4_p0.00566", "claim": "C01", "quantity": "kept", "predicted": 0.135172, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L4_p0.008", "claim": "C06", "quantity": "kept", "predicted": 0.11528, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L4_p0.008", "claim": "C10", "quantity": "s0", "predicted": 0.204807, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L4_p0.008", "claim": "C01", "quantity": "kept", "predicted": 0.127047, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L4_p0.0113", "claim": "C06", "quantity": "kept", "predicted": 0.108214, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L4_p0.0113", "claim": "C10", "quantity": "s0", "predicted": 0.273658, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L4_p0.0113", "claim": "C01", "quantity": "kept", "predicted": 0.119356, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L4_p0.016", "claim": "C06", "quantity": "kept", "predicted": 0.101486, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L4_p0.016", "claim": "C10", "quantity": "s0", "predicted": 0.366399, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L4_p0.016", "claim": "C01", "quantity": "kept", "predicted": 0.112022, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w64_L4_p0.0226", "claim": "C06", "quantity": "kept", "predicted": 0.095174, "formula": "end_z2"}
+{"tag": "tlfg2_w64_L4_p0.0226", "claim": "C10", "quantity": "s0", "predicted": 0.489574, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L4_p0.0226", "claim": "C01", "quantity": "kept", "predicted": 0.105132, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w128_L2_p0.002", "claim": "C06", "quantity": "kept", "predicted": 0.282769, "formula": "end_z2"}
+{"tag": "tlfg2_w128_L2_p0.002", "claim": "C10", "quantity": "s0", "predicted": 0.12144, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w128_L2_p0.002", "claim": "C01", "quantity": "kept", "predicted": 0.329683, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w128_L2_p0.00283", "claim": "C06", "quantity": "kept", "predicted": 0.257858, "formula": "end_z2"}
+{"tag": "tlfg2_w128_L2_p0.00283", "claim": "C10", "quantity": "s0", "predicted": 0.155707, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w128_L2_p0.00283", "claim": "C01", "quantity": "kept", "predicted": 0.302382, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w128_L2_p0.004", "claim": "C06", "quantity": "kept", "predicted": 0.234497, "formula": "end_z2"}
+{"tag": "tlfg2_w128_L2_p0.004", "claim": "C10", "quantity": "s0", "predicted": 0.199484, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w128_L2_p0.004", "claim": "C01", "quantity": "kept", "predicted": 0.27649, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w128_L2_p0.00566", "claim": "C06", "quantity": "kept", "predicted": 0.212578, "formula": "end_z2"}
+{"tag": "tlfg2_w128_L2_p0.00566", "claim": "C10", "quantity": "s0", "predicted": 0.255774, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w128_L2_p0.00566", "claim": "C01", "quantity": "kept", "predicted": 0.251938, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w128_L2_p0.008", "claim": "C06", "quantity": "kept", "predicted": 0.192257, "formula": "end_z2"}
+{"tag": "tlfg2_w128_L2_p0.008", "claim": "C10", "quantity": "s0", "predicted": 0.327685, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w128_L2_p0.008", "claim": "C01", "quantity": "kept", "predicted": 0.228948, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w128_L2_p0.0113", "claim": "C06", "quantity": "kept", "predicted": 0.173484, "formula": "end_z2"}
+{"tag": "tlfg2_w128_L2_p0.0113", "claim": "C10", "quantity": "s0", "predicted": 0.419618, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w128_L2_p0.0113", "claim": "C01", "quantity": "kept", "predicted": 0.207513, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w128_L2_p0.016", "claim": "C06", "quantity": "kept", "predicted": 0.156074, "formula": "end_z2"}
+{"tag": "tlfg2_w128_L2_p0.016", "claim": "C10", "quantity": "s0", "predicted": 0.538276, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w128_L2_p0.016", "claim": "C01", "quantity": "kept", "predicted": 0.187463, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w128_L2_p0.0226", "claim": "C06", "quantity": "kept", "predicted": 0.140221, "formula": "end_z2"}
+{"tag": "tlfg2_w128_L2_p0.0226", "claim": "C10", "quantity": "s0", "predicted": 0.68929, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w128_L2_p0.0226", "claim": "C01", "quantity": "kept", "predicted": 0.16906, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L8_p0.004", "claim": "C06", "quantity": "kept", "predicted": 0.45727, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L8_p0.004", "claim": "C10", "quantity": "s0", "predicted": 0.439211, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L8_p0.004", "claim": "C01", "quantity": "kept", "predicted": 0.45727, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L8_p0.00566", "claim": "C06", "quantity": "kept", "predicted": 0.399565, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L8_p0.00566", "claim": "C10", "quantity": "s0", "predicted": 0.517008, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L8_p0.00566", "claim": "C01", "quantity": "kept", "predicted": 0.399565, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L8_p0.008", "claim": "C06", "quantity": "kept", "predicted": 0.344691, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L8_p0.008", "claim": "C10", "quantity": "s0", "predicted": 0.608268, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L8_p0.008", "claim": "C01", "quantity": "kept", "predicted": 0.344691, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L8_p0.0113", "claim": "C06", "quantity": "kept", "predicted": 0.293759, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L8_p0.0113", "claim": "C10", "quantity": "s0", "predicted": 0.715416, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L8_p0.0113", "claim": "C01", "quantity": "kept", "predicted": 0.293759, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L8_p0.016", "claim": "C06", "quantity": "kept", "predicted": 0.247203, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L8_p0.016", "claim": "C10", "quantity": "s0", "predicted": 0.842398, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L8_p0.016", "claim": "C01", "quantity": "kept", "predicted": 0.247203, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L8_p0.0226", "claim": "C06", "quantity": "kept", "predicted": 0.206145, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L8_p0.0226", "claim": "C10", "quantity": "s0", "predicted": 0.990788, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L8_p0.0226", "claim": "C01", "quantity": "kept", "predicted": 0.206145, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L12_p0.002", "claim": "C06", "quantity": "kept", "predicted": 0.590122, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L12_p0.002", "claim": "C10", "quantity": "s0", "predicted": 0.333553, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L12_p0.002", "claim": "C01", "quantity": "kept", "predicted": 0.57439, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L12_p0.00283", "claim": "C06", "quantity": "kept", "predicted": 0.532088, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L12_p0.00283", "claim": "C10", "quantity": "s0", "predicted": 0.392635, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L12_p0.00283", "claim": "C01", "quantity": "kept", "predicted": 0.515956, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L12_p0.004", "claim": "C06", "quantity": "kept", "predicted": 0.473362, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L12_p0.004", "claim": "C10", "quantity": "s0", "predicted": 0.461941, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L12_p0.004", "claim": "C01", "quantity": "kept", "predicted": 0.45727, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L12_p0.00566", "claim": "C06", "quantity": "kept", "predicted": 0.41518, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L12_p0.00566", "claim": "C10", "quantity": "s0", "predicted": 0.543765, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L12_p0.00566", "claim": "C01", "quantity": "kept", "predicted": 0.399565, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L12_p0.008", "claim": "C06", "quantity": "kept", "predicted": 0.359444, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L12_p0.008", "claim": "C10", "quantity": "s0", "predicted": 0.639747, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L12_p0.008", "claim": "C01", "quantity": "kept", "predicted": 0.344691, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L12_p0.0113", "claim": "C06", "quantity": "kept", "predicted": 0.307355, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L12_p0.0113", "claim": "C10", "quantity": "s0", "predicted": 0.752441, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L12_p0.0113", "claim": "C01", "quantity": "kept", "predicted": 0.293759, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L12_p0.016", "claim": "C06", "quantity": "kept", "predicted": 0.259436, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L12_p0.016", "claim": "C10", "quantity": "s0", "predicted": 0.885994, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L12_p0.016", "claim": "C01", "quantity": "kept", "predicted": 0.247203, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w512_L12_p0.0226", "claim": "C06", "quantity": "kept", "predicted": 0.216932, "formula": "end_z2"}
+{"tag": "tlfg2_w512_L12_p0.0226", "claim": "C10", "quantity": "s0", "predicted": 1.042063, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w512_L12_p0.0226", "claim": "C01", "quantity": "kept", "predicted": 0.206145, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L2_p0.002", "claim": "C06", "quantity": "kept", "predicted": 0.538963, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L2_p0.002", "claim": "C10", "quantity": "s0", "predicted": 0.283528, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L2_p0.002", "claim": "C01", "quantity": "kept", "predicted": 0.593227, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L2_p0.00283", "claim": "C06", "quantity": "kept", "predicted": 0.466411, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L2_p0.00283", "claim": "C10", "quantity": "s0", "predicted": 0.319786, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L2_p0.00283", "claim": "C01", "quantity": "kept", "predicted": 0.521635, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L2_p0.004", "claim": "C06", "quantity": "kept", "predicted": 0.395475, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L2_p0.004", "claim": "C10", "quantity": "s0", "predicted": 0.360541, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L2_p0.004", "claim": "C01", "quantity": "kept", "predicted": 0.449373, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L2_p0.00566", "claim": "C06", "quantity": "kept", "predicted": 0.328477, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L2_p0.00566", "claim": "C10", "quantity": "s0", "predicted": 0.406647, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L2_p0.00566", "claim": "C01", "quantity": "kept", "predicted": 0.378968, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L2_p0.008", "claim": "C06", "quantity": "kept", "predicted": 0.267983, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L2_p0.008", "claim": "C10", "quantity": "s0", "predicted": 0.458473, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L2_p0.008", "claim": "C01", "quantity": "kept", "predicted": 0.313517, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L2_p0.0113", "claim": "C06", "quantity": "kept", "predicted": 0.215155, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L2_p0.0113", "claim": "C10", "quantity": "s0", "predicted": 0.516786, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L2_p0.0113", "claim": "C01", "quantity": "kept", "predicted": 0.254838, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L2_p0.016", "claim": "C06", "quantity": "kept", "predicted": 0.170032, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L2_p0.016", "claim": "C10", "quantity": "s0", "predicted": 0.583006, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L2_p0.016", "claim": "C01", "quantity": "kept", "predicted": 0.20355, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L2_p0.0226", "claim": "C06", "quantity": "kept", "predicted": 0.133005, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L2_p0.0226", "claim": "C10", "quantity": "s0", "predicted": 0.657158, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L2_p0.0226", "claim": "C01", "quantity": "kept", "predicted": 0.160637, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L4_p0.002", "claim": "C06", "quantity": "kept", "predicted": 0.566293, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L4_p0.002", "claim": "C10", "quantity": "s0", "predicted": 0.30907, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L4_p0.002", "claim": "C01", "quantity": "kept", "predicted": 0.593227, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L4_p0.00283", "claim": "C06", "quantity": "kept", "predicted": 0.494005, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L4_p0.00283", "claim": "C10", "quantity": "s0", "predicted": 0.348594, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L4_p0.00283", "claim": "C01", "quantity": "kept", "predicted": 0.521635, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L4_p0.004", "claim": "C06", "quantity": "kept", "predicted": 0.422192, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L4_p0.004", "claim": "C10", "quantity": "s0", "predicted": 0.393021, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L4_p0.004", "claim": "C01", "quantity": "kept", "predicted": 0.449373, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L4_p0.00566", "claim": "C06", "quantity": "kept", "predicted": 0.353313, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L4_p0.00566", "claim": "C10", "quantity": "s0", "predicted": 0.443281, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L4_p0.00566", "claim": "C01", "quantity": "kept", "predicted": 0.378968, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L4_p0.008", "claim": "C06", "quantity": "kept", "predicted": 0.290223, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L4_p0.008", "claim": "C10", "quantity": "s0", "predicted": 0.499776, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L4_p0.008", "claim": "C01", "quantity": "kept", "predicted": 0.313517, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L4_p0.0113", "claim": "C06", "quantity": "kept", "predicted": 0.234414, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L4_p0.0113", "claim": "C10", "quantity": "s0", "predicted": 0.563342, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L4_p0.0113", "claim": "C01", "quantity": "kept", "predicted": 0.254838, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L4_p0.016", "claim": "C06", "quantity": "kept", "predicted": 0.18621, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L4_p0.016", "claim": "C10", "quantity": "s0", "predicted": 0.635527, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L4_p0.016", "claim": "C01", "quantity": "kept", "predicted": 0.20355, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L4_p0.0226", "claim": "C06", "quantity": "kept", "predicted": 0.146281, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L4_p0.0226", "claim": "C10", "quantity": "s0", "predicted": 0.71636, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L4_p0.0226", "claim": "C01", "quantity": "kept", "predicted": 0.160637, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L8_p0.002", "claim": "C06", "quantity": "kept", "predicted": 0.593227, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L8_p0.002", "claim": "C10", "quantity": "s0", "predicted": 0.336913, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L8_p0.002", "claim": "C01", "quantity": "kept", "predicted": 0.593227, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L8_p0.00283", "claim": "C06", "quantity": "kept", "predicted": 0.521635, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L8_p0.00283", "claim": "C10", "quantity": "s0", "predicted": 0.379998, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L8_p0.00283", "claim": "C01", "quantity": "kept", "predicted": 0.521635, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L8_p0.004", "claim": "C06", "quantity": "kept", "predicted": 0.449373, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L8_p0.004", "claim": "C10", "quantity": "s0", "predicted": 0.428428, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L8_p0.004", "claim": "C01", "quantity": "kept", "predicted": 0.449373, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L8_p0.00566", "claim": "C06", "quantity": "kept", "predicted": 0.378968, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L8_p0.00566", "claim": "C10", "quantity": "s0", "predicted": 0.483215, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L8_p0.00566", "claim": "C01", "quantity": "kept", "predicted": 0.378968, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L8_p0.008", "claim": "C06", "quantity": "kept", "predicted": 0.313517, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L8_p0.008", "claim": "C10", "quantity": "s0", "predicted": 0.544799, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L8_p0.008", "claim": "C01", "quantity": "kept", "predicted": 0.313517, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L8_p0.0113", "claim": "C06", "quantity": "kept", "predicted": 0.254838, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L8_p0.0113", "claim": "C10", "quantity": "s0", "predicted": 0.614092, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L8_p0.0113", "claim": "C01", "quantity": "kept", "predicted": 0.254838, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L8_p0.016", "claim": "C06", "quantity": "kept", "predicted": 0.20355, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L8_p0.016", "claim": "C10", "quantity": "s0", "predicted": 0.69278, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L8_p0.016", "claim": "C01", "quantity": "kept", "predicted": 0.20355, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L8_p0.0226", "claim": "C06", "quantity": "kept", "predicted": 0.160637, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L8_p0.0226", "claim": "C10", "quantity": "s0", "predicted": 0.780895, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L8_p0.0226", "claim": "C01", "quantity": "kept", "predicted": 0.160637, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L12_p0.002", "claim": "C06", "quantity": "kept", "predicted": 0.608736, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L12_p0.002", "claim": "C10", "quantity": "s0", "predicted": 0.354349, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L12_p0.002", "claim": "C01", "quantity": "kept", "predicted": 0.593227, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L12_p0.00283", "claim": "C06", "quantity": "kept", "predicted": 0.537747, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L12_p0.00283", "claim": "C10", "quantity": "s0", "predicted": 0.399664, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L12_p0.00283", "claim": "C01", "quantity": "kept", "predicted": 0.521635, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L12_p0.004", "claim": "C06", "quantity": "kept", "predicted": 0.465425, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L12_p0.004", "claim": "C10", "quantity": "s0", "predicted": 0.4506, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L12_p0.004", "claim": "C01", "quantity": "kept", "predicted": 0.449373, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L12_p0.00566", "claim": "C06", "quantity": "kept", "predicted": 0.394306, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L12_p0.00566", "claim": "C10", "quantity": "s0", "predicted": 0.508223, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L12_p0.00566", "claim": "C01", "quantity": "kept", "predicted": 0.378968, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L12_p0.008", "claim": "C06", "quantity": "kept", "predicted": 0.327604, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L12_p0.008", "claim": "C10", "quantity": "s0", "predicted": 0.572994, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L12_p0.008", "claim": "C01", "quantity": "kept", "predicted": 0.313517, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L12_p0.0113", "claim": "C06", "quantity": "kept", "predicted": 0.267315, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L12_p0.0113", "claim": "C10", "quantity": "s0", "predicted": 0.645873, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L12_p0.0113", "claim": "C01", "quantity": "kept", "predicted": 0.254838, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L12_p0.016", "claim": "C06", "quantity": "kept", "predicted": 0.214238, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L12_p0.016", "claim": "C10", "quantity": "s0", "predicted": 0.728633, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L12_p0.016", "claim": "C01", "quantity": "kept", "predicted": 0.20355, "formula": "end_z2_L0"}
+{"tag": "tlfg2_w1024_L12_p0.0226", "claim": "C06", "quantity": "kept", "predicted": 0.169551, "formula": "end_z2"}
+{"tag": "tlfg2_w1024_L12_p0.0226", "claim": "C10", "quantity": "s0", "predicted": 0.821308, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w1024_L12_p0.0226", "claim": "C01", "quantity": "kept", "predicted": 0.160637, "formula": "end_z2_L0"}
+{"tag": "tlfg1_all", "claim": "C10", "quantity": "q", "predicted": 1.28193, "formula": "end_z2_curve"}
+{"tag": "tlfg2_all", "claim": "C10", "quantity": "q", "predicted": 1.28193, "formula": "end_z2_curve"}
+{"tag": "tlfg2_w64_L2_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.817697, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L2_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.651841, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L2_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.753222, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L2_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.648245, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L2_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.701806, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L2_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.648214, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L2_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.663138, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L2_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.651748, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L2_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.637488, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L2_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.658824, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L2_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.624744, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L2_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.669423, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L2_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.624915, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L2_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.683669, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L2_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.638021, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L2_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.701361, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L4_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.754502, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L4_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.551377, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L4_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.688119, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L4_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.547782, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L4_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.635046, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L4_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.547751, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L4_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.594963, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L4_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.551284, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L4_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.568148, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L4_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.55836, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L4_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.554488, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L4_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.568959, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L4_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.553983, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L4_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.583205, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L4_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.566663, "formula": "lr_area"}
+{"tag": "tlfg2_w64_L4_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.600897, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w128_L2_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.483863, "formula": "lr_area"}
+{"tag": "tlfg2_w128_L2_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.470614, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w128_L2_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.446832, "formula": "lr_area"}
+{"tag": "tlfg2_w128_L2_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.467018, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w128_L2_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.423268, "formula": "lr_area"}
+{"tag": "tlfg2_w128_L2_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.466987, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w128_L2_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.413042, "formula": "lr_area"}
+{"tag": "tlfg2_w128_L2_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.470521, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w128_L2_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.41624, "formula": "lr_area"}
+{"tag": "tlfg2_w128_L2_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.477596, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w128_L2_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.432784, "formula": "lr_area"}
+{"tag": "tlfg2_w128_L2_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.488196, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w128_L2_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.462949, "formula": "lr_area"}
+{"tag": "tlfg2_w128_L2_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.502441, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w128_L2_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.506336, "formula": "lr_area"}
+{"tag": "tlfg2_w128_L2_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.520134, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L8_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.131685, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L8_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.225257, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L8_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.186844, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L8_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.228791, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L8_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.256835, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L8_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.235866, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L8_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.341658, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L8_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.246466, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L8_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.442207, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L8_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.260711, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L8_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.557103, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L8_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.278404, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L12_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.054965, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L12_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.218171, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L12_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.080023, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L12_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.214576, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L12_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.120137, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L12_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.214545, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L12_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.175585, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L12_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.218078, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L12_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.246034, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L12_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.225154, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L12_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.331481, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L12_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.235753, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L12_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.432829, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L12_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.249999, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w512_L12_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.548685, "formula": "lr_area"}
+{"tag": "tlfg2_w512_L12_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.267691, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L2_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.082623, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L2_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.228884, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L2_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.143058, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L2_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.225288, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L2_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.218268, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L2_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.225257, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L2_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.308755, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L2_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.228791, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L2_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.413963, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L2_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.235866, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L2_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.533935, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L2_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.246466, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L2_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.669879, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L2_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.260711, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L2_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.819924, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L2_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.278404, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L4_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.063737, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L4_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.211359, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L4_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.12481, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L4_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.207763, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L4_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.200944, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L4_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.207732, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L4_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.29265, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L4_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.211266, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L4_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.39936, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L4_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.218341, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L4_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.521121, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L4_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.228941, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L4_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.659157, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L4_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.243186, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L4_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.811568, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L4_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.260879, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L8_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.047776, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L8_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.19727, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L8_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.109499, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L8_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.193675, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L8_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.186577, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L8_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.193644, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L8_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.279525, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L8_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.197177, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L8_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.38777, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L8_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.204253, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L8_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.511355, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L8_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.214852, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L8_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.651526, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L8_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.229098, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L8_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.806351, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L8_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.24679, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L12_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.039616, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L12_p0.002", "claim": "C09", "quantity": "val_loss", "predicted": 3.190347, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L12_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.101726, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L12_p0.00283", "claim": "C09", "quantity": "val_loss", "predicted": 3.186751, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L12_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.179365, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L12_p0.004", "claim": "C09", "quantity": "val_loss", "predicted": 3.18672, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L12_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.273051, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L12_p0.00566", "claim": "C09", "quantity": "val_loss", "predicted": 3.190254, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L12_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.382207, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L12_p0.008", "claim": "C09", "quantity": "val_loss", "predicted": 3.19733, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L12_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.506878, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L12_p0.0113", "claim": "C09", "quantity": "val_loss", "predicted": 3.207929, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L12_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.648317, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L12_p0.016", "claim": "C09", "quantity": "val_loss", "predicted": 3.222175, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w1024_L12_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.804577, "formula": "lr_area"}
+{"tag": "tlfg2_w1024_L12_p0.0226", "claim": "C09", "quantity": "val_loss", "predicted": 3.239867, "formula": "chinchilla_lr"}
+{"tag": "tlfg2_w64_L2_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.012649, "formula": "c26_line", "runs_done_before": 0}
+{"tag": "tlfg2_w64_L2_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.013386, "formula": "lr_area_argmin", "runs_done_before": 0}
+{"tag": "tlfg2_w64_L2_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.02597, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w64_L2_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.025909, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w64_L2_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.053989, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w64_L4_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.012649, "formula": "c26_line", "runs_done_before": 0}
+{"tag": "tlfg2_w64_L4_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.013625, "formula": "lr_area_argmin", "runs_done_before": 0}
+{"tag": "tlfg2_w64_L4_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.026466, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w64_L4_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.026404, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w64_L4_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.055021, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w64_L8_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.012649, "formula": "c26_line", "runs_done_before": 8}
+{"tag": "tlfg2_w64_L8_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.013865, "formula": "lr_area_argmin", "runs_done_before": 8}
+{"tag": "tlfg2_w64_L8_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.026972, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w64_L8_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.02691, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w64_L8_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.056073, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w64_L12_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.012649, "formula": "c26_line", "runs_done_before": 8}
+{"tag": "tlfg2_w64_L12_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.014005, "formula": "lr_area_argmin", "runs_done_before": 8}
+{"tag": "tlfg2_w64_L12_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.027272, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w64_L12_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.02721, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w64_L12_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.056698, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L2_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.008117, "formula": "c26_line", "runs_done_before": 0}
+{"tag": "tlfg2_w128_L2_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.006195, "formula": "lr_area_argmin", "runs_done_before": 0}
+{"tag": "tlfg2_w128_L2_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.026866, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w128_L2_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.026808, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w128_L2_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.055856, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w128_L4_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.008117, "formula": "c26_line", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L4_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.006296, "formula": "lr_area_argmin", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L4_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.027381, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L4_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.027323, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L4_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.056929, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L8_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.008117, "formula": "c26_line", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L8_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.006397, "formula": "lr_area_argmin", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L8_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.027907, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L8_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.027849, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L8_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.058024, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L12_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.008117, "formula": "c26_line", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L12_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.006456, "formula": "lr_area_argmin", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L12_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.02822, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L12_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.028161, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w128_L12_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.058674, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L2_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.005209, "formula": "c26_line", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L2_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.002844, "formula": "lr_area_argmin", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L2_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.027807, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L2_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.027752, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L2_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.057818, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L4_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.005209, "formula": "c26_line", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L4_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.002887, "formula": "lr_area_argmin", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L4_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.028343, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L4_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.028288, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L4_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.058935, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L8_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.005209, "formula": "c26_line", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L8_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.002929, "formula": "lr_area_argmin", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L8_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.02889, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L8_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.028836, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L8_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.060074, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L12_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.005209, "formula": "c26_line", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L12_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.002953, "formula": "lr_area_argmin", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L12_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.029215, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L12_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.029161, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w256_L12_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.06075, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w512_L2_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.003343, "formula": "c26_line", "runs_done_before": 8}
+{"tag": "tlfg2_w512_L2_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.001296, "formula": "lr_area_argmin", "runs_done_before": 8}
+{"tag": "tlfg2_w512_L2_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.028795, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w512_L2_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.028744, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w512_L2_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.059879, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w512_L4_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.003343, "formula": "c26_line", "runs_done_before": 8}
+{"tag": "tlfg2_w512_L4_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.001314, "formula": "lr_area_argmin", "runs_done_before": 8}
+{"tag": "tlfg2_w512_L4_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.029353, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w512_L4_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.029302, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w512_L4_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.061041, "formula": "lr_area_bowl", "runs_done_before": 8}
+{"tag": "tlfg2_w512_L8_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.003343, "formula": "c26_line", "runs_done_before": 2}
+{"tag": "tlfg2_w512_L8_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.001331, "formula": "lr_area_argmin", "runs_done_before": 2}
+{"tag": "tlfg2_w512_L8_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.029923, "formula": "lr_area_bowl", "runs_done_before": 2}
+{"tag": "tlfg2_w512_L8_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.029871, "formula": "lr_area_bowl", "runs_done_before": 2}
+{"tag": "tlfg2_w512_L8_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.062226, "formula": "lr_area_bowl", "runs_done_before": 2}
+{"tag": "tlfg2_w512_L12_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.003343, "formula": "c26_line", "runs_done_before": 0}
+{"tag": "tlfg2_w512_L12_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.001342, "formula": "lr_area_argmin", "runs_done_before": 0}
+{"tag": "tlfg2_w512_L12_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.030261, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w512_L12_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.03021, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w512_L12_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.06293, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L2_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.002145, "formula": "c26_line", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L2_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.000587, "formula": "lr_area_argmin", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L2_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.029833, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L2_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.029784, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L2_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.062042, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L4_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.002145, "formula": "c26_line", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L4_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.000594, "formula": "lr_area_argmin", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L4_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.030414, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L4_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.030365, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L4_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.063251, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L8_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.002145, "formula": "c26_line", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L8_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.000601, "formula": "lr_area_argmin", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L8_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.031006, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L8_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.030958, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L8_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.064484, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L12_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.002145, "formula": "c26_line", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L12_sweep", "claim": "C26", "quantity": "best_peak", "predicted": 0.000605, "formula": "lr_area_argmin", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L12_sweep", "claim": "C11", "quantity": "cost_2x_high", "predicted": 0.031358, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L12_sweep", "claim": "C11", "quantity": "cost_2x_low", "predicted": 0.03131, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_w1024_L12_sweep", "claim": "C11", "quantity": "curvature", "predicted": 0.065217, "formula": "lr_area_bowl", "runs_done_before": 0}
+{"tag": "tlfg2_all", "claim": "C26", "quantity": "width_exponent", "predicted": -0.64, "formula": "c26_line"}
+{"tag": "tlfg2_all", "claim": "C26", "quantity": "depth_exponent", "predicted": 0.0, "formula": "c26_line"}
+{"tag": "tlfg2_all", "claim": "C26", "quantity": "width_exponent", "predicted": -1.130687, "formula": "lr_area_argmin"}
+{"tag": "tlfg2_all", "claim": "C26", "quantity": "depth_exponent", "predicted": 0.02112, "formula": "lr_area_argmin"}
+{"tag": "tlfg3_w64_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 17.771349, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w64_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 15.585514, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w64_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 13.399679, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w64_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 11.213844, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w64_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 9.028009, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w64_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 6.842174, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w64_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 4.656338, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w64_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 2.470503, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w64_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 0.284668, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w64_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 14.611448, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w64_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 12.425613, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w64_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 10.239778, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w64_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 8.053943, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w64_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 5.868108, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w64_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 3.682273, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w64_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 1.496438, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w64_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": -0.689397, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w64_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": -2.875232, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w64_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 11.451547, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w64_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 9.265712, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w64_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 7.079877, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w64_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 4.894042, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w64_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 2.708207, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w64_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 0.522372, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w64_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -1.663463, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w64_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -3.849298, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w64_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -6.035133, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w64_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 17.447651, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w64_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 15.261816, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w64_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 13.075981, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w64_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 10.890146, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w64_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 8.704311, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w64_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 6.518476, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w64_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 4.332641, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w64_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 2.146806, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w64_L4_N360", "claim": "C28", "quantity": "bits", "predicted": -0.039029, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w64_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 14.287751, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w64_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 12.101916, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w64_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 9.916081, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w64_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 7.730246, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w64_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 5.54441, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w64_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 3.358575, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w64_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 1.17274, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w64_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": -1.013095, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w64_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": -3.19893, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w64_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 11.12785, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w64_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 8.942015, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w64_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 6.75618, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w64_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 4.570345, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w64_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 2.38451, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w64_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 0.198675, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w64_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -1.98716, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w64_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -4.172995, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w64_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -6.358831, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w64_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 17.123954, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w64_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 14.938119, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w64_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 12.752284, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w64_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 10.566449, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w64_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 8.380614, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w64_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 6.194779, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w64_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 4.008944, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w64_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 1.823109, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w64_L8_N360", "claim": "C28", "quantity": "bits", "predicted": -0.362726, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w64_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 13.964053, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w64_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 11.778218, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w64_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 9.592383, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w64_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 7.406548, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w64_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 5.220713, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w64_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 3.034878, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w64_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 0.849043, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w64_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": -1.336792, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w64_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": -3.522627, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w64_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 10.804153, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w64_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 8.618318, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w64_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 6.432482, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w64_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 4.246647, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w64_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 2.060812, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w64_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -0.125023, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w64_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -2.310858, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w64_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -4.496693, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w64_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -6.682528, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w64_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 16.934603, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w64_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 14.748768, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w64_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 12.562933, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w64_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 10.377098, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w64_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 8.191263, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w64_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 6.005428, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w64_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 3.819593, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w64_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 1.633758, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w64_L12_N360", "claim": "C28", "quantity": "bits", "predicted": -0.552077, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w64_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 13.774703, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w64_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 11.588868, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w64_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 9.403032, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w64_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 7.217197, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w64_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 5.031362, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w64_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 2.845527, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w64_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 0.659692, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w64_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": -1.526143, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w64_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": -3.711978, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w64_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 10.614802, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w64_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 8.428967, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w64_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 6.243132, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w64_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 4.057297, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w64_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 1.871462, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w64_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -0.314373, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w64_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -2.500209, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w64_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -4.686044, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w64_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -6.871879, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w128_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 17.123954, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w128_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 14.938119, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w128_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 12.752284, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w128_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 10.566449, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w128_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 8.380614, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w128_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 6.194779, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w128_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 4.008944, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w128_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 1.823109, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w128_L2_N360", "claim": "C28", "quantity": "bits", "predicted": -0.362726, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w128_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 13.964053, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w128_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 11.778218, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w128_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 9.592383, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w128_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 7.406548, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w128_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 5.220713, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w128_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 3.034878, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w128_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 0.849043, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w128_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": -1.336792, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w128_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": -3.522627, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w128_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 10.804153, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w128_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 8.618318, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w128_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 6.432482, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w128_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 4.246647, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w128_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 2.060812, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w128_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -0.125023, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w128_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -2.310858, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w128_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -4.496693, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w128_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -6.682528, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w128_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 16.800257, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w128_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 14.614422, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w128_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 12.428587, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w128_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 10.242752, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w128_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 8.056917, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w128_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 5.871082, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w128_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 3.685247, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w128_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 1.499412, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w128_L4_N360", "claim": "C28", "quantity": "bits", "predicted": -0.686424, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w128_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 13.640356, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w128_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 11.454521, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w128_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 9.268686, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w128_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 7.082851, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w128_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 4.897016, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w128_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 2.711181, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w128_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 0.525346, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w128_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": -1.660489, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w128_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": -3.846324, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w128_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 10.480455, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w128_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 8.29462, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w128_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 6.108785, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w128_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 3.92295, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w128_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 1.737115, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w128_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -0.44872, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w128_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -2.634555, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w128_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -4.82039, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w128_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -7.006225, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w128_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 16.47656, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w128_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 14.290725, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w128_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 12.104889, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w128_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 9.919054, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w128_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 7.733219, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w128_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 5.547384, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w128_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 3.361549, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w128_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 1.175714, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w128_L8_N360", "claim": "C28", "quantity": "bits", "predicted": -1.010121, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w128_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 13.316659, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w128_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 11.130824, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w128_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 8.944989, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w128_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 6.759154, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w128_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 4.573319, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w128_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 2.387484, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w128_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 0.201648, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w128_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": -1.984187, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w128_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": -4.170022, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w128_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 10.156758, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w128_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 7.970923, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w128_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 5.785088, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w128_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 3.599253, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w128_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 1.413418, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w128_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -0.772417, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w128_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -2.958252, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w128_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -5.144087, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w128_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -7.329922, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w128_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 16.287209, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w128_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 14.101374, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w128_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 11.915539, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w128_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 9.729704, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w128_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 7.543869, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w128_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 5.358034, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w128_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 3.172199, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w128_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 0.986363, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w128_L12_N360", "claim": "C28", "quantity": "bits", "predicted": -1.199472, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w128_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 13.127308, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w128_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 10.941473, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w128_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 8.755638, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w128_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 6.569803, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w128_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 4.383968, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w128_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 2.198133, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w128_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 0.012298, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w128_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": -2.173537, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w128_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": -4.359372, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w128_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 9.967407, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w128_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 7.781572, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w128_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 5.595737, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w128_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 3.409902, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w128_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 1.224067, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w128_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -0.961768, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w128_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -3.147603, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w128_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -5.333438, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w128_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -7.519273, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w256_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 16.47656, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w256_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 14.290725, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w256_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 12.104889, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w256_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 9.919054, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w256_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 7.733219, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w256_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 5.547384, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w256_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 3.361549, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w256_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 1.175714, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w256_L2_N360", "claim": "C28", "quantity": "bits", "predicted": -1.010121, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w256_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 13.316659, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w256_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 11.130824, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w256_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 8.944989, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w256_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 6.759154, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w256_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 4.573319, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w256_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 2.387484, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w256_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 0.201648, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w256_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": -1.984187, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w256_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": -4.170022, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w256_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 10.156758, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w256_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 7.970923, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w256_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 5.785088, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w256_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 3.599253, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w256_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 1.413418, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w256_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -0.772417, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w256_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -2.958252, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w256_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -5.144087, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w256_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -7.329922, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w256_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 16.152862, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w256_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 13.967027, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w256_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 11.781192, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w256_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 9.595357, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w256_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 7.409522, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w256_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 5.223687, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w256_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 3.037852, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w256_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 0.852017, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w256_L4_N360", "claim": "C28", "quantity": "bits", "predicted": -1.333818, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w256_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 12.992961, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w256_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 10.807126, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w256_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 8.621291, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w256_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 6.435456, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w256_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 4.249621, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w256_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 2.063786, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w256_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": -0.122049, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w256_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": -2.307884, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w256_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": -4.493719, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w256_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 9.833061, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w256_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 7.647226, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w256_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 5.461391, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w256_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 3.275556, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w256_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 1.08972, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w256_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -1.096115, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w256_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -3.28195, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w256_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -5.467785, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w256_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -7.65362, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w256_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 15.829165, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w256_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 13.64333, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w256_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 11.457495, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w256_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 9.27166, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w256_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 7.085825, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w256_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 4.89999, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w256_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 2.714155, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w256_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 0.52832, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w256_L8_N360", "claim": "C28", "quantity": "bits", "predicted": -1.657515, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w256_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 12.669264, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w256_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 10.483429, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w256_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 8.297594, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w256_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 6.111759, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w256_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 3.925924, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w256_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 1.740089, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w256_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": -0.445746, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w256_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": -2.631581, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w256_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": -4.817416, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w256_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 9.509363, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w256_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 7.323528, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w256_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 5.137693, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w256_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 2.951858, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w256_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 0.766023, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w256_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -1.419812, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w256_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -3.605647, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w256_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -5.791482, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w256_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -7.977317, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w256_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 15.639814, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w256_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 13.453979, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w256_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 11.268144, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w256_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 9.082309, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w256_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 6.896474, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w256_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 4.710639, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w256_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 2.524804, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w256_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 0.338969, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w256_L12_N360", "claim": "C28", "quantity": "bits", "predicted": -1.846866, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w256_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 12.479913, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w256_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 10.294078, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w256_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 8.108243, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w256_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 5.922408, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w256_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 3.736573, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w256_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 1.550738, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w256_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": -0.635097, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w256_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": -2.820932, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w256_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": -5.006767, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w256_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 9.320013, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w256_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 7.134178, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w256_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 4.948343, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w256_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 2.762507, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w256_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 0.576672, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w256_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -1.609163, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w256_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -3.794998, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w256_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -5.980833, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w256_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -8.166668, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w512_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 15.829165, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w512_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 13.64333, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w512_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 11.457495, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w512_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 9.27166, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w512_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 7.085825, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w512_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 4.89999, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w512_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 2.714155, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w512_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 0.52832, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w512_L2_N360", "claim": "C28", "quantity": "bits", "predicted": -1.657515, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w512_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 12.669264, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w512_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 10.483429, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w512_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 8.297594, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w512_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 6.111759, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w512_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 3.925924, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w512_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 1.740089, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w512_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": -0.445746, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w512_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": -2.631581, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w512_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": -4.817416, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w512_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 9.509363, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w512_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 7.323528, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w512_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 5.137693, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w512_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 2.951858, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w512_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 0.766023, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w512_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -1.419812, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w512_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -3.605647, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w512_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -5.791482, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w512_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -7.977317, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w512_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 15.505468, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w512_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 13.319633, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w512_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 11.133798, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w512_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 8.947963, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w512_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 6.762128, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w512_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 4.576292, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w512_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 2.390457, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w512_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 0.204622, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w512_L4_N360", "claim": "C28", "quantity": "bits", "predicted": -1.981213, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w512_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 12.345567, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w512_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 10.159732, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w512_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 7.973897, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w512_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 5.788062, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w512_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 3.602227, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w512_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 1.416392, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w512_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": -0.769443, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w512_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": -2.955278, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w512_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": -5.141113, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w512_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 9.185666, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w512_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 6.999831, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w512_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 4.813996, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w512_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 2.628161, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w512_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 0.442326, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w512_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -1.743509, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w512_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -3.929344, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w512_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -6.115179, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w512_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -8.301014, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w512_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 15.18177, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w512_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 12.995935, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w512_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 10.8101, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w512_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 8.624265, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w512_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 6.43843, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w512_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 4.252595, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w512_L8_N360", "claim": "C28", "quantity": "bits", "predicted": 2.06676, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w512_L8_N360", "claim": "C28", "quantity": "bits", "predicted": -0.119075, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w512_L8_N360", "claim": "C28", "quantity": "bits", "predicted": -2.30491, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w512_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 12.02187, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w512_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 9.836035, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w512_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 7.6502, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w512_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 5.464364, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w512_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 3.278529, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w512_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": 1.092694, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w512_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": -1.093141, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w512_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": -3.278976, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w512_L8_N1440", "claim": "C28", "quantity": "bits", "predicted": -5.464811, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w512_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 8.861969, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w512_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 6.676134, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w512_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 4.490299, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w512_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 2.304464, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w512_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": 0.118629, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w512_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -2.067206, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w512_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -4.253041, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w512_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -6.438877, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w512_L8_N5760", "claim": "C28", "quantity": "bits", "predicted": -8.624712, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w512_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 14.99242, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w512_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 12.806585, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w512_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 10.62075, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w512_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 8.434914, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w512_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 6.249079, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w512_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 4.063244, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w512_L12_N360", "claim": "C28", "quantity": "bits", "predicted": 1.877409, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w512_L12_N360", "claim": "C28", "quantity": "bits", "predicted": -0.308426, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w512_L12_N360", "claim": "C28", "quantity": "bits", "predicted": -2.494261, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w512_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 11.832519, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w512_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 9.646684, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w512_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 7.460849, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w512_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 5.275014, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w512_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 3.089179, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w512_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": 0.903344, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w512_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": -1.282491, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w512_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": -3.468327, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w512_L12_N1440", "claim": "C28", "quantity": "bits", "predicted": -5.654162, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w512_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 8.672618, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w512_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 6.486783, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w512_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 4.300948, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w512_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": 2.115113, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w512_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -0.070722, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w512_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -2.256557, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w512_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -4.442392, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w512_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -6.628227, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w512_L12_N5760", "claim": "C28", "quantity": "bits", "predicted": -8.814062, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w1024_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 15.18177, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w1024_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 12.995935, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w1024_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 10.8101, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w1024_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 8.624265, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w1024_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 6.43843, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w1024_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 4.252595, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w1024_L2_N360", "claim": "C28", "quantity": "bits", "predicted": 2.06676, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w1024_L2_N360", "claim": "C28", "quantity": "bits", "predicted": -0.119075, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w1024_L2_N360", "claim": "C28", "quantity": "bits", "predicted": -2.30491, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w1024_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 12.02187, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w1024_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 9.836035, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w1024_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 7.6502, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w1024_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 5.464364, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w1024_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 3.278529, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w1024_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": 1.092694, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w1024_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": -1.093141, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w1024_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": -3.278976, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w1024_L2_N1440", "claim": "C28", "quantity": "bits", "predicted": -5.464811, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w1024_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 8.861969, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w1024_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 6.676134, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w1024_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 4.490299, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w1024_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 2.304464, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w1024_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": 0.118629, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w1024_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -2.067206, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w1024_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -4.253041, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w1024_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -6.438877, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w1024_L2_N5760", "claim": "C28", "quantity": "bits", "predicted": -8.624712, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w1024_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 14.858073, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w1024_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 12.672238, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w1024_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 10.486403, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w1024_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 8.300568, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w1024_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 6.114733, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w1024_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 3.928898, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w1024_L4_N360", "claim": "C28", "quantity": "bits", "predicted": 1.743063, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w1024_L4_N360", "claim": "C28", "quantity": "bits", "predicted": -0.442772, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w1024_L4_N360", "claim": "C28", "quantity": "bits", "predicted": -2.628607, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w1024_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 11.698172, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w1024_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 9.512337, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w1024_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 7.326502, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w1024_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 5.140667, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w1024_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 2.954832, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w1024_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": 0.768997, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w1024_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": -1.416838, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w1024_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": -3.602673, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w1024_L4_N1440", "claim": "C28", "quantity": "bits", "predicted": -5.788508, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg3_w1024_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 8.538272, "formula": "c28_loglin", "k": 1}
+{"tag": "tlfg3_w1024_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 6.352436, "formula": "c28_loglin", "k": 2}
+{"tag": "tlfg3_w1024_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 4.166601, "formula": "c28_loglin", "k": 4}
+{"tag": "tlfg3_w1024_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": 1.980766, "formula": "c28_loglin", "k": 8}
+{"tag": "tlfg3_w1024_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -0.205069, "formula": "c28_loglin", "k": 16}
+{"tag": "tlfg3_w1024_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -2.390904, "formula": "c28_loglin", "k": 32}
+{"tag": "tlfg3_w1024_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -4.576739, "formula": "c28_loglin", "k": 64}
+{"tag": "tlfg3_w1024_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -6.762574, "formula": "c28_loglin", "k": 128}
+{"tag": "tlfg3_w1024_L4_N5760", "claim": "C28", "quantity": "bits", "predicted": -8.948409, "formula": "c28_loglin", "k": 256}
+{"tag": "tlfg2_w64_L2_p0.002|tlfg2_w64_L4_p0.002", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L4_p0.002|tlfg2_w64_L8_p0.002", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L2_p0.00283|tlfg2_w64_L4_p0.00283", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L4_p0.00283|tlfg2_w64_L8_p0.00283", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L2_p0.004|tlfg2_w64_L4_p0.004", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L4_p0.004|tlfg2_w64_L8_p0.004", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L2_p0.00566|tlfg2_w64_L4_p0.00566", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L4_p0.00566|tlfg2_w64_L8_p0.00566", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L2_p0.008|tlfg2_w64_L4_p0.008", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L4_p0.008|tlfg2_w64_L8_p0.008", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L2_p0.0113|tlfg2_w64_L4_p0.0113", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L4_p0.0113|tlfg2_w64_L8_p0.0113", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L2_p0.016|tlfg2_w64_L4_p0.016", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L4_p0.016|tlfg2_w64_L8_p0.016", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L2_p0.0226|tlfg2_w64_L4_p0.0226", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w64_L4_p0.0226|tlfg2_w64_L8_p0.0226", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w128_L2_p0.002|tlfg2_w128_L4_p0.002", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w128_L2_p0.00283|tlfg2_w128_L4_p0.00283", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w128_L2_p0.004|tlfg2_w128_L4_p0.004", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w128_L2_p0.00566|tlfg2_w128_L4_p0.00566", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w128_L2_p0.008|tlfg2_w128_L4_p0.008", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w128_L2_p0.0113|tlfg2_w128_L4_p0.0113", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w128_L2_p0.016|tlfg2_w128_L4_p0.016", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w128_L2_p0.0226|tlfg2_w128_L4_p0.0226", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L8_p0.002|tlfg2_w512_L12_p0.002", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L8_p0.00283|tlfg2_w512_L12_p0.00283", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L4_p0.004|tlfg2_w512_L8_p0.004", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L8_p0.004|tlfg2_w512_L12_p0.004", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L4_p0.00566|tlfg2_w512_L8_p0.00566", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L8_p0.00566|tlfg2_w512_L12_p0.00566", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L4_p0.008|tlfg2_w512_L8_p0.008", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L8_p0.008|tlfg2_w512_L12_p0.008", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L4_p0.0113|tlfg2_w512_L8_p0.0113", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L8_p0.0113|tlfg2_w512_L12_p0.0113", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L4_p0.016|tlfg2_w512_L8_p0.016", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L8_p0.016|tlfg2_w512_L12_p0.016", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L4_p0.0226|tlfg2_w512_L8_p0.0226", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w512_L8_p0.0226|tlfg2_w512_L12_p0.0226", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L2_p0.002|tlfg2_w1024_L4_p0.002", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L4_p0.002|tlfg2_w1024_L8_p0.002", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L8_p0.002|tlfg2_w1024_L12_p0.002", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L2_p0.00283|tlfg2_w1024_L4_p0.00283", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L4_p0.00283|tlfg2_w1024_L8_p0.00283", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L8_p0.00283|tlfg2_w1024_L12_p0.00283", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L2_p0.004|tlfg2_w1024_L4_p0.004", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L4_p0.004|tlfg2_w1024_L8_p0.004", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L8_p0.004|tlfg2_w1024_L12_p0.004", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L2_p0.00566|tlfg2_w1024_L4_p0.00566", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L4_p0.00566|tlfg2_w1024_L8_p0.00566", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L8_p0.00566|tlfg2_w1024_L12_p0.00566", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L2_p0.008|tlfg2_w1024_L4_p0.008", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L4_p0.008|tlfg2_w1024_L8_p0.008", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L8_p0.008|tlfg2_w1024_L12_p0.008", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L2_p0.0113|tlfg2_w1024_L4_p0.0113", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L4_p0.0113|tlfg2_w1024_L8_p0.0113", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L8_p0.0113|tlfg2_w1024_L12_p0.0113", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L2_p0.016|tlfg2_w1024_L4_p0.016", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L4_p0.016|tlfg2_w1024_L8_p0.016", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L8_p0.016|tlfg2_w1024_L12_p0.016", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L2_p0.0226|tlfg2_w1024_L4_p0.0226", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L4_p0.0226|tlfg2_w1024_L8_p0.0226", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg2_w1024_L8_p0.0226|tlfg2_w1024_L12_p0.0226", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w64_L2_N360|tlfg3_w64_L4_N360", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w64_L4_N360|tlfg3_w64_L8_N360", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w64_L8_N360|tlfg3_w64_L12_N360", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w64_L2_N1440|tlfg3_w64_L4_N1440", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w64_L4_N1440|tlfg3_w64_L8_N1440", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w64_L8_N1440|tlfg3_w64_L12_N1440", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w64_L2_N5760|tlfg3_w64_L4_N5760", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w64_L4_N5760|tlfg3_w64_L8_N5760", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w64_L8_N5760|tlfg3_w64_L12_N5760", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w128_L2_N360|tlfg3_w128_L4_N360", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w128_L4_N360|tlfg3_w128_L8_N360", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w128_L8_N360|tlfg3_w128_L12_N360", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w128_L2_N1440|tlfg3_w128_L4_N1440", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w128_L4_N1440|tlfg3_w128_L8_N1440", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w128_L8_N1440|tlfg3_w128_L12_N1440", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w128_L2_N5760|tlfg3_w128_L4_N5760", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w128_L4_N5760|tlfg3_w128_L8_N5760", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w128_L8_N5760|tlfg3_w128_L12_N5760", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w256_L2_N360|tlfg3_w256_L4_N360", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w256_L4_N360|tlfg3_w256_L8_N360", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w256_L8_N360|tlfg3_w256_L12_N360", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w256_L2_N1440|tlfg3_w256_L4_N1440", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w256_L4_N1440|tlfg3_w256_L8_N1440", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w256_L8_N1440|tlfg3_w256_L12_N1440", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w256_L2_N5760|tlfg3_w256_L4_N5760", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w256_L4_N5760|tlfg3_w256_L8_N5760", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w256_L8_N5760|tlfg3_w256_L12_N5760", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w512_L2_N360|tlfg3_w512_L4_N360", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w512_L4_N360|tlfg3_w512_L8_N360", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w512_L8_N360|tlfg3_w512_L12_N360", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w512_L2_N1440|tlfg3_w512_L4_N1440", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w512_L4_N1440|tlfg3_w512_L8_N1440", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w512_L8_N1440|tlfg3_w512_L12_N1440", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w512_L2_N5760|tlfg3_w512_L4_N5760", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w512_L4_N5760|tlfg3_w512_L8_N5760", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w512_L8_N5760|tlfg3_w512_L12_N5760", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w1024_L2_N360|tlfg3_w1024_L4_N360", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w1024_L2_N1440|tlfg3_w1024_L4_N1440", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}
+{"tag": "tlfg3_w1024_L2_N5760|tlfg3_w1024_L4_N5760", "claim": "C01", "quantity": "sign_val_loss_change", "predicted": -1.0, "formula": "c01_deeper_lower_loss"}

@@ -12,6 +12,7 @@ logs/
 !agents/**/*.jsonl
 /data/llm/*.jsonl.gz
 !rounds/**/*.jsonl
+!literature/*.jsonl
 /work/
 *.pdf
 *.aux
@@ -25,3 +26,4 @@ drafts/*/numbers.json
 drafts/*/*.log
 drafts/*/*.out
 /speedrun/tracks/*/data/
+!prereg/*.jsonl
