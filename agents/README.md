@@ -58,7 +58,7 @@ work/<topic>/
 ## How to start
 
 1. Open the manager session in your coding agent (Claude Code, Codex or similar) in the clone, and have it make `work/<topic>/` once the topic is chosen. Paste `manager.md`, then: "Find a formula about training."
-2. The manager proposes 8-10 topics: one open problem from `problems/` (beat its leaderboard) and the rest new, none from the README's example table. Talk them through with it: ask questions, push back, combine ideas or add your own, until you agree on one.
+2. The manager proposes 8-10 topics by the rule in [manager.md](manager.md#starting-the-project-propose-ideas-then-talk-them-through). Talk them through with it: ask questions, push back, combine ideas or add your own, until you agree on one.
 3. The manager writes `TARGET.md` and the first orders. Usually: O1 literature check and screens over the settings that might matter (theory, ops), O2 baseline runs and learning-rate check (ops), O3 decide whether a sim is worth building (sim).
 4. Open one session per remaining role in the same folder, and paste its role prompt.
 

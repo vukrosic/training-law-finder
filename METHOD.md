@@ -17,7 +17,7 @@ In-sample R² is printed by the tools but is never a score.
 ## Phases
 
 **0. Pick the topic and set up (1-2 hours).**
-- The project starts with one instruction: "Find a formula about training." The manager agent proposes 8-10 topics, all of them new (none from the README's table, none with a published formula), each with a guess at the mechanism and the fastest test. The human talks them through with it until they agree on one: a number the testbed can measure in a short run, with no settled published formula yet.
+- The project starts with one instruction: "Find a formula about training." The manager agent proposes 8-10 topics by the rule in [agents/manager.md](agents/manager.md#starting-the-project-propose-ideas-then-talk-them-through), each with a guess at the mechanism and the fastest test. The human talks them through with it until they agree on one.
 - Search the literature for existing laws of that number. The formula should beat or extend the best published one; put it in as the first candidate.
 - Write the target in one sentence in `TARGET.md`: what number, over what range. Example: "final validation loss of Muon-trained dense transformers, widths 64-384, 200-4000 steps".
 - Run one job, open its row, and confirm every input and the target are logged.
