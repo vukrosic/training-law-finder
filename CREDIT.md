@@ -7,4 +7,6 @@
   was merged first. Drafts are not credited.
 - A score that does not beat the best under the [0.005-per-constant rule](problems/README.md) counts as a
   confirmation, with your name.
+- Before calling a formula new, compare its predictions with the best formula's on the same runs. If they
+  differ on average by less than the problem's noise floor, it is the same result: a confirmation.
 - A paper offers co-authorship to everyone whose finding it claims, and cites every formula and run it uses.
