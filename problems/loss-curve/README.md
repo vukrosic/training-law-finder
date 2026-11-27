@@ -1,7 +1,8 @@
 # Loss curve: predict the whole validation-loss curve from the training settings
 
-**Real runs are pending. The folder holds only a small made-up fixture, so every score below says nothing
-about real training.**
+**195 real small runs are in `data/llm.jsonl.gz` (widths 16-96, 128-1,024 steps, MacBook CPU). The
+single-clock kill line is dead on both tests; see [RESULTS.md](RESULTS.md). The formulas are not yet scored on
+the real runs; the scores below are on the made-up fixture and say nothing about real training.**
 
 A language model is trained with a given width, depth, step count, peak learning rate and schedule (cosine,
 WSD or constant). **Predict its validation loss at 32 evenly spaced points of training, from the settings
@@ -17,8 +18,9 @@ part of a curve and knowing where it should go.
 | part | state |
 |---|---|
 | logging | `testbed/train.py --curve_points 32` logs the 32 readings, the lr at each, and 4 token-band losses (default off) |
-| run grid | [prereg/loss-curve-grid.jsonl](../../prereg/loss-curve-grid.jsonl): 300 runs, written before any data, with the guess and kill line in [prereg/loss-curve.md](../../prereg/loss-curve.md) |
-| real data | **none yet**. `build.py` turns testbed result lines into `data/llm.jsonl.gz` |
+| run grid | [prereg/loss-curve-small.jsonl](../../prereg/loss-curve-small.jsonl): 228 runs of a few seconds each, written before any data, with the guess and kill line in [prereg/loss-curve.md](../../prereg/loss-curve.md). The larger 300-run grid (`loss-curve-grid.jsonl`) is parked |
+| real data | `data/llm.jsonl.gz`: 195 of the 228 runs (`build.py` turns testbed result lines into it) |
+| kill line | dead on both tests: WSD late in its decay is 0.07-0.09 nats below const at the same lr area, at all 6 widths ([RESULTS.md](RESULTS.md)) |
 | fixture | `data/synthetic.jsonl.gz`: 90 made-up runs from an invented law (`make_fixture.py`), only so the scorer and `tools/check.py` run |
 | floor | **pending**: the grid has no repeated settings, so `problem.floor()` returns None until two runs share their settings |
 | literature | [LITERATURE.md](LITERATURE.md): first pass, gate 0 decides |
@@ -42,9 +44,9 @@ Target: `cv_loss`, the val loss at that reading. The token-band losses (`lc_band
 for later problems but `rows()` does not pass them on, so a formula cannot rebuild the target from them.
 Columns: [core/columns.yaml](../../core/columns.yaml).
 
-Tested range (the grid, once run): widths 24 to 1024, 1, 3 or 6 layers, 512 to 16,384 steps, cosine / WSD /
-constant schedules, peak learning rate 0.5x to 2x the best final-loss peak per width, WSD decay share 0.1 to
-0.5, cosine to 0 or to 10% of the peak, batch 64, sequence 64, 1,024-token vocabulary, Muon, weight decay 0.
+Tested range (the small grid, once complete): widths 16 to 96, 1, 2 or 4 layers, 128 to 1,024 steps, cosine /
+WSD / constant schedules, peak learning rate 0.25x to 4x the best final-loss peak per width, WSD decay share 0.1
+to 0.5, cosine to 0 or to 10% of the peak, batch 32, sequence 64, 1,024-token vocabulary, Muon, weight decay 0.
 A paper on this problem states this range.
 
 ## Scoring
