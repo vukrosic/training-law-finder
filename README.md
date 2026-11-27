@@ -1,6 +1,6 @@
 # Training Law Finder
 
-Find the rules of LLM training as formulas that predict runs they never saw. Each rule is the core of a research paper.
+Find one rule of LLM training, prove it on runs it never saw, and write it up as your paper.
 
 ## Start in 3 commands
 
