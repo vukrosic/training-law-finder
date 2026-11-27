@@ -4,12 +4,12 @@ The AI trains small models, searches for a formula and writes the paper. You pic
 
 ## 1. Pick one target
 
-A target is one number per run that a formula predicts (scorers compare one predicted and one measured value per run). Options:
+A target is one number per run that a formula predicts. Options:
 
 - An open problem from [problems/](problems/README.md), with data and scoring ready: **forgetting** or **final-loss**.
 - A direction from [IDEAS.md](IDEAS.md), for example "how large the weights grow during training".
 
-"Best learning rate per width" is one number per sweep, not per run; predict each run's loss instead and read the best learning rate off the formula.
+A target must have one value per run. "Best learning rate per width" has one value per sweep, so it does not work directly. Predict each run's loss instead; the formula then tells you the best learning rate.
 
 One target per paper. Unsure? Skip this; the AI proposes 8-10 and recommends one.
 
