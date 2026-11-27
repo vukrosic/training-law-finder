@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this repository or the forgetting formula, please cite the paper below."
+title: "Training Law Finder"
+type: software
+authors:
+  - family-names: "Rosić"
+    given-names: "Vuk"
+    orcid: "https://orcid.org/0009-0001-3983-1579"
+repository-code: "https://github.com/vukrosic/training-law-finder"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Rules for How Language Models Forget Facts During Training"
+  authors:
+    - family-names: "Rosić"
+      given-names: "Vuk"
+      orcid: "https://orcid.org/0009-0001-3983-1579"
+  year: 2026
+  month: 11
+  journal: "Zenodo"
+  doi: "10.5281/zenodo.24575889"
+  url: "https://doi.org/10.5281/zenodo.24575889"

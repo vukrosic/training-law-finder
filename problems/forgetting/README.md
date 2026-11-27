@@ -7,6 +7,8 @@ knows at the end, from the training settings alone.**
 Why it matters: labs add data in phases (code, math, instruction data near the end). A formula for
 forgetting tells you when to show data so the model keeps it, without a sweep.
 
+Paper on this problem: [Rules for How Language Models Forget Facts During Training](../../papers/forgetting-rules/), DOI [10.5281/zenodo.24575889](https://doi.org/10.5281/zenodo.24575889).
+
 ## Data
 
 `data/llm.jsonl.gz`: 375 real runs, decoder-only transformers trained with Muon.
@@ -84,7 +86,7 @@ Floor 0.0126. Gap from the best formula to the floor: 0.0315. Full table: [LEADE
 
 ## Known open parts
 
-- **Wide, shallow models.** end+z2 overpredicts width 1024 with 3 layers by +0.02 to +0.05 on three runs predicted before they ran. Kept at 3 layers stops rising between width 512 and 1024. A width-2048 run is being trained to settle which width term is right.
+- **Wide, shallow models.** end+z2 overpredicts width 1024 with 3 layers by +0.02 to +0.05 on three runs predicted before they ran. Kept at 3 layers stops rising between width 512 and 1024. A width-2048 run with 12 layers (503M parameters) was predicted before it ran: end+z2 said 0.241 and it measured 0.242 ([rounds/002-forgetting](../../rounds/002-forgetting/)). Width 2048 with 3 layers is not run yet.
 - **Batch size.** Adding `-0.359 * ln(batch/64)` to the onset halves the error on runs with batch other than 64 (0.0193 vs 0.0362), on few rows.
 - **Schedule shape.** Two schedules with the same learning-rate sum forget differently; the share of the schedule spent below half the peak helps on three blind runs.
 
