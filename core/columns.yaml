@@ -60,3 +60,16 @@ C:        {kind: measured, unit: bits, meaning: "fact knowledge at the end, mean
 rms_w:    {kind: measured, unit: ratio, meaning: "weight RMS at the end of the fact window"}
 wnorm:    {kind: measured, unit: ratio, meaning: "weight norm at the end"}
 kept:     {kind: target, unit: "list of ratio", meaning: "share of the learned fact bits still there at each reading (target of forgetting: the last value)"}
+
+# forgetting-curve: 8 readings per run after the fact window
+n_after: {kind: setting, unit: steps, meaning: "number of steps after the fact window (readings run from 0 to n_after-1)"}
+S_end:   {kind: setting, unit: "lr * steps", meaning: "sum of the learning rate over all steps after the fact window"}
+rd_t:    {kind: setting, unit: "list of steps", meaning: "steps since the fact window at the 8 readings of forgetting-curve"}
+rd_S:    {kind: setting, unit: "list of lr * steps", meaning: "sum of the learning rate from the window end to each of the 8 readings"}
+rd_lr:   {kind: setting, unit: "list of lr", meaning: "learning rate at each of the 8 readings"}
+rd_kept: {kind: target, unit: "list of ratio", meaning: "smoothed kept share at each of the 8 readings (target list of forgetting-curve)"}
+frac:    {kind: setting, unit: ratio, meaning: "position of a reading as a share of the steps after the fact window"}
+t_now:   {kind: setting, unit: steps, meaning: "steps since the fact window at this reading"}
+S_now:   {kind: setting, unit: "lr * steps", meaning: "sum of the learning rate from the window end to this reading"}
+lr_now:  {kind: setting, unit: lr, meaning: "learning rate at this reading"}
+kept_now: {kind: target, unit: ratio, meaning: "share of the learned fact bits still there at this reading, mean of 5 readings around it (target of forgetting-curve)"}
