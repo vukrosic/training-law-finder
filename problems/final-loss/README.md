@@ -82,6 +82,29 @@ distance from its group mean, and report the pooled standard deviation
 sqrt(sum of squared distances / sum of (group size - 1)). The best formula is about 70 times the
 floor away: this problem is wide open. The largest errors are at width 1024 and 768.
 
+## What we found
+
+[lr_area](formulas/lr_area.py) (12 constants, score 1 0.0839) holds four rules. Each gain below is
+how much score 1 gets worse when that rule alone is removed and the rest is refitted (2026-11-27).
+
+- (a) The best learning rate depends on the schedule's average learning rate (peak times the mean
+  schedule multiplier), not on the peak. A free exponent on the mean multiplier fits to 1.02.
+  Using the peak instead: 0.0938 (gain 0.0099). Novelty: partly known. Luo et al. 2025 and Tissue
+  et al. 2024 use the summed learning rate to predict loss, but neither states that the best learning
+  rate is set by the average (Haiku paper search, 2026-11-27).
+- (b) Tokens count more at a higher average learning rate: without it 0.0899 (gain 0.0060). Known
+  (Tissue et al. 2024).
+- (c) Model size helps less when there are few tokens: without it 0.0908 (gain 0.0069). Known
+  (Kaplan et al. 2020).
+- (d) The best learning rate falls as width grows: without it 0.1114 (gain 0.0275). This is close to
+  muP-style learning-rate rules. The second half of the rule, a bowl that gets steeper with size,
+  does not help: without it 0.0829, slightly better.
+
+Weak spot: the worst group is width 1024 at 0.1536, almost twice the mean.
+
+All runs are FineWeb-Edu with a 1,024-token vocabulary. A second-dataset test (TinyStories, its own
+1,024-token tokenizer, same protocol) is running.
+
 ## Published work to beat
 
 Chinchilla (Hoffmann et al. 2022) is the baseline. Laws with learning-rate and schedule terms to
