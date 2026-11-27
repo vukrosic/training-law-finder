@@ -1,0 +1,11 @@
+{
+  "name": "lm-tiny",
+  "model": "language model",
+  "data": "FineWeb-Edu (huggingface.co/datasets/vukrosic/training-law-speedrun)",
+  "metric": "val_bpb",
+  "lower_is_better": true,
+  "constraint": "flops",
+  "budget": 1e14,
+  "hardware": "MacBook (M4, mps), or any machine: the FLOP count is the same everywhere",
+  "baseline": 1.932
+}

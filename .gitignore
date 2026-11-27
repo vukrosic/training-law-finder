@@ -21,3 +21,4 @@ logs/
 papers/*/numbers.json
 papers/*/*.log
 papers/*/*.out
+/speedrun/tracks/*/data/

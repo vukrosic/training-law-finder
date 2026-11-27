@@ -1,0 +1,14 @@
+{
+  "name": "baseline",
+  "github": "vukrosic",
+  "date": "2026-11-27",
+  "val_bpb": 1.932,
+  "flops": 9.98925e13,
+  "budget": 1e14,
+  "device": "mps (MacBook Pro M4, 16 GB)",
+  "train_seconds": 434.8,
+  "tokenizer": "sp1024 (default)",
+  "params": 2164928,
+  "steps": 415,
+  "tokens": 6799360
+}
