@@ -31,7 +31,19 @@ All runs are small scale. Each problem README has a "Tested range:" line (final-
 
 **Rules for How Language Models Forget Facts During Training** (Vuk Rosić, November 2026), AI-written, not yet checked by a person.
 [PDF on Zenodo](https://zenodo.org/records/24575890) · DOI [10.5281/zenodo.24575889](https://doi.org/10.5281/zenodo.24575889) ·
-[source, BibTeX, reproduce script](drafts/forgetting-rules/) · open directions, from no training to one GPU: [NEXT-STEPS.md](drafts/forgetting-rules/NEXT-STEPS.md).
+[source and reproduce script](drafts/forgetting-rules/) · open directions, from no training to one GPU: [NEXT-STEPS.md](drafts/forgetting-rules/NEXT-STEPS.md).
+
+```bibtex
+@misc{rosic2026forgetting,
+  author    = {Rosi{\'c}, Vuk},
+  title     = {Rules for How Language Models Forget Facts During Training},
+  year      = {2026},
+  month     = nov,
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.24575889},
+  url       = {https://doi.org/10.5281/zenodo.24575889}
+}
+```
 
 ## Read next
 
