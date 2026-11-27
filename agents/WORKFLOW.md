@@ -42,15 +42,15 @@ If a stage fails, say so in one line in `LOG.md`, go back to the stage named, an
 
 - **Do:** follow phases 1-2 of `METHOD.md` and the rules in `agents/theory.md`. Start each formula from `core/formula_template.py`. Score every candidate without `--record` (only the final formula is recorded, in stage 5) and keep one table of candidates in `SCORES.md`.
 - **Read:** `METHOD.md`, `agents/theory.md`, `problems/README.md` (rules on constants and the floor).
-- **Produce:** `work/<topic>/formulas/*.py` and `SCORES.md`, newest first.
+- **Produce:** `work/<topic>/formulas/*.py` and `SCORES.md`, newest first. These drafts stay in `work/`, which git ignores; stage 5 copies the final one into the repo.
 - **Done when:** two rounds of new terms did not improve score 1, or the formula beats the top of the leaderboard.
 - **Stop:** c.
 
 ## 5. Score 1 (held out)
 
-- **Do:** score the final formula once and save the output. Open problem: `python3 core/score.py <problem> <formula> --author <github-name> --record | tee work/<topic>/score1.txt`. Own idea: `python3 fit/laws.py ... --holdout ... | tee work/<topic>/score1.txt`.
+- **Do:** open problem: first copy the final formula into the repo, `cp work/<topic>/formulas/<file>.py problems/<problem>/formulas/`, because `--record` stores the path and a path in `work/` is a dead link (`tools/check.py` fails on it). Then score that copy once and save the output: `python3 core/score.py <problem> problems/<problem>/formulas/<file>.py --author <github-name> --record | tee work/<topic>/score1.txt`. Own idea: `python3 fit/laws.py ... --holdout ... | tee work/<topic>/score1.txt`.
 - **Read:** `problems/<name>/LEADERBOARD.md`, the published formula's score.
-- **Produce:** `score1.txt`, and a new line in `problems/<name>/scores.jsonl` for open problems.
+- **Produce:** `score1.txt`, and for open problems the formula in `problems/<name>/formulas/` and a new line in `problems/<name>/scores.jsonl`.
 - **Done when:** score 1 is saved and compared with the leaderboard top and the published formula, with the unit named ("score 1 = 0.0441 RMSE").
 - **Stop:** b, c.
 
