@@ -30,6 +30,15 @@ def count_step(build, train_step, batch_shape):
     return count(lambda: train_step(model, opts, x, x, torch.float32))
 
 
+def count_step_inputs(build, train_step, make_inputs):
+    """count_step for any inputs (frames, actions, observations): make_inputs() -> tuple of tensors, made on meta.
+    train_step(model, optimizers, *inputs). Returns FLOPs of one step."""
+    with torch.device("meta"):
+        model, opts = build()
+        inputs = make_inputs()
+    return count(lambda: train_step(model, opts, *inputs))
+
+
 def attention_flops(batch, seq_len, d_model, n_layers):
     """Causal attention counted as full T x T: forward 4*B*T*T*d per layer (QK^T and AV), backward twice that."""
     return 12 * batch * seq_len * seq_len * d_model * n_layers

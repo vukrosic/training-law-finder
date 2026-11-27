@@ -3,8 +3,10 @@
 A record lives in speedrun/tracks/<track>/records/<date>_<name>/. The track folder has track.json, which names
 the metric (a key in submission.json), the constraint (another key) and the budget. This checks that:
 1. README.md, submission.json, train.py and train.log are there, and each file is under 50 KB.
-2. submission.json has name, github, date, device, the track's metric and the track's constraint.
-3. The constraint value is within the budget.
+2. submission.json has name, github, date, device, the track's metric, the track's constraint and any extra
+   fields the track lists in track.json under "fields" (for example flops on a track whose constraint is
+   environment steps).
+3. The constraint value is a number within the budget.
 It does not rerun training; a maintainer reruns a new record before it goes on the board.
 """
 import json
@@ -39,11 +41,13 @@ def check(record):
             sub = json.load(open(sub_path))
         except json.JSONDecodeError as e:
             return errs + [f"{where}: submission.json is not valid JSON ({e})"]
-        for k in FIELDS + (rules["metric"], rules["constraint"]):
+        for k in FIELDS + (rules["metric"], rules["constraint"]) + tuple(rules.get("fields", ())):
             if k not in sub:
                 errs.append(f"{where}: submission.json has no '{k}'")
         used = sub.get(rules["constraint"])
-        if isinstance(used, (int, float)) and used > rules["budget"]:
+        if used is not None and not isinstance(used, (int, float)):
+            errs.append(f"{where}: {rules['constraint']} is not a number")
+        elif isinstance(used, (int, float)) and used > rules["budget"]:
             errs.append(f"{where}: {rules['constraint']} {used:g} is over the budget {rules['budget']:g}")
     return errs
 

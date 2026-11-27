@@ -5,20 +5,21 @@ Competitions with fixed rules. Each one is a track.
 A track is one fixed competition: a model type, a dataset, one metric, one constraint and the hardware it is
 meant for. Within a track everything else is free, so scores are comparable.
 
-The constraint differs per track. It can be training FLOPs, wall time, peak memory, parameter count or
-training tokens. The first track uses a FLOP budget, so its score does not depend on the machine.
+The constraint differs per track. It can be training FLOPs, environment steps, wall time, peak memory, parameter
+count or training tokens. Each built track uses a budget that is the same on every machine (FLOPs or environment
+steps), so its score does not depend on the machine.
 
 ## Tracks
 
 | track | model | data | metric | constraint | hardware | best |
 |---|---|---|---|---|---|---|
 | [lm-tiny](tracks/lm-tiny/) | language model | FineWeb-Edu | validation bits per byte | 1e14 training FLOPs | MacBook (M4, mps) | 1.932 bpb |
+| [world-model-tiny](tracks/world-model-tiny/) | action-conditioned frame predictor | bouncing balls + a square moved by actions, generated locally | 12-frame rollout MSE | 1e14 training FLOPs | MacBook (M4, mps) | 0.007029 |
+| [rl-tiny](tracks/rl-tiny/) | RL agent | Snake, 10 x 10 with random pillars, runs locally | mean food per game on 256 fixed games | 2e6 environment steps | MacBook (M4, mps) | 9.15 food |
 
 Planned:
 
 - lm-small: a larger language model track for one GPU. Not built yet.
-- world-model-tiny: predict the next frames of a video, scored by prediction error. Not built yet.
-- rl-tiny: a small reinforcement learning track. Not built yet.
 
 ## Names
 
@@ -36,7 +37,10 @@ speedrun/
     check_submission.py   checks a record folder against its track.json
   tracks/<track>/
     README.md             rules, data, how to run, leaderboard
-    track.json            metric, constraint, budget, hardware, baseline
+    track.json            metric, constraint, budget, hardware, baseline (and extra required fields)
+    env.py / prepare_data.py   the environment, or the script that gets the data
+    eval.py               the only scorer
+    train.py              the baseline
     records/<date>_<name>/
 ```
 
