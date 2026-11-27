@@ -1,6 +1,6 @@
 #!/bin/sh
 # Rebuilds every number and figure of the paper from the public table in this repo. No training.
-# Run from anywhere:  sh papers/forgetting-rules/reproduce.sh
+# Run from anywhere:  sh drafts/forgetting-rules/reproduce.sh
 set -e
 cd "$(dirname "$0")"
 ROOT="$(cd ../.. && pwd)"

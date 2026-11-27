@@ -8,6 +8,7 @@ the agents' runs and may be wrong. Once a person has checked every claim and rew
 ```text
 drafts/<slug>/
   DRAFT.md       first line: "AI draft, not checked by a person." Then the title, abstract and text
+                 (or README.md with that first line, plus paper.tex)
   figures/       SVG, or PNG under 500 KB each
   results/       the fits, scores and predictions the draft rests on (small files only)
 ```

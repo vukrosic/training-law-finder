@@ -20,5 +20,4 @@ An AI-written draft goes in [drafts/](../drafts/README.md) until a person has ch
 
 ## Papers so far
 
-- [Rules for How Language Models Forget Facts During Training](forgetting-rules/) (Vuk Rosić, November 2026), DOI [10.5281/zenodo.24575889](https://doi.org/10.5281/zenodo.24575889)
-- [A Rough Formula for Forgetting Facts in LLM Pretraining](forgetting-formula/) (Vuk Rosić, November 2026)
+None yet. The current draft is [Rules for How Language Models Forget Facts During Training](../drafts/forgetting-rules/) in drafts/: it is AI-written and not yet checked by a person, though it is published on Zenodo, DOI [10.5281/zenodo.24575889](https://doi.org/10.5281/zenodo.24575889).
