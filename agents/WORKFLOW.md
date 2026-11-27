@@ -16,7 +16,7 @@ If a stage fails, say so in one line in `LOG.md`, go back to the stage named, an
 
 ## 1. Pick the idea
 
-- **Do:** check what others are working on. Run `gh issue list --state open --search "Working on"` (or read the Issues page on GitHub) and `gh pr list --state open`. Read every `problems/*/LEADERBOARD.md`. Then propose 8-10 ideas as in [manager.md](manager.md#starting-the-project-propose-ideas-then-talk-them-through), skip any idea with an open "Working on" issue younger than 14 days, and recommend one.
+- **Do:** check what others are working on. Run `gh issue list --state open --search "Working on"` (or read the Issues page on GitHub) and `gh pr list --state open`. If `gh` is missing or not logged in, the public API needs no login: `curl -s "https://api.github.com/repos/vukrosic/training-law-finder/issues?state=open&per_page=100"` lists open issues and pull requests together (an entry with a `pull_request` key is a pull request). Read every `problems/*/LEADERBOARD.md`. Then propose 8-10 ideas as in [manager.md](manager.md#starting-the-project-propose-ideas-then-talk-them-through), skip any idea with an open "Working on" issue younger than 14 days, and recommend one.
 - **Read:** `README.md`, `IDEAS.md`, `problems/README.md`, `problems/*/LEADERBOARD.md`, open issues and pull requests.
 - **Produce:** `work/<topic>/TARGET.md`: the number to predict, in one sentence, and a line `Tested range: ...` with the range of the data. On an open problem, copy that line from the problem README (final-loss: "Tested range: widths 24 to 1024, 512 to 16,384 steps."). On your own idea, write the range of the rows you use. If the student allowed it, open an issue titled "Working on: <idea>" with 2-3 lines.
 - **Done when:** `TARGET.md` exists and no open issue claims the same idea.
@@ -25,9 +25,14 @@ If a stage fails, say so in one line in `LOG.md`, go back to the stage named, an
 ## 2. Check the closest published work
 
 - **Do:** search for papers that predict the same number. Find the published formula to beat (for final loss, Chinchilla).
+  - Search arXiv, Semantic Scholar and Google Scholar.
+  - Use at least 3 wordings: the number ("share of facts kept after training"), the mechanism ("forgetting learning rate schedule weight decay") and the use ("when to show data during pretraining").
+  - Open the 2-3 closest hits and read the papers that cite them.
+  - Write the queries and the date in `LITERATURE.md`.
+  - **Already done** means: a paper predicts the same number, from settings known before training, with a formula. A paper that only measures the number, or predicts another number from the same inputs, is close work: cite it and say in one sentence what yours adds.
 - **Read:** search results; the problem's `README.md` names the law to beat.
 - **Produce:** `work/<topic>/LITERATURE.md`: 3-5 closest papers, one line each on what they do and how this idea differs, and the published formula with its numbers.
-- **Done when:** the table exists and no paper already gives the formula you plan to find. If one does, go back to stage 1.
+- **Done when:** the table exists and no paper already gives the formula you plan to find. If one does, go back to stage 1, or put its formula in the problem as the one to beat and state what yours adds.
 - **Stop:** c.
 
 ## 3. Get the data
@@ -43,7 +48,7 @@ If a stage fails, say so in one line in `LOG.md`, go back to the stage named, an
 - **Do:** follow phases 1-2 of `METHOD.md` and the rules in `agents/theory.md`. Start each formula from `core/formula_template.py`. Score every candidate without `--record` (only the final formula is recorded, in stage 5) and keep one table of candidates in `SCORES.md`.
 - **Read:** `METHOD.md`, `agents/theory.md`, `problems/README.md` (rules on constants and the floor).
 - **Produce:** `work/<topic>/formulas/*.py` and `SCORES.md`, newest first. These drafts stay in `work/`, which git ignores; stage 5 copies the final one into the repo.
-- **Done when:** two rounds of new terms did not improve score 1, or the formula beats the top of the leaderboard.
+- **Done when:** two rounds of new terms did not improve score 1, or the formula beats the one marked ★ in the leaderboard.
 - **Stop:** c.
 
 ## 5. Score 1 (held out)
@@ -51,7 +56,7 @@ If a stage fails, say so in one line in `LOG.md`, go back to the stage named, an
 - **Do:** open problem: first copy the final formula into the repo, `cp work/<topic>/formulas/<file>.py problems/<problem>/formulas/`, because `--record` stores the path and a path in `work/` is a dead link (`tools/check.py` fails on it). Then score that copy once and save the output: `python3 core/score.py <problem> problems/<problem>/formulas/<file>.py --author <github-name> --record | tee work/<topic>/score1.txt`. Own idea: `python3 fit/laws.py ... --holdout ... | tee work/<topic>/score1.txt`.
 - **Read:** `problems/<name>/LEADERBOARD.md`, the published formula's score.
 - **Produce:** `score1.txt`, and for open problems the formula in `problems/<name>/formulas/` and a new line in `problems/<name>/scores.jsonl`.
-- **Done when:** score 1 is saved and compared with the leaderboard top and the published formula, with the unit named ("score 1 = 0.0441 RMSE").
+- **Done when:** score 1 is saved and compared with the formula marked ★ in the leaderboard and the published formula, with the unit named ("score 1 = 0.0441 RMSE").
 - **Stop:** b, c.
 
 ## 6. Score 2 (predicted before the runs exist)

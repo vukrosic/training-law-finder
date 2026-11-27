@@ -21,11 +21,11 @@ python3 fit/prereg.py score --pred predictions.jsonl --results results.jsonl
 
 ## Working on an open problem
 
-If `TARGET.md` names a problem from `problems/`, write each candidate as a formula file (`core/formula_template.py`) and score it with `python3 core/score.py <problem> <file>`. The score is the mean held-out RMSE per group, lower is better. `fit()` and `predict()` see only the setting columns. Record a formula with `--record --author <name>` only when it beats the leaderboard top by at least 0.005 per added constant, then rebuild the table with `python3 core/leaderboard.py <problem>` and run `python3 tools/check.py`. `fit/laws.py` is still useful for quick screens of terms on `core.rows.load()` rows.
+If `TARGET.md` names a problem from `problems/`, write each candidate as a formula file (`core/formula_template.py`) and score it with `python3 core/score.py <problem> <file>`. The score is the mean held-out RMSE per group, lower is better. `fit()` and `predict()` see only the setting columns. Record a formula with `--record --author <name>` only when it beats the formula marked ★ in the leaderboard by the constants rule (`problems/README.md`, rule 2), then rebuild the table with `python3 core/leaderboard.py <problem>` and run `python3 tools/check.py`. `fit/laws.py` is still useful for quick screens of terms on `core.rows.load()` rows.
 
 ## Rules
 
-1. **Report scores first.** Every `LOG.md` entry starts with score 1 (worst held-out R², and which column) and score 2 (pre-registered R², and n).
+1. **Report scores first.** Every `LOG.md` entry starts with score 1 (worst held-out R², and which column) and score 2 (pre-registered R², and n). On an open problem both are RMSE, lower is better; read "R² rises" in the rules below as "RMSE falls".
 2. **Measure the ceiling.** `--ceiling` fits gradient-boosted trees on the same inputs and folds. Their held-out R² is roughly the most any formula of those inputs reaches. If the formula is close to the ceiling, the missing accuracy needs a new input (a logged quantity or a knob), not a new shape.
 3. **Accuracy first, simplify later.** Any number of terms is fine while held-out R² rises. Simplify only once the gap to the ceiling is under about 0.05, and only if no column drops.
 4. **One formula, one table.** Score every candidate on the same table of held-out R² per column. Keep a new term only if some column rises and no column drops by more than 0.01. No trading one slice against another.

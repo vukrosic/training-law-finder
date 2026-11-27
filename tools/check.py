@@ -14,7 +14,8 @@
              those columns from the rows a formula gets.
 6. scores    every line in scores.jsonl points to a file in problems/<name>/formulas/ that git tracks (or will
              track: not ignored, so not work/), and reproduces to 4 decimals on the current data and file
-7. tables    LEADERBOARD.md equals what core/leaderboard.py builds
+7. tables    LEADERBOARD.md equals what core/leaderboard.py builds; every formula row in the problem
+             README ("| [name](formulas/name.py) | constants | score 1 |") matches scores.jsonl
 8. papers    no .pdf anywhere; in papers/ and drafts/, images under 500 KB and each paper folder under 5 MB
 9. speedrun  no data in speedrun/ (it goes to Hugging Face); each record in speedrun/tracks/<track>/records/
              passes speedrun/common/check_submission.py (files present, under 50 KB, within the budget)
@@ -251,6 +252,22 @@ def check_scores(name, safe, files):
             errors.append(f"scores: {where}: recorded {r['score']:.5f}, rescored {got:.5f}")
 
 
+def check_readme_table(name):
+    """The README may copy scores from the leaderboard; a copy that differs from scores.jsonl fails."""
+    best = {}
+    for line in open(os.path.join(ROOT, "problems", name, "scores.jsonl")):
+        r = json.loads(line)
+        if r.get("family", "all") == "all" and not r.get("measured"):
+            if r["name"] not in best or r["score"] < best[r["name"]]["score"]:
+                best[r["name"]] = r
+    text = open(os.path.join(ROOT, "problems", name, "README.md")).read()
+    for f, k, sc in re.findall(r"^\| \[[^\]]+\]\(formulas/([\w.]+)\) \| (\d+) \| ([\d.]+) \|", text, re.M):
+        r = best.get(f)
+        if not r or int(k) != r["constants"] or sc != f"{r['score']:.4f}":
+            want = f"{r['constants']} constants, {r['score']:.4f}" if r else "no recorded score"
+            errors.append(f"tables: problems/{name}/README.md lists {f} with {k} constants, {sc}; scores.jsonl has {want}")
+
+
 def main():
     fast = "--fast" in sys.argv
     files = tracked()
@@ -275,6 +292,7 @@ def main():
             check_scores(name, safe, set(files))
         if open(os.path.join(ROOT, "problems", name, "LEADERBOARD.md")).read() != leaderboard.build(name):
             errors.append(f"tables: problems/{name}/LEADERBOARD.md is out of date; run python3 core/leaderboard.py {name}")
+        check_readme_table(name)
     for w in warnings:
         print("warning  " + w)
     for e in errors:

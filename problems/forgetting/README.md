@@ -82,10 +82,11 @@ peak memory 1.7 GB on mps, 0.35 GB on cpu.
 | [end_z3](formulas/end_z3.py) | 12 | 0.0366 | end_z2 plus two terms: weight decay costs more at a high peak learning rate, and learning rate spent late forgets less than the same amount spent early |
 | [lr_clock](formulas/lr_clock.py) | 2 | 0.1507 | the same clock with no settings |
 | [mean](formulas/mean.py) | 1 | 0.2177 | constant |
+| [cum_wd](formulas/cum_wd.py) | 0 | 0.8012 | published: cumulative weight decay (Bordt et al. 2025), no fitted constant |
 
-Floor 0.0126. Gap from the best formula to the floor: 0.0315. Full table: [LEADERBOARD.md](LEADERBOARD.md).
+Floor 0.0126. Gap from end_z2 to the floor: 0.0315. Full table: [LEADERBOARD.md](LEADERBOARD.md).
 
-end_z2 stays the reference formula: end_z3 lowers score 1 by 0.0075 with two more constants, and the rule asks for 0.005 per constant. On the run predicted before it ran (width 2048, 12 layers, measured 0.242) end_z2 gives 0.241 and end_z3, fitted afterwards, gives 0.203.
+end_z2 is the formula to beat (★ in the leaderboard): end_z3 lowers score 1 by 0.0075 with two more constants, less than the constants rule asks ([rule 2](../README.md#rules)). On the run predicted before it ran (width 2048, 12 layers, measured 0.242) end_z2 gives 0.241 and end_z3, fitted afterwards, gives 0.203.
 
 ## Known open parts
 
@@ -95,7 +96,23 @@ end_z2 stays the reference formula: end_z3 lowers score 1 by 0.0075 with two mor
 
 ## Published work to beat
 
-No published formula predicts forgetting of facts shown mid-training from model and schedule
-settings. The closest is a power law in the number of steps since the data was seen (for example
-"How Do Large Language Models Acquire Factual Knowledge During Pretraining?", 2024). `lr_clock` is
-that idea with the learning-rate sum as the clock.
+The closest published work, with what the formulas here add:
+
+- **Power law in steps.** Chang et al. (2024), "How Do Large Language Models Acquire Factual Knowledge
+  During Pretraining?" ([arXiv:2406.11813](https://arxiv.org/abs/2406.11813)): facts fade along a power
+  law in the number of steps since they were seen. `lr_clock` is that idea with the learning-rate sum as
+  the clock.
+- **Cumulative weight decay.** Bordt et al. (ICML 2025), "How Much Can We Forget about Data
+  Contamination?" ([arXiv:2410.03249](https://arxiv.org/abs/2410.03249)): under Adam with decoupled
+  weight decay, the share of an old update left in the weights is the product of
+  (1 - learning rate × weight decay) over the later steps, and examples are forgotten at least that
+  fast. [`cum_wd`](formulas/cum_wd.py) is that formula. Here its bound holds in all 110 runs with weight
+  decay, and as a prediction it scores 0.8012. What ours adds: a number instead of a bound, and a clock
+  that needs no weight decay (265 of the 375 runs have none and still keep only 18% on average).
+- **Moving average of the learning rate.** Bergsma et al. (ICLR 2026), "Predicting Training
+  Re-evaluation Curves Enables Effective Data Curriculums for LLMs"
+  ([arXiv:2509.25380](https://arxiv.org/abs/2509.25380)): the final model's loss on each training batch,
+  against the time the batch was seen, follows the moving-average weights that the learning rate and
+  weight decay give to each step. It predicts the shape of that curve under Adam with weight decay.
+  What ours adds: the share of planted facts kept as a number, under Muon, with terms for model size
+  and run length, scored on held-out widths.

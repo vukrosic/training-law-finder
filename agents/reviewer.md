@@ -11,9 +11,9 @@ The draft, and the project files it cites: `SCORES.md`, `score1.txt`, `FREEZE.md
 ## What to check
 
 1. **The finding.** Can you say it in one sentence after reading only the title and abstract? Is it new, or does a paper in "Closest work" already give it?
-2. **Score 1.** Is the number in `score1.txt` or `problems/<name>/scores.jsonl`, with its unit (RMSE or R²) and its number of runs? Is it compared with the published formula and with the top of the leaderboard?
+2. **Score 1.** Is the number in `score1.txt` or `problems/<name>/scores.jsonl`, with its unit (RMSE or R²) and its number of runs? Is it compared with the published formula and with the formula marked ★ in the leaderboard?
 3. **Score 2.** If reported: was the predictions file frozen (sha256 and time in `FREEZE.md`) before any of its runs existed? Are misses reported as written? Are some runs outside the fit range? If not reported, does the paper say so plainly and claim nothing that needs it?
-4. **Constants.** Does each constant earn its place (it lowers score 1 by at least 0.005, `problems/README.md`)? Is the score above the problem's floor?
+4. **Constants.** Does each constant earn its place (`problems/README.md`, rule 2)? Is the score above the problem's floor?
 5. **Baselines.** Is the strongest published formula in the main table, fitted on the same rows?
 6. **Range.** Does every claim stay inside the tested range (the `Tested range:` line in `TARGET.md` or the problem README)? Is any guess about larger models labelled as a guess?
 7. **Held-out design.** Are the groups left out by a setting (for example width), not at random? Could the formula have seen the held-out runs in any way?

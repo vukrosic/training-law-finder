@@ -26,6 +26,10 @@ from datasets import load_dataset
 runs = load_dataset("vukrosic/training-laws-research", "summary", split="train")
 ```
 
+**Logins.** Reading needs no account and no token: the tables download anonymously. Uploading results
+to Hugging Face (step 2 below) needs a free Hugging Face account and a login with a write token
+(`hf auth login`, or `huggingface-cli login` on older versions). A small result set sent as a GitHub pull request needs only a GitHub account.
+
 
 ## Checkpoints
 

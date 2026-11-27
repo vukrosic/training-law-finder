@@ -21,10 +21,10 @@ The paper-writing method is in [skill/writing-conference-paper](skill/writing-co
 
 ## Open problems
 
-| problem | predict | runs | best so far (lower is better) | noise floor |
+| problem | predict | runs | best so far | noise floor |
 |---|---|---|---|---|
-| [forgetting](problems/forgetting/) | share of facts a model still knows at the end of training | 375 | 0.0441, 10 constants | 0.0126 |
-| [final-loss](problems/final-loss/) | final validation loss from the training settings | 1,163 | 0.0839, 12 constants | 0.0019 |
+| [forgetting](problems/forgetting/) | share of facts a model still knows at the end of training | 375 | ★ in the [leaderboard](problems/forgetting/LEADERBOARD.md) | 0.0126 |
+| [final-loss](problems/final-loss/) | final validation loss from the training settings | 1,163 | ★ in the [leaderboard](problems/final-loss/LEADERBOARD.md) | 0.0019 |
 
 Both are far from their floor. Rules and scoring: [problems/README.md](problems/README.md).
 
