@@ -6,6 +6,11 @@ Every knob is a flag, so a job is just a set of flags (see queue/run_jobs.py).
 The row holds the config, parameter counts, tokens seen, final validation loss
 and bits per byte, an optional loss curve, and optional planted-fact recall.
 
+--curve_points 32 (default 0 = off) adds an "lc" entry for problems/loss-curve: validation loss at 32
+evenly spaced steps (step = round(i * steps / 32), i = 1..32, so the last point is the final step), the
+schedule's lr multiplier at those steps, and the validation loss split into 4 token-frequency bands
+(token types ranked by their count in train.bin: top 1% of the vocabulary, next 9%, next 40%, rarest 50%).
+
 Learning-rate schedules (peak lr, warmup is a fraction of the steps):
     cos    warmup, then cosine from peak to min_lr_frac * peak
     const  warmup, then flat
@@ -55,6 +60,8 @@ def get_args(argv=None):
     # eval
     ap.add_argument("--eval_tokens", type=int, default=131072)
     ap.add_argument("--eval_every", type=int, default=0, help="0 = only at the end")
+    ap.add_argument("--curve_points", type=int, default=0,
+                    help="log val loss and 4 frequency-band losses at this many evenly spaced steps; 0 = off")
     # planted facts
     ap.add_argument("--facts", type=int, default=0)
     ap.add_argument("--facts_per_bin", type=int, default=64)
@@ -113,6 +120,49 @@ def evaluate(model, val_windows, val_bytes, device):
     return loss, loss / math.log(2) * n / val_bytes
 
 
+BANDS = (0.01, 0.10, 0.50, 1.00)   # cumulative share of token types, most frequent first
+
+
+def curve_steps(T, n):
+    """n evenly spaced steps in 1..T; the last one is T."""
+    return sorted({max(1, int(round(i * T / n))) for i in range(1, n + 1)})
+
+
+def token_bands(train, vocab, chunk=1 << 24):
+    """Band id (0 = most frequent) of every token id, from token counts over all of train.bin.
+    Counted in chunks so memory stays small. Token types are ranked by count; ties by id."""
+    counts = np.zeros(vocab, dtype=np.int64)
+    for i in range(0, len(train), chunk):
+        counts += np.bincount(np.asarray(train[i:i + chunk]), minlength=vocab)[:vocab]
+    order = np.lexsort((np.arange(vocab), -counts))
+    band = np.empty(vocab, dtype=np.int64)
+    lo = 0
+    for b, cum in enumerate(BANDS):
+        hi = vocab if b == len(BANDS) - 1 else max(lo + 1, int(round(cum * vocab)))
+        band[order[lo:hi]] = b
+        lo = hi
+    return band
+
+
+@torch.no_grad()
+def evaluate_bands(model, val_windows, band, device):
+    """Mean val loss over all target tokens, and per frequency band (same windows as evaluate())."""
+    model.eval()
+    nb = len(BANDS)
+    tot, cnt = np.zeros(nb), np.zeros(nb)
+    band_t = torch.from_numpy(band).to(device)
+    for i in range(0, len(val_windows), 16):
+        w = torch.from_numpy(val_windows[i:i + 16]).to(device)
+        logits = model(w[:, :-1]).float()
+        y = w[:, 1:].reshape(-1)
+        ce = F.cross_entropy(logits.reshape(-1, logits.size(-1)), y, reduction="none")
+        bid = band_t[y]
+        tot += torch.zeros(nb, device=device).index_add_(0, bid, ce).cpu().numpy()
+        cnt += torch.bincount(bid, minlength=nb).cpu().numpy()
+    model.train()
+    return float(tot.sum() / cnt.sum()), [float(t / c) if c else float("nan") for t, c in zip(tot, cnt)], cnt
+
+
 def main(argv=None):
     a = get_args(argv)
     if a.threads:
@@ -142,6 +192,13 @@ def main(argv=None):
         from facts import FactWorld
         world = FactWorld(tok, a.facts_per_bin, a.facts_kmax, a.facts_start, a.facts_end,
                           a.steps, seed=a.seed)
+
+    lc = None
+    if a.curve_points:
+        band = token_bands(data.train, vocab)
+        lc = dict(points=curve_steps(a.steps, a.curve_points), step=[], lr_mult=[], val_loss=[], band_loss=[],
+                  bands=list(BANDS))
+        lc_at = set(lc["points"])
 
     model = GPT(vocab, a.d, a.layers, a.heads, a.seq, a.ff_mult, bool(a.qk_norm)).to(device)
     opts = build_optimizers(model, a.lr, a.emb_lr, a.head_lr, a.wd)
@@ -176,6 +233,13 @@ def main(argv=None):
             if world is not None:
                 pt["facts_acc"] = world.evaluate(model, device)[0]["acc"]
             curve.append(pt)
+        if lc is not None and step + 1 in lc_at:
+            vl_all, vl_band, cnt = evaluate_bands(model, val_windows, band, device)
+            lc["step"].append(step + 1)
+            lc["lr_mult"].append(round(m, 6))
+            lc["val_loss"].append(round(vl_all, 5))
+            lc["band_loss"].append([round(x, 5) for x in vl_band])
+            lc.setdefault("band_share", [round(float(c / cnt.sum()), 5) for c in cnt])
 
     vl, bpb = evaluate(model, val_windows, val_bytes, device)
     row = dict(tag=a.tag, config={k: v for k, v in vars(a).items()
@@ -186,6 +250,9 @@ def main(argv=None):
     if curve:
         curve.append(dict(step=a.steps, val_loss=round(vl, 4)))
         row["curve"] = curve
+    if lc is not None:
+        del lc["points"]
+        row["lc"] = lc
     if world is not None:
         summary, rows = world.evaluate(model, device)
         row["facts"] = summary
