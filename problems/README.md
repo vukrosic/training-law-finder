@@ -34,7 +34,7 @@ Start a new formula from `core/formula_template.py`.
 ## Two scores
 
 - **Score 1, held-out.** The rows are split into groups (by model width). Each group is left out in turn, the formula is fit on the rest and predicts the left-out group. Score 1 is the mean RMSE over groups. A formula that only memorizes the table fails here.
-- **Score 2, predicted before the runs exist.** You commit the formula's predictions for new settings to `rounds/` before anyone trains them; then the runs are trained and compared. This is the strongest evidence a paper can have. See [rounds/README.md](../rounds/README.md).
+- **Score 2, predicted before the runs exist.** You commit the formula's predictions for new settings to `rounds/` before anyone trains them; then the runs are trained and compared. This is the strongest evidence a paper can have. See [rounds/README.md](../rounds/README.md). When you send a formula, you do not have to do this: a maintainer trains new runs at random settings inside the tested range and scores the formula on them (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 
 ## Rules
 
