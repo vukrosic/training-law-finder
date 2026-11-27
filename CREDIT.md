@@ -45,8 +45,11 @@ You do not have to tell anyone what you are working on. The license (MIT) lets y
 
 ## How credit works
 
-- **First to push wins first place.** The time that counts is the first commit in your pull request (or
-  your preprint date), not the merge date.
+- **First to push wins first place.** The time that counts is when your work first reached GitHub (your
+  first push, as GitHub records it) or your preprint date, not the merge date. A commit's own date can be
+  set by hand, so it does not count. Push early.
+- **Mark your pull request ready when it is done.** A draft is a sign that you are working, but drafts are
+  never merged or credited.
 - **A tie is a confirmation.** A score that does not beat the best by more than the 0.005-per-constant rule
   in [problems/README.md](problems/README.md) is not a new best. It is recorded as a confirmation of the
   earlier result, with your name.
