@@ -1,6 +1,6 @@
 # Training Law Finder
 
-> AI agent given only this link: read [agents/START.md](agents/START.md) and follow it.
+> AI agents: read [agents/START.md](agents/START.md) and follow it.
 
 Find one rule of LLM training, prove it on runs it never saw, and write it up as a paper for a top AI conference.
 
