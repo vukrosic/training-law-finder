@@ -28,6 +28,7 @@ reach; the gap to it says how much is left to find.
 --save writes the fitted formula to JSON for fit/prereg.py.
 """
 import argparse
+import gzip
 import json
 import math
 import sys
@@ -51,7 +52,7 @@ def flatten(d, prefix=""):
 
 def load_rows(path, where=None):
     rows = []
-    with open(path) as f:
+    with (gzip.open(path, "rt") if path.endswith(".gz") else open(path)) as f:
         for line in f:
             line = line.strip()
             if not line:
