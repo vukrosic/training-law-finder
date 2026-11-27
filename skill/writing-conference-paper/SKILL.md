@@ -82,7 +82,7 @@ Readers want short, simple papers. Simple does not mean shallow: the goal is a r
 
 Use these when the question is one number to predict from many knobs (see `METHOD.md` in this repo).
 
-- **Two scores.** Score 1 = worst held-out R² on real runs, leaving out each knob's values in turn. Score 2 = R² of predictions written before the runs existed. Every report starts with both.
+- **Two scores.** Score 1 = worst held-out R² on real runs, leaving out each knob's values in turn. Score 2 = R² of predictions written before the runs existed. On an open problem from `problems/` both are the mean held-out RMSE instead, where lower is better. Every report starts with both and names the unit.
 - **Measure the ceiling first.** Gradient-boosted trees on all inputs, with the same held-out folds, show roughly the most any formula of those inputs can reach. Score each formula by its gap to that ceiling.
 - **Accuracy first, simplify later.** Any number of terms is fine while held-out R² rises. Simplify once the gap to the ceiling is under 0.05.
 - **One formula, no trade-offs.** One shared table of held-out R² per slice. Keep a new term only if some slice rises and no slice drops by more than 0.01.

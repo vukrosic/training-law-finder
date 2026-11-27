@@ -6,8 +6,13 @@ Needs numpy and scipy. Takes about one minute on a laptop CPU. Prints three part
   1. ten constants against nine (no depth term) on seven held-out slices
   2. the formula on the readings inside each run, not only the end point
   3. a schedule picker, tested on groups of runs that differ only in schedule (and peak)
+
+    python3 drafts/forgetting-rules/next_steps_checks.py --pairs
+
+also prints the noise floor from pairs of runs with the same settings. This part reads the full run
+table (17 MB, downloaded once from Hugging Face, no login).
 """
-import collections, gzip, json, math, os, warnings
+import collections, gzip, hashlib, json, math, os, sys, warnings
 import numpy as np
 from scipy.optimize import least_squares
 from scipy.stats import spearmanr
@@ -138,3 +143,26 @@ print("\n  example menu: width 512, 8 layers, 2,048 steps, peak 8e-3, weight dec
 for k, S, name in menu(512, 8, 2048, 8e-3, 0.1, 1024):
     print(f"    {name:32s} predicted kept {100 * k:5.1f}%   S {S:.3f}")
 print("  A lower S always predicts more kept, so compare schedules that still train the model well.")
+
+if "--pairs" in sys.argv:
+    print("\nPART 4. Noise floor: runs with the same settings in the full run table")
+    sys.path.insert(0, ROOT)
+    from core.rows import RUNS, fetch
+    same = collections.defaultdict(dict)
+    for line in gzip.open(fetch(RUNS), "rt"):
+        r = json.loads(line)
+        c = r.get("cfg_all") or {}
+        if r.get("end_kept") is None or any(c.get(k) for k in ("rpfile", "pfscreen", "sm2file", "gckpt", "branches", "dwin")):
+            continue  # no facts, or a run that starts from a checkpoint or replays facts
+        key = hashlib.md5(json.dumps([c, r.get("steps"), r.get("method")], sort_keys=True).encode()).hexdigest()
+        same[key][(round(r["end_kept"], 6), r.get("train_seconds"))] = r["width"]  # one entry per run, copies dropped
+    diffs = collections.defaultdict(list)
+    for runs in same.values():
+        v = list(runs.items())
+        for i in range(len(v)):
+            for j in range(i + 1, len(v)):
+                diffs[v[i][1]].append(v[i][0][0] - v[j][0][0])
+    every = [d for ds in diffs.values() for d in ds]
+    print(f"  {len(every)} pairs of runs with the same settings differ by {100 * rmse(every):.1f} points (RMSE)")
+    for w in sorted(diffs):
+        print(f"    width {w:4d}: {len(diffs[w]):2d} pairs, {100 * rmse(diffs[w]):.1f} points")

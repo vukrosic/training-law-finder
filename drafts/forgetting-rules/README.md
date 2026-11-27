@@ -50,4 +50,5 @@ sh drafts/forgetting-rules/reproduce.sh
 - Problem and scoring: [problems/forgetting](../../problems/forgetting/), 375 runs
 - The paper's formula: [end_z2.py](../../problems/forgetting/formulas/end_z2.py), ten constants, 0.0441 on held-out widths
 - The prediction committed before the 503M run: [rounds/002-forgetting](../../rounds/002-forgetting/)
+- Closest published work: the cumulative weight decay of Bordt et al. (2025) and the moving-average weights of Bergsma et al. (2026). Both are in the paper's related work and in [problems/forgetting](../../problems/forgetting/#published-work-to-beat) with what this formula adds. The related-work text here is newer than the PDF on Zenodo.
 - Future work: [NEXT-STEPS.md](NEXT-STEPS.md) lists open directions by the hardware they need, and Table 3 of the paper lists more. Each one can be run and sent as a pull request.

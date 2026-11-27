@@ -111,7 +111,7 @@ $-0.124\,\ln\hL$ & Depth, $\hL = L/8$ layers. & It adds nothing to the score (Fi
 
 Language models are trained in phases. Code, maths or instruction data often enters at one point of a run and does not return. By the end of training the model has lost part of what it learned from that data. A person planning such a run wants to know how much will be left, before spending the compute.
 
-Published work measures this forgetting in steps. Chang et al. (2024) inject facts into pretraining and find that they are forgotten along a power law in the number of steps since they were last seen. A step count cannot be the whole story. A step at learning rate zero changes nothing, and a step at a high learning rate changes a lot. We use $S$, \textbf{the sum of the learning rate over every step after the facts}. It is known before training, because the schedule is known.
+The best-known measurement of this forgetting counts steps. Chang et al. (2024) inject facts into pretraining and find that they are forgotten along a power law in the number of steps since they were last seen. A step count cannot be the whole story. A step at learning rate zero changes nothing, and a step at a high learning rate changes a lot. We use $S$, \textbf{the sum of the learning rate over every step after the facts}. It is known before training, because the schedule is known.
 
 \textbf{The formula.} It takes settings known before training and returns the share of the facts the model still knows at the end:
 \begin{equation}
@@ -304,9 +304,11 @@ Table~\ref{tab:todo} lists the runs this paper leaves as future work. Three come
 
 \section{Related work}
 
-Chang et al. (2024) inject facts into pretraining and report a power law in the number of steps since the last exposure. With one fixed schedule, steps and $S$ are the same thing up to a factor, and they differ as soon as schedules differ. Bordt et al. (2025) relate the forgetting of benchmark examples to weight decay, and Liao et al. (2024) propose entity-level measures of forgetting. None gives a formula over training settings.
+Chang et al. (2024) inject facts into pretraining and report a power law in the number of steps since the last exposure. With one fixed schedule, steps and $S$ are the same thing up to a factor, and they differ as soon as schedules differ. Liao et al. (2024) propose entity-level measures of forgetting.
 
-Tissue et al. (2024) and Luo et al. (2025) predict the pretraining loss from the area under the learning-rate curve. Wang et al. (2025) apply the same area to the loss on an old domain during continual pretraining, which is the closest work. We use the same clock for the share of specific facts kept after a short window inside one run, under Muon (Jordan et al., 2024), with a rate fitted across model sizes and a prediction committed before its test. Kalajdzievski (2024) fits a power law for forgetting during fine-tuning.
+Two papers give a formula built on the schedule. Bordt et al. (2025) show that under Adam with decoupled weight decay the share of an old update left in the weights is the cumulative weight decay $\prod_t (1-\eta_t\lambda)$, which is close to $e^{-\lambda S}$, and they find that examples are forgotten at least that fast. It is a bound, and it needs weight decay. On our table the bound holds in all 110 runs with weight decay. Used as a prediction it is off by 80 points, because the 265 runs without weight decay also forget. Our formula uses $S$ without weight decay and returns the share kept as a number. Bergsma et al. (2026) predict the final model's loss on each training batch, against the time the batch was seen, from the moving-average weights that the learning rate and weight decay give to each step. They predict the shape of that curve under Adam with weight decay. We predict a number, the share of planted facts kept, under Muon, with terms for model size, and we score it on runs held out of the fit.
+
+Tissue et al. (2024) and Luo et al. (2025) predict the pretraining loss from the area under the learning-rate curve. Wang et al. (2025) apply the same area to the loss on an old domain during continual pretraining. We use the same clock for the share of specific facts kept after a short window inside one run, under Muon (Jordan et al., 2024), with a rate fitted across model sizes and a prediction committed before its test. Kalajdzievski (2024) fits a power law for forgetting during fine-tuning.
 
 \section{Conclusion}
 
@@ -315,6 +317,7 @@ A small transformer trained with Muon forgets facts it has stopped seeing accord
 \section*{References}
 {\raggedright
 \begin{list}{}{\setlength{\leftmargin}{1em}\setlength{\itemindent}{-1em}\setlength{\itemsep}{3pt}\setlength{\parsep}{0pt}\setlength{\topsep}{2pt}}
+\item Bergsma, S., Dey, N., and Hestness, J. (2026). Predicting training re-evaluation curves enables effective data curriculums for LLMs. In \textit{International Conference on Learning Representations (ICLR)}. arXiv:2509.25380.
 \item Bordt, S., Srinivas, S., Boreiko, V., and von Luxburg, U. (2025). How much can we forget about data contamination? In \textit{International Conference on Machine Learning (ICML)}. arXiv:2410.03249.
 \item Chang, H., Park, J., Ye, S., Yang, S., Seo, Y., Chang, D.-S., and Seo, M. (2024). How do large language models acquire factual knowledge during pretraining? In \textit{Advances in Neural Information Processing Systems (NeurIPS)}. arXiv:2406.11813.
 \item Jordan, K., Jin, Y., Boza, V., You, J., Cesista, F., Newhouse, L., and Bernstein, J. (2024). Muon: an optimizer for hidden layers in neural networks. \url{https://kellerjordan.github.io/posts/muon/}.

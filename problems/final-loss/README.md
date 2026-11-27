@@ -72,6 +72,8 @@ peak memory 1.6 GB.
 
 | formula | constants | score 1 | idea |
 |---|---|---|---|
+| [lr_area](formulas/lr_area.py) | 12 | 0.0839 | Chinchilla with the schedule's mean learning rate, plus a width bowl. The formula to beat (★ in [LEADERBOARD.md](LEADERBOARD.md)) |
+| [width_bowl](formulas/width_bowl.py) | 10 | 0.1041 | Chinchilla + a learning-rate bowl whose center and steepness move with model size |
 | [chinchilla_lr](formulas/chinchilla_lr.py) | 8 | 0.1350 | Chinchilla + a bowl in ln(learning rate) + a decay term |
 | [chinchilla](formulas/chinchilla.py) | 5 | 0.1471 | L = E + A/N^a + B/D^b (Hoffmann et al. 2022) |
 | [mean](formulas/mean.py) | 1 | 0.2994 | constant |
@@ -79,7 +81,7 @@ peak memory 1.6 GB.
 Floor 0.0019. How it is computed: group the runs that have exactly the same visible settings (36
 settings have 2 or more runs, 80 runs in all, mostly the same run on two machines), take each run's
 distance from its group mean, and report the pooled standard deviation
-sqrt(sum of squared distances / sum of (group size - 1)). The best formula is about 70 times the
+sqrt(sum of squared distances / sum of (group size - 1)). The best formula is about 44 times the
 floor away: this problem is wide open. The largest errors are at width 1024 and 768.
 
 ## Published work to beat

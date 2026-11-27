@@ -4,9 +4,9 @@ The method: find a rule of training, write it as a formula, and test it on runs 
 
 ## How a result counts
 
-- **Score 1, held out.** Fit without one model width, predict that width, repeat for every width, average the error. A formula that only memorizes the table fails.
+- **Score 1, held out.** Fit without one model width, predict that width, repeat for every width. A formula that only memorizes the table fails. On the open problems in `problems/` the score is the average error (RMSE, lower is better). On your own idea it is the worst held-out R² (higher is better). Details: [METHOD.md](METHOD.md).
 - **Score 2, predicted before the runs exist.** Commit predictions for new settings, then train them. The git commit time proves the predictions came first. This is what makes a paper convincing. See [rounds/](rounds/README.md). A formula sent to this repo needs no commit-first proof: a maintainer trains new runs at random settings and scores it on them ([CONTRIBUTING.md](CONTRIBUTING.md)).
-- **Fewer constants win ties.** Each added constant must lower the error by at least 0.005.
+- **Fewer constants win ties.** Each added constant must earn its place ([problems/README.md](problems/README.md#rules), rule 2).
 
 
 The copy-paste prompt for a coding agent is in [README.md](README.md#copy-this-prompt-to-your-ai-agent).

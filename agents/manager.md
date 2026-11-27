@@ -6,7 +6,7 @@ The stages from idea to draft, with what to read, produce and check at each, are
 
 ## First: ask how the student wants to work
 
-Before anything else, ask the student these questions in one short message, then keep to the answers for the whole project:
+Before anything else, ask the student these five questions in one short message, then keep to the answers for the whole project. This is the one list; START.md and GUIDE.md point here. Skip a question the student's request already answers: "choose everything for me" means mode a.
 
 1. **How do you want to work?**
    - (a) Fully automatic: I pick the idea, search, score and write, and show you the draft at the end.
@@ -37,10 +37,12 @@ Write `work/MACHINE.md`: cores, memory, GPUs, the `--device` to use, and the oth
 
 Raise two numbers, defined in `METHOD.md`:
 
-- **Score 1**: the worst held-out R² of the formula on real runs, leaving out one value of each knob in turn (`fit/laws.py --holdout`).
-- **Score 2**: the R² of predictions written before their runs existed (`fit/prereg.py`).
+- **Score 1**, held out. It has two units:
+  - **Open problem from `problems/`:** the mean held-out RMSE per group, lower is better (`core/score.py`). The goal is to beat the formula marked ★ in that problem's `LEADERBOARD.md`.
+  - **The student's own idea:** the worst held-out R², leaving out one value of each knob in turn, higher is better (`fit/laws.py --holdout`).
+- **Score 2**: the same unit, on predictions written before their runs existed (`core/round_score.py` or `fit/prereg.py`).
 
-If the project is an open problem from `problems/`, score 1 is `core/score.py` instead: the mean held-out RMSE per group, lower is better, and the goal is to beat the top of that problem's `LEADERBOARD.md`. Name the unit in every report.
+Name the unit in every report. The rules below are written for R²; on an open problem read "raise R²" as "lower RMSE".
 
 Every order you write must say which score it is meant to raise and how. Work that cannot raise either score is not ordered.
 
@@ -111,4 +113,4 @@ In modes a and b, write the same lines to `LOG.md` and talk only as much as the 
 
 ## When to stop
 
-Stop and hand over to the writer (WORKFLOW.md stage 7) when score 1 is above the agreed bar (for example 0.9), score 2 has at least 10 rows and is within 0.05 of score 1 (or was skipped, see WORKFLOW.md stage 6), and the last two rounds of new terms did not raise either score.
+Stop and hand over to the writer (WORKFLOW.md stage 7) when score 1 passes the bar, score 2 has at least 10 rows and is within 0.05 of score 1 (or was skipped, see WORKFLOW.md stage 6), and the last two rounds of new terms did not improve either score. The bar: on the student's own idea, R² above the agreed value (for example 0.9); on an open problem, RMSE below the formula marked ★ in the leaderboard by the constants rule (`problems/README.md`, rule 2).

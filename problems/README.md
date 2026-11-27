@@ -15,12 +15,13 @@ problems/forgetting/
   LEADERBOARD.md     built from scores.jsonl, one table per model family plus "all"
 ```
 
-Beat the best formula and you have the core of a paper.
+Beat the formula marked ★ in a leaderboard and you have the core of a paper. The leaderboard is the one
+place that holds the current best score.
 
-| problem | predict | rows | best score 1 | floor | leaderboard |
-|---|---|---|---|---|---|
-| [forgetting](forgetting/) | share of facts a model still knows at the end of training | 375 | 0.0441 (end+z2, 10 constants) | 0.0126 | [LEADERBOARD](forgetting/LEADERBOARD.md) |
-| [final-loss](final-loss/) | final validation loss from the training settings | 1,163 | 0.0839 (lr_area: mean-lr Chinchilla + width bowl, 12 constants) | 0.0019 | [LEADERBOARD](final-loss/LEADERBOARD.md) |
+| problem | predict | rows | formula to beat | floor |
+|---|---|---|---|---|
+| [forgetting](forgetting/) | share of facts a model still knows at the end of training | 375 | ★ in the [leaderboard](forgetting/LEADERBOARD.md) | 0.0126 |
+| [final-loss](final-loss/) | final validation loss from the training settings | 1,163 | ★ in the [leaderboard](final-loss/LEADERBOARD.md) | 0.0019 |
 
 ## Score it
 
@@ -39,7 +40,7 @@ Start a new formula from `core/formula_template.py`.
 ## Rules
 
 1. **Count constants.** Every number `fit()` learns counts, and the leaderboard shows the count.
-2. **Each added constant must lower score 1 by at least 0.005.** A 12-constant formula that beats a 10-constant one by 0.004 does not take the top spot.
+2. **Each added constant must lower score 1 by at least 0.005.** A 12-constant formula that beats a 10-constant one by 0.004 does not take the top spot. `core/leaderboard.py` applies this rule and marks the formula to beat with ★. This is the one place the rule is stated; other files point here.
 3. **Below the floor is noise.** The floor is the error between repeated measurements of the same setting.
 4. **Predict from settings only.** `predict()` may read the run's settings (width, steps, learning rate schedule, ...), not measurements of the run you are predicting (final loss, weight norms). `core/score.py` enforces this: `fit()` and `predict()` get rows with only the setting columns of `core/columns.yaml`. A formula that needs a measured quantity is allowed: score it with `--measured` and it goes in a separate table (the problem's own `TARGET` stays hidden).
 5. **Beat the published law.** Each problem names the published formula it must beat (Chinchilla for final loss). A new rule that does not beat it is not a finding.

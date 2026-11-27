@@ -11,17 +11,16 @@ directions, grouped by the hardware they need.
 ## Already checked (no training)
 
 Run `python3 drafts/forgetting-rules/next_steps_checks.py` to print the numbers of checks 3 to 5 from the
-public table. It takes about one minute on a laptop CPU. "Points" are percentage points of facts kept.
+public table. It takes about one minute on a laptop CPU. Add `--pairs` to also print check 2: it reads the
+full run table (17 MB, downloaded once from Hugging Face, no login). "Points" are percentage points of facts kept.
 
 | # | Check | Result |
 |---|---|---|
 | 1 | Copied rows | 25 of the 375 rows are copies of another run. Without them the held-out error is 4.3 points instead of 4.4. |
-| 2 | Noise floor | The floor of 1.3 points comes from one pair of runs with the same settings. The larger internal run log has 43 such pairs. They differ by 0.7 points. The two pairs at width 256 differ by 2.0 points. |
+| 2 | Noise floor | The floor of 1.3 points comes from one pair of runs with the same settings. The full public run table has 32 such pairs. They differ by 0.8 points. The two pairs at width 256 differ by 2.0 points. |
 | 3 | Nine constants against ten | Removing the depth term changes the held-out error by 0.3 points or less on all seven slices. Nine constants are equal or better on four of them. |
 | 4 | Inside the run | With constants fitted on end points, the error on the 36,193 readings inside the runs is 8.0 points. Fitted on all readings it is 5.7 points, but the error at the end rises from 3.8 to 5.9. |
 | 5 | Schedule picker | When only the schedule differs, the formula picks the best run in 107 of 107 groups. The plain rule "pick the lowest S" does the same. |
-
-Check 2 uses runs that are not in the public table, so the script does not print it.
 
 Check 3, held-out error in points:
 
@@ -60,7 +59,7 @@ Check 5, when the schedule and the peak learning rate both differ (34 groups):
 
 ### No training (any laptop, minutes)
 
-- A formula that beats 4.4 points on the public table. Scoring and rules: [problems/forgetting](../../problems/forgetting/).
+- A formula that beats the one marked ★ in the [leaderboard](../../problems/forgetting/LEADERBOARD.md) (4.4 points today). Scoring and rules: [problems/forgetting](../../problems/forgetting/).
 - A formula shape that fits the whole curve inside the run, not only the end point.
 - The direction of the peak learning rate at the smallest width.
 - A simpler formula. Nine constants already do the job of ten.
