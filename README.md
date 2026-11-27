@@ -53,4 +53,8 @@ All runs are small scale. The range differs per problem: each problem README has
 
 MIT: use the code, change it and keep your changes private if you like. Sending them back is welcome, not required.
 
-Discuss results and get help picking an idea: [AI Research School](https://www.skool.com/become-ai-researcher-2669).
+## Community
+
+Discussion on Discord: https://discord.gg/6AbXGpKTwN
+
+Funded by my [AI Research School](https://www.skool.com/become-ai-researcher-2669), coaching school for writing AI conference papers.
