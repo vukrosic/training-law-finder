@@ -57,4 +57,4 @@ MIT: use the code, change it and keep your changes private if you like. Sending 
 
 Discussion on Discord: https://discord.gg/6AbXGpKTwN
 
-Funded by [AI Research School](https://www.skool.com/become-ai-researcher-2669), my paid coaching school for writing AI research papers.
+Funded by my [AI Research School](https://www.skool.com/become-ai-researcher-2669), coaching school for writing AI conference papers.
