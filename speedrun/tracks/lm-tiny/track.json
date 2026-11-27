@@ -6,6 +6,39 @@
   "lower_is_better": true,
   "constraint": "flops",
   "budget": 1e14,
-  "hardware": "MacBook (M4, mps), or any machine: the FLOP count is the same everywhere",
-  "baseline": 1.932
+  "hardware": "MacBook (M4, mps), or any machine: the count is taken where you train and differs by under 1% between machines",
+  "baseline": 1.9319,
+  "counter": "all-ops-v1",
+  "size_field": "artifact_bytes",
+  "size_limit": 16000000,
+  "fair_play": {
+    "rules": [
+      "Every op counts: matrix multiplies, attention, FFT, sorts, decompositions, scans and elementwise work.",
+      "Count on a real device: the full count (--record) runs every step on the machine that trains.",
+      "16 MB: code, tokenizer and weights in one compressed file; the score is for the model loaded from it.",
+      "Training text reaches the model only through counted PyTorch steps; training the tokenizer is the one exception.",
+      "Evaluation: one forward pass per validation token, no learning at test time.",
+      "No outside weights or data."
+    ],
+    "forbidden_in_train_py": {
+      "torch\\.compile": "torch.compile hides ops from the counter",
+      "\\btriton\\b|load_inline|cpp_extension|torch\\.library": "custom kernels hide ops from the counter",
+      "is_meta|device\\.type\\s*==\\s*[\"']meta|_python_dispatch|dispatch_mode|FlopCounterMode": "code must not check whether it is being counted",
+      "from_pretrained|torch\\.hub|huggingface_hub|hf_hub|snapshot_download": "no outside weights or data",
+      "\\bimport (requests|urllib|socket|http)\\b|\\bfrom (requests|urllib|socket|http)\\b": "no network calls"
+    },
+    "required_in_train_py": {
+      "flops\\.fast_count": "count FLOPs with common/flops.py",
+      "flops\\.Meter": "support the full count (--record)",
+      "ev\\.total_nats": "score with eval.py",
+      "ev\\.load_artifact": "score the model loaded from the artifact"
+    },
+    "log_must_match": [
+      "val_bpb",
+      "flops",
+      "artifact_bytes"
+    ],
+    "val_docs": 1000,
+    "full_count_tolerance": 0.01
+  }
 }

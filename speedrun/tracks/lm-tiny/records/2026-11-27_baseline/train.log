@@ -1,10 +1,12 @@
 device mps, params 2,164,928 (1,968,320 without the embedding), budget 1e+14 FLOPs
-FLOPs per step 2.407e+11 (FlopCounterMode, of which attention 3.865e+10), steps 415, tokens 6,799,360
-FLOPs: counted 9.989e+13, 6ND 8.03e+13, 6ND + attention 9.634e+13
-step 0/415 loss 6.9315 flops 2.407e+11 time 3s
-step 100/415 loss 3.8542 flops 2.431e+13 time 105s
-step 200/415 loss 3.6756 flops 4.838e+13 time 216s
-step 300/415 loss 3.7826 flops 7.245e+13 time 330s
-step 400/415 loss 3.1901 flops 9.652e+13 time 422s
-step 414/415 loss 3.3776 flops 9.989e+13 time 435s
-result {"val_bpb": 1.932, "flops": 99892500000000.0, "budget": 100000000000000.0, "steps": 415, "tokens": 6799360, "params": 2164928, "device": "mps", "train_seconds": 434.8, "eval_seconds": 33.4, "val_tokens": 1881031, "val_bytes": 4654540}
+FLOPs per step 2.424e+11 (fast count, 0.01s), steps 412, tokens 6,750,208; total 9.986e+13, 6ND 7.972e+13, 6ND + attention 9.565e+13
+standard ops, fast count is exact
+step 0/412 loss 6.9315 flops 2.424e+11 time 1s
+step 100/412 loss 3.8570 flops 2.448e+13 time 40s
+step 200/412 loss 3.6754 flops 4.872e+13 time 79s
+step 300/412 loss 3.7552 flops 7.296e+13 time 120s
+step 400/412 loss 3.1949 flops 9.719e+13 time 158s
+step 411/412 loss 3.4096 flops 9.986e+13 time 162s
+full count 1e+14 (+0.19% vs fast) {"total": 100046204514868, "steps": 412, "step_kinds": 2, "per_step": [242830591563, 242831382475], "top_ops": {"linear_backward": 53085795778560, "linear": 26542897889280, "bmm": 15925738733568, "mm": 3615951421440, "mul": 288287884912, "_to_copy": 185657720832, "add": 100382355528, "pow": 44288114688, "sum": 44065357824, "clone": 31104958464, "div": 22924630896, "mean": 22032678912}, "unknown_heavy": {}, "nonstandard": {}}
+artifact out/model.xz: 7,896,828 bytes (limit 16,000,000)
+result {"val_bpb": 1.9319, "flops": 99860900000000.0, "budget": 100000000000000.0, "counter": "all-ops-v1", "steps": 412, "tokens": 6750208, "params": 2164928, "device": "mps", "train_seconds": 162.4, "full_count": 100046000000000.0, "artifact_bytes": 7896828, "eval_seconds": 12.5, "val_docs": 1000, "val_tokens": 1881031, "val_bytes": 4654540, "nonstandard_ops": []}

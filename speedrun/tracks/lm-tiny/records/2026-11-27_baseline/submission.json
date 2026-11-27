@@ -2,13 +2,16 @@
   "name": "baseline",
   "github": "vukrosic",
   "date": "2026-11-27",
-  "val_bpb": 1.932,
-  "flops": 9.98925e13,
+  "val_bpb": 1.9319,
+  "flops": 99860900000000.0,
   "budget": 1e14,
+  "counter": "all-ops-v1",
+  "full_count": 100046000000000.0,
+  "artifact_bytes": 7896828,
   "device": "mps (MacBook Pro M4, 16 GB)",
-  "train_seconds": 434.8,
+  "train_seconds": 162.4,
   "tokenizer": "sp1024 (default)",
   "params": 2164928,
-  "steps": 415,
-  "tokens": 6799360
+  "steps": 412,
+  "tokens": 6750208
 }
