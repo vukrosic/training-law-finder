@@ -2,9 +2,11 @@
 
 **Write top AI conference papers (NeurIPS, ICML, ICLR) with AI, autonomously, in about 5 days.**
 
-Legitimate, high-quality scientific discoveries, not a paper mill: every formula is scored on training runs it never saw, and every claim comes with the command that reproduces it. Example: [Rules for How Language Models Forget Facts During Training](https://zenodo.org/records/24575890) (draft).
+Legitimate, high-quality scientific discoveries.
 
-Your AI agent finds one rule of LLM training, proves it on new runs and writes the paper. A first discovery takes about 8 hours. Both times are targets; measured times are in [TIMES.md](TIMES.md).
+Example: [Rules for How Language Models Forget Facts During Training](https://zenodo.org/records/24575890) (draft).
+
+Your AI agent finds one rule of LLM training, proves it on new runs and writes the paper. You can guide it at every step, check in now and then, or leave it alone. A first discovery takes about 8 hours. Both times are targets; times people chose to share are in [TIMES.md](TIMES.md).
 
 > AI agents: read [agents/START.md](agents/START.md) and follow it.
 

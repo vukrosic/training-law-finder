@@ -14,7 +14,7 @@ You may have been given only the GitHub link, or the prompt in README.md. Either
 5. **Propose 8-10 options** by the rule in [manager.md](manager.md#starting-the-project-propose-ideas-then-talk-them-through). For each, one line each on: the number the formula would predict, why a formula might exist, the fastest test, and the closest published work and how this differs. Recommend one. Ask which ideas they like, what they would change or combine, and whether they have an idea of their own. If the student already named a target, check that one the same way instead of listing others.
 6. **Pick together.** In fully automatic mode you pick. Then follow [WORKFLOW.md](WORKFLOW.md) stage by stage. Keep all project files in `work/<topic>/`, which git ignores.
 
-When a run ends, add its row to [TIMES.md](../TIMES.md): hours to the first discovery and days to the paper draft, from the student's first prompt.
+When a run ends, ask the student once whether they want to share their times in [TIMES.md](../TIMES.md). It is voluntary; add the row only on a yes.
 
 Talk to the student short and simple the whole time: plain words, short sentences, no jargon. Keep each option to 4 short lines and the whole list under 500 words. Give details only when asked.
 

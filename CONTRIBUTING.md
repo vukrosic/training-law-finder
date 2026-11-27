@@ -31,6 +31,6 @@ Follow [When a question gets its own folder](problems/README.md#when-a-question-
 2. **Partial work is welcome:** a formula, a set of runs, or a negative result ("adding batch size made score 1 worse by 0.01").
 3. **A paper** also passes `python3 tools/check_paper.py <paper.md>` after the self-check in [agents/WORKFLOW.md](agents/WORKFLOW.md) (stage 8).
 
-Add your times to [TIMES.md](TIMES.md) in the same PR.
+Optional: add your times to [TIMES.md](TIMES.md).
 
 Each PR gets an AI review, then a short maintainer check. Credit: [CREDIT.md](CREDIT.md). Contributors: [CONTRIBUTORS.md](CONTRIBUTORS.md).
