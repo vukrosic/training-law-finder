@@ -5,7 +5,7 @@ The method: find a rule of training, write it as a formula, and test it on runs 
 ## How a result counts
 
 - **Score 1, held out.** Fit without one model width, predict that width, repeat for every width, average the error. A formula that only memorizes the table fails.
-- **Score 2, predicted before the runs exist.** Commit predictions for new settings, then train them. The git commit time proves the predictions came first. This is what makes a paper convincing. See [rounds/](rounds/README.md).
+- **Score 2, predicted before the runs exist.** Commit predictions for new settings, then train them. The git commit time proves the predictions came first. This is what makes a paper convincing. See [rounds/](rounds/README.md). A formula sent to this repo needs no commit-first proof: a maintainer trains new runs at random settings and scores it on them ([CONTRIBUTING.md](CONTRIBUTING.md)).
 - **Fewer constants win ties.** Each added constant must lower the error by at least 0.005.
 
 

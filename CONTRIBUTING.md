@@ -18,6 +18,11 @@ not read the run's id or the problem's target. `tools/check.py` enforces this.
 A reviewer reruns step 2. The score must match to 4 decimals. The rules (constants count, 0.005 per
 constant, floor, settings-only inputs) are in [problems/README.md](problems/README.md).
 
+That only shows the score is real. The main check is next: a maintainer trains a few new runs at random
+settings nobody has run before (inside the problem's tested range) and scores your formula on them. A
+formula fitted to the existing runs falls apart on runs that did not exist when it was written. You do not
+need to commit or timestamp predictions first.
+
 ## 2. New runs
 
 1. Train with `families/llm/testbed-facts-v1/` (or your own code, described in the PR).
@@ -51,7 +56,7 @@ You choose where your paper lives. Partial work counts: you do not have to finis
    `python3 tools/check_paper.py <paper.md>` after the self-check in
    [agents/WORKFLOW.md](agents/WORKFLOW.md) (stage 8).
 
-Each pull request gets an AI review first, then a short check by a maintainer.
+Each pull request gets an AI review first, then a short check by a maintainer. For a formula, the maintainer also runs the fresh-runs check from section 1.
 
 ## Credit
 
