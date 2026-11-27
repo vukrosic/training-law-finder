@@ -158,13 +158,15 @@ def main():
 
     model.eval()
     t1 = time.time()
-    score = ev.rollout_mse(predict_fn(model), device)
+    score = ev.score(predict_fn(model), device)
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "per_item.json"), "w") as f:
+        json.dump(score.pop("per_item"), f, separators=(",", ":"))
     peak = torch.mps.driver_allocated_memory() if device == "mps" else 0
-    result = dict(val_mse=float(f"{score:.4g}"), flops=float(f"{n_steps * step_flops:.6g}"), budget=args.budget,
+    result = dict(**score, version=ev.TRACK["version"], flops=float(f"{n_steps * step_flops:.6g}"), budget=args.budget,
                   steps=n_steps, rollouts=n_steps * ROLLOUTS, params=n_params, device=device,
                   train_seconds=round(train_time, 1), eval_seconds=round(time.time() - t1, 1),
                   mps_driver_mb=round(peak / 1e6))
-    print("result " + json.dumps(result))
+    print("result " + json.dumps(result, ensure_ascii=False))
 
 
 if __name__ == "__main__":

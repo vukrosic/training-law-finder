@@ -1,11 +1,11 @@
 # Track world-model-tiny
 
 Train the best world model you can with 1e14 training FLOPs: from 4 frames and the actions, predict the next 12
-frames of a small 2D world. Scored by rollout mean squared error on 512 fixed validation rollouts.
+frames of a small 2D world. Scored by rollout error on 512 fixed validation rollouts, on a 0-100 scale.
 
 | model | data | metric | constraint | hardware | baseline |
 |---|---|---|---|---|---|
-| action-conditioned frame predictor | `env.py`: bouncing balls and a square moved by actions, 32 x 32 RGB, generated locally | 12-frame rollout MSE, lower is better | 1e14 training FLOPs | MacBook (M4, mps); the count is the same on any machine | 0.007029 |
+| action-conditioned frame predictor | `env.py`: bouncing balls and a square moved by actions, 32 x 32 RGB, generated locally | 12-frame rollout score: 100 * MSE / MSE of repeating the last frame, lower is better | 1e14 training FLOPs | MacBook (M4, mps); the count is the same on any machine | 19.8 ± 0.9 |
 
 The name says only the model and its size (see [speedrun/](../../)); the environment, budget, hardware and metric are the ones above.
 The same rules are in `track.json`, which [common/check_submission.py](../../common/check_submission.py) reads. All tracks: [speedrun/](../../).
@@ -26,11 +26,12 @@ work out each ball's speed from 4 small frames, and its errors grow as it rolls 
 
 ## Leaderboard
 
-| val MSE | FLOPs | date | name | who | what changed |
-|---|---|---|---|---|---|
-| 0.007029 | 9.997e13 | 2026-11-27 | [baseline](records/2026-11-27_baseline/) | vukrosic | conv U-Net, 351k parameters, one-step teacher forcing, Adam |
+| score | val MSE | FLOPs | date | name | who | what changed |
+|---|---|---|---|---|---|---|
+| 19.8 ± 0.9 | 0.00704 | 9.997e13 | 2026-11-27 | [baseline](records/2026-11-27_baseline/) | vukrosic | conv U-Net, 351k parameters, one-step teacher forcing, Adam |
 
-Reference scores, no training: an empty frame 0.02487, repeating the last frame 0.03549 (`python3 eval.py`).
+Reference scores, no training (`python3 eval.py`): repeating the last frame 100.0 (MSE 0.03549), an empty frame
+70.1 (MSE 0.02487), a perfect model 0.0.
 
 ## Rules
 
@@ -40,16 +41,17 @@ Reference scores, no training: an empty frame 0.02487, repeating the last frame 
    kind. If a step does work the counter cannot see, count it and say how. Generating rollouts and evaluation are
    not part of the budget. FLOPs spent on anything that uses training rollouts (for example a pretrained encoder
    or a separate decoder) count.
-2. **Score.** `eval.rollout_mse`: mean over the 512 validation rollouts, the 12 predicted frames, 3 channels and
-   all pixels of (prediction - truth)^2, pixels in [0, 1]. Your model is a function
+2. **Score.** `eval.score`: per rollout, 100 * MSE / MSE of repeating the last frame (0.03549), averaged over
+   the 512 validation rollouts; MSE is over the 12 predicted frames, 3 channels and all pixels of
+   (prediction - truth)^2, pixels in [0, 1]. Your model is a function
    `predict(context (B, 4, 3, 32, 32), actions (B, 15)) -> (B, 12, 3, 32, 32)`; it never gets a frame it must
-   predict. Use `eval.py`, `env.py` and `common/flops.py` as they are. The score is reported to 4 significant digits.
+   predict. Use `eval.py`, `env.py` and `common/flops.py` as they are.
 3. **Data.** Train only on rollouts from `env.generate` with seeds other than `eval.VAL_SEED` (20261127). Any
    number of rollouts, any rollout length, any seeds. No network calls during training or evaluation.
 4. **Anything else is free:** model size, architecture (conv, transformer, recurrent, diffusion, latent),
    training objective (multi-step, noise, curriculum), optimizer, batch size, precision.
-5. **New record.** It must beat the current best by at least 2% (for example 0.006888 against 0.007029).
-   A maintainer reruns it before it goes on the board.
+5. **New record.** Precision, the minimum gain and the track version follow [speedrun/](../../#records); the
+   standard error comes from the 512 rollouts, so scores have 1 decimal. A maintainer reruns it before it goes on the board.
 
 ## Run
 
@@ -61,14 +63,16 @@ python3 eval.py                  # reference scores
 python3 train.py | tee train.log # cuda, then mps, then cpu
 ```
 
-The last line of the log is `result {...}` with `val_mse`, `flops`, the device and the wall time.
+The last line of the log is `result {...}` with `val_score`, `val_mse`, `flops`, the device and the wall time;
+the per-rollout scores go to `per_item.json` next to `train.py`.
 
 ## Submit
 
 Open a pull request that adds one folder, `records/<date>_<name>/`, with:
 
 1. `README.md`: what you changed and why, in a few lines.
-2. `submission.json`: `name`, `github`, `date`, `val_mse`, `flops`, `device`, `train_seconds`, `params`.
+2. `submission.json`: `name`, `github`, `date`, `version`, `val_score`, `val_score_se`, `val_mse`, `flops`,
+   `device`, `train_seconds`, `params`, plus `per_item.json` (about 3 KB).
 3. `train.log`: the log your run printed, trimmed to under 50 KB.
 4. `train.py`: the exact script. It must run with `python3 records/<date>_<name>/train.py` from this folder.
    If it needs other packages, add `requirements.txt`.

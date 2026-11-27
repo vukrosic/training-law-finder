@@ -1,4 +1,4 @@
-# Baseline: 9.15 food per game
+# Baseline: 9.1 ± 0.3 food per game
 
 PPO with a small conv net, trained with 1,998,848 of the 2,000,000 environment steps.
 
@@ -11,7 +11,8 @@ PPO with a small conv net, trained with 1,998,848 of the 2,000,000 environment s
 - FLOPs (reported, not limited): 1.941e11 per update, 4.737e13 in all (FlopCounterMode).
 
 Food per training game (last 200 games) was still rising at the end: 3.3 at 0.8M steps, 5.5 at 1.2M, 8.6 at 2M.
-The hand-written greedy policy in `eval.py` eats 17.68, and the board holds about 91.
+The hand-written greedy policy in `eval.py` eats 17.7, and the board holds about 91.
 
 Run from `speedrun/tracks/rl-tiny/`: `python3 records/2026-11-27_baseline/train.py`.
-Training took 379 s on a MacBook Pro M4 (mps); evaluation 3 s. Peak memory footprint 1.7 GB.
+Training took 420 s on a MacBook Pro M4 (mps); evaluation 2 s. Peak memory footprint 1.7 GB.
+`per_item.json` holds the food eaten in each of the 256 evaluation games.

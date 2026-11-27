@@ -69,7 +69,7 @@ The last line of the log is `result {...}` with `val_bpb`, `flops`, the device a
 Open a pull request that adds one folder, `records/<date>_<name>/`, with:
 
 1. `README.md`: what you changed and why, in a few lines.
-2. `submission.json`: `name`, `github`, `date`, `val_bpb`, `flops`, `device`, `train_seconds`, `tokenizer`, `params`.
+2. `submission.json`: `name`, `github`, `date`, `version`, `val_bpb`, `flops`, `device`, `train_seconds`, `tokenizer`, `params`.
 3. `train.log`: the log your run printed, trimmed to under 50 KB.
 4. `train.py`: the exact script. It must run with `python3 records/<date>_<name>/train.py` from this folder.
    If it needs other packages, add `requirements.txt`.

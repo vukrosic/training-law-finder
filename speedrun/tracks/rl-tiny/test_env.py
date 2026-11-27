@@ -77,6 +77,8 @@ def test_scorer():
     s2 = ev.mean_return(ev.random_policy, n=64)
     assert s1 == s2
     assert ev.mean_return(ev.greedy, n=64) > 5 * max(s1, 0.1)
+    r = ev.score(ev.random_policy)
+    assert len(r["per_item"]) == ev.EVAL_N and abs(sum(r["per_item"]) / ev.EVAL_N - r["mean_return"]) < 10 ** -ev.TRACK["decimals"]
 
 
 if __name__ == "__main__":

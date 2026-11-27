@@ -1,9 +1,9 @@
 device mps, params 350,691, budget 1e+14 FLOPs
 FLOPs per step 4.36e+10 (FlopCounterMode), steps 2293, rollouts 36,688, frames predicted 440,256
 step 0/2293 loss 0.010265 flops 4.36e+10 time 1s
-step 500/2293 loss 0.001136 flops 2.184e+13 time 49s
-step 1000/2293 loss 0.000510 flops 4.364e+13 time 104s
-step 1500/2293 loss 0.000414 flops 6.544e+13 time 159s
-step 2000/2293 loss 0.000340 flops 8.724e+13 time 205s
-step 2292/2293 loss 0.000313 flops 9.997e+13 time 230s
-result {"val_mse": 0.007029, "flops": 99974300000000.0, "budget": 100000000000000.0, "steps": 2293, "rollouts": 36688, "params": 350691, "device": "mps", "train_seconds": 230.3, "eval_seconds": 1.9, "mps_driver_mb": 1152}
+step 500/2293 loss 0.001125 flops 2.184e+13 time 54s
+step 1000/2293 loss 0.000512 flops 4.364e+13 time 111s
+step 1500/2293 loss 0.000416 flops 6.544e+13 time 168s
+step 2000/2293 loss 0.000336 flops 8.724e+13 time 219s
+step 2292/2293 loss 0.000312 flops 9.997e+13 time 242s
+result {"val_score": 19.8, "val_score_se": 0.9, "val_score_text": "19.8 ± 0.9", "val_mse": 0.00704, "version": 1, "flops": 99974300000000.0, "budget": 100000000000000.0, "steps": 2293, "rollouts": 36688, "params": 350691, "device": "mps", "train_seconds": 242.2, "eval_seconds": 2.3, "mps_driver_mb": 1152}

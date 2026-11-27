@@ -5,7 +5,7 @@ evaluation games.
 
 | model | environment | metric | constraint | hardware | baseline |
 |---|---|---|---|---|---|
-| RL agent | `env.py`: Snake on a 10 x 10 grid with random pillars, numpy, runs locally | mean food eaten per game on 256 fixed games, higher is better | 2e6 environment steps | MacBook (M4, mps) or any machine: the step count is the same everywhere | 9.15 |
+| RL agent | `env.py`: Snake on a 10 x 10 grid with random pillars, numpy, runs locally | mean food eaten per game on 256 fixed games, higher is better | 2e6 environment steps | MacBook (M4, mps) or any machine: the step count is the same everywhere | 9.1 ± 0.3 |
 
 The name says only the model and its size (see [speedrun/](../../)); the environment, budget, hardware and metric are the ones above.
 The same rules are in `track.json`, which [common/check_submission.py](../../common/check_submission.py) reads. All tracks: [speedrun/](../../).
@@ -21,14 +21,14 @@ the head hits the edge, a pillar or its own body, after 100 steps without food, 
 91 food). Each game's seed places 0 to 6 pillars and fixes where every food appears, so a seed and the actions
 always give the same game. The agent sees 4 channels of 10 x 10: pillars, food, head, and the body as age / length.
 
-Random play eats 0.12 food per game. A hand-written policy that steps towards the food and avoids walls eats 17.68
+Random play eats 0.1 food per game. A hand-written policy that steps towards the food and avoids walls eats 17.7
 (`python3 eval.py`). Eating most of the board needs planning: a long snake traps itself.
 
 ## Leaderboard
 
 | food per game | env steps | FLOPs | date | name | who | what changed |
 |---|---|---|---|---|---|---|
-| 9.15 | 1,998,848 | 4.737e13 | 2026-11-27 | [baseline](records/2026-11-27_baseline/) | vukrosic | PPO, small conv net, Adam |
+| 9.1 ± 0.3 | 1,998,848 | 4.737e13 | 2026-11-27 | [baseline](records/2026-11-27_baseline/) | vukrosic | PPO, small conv net, Adam |
 
 ## Rules
 
@@ -37,18 +37,18 @@ Random play eats 0.12 food per game. A hand-written policy that steps towards th
    world model or to tune. Evaluation games are not part of the budget. Compute is free; report your training
    FLOPs (`flops` in `submission.json`, counted with [common/flops.py](../../common/flops.py) on the `meta`
    device) so we can study how score grows with compute.
-2. **Score.** `eval.mean_return`: the mean food eaten over the 256 evaluation games (seeds 1,000,000,000 to
+2. **Score.** `eval.score`: the mean food eaten over the 256 evaluation games (seeds 1,000,000,000 to
    1,000,000,255), each played to its end. Your agent is a function `policy(obs (B, 4, 10, 10)) -> actions (B,)`.
    torch is seeded with 0 before evaluation, so a policy that samples is scored the same way each time.
-   Use `eval.py` and `env.py` as they are. The score is reported to 2 decimals.
+   Use `eval.py` and `env.py` as they are.
 3. **Environment.** Train only with `env.Snake` and seeds below `eval.EVAL_SEED`. No changes to the game, no
    reading the game's internal state (food hash, seed) in the policy: the policy gets only the observation.
    Reward shaping inside your training code is allowed; the score is always food eaten.
    No network calls during training or evaluation.
 4. **Anything else is free:** algorithm (PPO, DQN, model-based, search at training time), network, number of
    games side by side, optimizer, updates per step.
-5. **New record.** It must beat the current best by at least 5% (RL runs vary more from run to run).
-   A maintainer reruns it before it goes on the board.
+5. **New record.** Precision, the minimum gain and the track version follow [speedrun/](../../#records); the
+   standard error comes from the 256 games, so scores have 1 decimal. A maintainer reruns it before it goes on the board.
 
 ## Run
 
@@ -60,14 +60,16 @@ python3 eval.py                  # reference scores: random and hand-written
 python3 train.py | tee train.log # cuda, then mps, then cpu
 ```
 
-The last line of the log is `result {...}` with `mean_return`, `env_steps`, `flops`, the device and the wall time.
+The last line of the log is `result {...}` with `mean_return`, `env_steps`, `flops`, the device and the wall time;
+the food of each evaluation game goes to `per_item.json` next to `train.py`.
 
 ## Submit
 
 Open a pull request that adds one folder, `records/<date>_<name>/`, with:
 
 1. `README.md`: what you changed and why, in a few lines.
-2. `submission.json`: `name`, `github`, `date`, `mean_return`, `env_steps`, `flops`, `device`, `train_seconds`, `params`.
+2. `submission.json`: `name`, `github`, `date`, `version`, `mean_return`, `mean_return_se`, `env_steps`, `flops`,
+   `device`, `train_seconds`, `params`, plus `per_item.json` (under 1 KB).
 3. `train.log`: the log your run printed, trimmed to under 50 KB.
 4. `train.py`: the exact script. It must run with `python3 records/<date>_<name>/train.py` from this folder.
    If it needs other packages, add `requirements.txt`.

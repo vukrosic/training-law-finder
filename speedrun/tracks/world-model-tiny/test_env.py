@@ -4,6 +4,7 @@
 2. Balls stay inside the frame; the square moves by the action and stops at the walls.
 3. The scorer gives the numbers we can work out by hand: 0 for the true frames, the mean of the squared pixels for
    an empty frame, and it never shows the model a frame it has to predict.
+4. Repeating the last frame scores 100; the precision and the record rule in common/stats.py work on known cases.
 """
 import numpy as np
 import torch
@@ -51,10 +52,20 @@ def test_scorer():
     assert seen == [ev.CONTEXT, ev.CONTEXT]
     x = frames[:, ev.CONTEXT:].astype(np.float64) / 255
     assert abs(ev.rollout_mse(ev.black, "cpu", data=data) - (x ** 2).mean()) < 1e-12
+    r = ev.score(ev.copy_last, "cpu", data=data)
+    assert abs(sum(r["per_item"]) / 16 - 100) < 0.01 and len(r["per_item"]) == 16
+
+
+def test_stats():
+    assert [ev.stats.decimals(se) for se in (0.04, 0.4, 4, 0.099)] == [2, 1, 0, 2]
+    a = np.random.default_rng(1).normal(20, 1, 512)
+    assert not ev.stats.record_test(a - 0.01, a + np.random.default_rng(2).normal(0, 1, 512), True)[2]  # tie
+    assert ev.stats.record_test(a - 1, a, True)[2] and not ev.stats.record_test(a - 1, a, False)[2]
 
 
 if __name__ == "__main__":
     test_same_bytes()
     test_physics()
     test_scorer()
+    test_stats()
     print("world-model-tiny tests pass")

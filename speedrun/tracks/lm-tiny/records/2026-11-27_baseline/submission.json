@@ -2,6 +2,7 @@
   "name": "baseline",
   "github": "vukrosic",
   "date": "2026-11-27",
+  "version": 1,
   "val_bpb": 1.932,
   "flops": 9.98925e13,
   "budget": 1e14,

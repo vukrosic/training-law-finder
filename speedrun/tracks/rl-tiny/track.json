@@ -1,12 +1,15 @@
 {
   "name": "rl-tiny",
+  "version": 1,
   "model": "reinforcement learning agent",
   "data": "env.py: Snake on a 10 x 10 grid with 0 to 6 random pillars, numpy, runs locally",
   "metric": "mean_return",
   "lower_is_better": false,
+  "decimals": 1,
+  "eval_items": 256,
   "constraint": "env_steps",
   "budget": 2e6,
-  "fields": ["flops", "params", "train_seconds"],
+  "fields": ["mean_return_se", "version", "flops", "params", "train_seconds"],
   "hardware": "MacBook (M4, mps), or any machine: the step count is the same everywhere",
-  "baseline": 9.15
+  "baseline": 9.1
 }

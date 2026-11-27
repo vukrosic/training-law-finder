@@ -1,4 +1,4 @@
-# Baseline: 0.007029 val MSE
+# Baseline: score 19.8 ± 0.9 (val MSE 0.00704)
 
 A small conv U-Net trained with 9.997e13 of the 1e14 FLOPs.
 
@@ -17,4 +17,5 @@ The one-step training loss ends at 0.00031, but the 12-step rollout error is 0.0
 rolling forward on its own predictions, which this baseline never trains for.
 
 Run from `speedrun/tracks/world-model-tiny/`: `python3 records/2026-11-27_baseline/train.py`.
-Training took 230 s on a MacBook Pro M4 (mps); evaluation 2 s. Peak memory footprint 1.6 GB.
+Training took 242 s on a MacBook Pro M4 (mps); evaluation 2 s. Peak memory footprint 1.9 GB.
+`per_item.json` holds the score of each of the 512 validation rollouts.

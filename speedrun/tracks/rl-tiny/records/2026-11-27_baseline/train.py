@@ -160,12 +160,14 @@ def main():
 
     model.eval()
     t1 = time.time()
-    score = ev.mean_return(lambda o: model(o)[0].argmax(-1), device)
-    result = dict(mean_return=round(score, 2), env_steps=steps, budget=args.budget,
+    score = ev.score(lambda o: model(o)[0].argmax(-1), device)
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "per_item.json"), "w") as f:
+        json.dump(score.pop("per_item"), f, separators=(",", ":"))
+    result = dict(**score, version=ev.TRACK["version"], env_steps=steps, budget=args.budget,
                   flops=float(f"{n_iters * iter_flops:.6g}"), updates=n_iters, train_games=len(finished),
                   params=n_params, device=device, train_seconds=round(train_time, 1),
                   eval_seconds=round(time.time() - t1, 1))
-    print("result " + json.dumps(result))
+    print("result " + json.dumps(result, ensure_ascii=False))
 
 
 if __name__ == "__main__":
