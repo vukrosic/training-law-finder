@@ -56,6 +56,9 @@ needs `pip install -r requirements-train.txt`.
 Send a better formula, new runs or a new problem as a pull request. Every one comes with the command that
 checks it, and the leaderboard records who found what first. How: [CONTRIBUTING.md](CONTRIBUTING.md).
 
+Every posted idea is open to everyone. Want one nobody else is working on? Make a similar idea of your own,
+keep it private until your preprint is out, then send it back. Ideas, privacy and credit: [CREDIT.md](CREDIT.md).
+
 ## Read next
 
 | file | what |
@@ -63,6 +66,7 @@ checks it, and the leaderboard records who found what first. How: [CONTRIBUTING.
 | [GUIDE.md](GUIDE.md) | for students: pick one target, choose how to work, keep the AI busy |
 | [RESEARCH.md](RESEARCH.md) | how a result counts, your first training run, the worked example |
 | [IDEAS.md](IDEAS.md) | problems waiting for a folder and 60 topics a formula could answer |
+| [CREDIT.md](CREDIT.md) | who may work on which idea, how to make your own, how credit works |
 | [DATA.md](DATA.md) | the 39,598 real runs on Hugging Face, and how new runs flow in from GitHub to Hugging Face |
 | [METHOD.md](METHOD.md) | the full method |
 | [speedrun/](speedrun/) | competitions with fixed rules (tracks); the first, lm-tiny: train the best small GPT with 1e14 FLOPs, scored in bits per byte on FineWeb-Edu |

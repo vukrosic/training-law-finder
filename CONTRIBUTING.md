@@ -60,6 +60,8 @@ Each pull request gets an AI review first, then a short check by a maintainer. F
 
 ## Credit
 
+Full rules, and how to make an idea of your own that nobody else is working on: [CREDIT.md](CREDIT.md).
+
 - The leaderboard keeps the author, date and file hash of every score, so who found what first is on record.
 - A paper that uses another contributor's formula, runs or problem cites them, with a link to the leaderboard row or PR.
 - If a contributor's work is one of a paper's main claims, offer them co-authorship.

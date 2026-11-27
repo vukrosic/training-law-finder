@@ -1,6 +1,6 @@
 # Ideas to work on
 
-Pick one, or bring your own. Before you start, search for the closest published paper and say how yours differs. Open questions that are not ready for a problem folder go in an issue with the `question` label.
+Pick one, or bring your own. Every idea here is open to everyone; to get one nobody else is working on, make a similar idea of your own ([CREDIT.md](CREDIT.md)). Before you start, search for the closest published paper and say how yours differs. Open questions that are not ready for a problem folder go in an issue with the `question` label.
 
 ## Ready to start
 
