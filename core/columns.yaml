@@ -73,3 +73,15 @@ t_now:   {kind: setting, unit: steps, meaning: "steps since the fact window at t
 S_now:   {kind: setting, unit: "lr * steps", meaning: "sum of the learning rate from the window end to this reading"}
 lr_now:  {kind: setting, unit: lr, meaning: "learning rate at this reading"}
 kept_now: {kind: target, unit: ratio, meaning: "share of the learned fact bits still there at this reading, mean of 5 readings around it (target of forgetting-curve)"}
+
+# loss-curve: 32 readings of the val loss at evenly spaced steps (testbed/train.py --curve_points 32)
+lc_step:       {kind: setting, unit: "list of steps", meaning: "steps taken at the 32 readings: round(i * steps / 32), i = 1..32"}
+lc_lr:         {kind: setting, unit: "list of ratio", meaning: "lr multiplier (share of the peak) at the last step before each of the 32 readings"}
+lc_loss:       {kind: target, unit: "list of nats per token", meaning: "val loss at each of the 32 readings (target list of loss-curve)"}
+lc_band:       {kind: measured, unit: "list of 4 nats per token", meaning: "val loss at each reading for 4 token bands: top 1% of token types by train count, next 9%, next 40%, rarest 50%"}
+lc_band_share: {kind: measured, unit: "list of 4 ratio", meaning: "share of val tokens in each of the 4 bands"}
+cv_frac:       {kind: setting, unit: ratio, meaning: "position of a loss-curve reading: i / 32"}
+cv_step:       {kind: setting, unit: steps, meaning: "steps taken at this loss-curve reading"}
+cv_lr:         {kind: setting, unit: ratio, meaning: "lr multiplier at the last step before this loss-curve reading"}
+cv_area:       {kind: setting, unit: steps, meaning: "sum of the lr multiplier over the steps taken (peak * cv_area = lr area so far)"}
+cv_loss:       {kind: target, unit: nats per token, meaning: "val loss at this loss-curve reading (target of loss-curve)"}
