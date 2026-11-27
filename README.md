@@ -54,7 +54,7 @@ needs `pip install -r requirements-train.txt`.
 ## Contribute back
 
 Send a better formula, new runs or a new problem as a pull request. Every one comes with the command that
-checks it, and the leaderboard records who found what first. How: [CONTRIBUTING.md](CONTRIBUTING.md).
+checks it. How: [CONTRIBUTING.md](CONTRIBUTING.md). Credit: [CREDIT.md](CREDIT.md).
 
 ## Read next
 
