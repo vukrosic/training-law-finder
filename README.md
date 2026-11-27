@@ -21,18 +21,6 @@ Talk to me short and simple the whole time: plain words, short sentences, no jar
 Check in every 15 minutes. The agents run the search; you steer and decide what goes in the paper.
 The paper-writing method is in [skill/writing-conference-paper](skill/writing-conference-paper/SKILL.md).
 
-## Or score a formula yourself in 3 commands
-
-```bash
-git clone --depth 1 https://github.com/vukrosic/training-law-finder && cd training-law-finder
-pip install numpy scipy
-python3 core/score.py forgetting problems/forgetting/formulas/end_z2.py
-```
-
-No GPU and no training needed: each problem's data is frozen in the repo. To try your own formula, copy
-`core/formula_template.py` into `problems/forgetting/formulas/my_idea.py`, edit `fit()` and `predict()`, and
-score it the same way. To update your clone later: `git pull --rebase --autostash`.
-
 ## Open problems
 
 | problem | predict | runs | best so far (lower is better) | noise floor |
