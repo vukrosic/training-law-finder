@@ -9,6 +9,9 @@ Five AI coding-agent sessions work on one project folder, `work/<topic>/` inside
 | theory | [theory.md](theory.md) | the formula: candidates, fits, score 1, pre-registered predictions |
 | sim | [sim.md](sim.md) | an optional cheap simulator, used only while it earns its compute |
 | writer | [writer.md](writer.md) | `PAPER.md` and figures, written from finished results only |
+| reviewer | [reviewer.md](reviewer.md) | a strict ICML review of the draft, run before any pull request |
+
+The stages from idea to finished draft, and where the agent stops for the student, are in [WORKFLOW.md](WORKFLOW.md). One session can do every role.
 
 Small projects can run with two sessions: manager and theory, where theory also runs the queue. Add ops when there is more than one machine, sim when real runs take minutes, and writer once score 2 has rows.
 

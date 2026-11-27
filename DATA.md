@@ -27,6 +27,16 @@ runs = load_dataset("vukrosic/training-laws-research", "summary", split="train")
 ```
 
 
+## Checkpoints
+
+Repo: [vukrosic/training-laws-checkpoints](https://huggingface.co/vukrosic/training-laws-checkpoints)
+
+- Small runs keep no checkpoint. Their settings, results and code rerun them in minutes.
+- Runs over about 1 GPU-hour or over 100M parameters, and runs a paper cites, keep only their final
+  checkpoint. It goes to the Hugging Face model repo above, and then the local copy is deleted.
+- Checkpoints from the middle of training are never uploaded, unless a paper studies the training curve.
+
+
 ## Training text
 
 FineWeb-Edu (ODC-By), `shard_00000.parquet` of `karpathy/fineweb-edu-100b-shuffle` on Hugging Face, pinned to one revision. Documents 0-511 are validation, the rest training.

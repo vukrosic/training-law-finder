@@ -9,29 +9,17 @@ Find one rule of LLM training, prove it on runs it never saw, and write it up as
 Open Claude Code, Codex or another coding agent in an empty folder and paste:
 
 ```text
-Clone https://github.com/vukrosic/training-law-finder (if it is already cloned, run `git pull --rebase --autostash` in it first) and read README.md, RESEARCH.md, IDEAS.md, problems/README.md, METHOD.md, agents/README.md and agents/manager.md. Keep all project files in `work/<topic>/`, which git ignores, and pull again at every 15-minute check.
+Clone https://github.com/vukrosic/training-law-finder (if it is already cloned, run `git pull --rebase --autostash` in it first) and read README.md, RESEARCH.md, IDEAS.md, problems/README.md, METHOD.md, agents/README.md, agents/manager.md and agents/WORKFLOW.md. Keep all project files in `work/<topic>/`, which git ignores, and pull again at every 15-minute check.
 
 You are the manager of a research project whose goal is a paper with one new formula about AI training, tested on runs it never saw (score 1) and on runs predicted before they existed (score 2).
 
-Do not run anything yet. First propose 8-10 options: beating the leaderboard on one of the open problems in problems/, a topic from IDEAS.md, or a new idea of your own (a rule the full run tables can already answer, or one that needs new runs; `core.rows.load()` downloads those tables from Hugging Face into data/llm/ on first use). For each give one line each on: the number the formula would predict, why a formula might exist, the fastest test, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick together, then you follow agents/manager.md.
+First ask me how I want to work and how much you should talk to me (the start questions in agents/manager.md), and keep to my answers. Do not run anything yet. Then propose 8-10 options: beating the leaderboard on one of the open problems in problems/, a topic from IDEAS.md, or a new idea of your own (a rule the full run tables can already answer, or one that needs new runs; `core.rows.load()` downloads those tables from Hugging Face into data/llm/ on first use). For each give one line each on: the number the formula would predict, why a formula might exist, the fastest test, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick together (in fully automatic mode you pick), then you follow agents/WORKFLOW.md.
 
 Talk to me short and simple the whole time: plain words, short sentences, no jargon. Keep each option to 4 short lines and the whole list under 500 words. Give details only when I ask.
 ```
 
 Check in every 15 minutes. The agents run the search; you steer and decide what goes in the paper.
 The paper-writing method is in [skill/writing-conference-paper](skill/writing-conference-paper/SKILL.md).
-
-## Or score a formula yourself in 3 commands
-
-```bash
-git clone --depth 1 https://github.com/vukrosic/training-law-finder && cd training-law-finder
-pip install numpy scipy
-python3 core/score.py forgetting problems/forgetting/formulas/end_z2.py
-```
-
-No GPU and no training needed: each problem's data is frozen in the repo. To try your own formula, copy
-`core/formula_template.py` into `problems/forgetting/formulas/my_idea.py`, edit `fit()` and `predict()`, and
-score it the same way. To update your clone later: `git pull --rebase --autostash`.
 
 ## Open problems
 
