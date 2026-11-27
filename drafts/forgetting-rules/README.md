@@ -38,6 +38,8 @@ We give seven rules for how a small language model forgets facts it stops seeing
 | [paper_numbers.py](paper_numbers.py) | computes every number in the text from the public table |
 | [make_figs.py](make_figs.py) | draws the six figures |
 | [reproduce.sh](reproduce.sh) | runs all of the above, no training |
+| [NEXT-STEPS.md](NEXT-STEPS.md) | five checks already done, and open directions for anyone who wants to continue |
+| [next_steps_checks.py](next_steps_checks.py) | prints the numbers of those checks from the public table |
 
 ```text
 sh drafts/forgetting-rules/reproduce.sh
@@ -48,4 +50,4 @@ sh drafts/forgetting-rules/reproduce.sh
 - Problem and scoring: [problems/forgetting](../../problems/forgetting/), 375 runs
 - The paper's formula: [end_z2.py](../../problems/forgetting/formulas/end_z2.py), ten constants, 0.0441 on held-out widths
 - The prediction committed before the 503M run: [rounds/002-forgetting](../../rounds/002-forgetting/)
-- Future work (repeated facts, the cause, other optimizers) is Table 3 of the paper. Each row can be run and sent as a pull request.
+- Future work: [NEXT-STEPS.md](NEXT-STEPS.md) lists open directions by the hardware they need, and Table 3 of the paper lists more. Each one can be run and sent as a pull request.
