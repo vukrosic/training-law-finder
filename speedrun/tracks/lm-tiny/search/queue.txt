@@ -1,0 +1,69 @@
+# lm-tiny record search, in order. Start: python3 search/run_queue.py   (tables: --table)
+# Every run: mini size (width 64, 1 head, mlp 176, 4 layers, batch 8), 6e11 FLOPs, first 100 validation documents,
+# about 113 steps and 10-20 s on the M4, unless the line says otherwise. Baseline lrs: muon 0.05, embed 0.6,
+# head 0.008, table 0.6. Full-size artifact estimates (4 bytes per weight + 0.3 MB): base 8.96 MB, --ve 4 12.11 MB,
+# --bigram-buckets 8192 15.25 MB, 16384 x 64 13.20 MB, --vocab 4096 13.68 MB; search.py refuses anything over 15.5 MB.
+
+# r0: does the search size rank changes like a 4x budget? Mini at 6e11 already gave (old script, same math):
+# muon 0.025 2.6280 < base 2.6378 < half batch 2.6453 < muon 0.1 2.6813. The search size passes if 2.4e12 keeps that
+# order. 2.4e12 runs take about 30 s each.
+r0-base            --budget 6e11
+r0-muon0.025       --budget 6e11 --lr-muon 0.025
+r0-muon0.1         --budget 6e11 --lr-muon 0.1
+r0-half            --budget 6e11 --batch half
+r0-4x-base         --budget 2.4e12
+r0-4x-muon0.025    --budget 2.4e12 --lr-muon 0.025
+r0-4x-muon0.1      --budget 2.4e12 --lr-muon 0.1
+r0-4x-half         --budget 2.4e12 --batch half
+
+# r1 (a): value embeddings and a bigram hash table. Grid: muon lr x table lr.
+r1-ve2-m025-t03    --ve 2 --lr-muon 0.025 --lr-table 0.3
+r1-ve2-m025-t06    --ve 2 --lr-muon 0.025 --lr-table 0.6
+r1-ve2-m05-t03     --ve 2 --lr-muon 0.05 --lr-table 0.3
+r1-ve2-m05-t06     --ve 2 --lr-muon 0.05 --lr-table 0.6
+r1-ve4-m025-t03    --ve 4 --lr-muon 0.025 --lr-table 0.3
+r1-ve4-m025-t06    --ve 4 --lr-muon 0.025 --lr-table 0.6
+r1-ve4-m05-t03     --ve 4 --lr-muon 0.05 --lr-table 0.3
+r1-ve4-m05-t06     --ve 4 --lr-muon 0.05 --lr-table 0.6
+r1-bg8k-m025-t03   --bigram-buckets 8192 --lr-muon 0.025 --lr-table 0.3
+r1-bg8k-m025-t06   --bigram-buckets 8192 --lr-muon 0.025 --lr-table 0.6
+r1-bg8k-m05-t03    --bigram-buckets 8192 --lr-muon 0.05 --lr-table 0.3
+r1-bg8k-m05-t06    --bigram-buckets 8192 --lr-muon 0.05 --lr-table 0.6
+r1-bg16k-m025-t03  --bigram-buckets 16384 --bigram-dim 64 --lr-muon 0.025 --lr-table 0.3
+r1-bg16k-m025-t06  --bigram-buckets 16384 --bigram-dim 64 --lr-muon 0.025 --lr-table 0.6
+r1-bg16k-m05-t03   --bigram-buckets 16384 --bigram-dim 64 --lr-muon 0.05 --lr-table 0.3
+r1-bg16k-m05-t06   --bigram-buckets 16384 --bigram-dim 64 --lr-muon 0.05 --lr-table 0.6
+
+# r2 (b): half and quarter batch (2x and 4x the steps for the same FLOPs). Quarter batch takes about 30 s.
+r2-half-m0125      --batch half --lr-muon 0.0125
+r2-half-m025       --batch half --lr-muon 0.025
+r2-half-m05        --batch half --lr-muon 0.05
+r2-quarter-m0125   --batch quarter --lr-muon 0.0125
+r2-quarter-m025    --batch quarter --lr-muon 0.025
+r2-quarter-m05     --batch quarter --lr-muon 0.05
+
+# r3 (c): smaller model on more tokens. w128 and w160 are full-size widths; at mini they become width 42 and 54.
+r3-w128-m025-e06   --model w128 --lr-muon 0.025 --lr-embed 0.6
+r3-w128-m05-e06    --model w128 --lr-muon 0.05 --lr-embed 0.6
+r3-w128-m05-e12    --model w128 --lr-muon 0.05 --lr-embed 1.2
+r3-w160-m025-e06   --model w160 --lr-muon 0.025 --lr-embed 0.6
+r3-w160-m05-e06    --model w160 --lr-muon 0.05 --lr-embed 0.6
+r3-w160-m05-e12    --model w160 --lr-muon 0.05 --lr-embed 1.2
+r3-l3-m025-e06     --model l3 --lr-muon 0.025 --lr-embed 0.6
+r3-l3-m05-e06      --model l3 --lr-muon 0.05 --lr-embed 0.6
+r3-l3-m05-e12      --model l3 --lr-muon 0.05 --lr-embed 1.2
+
+# r4 (d): best combination. Edit these lines after r1-r3: take the winner of each round with its best lrs.
+# --ve 4 together with --bigram-buckets 8192 is 18.4 MB at full size (refused); --ve 2 with 16384 x 64 fits.
+r4-ve2-bg16k-m025      --ve 2 --bigram-buckets 16384 --bigram-dim 64 --lr-muon 0.025 --lr-table 0.3
+r4-ve2-bg16k-half-m025 --ve 2 --bigram-buckets 16384 --bigram-dim 64 --batch half --lr-muon 0.025 --lr-table 0.3
+
+# r5 (e): 4,096 vocabulary. Run python3 search/make_vocab.py first (a few minutes of cpu, writes data/sp4096/).
+r5-v4096-m025-e03  --vocab 4096 --lr-muon 0.025 --lr-embed 0.3
+r5-v4096-m025-e06  --vocab 4096 --lr-muon 0.025 --lr-embed 0.6
+r5-v4096-m05-e03   --vocab 4096 --lr-muon 0.05 --lr-embed 0.3
+r5-v4096-m05-e06   --vocab 4096 --lr-muon 0.05 --lr-embed 0.6
+
+# Confirm (not queued; about 3-7 min each, one at a time, Vuk's OK): the best 1-2 at full size, e.g.
+#   python3 search/search.py --size full --budget 1e14 --record <winning flags> --tag confirm-<name>
+# A record needs val_bpb <= 1.9269 (0.005 below the baseline 1.9319).
