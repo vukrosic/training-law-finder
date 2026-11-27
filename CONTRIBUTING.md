@@ -20,7 +20,7 @@ constant, floor, settings-only inputs) are in [problems/README.md](problems/READ
 ## 2. New runs
 
 1. Train with `families/llm/testbed-facts-v1/` (or your own code, described in the PR).
-2. Add the training script's output lines, unchanged, to a new file `data/llm/contrib/<github-name>-<date>.jsonl.gz` (under 5 MB; split larger sets). No conversion is needed: a maintainer turns them into rows of [data/llm/SCHEMA.md](data/llm/SCHEMA.md) and adds them to the Hugging Face tables at the next refresh.
+2. Add the training script's output lines, unchanged, to a new file `data/llm/contrib/<github-name>-<date>.jsonl.gz` (aim for 1 MB or less; bigger sets go to Hugging Face, see [DATA.md](DATA.md)). No conversion is needed: a maintainer turns them into rows of [data/llm/SCHEMA.md](data/llm/SCHEMA.md) and adds them to the Hugging Face tables at the next refresh.
 3. The PR lists the exact commands and the machine (GPU model or CPU).
 
 Verification: a maintainer reruns about 2% of the rows, at least one, on another machine. Same-seed
