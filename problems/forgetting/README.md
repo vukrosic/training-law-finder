@@ -79,10 +79,13 @@ peak memory 1.7 GB on mps, 0.35 GB on cpu.
 | formula | constants | score 1 | idea |
 |---|---|---|---|
 | [end_z2](formulas/end_z2.py) | 10 | 0.0441 | forgetting clock = sum of the learning rate after the window; settings shift when it starts |
+| [end_z3](formulas/end_z3.py) | 12 | 0.0366 | end_z2 plus two terms: weight decay costs more at a high peak learning rate, and learning rate spent late forgets less than the same amount spent early |
 | [lr_clock](formulas/lr_clock.py) | 2 | 0.1507 | the same clock with no settings |
 | [mean](formulas/mean.py) | 1 | 0.2177 | constant |
 
 Floor 0.0126. Gap from the best formula to the floor: 0.0315. Full table: [LEADERBOARD.md](LEADERBOARD.md).
+
+end_z2 stays the reference formula: end_z3 lowers score 1 by 0.0075 with two more constants, and the rule asks for 0.005 per constant. On the run predicted before it ran (width 2048, 12 layers, measured 0.242) end_z2 gives 0.241 and end_z3, fitted afterwards, gives 0.203.
 
 ## Known open parts
 
