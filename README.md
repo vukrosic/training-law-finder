@@ -1,8 +1,27 @@
 # Training Law Finder
 
+Write papers for top AI conferences & help solve intelligence.
+
 Find one rule of LLM training, prove it on runs it never saw, and write it up as your paper.
 
-## Start in 3 commands
+## Copy this prompt to your AI agent
+
+Open Claude Code, Codex or another coding agent in an empty folder and paste:
+
+```text
+Clone https://github.com/vukrosic/training-law-finder (if it is already cloned, run `git pull --rebase --autostash` in it first) and read README.md, RESEARCH.md, IDEAS.md, problems/README.md, METHOD.md, agents/README.md and agents/manager.md. Keep all project files in `work/<topic>/`, which git ignores, and pull again at every 15-minute check.
+
+You are the manager of a research project whose goal is a paper with one new formula about AI training, tested on runs it never saw (score 1) and on runs predicted before they existed (score 2).
+
+Do not run anything yet. First propose 8-10 options: beating the leaderboard on one of the open problems in problems/, a topic from IDEAS.md, or a new idea of your own (a rule the full run tables can already answer, or one that needs new runs; `core.rows.load()` downloads those tables from Hugging Face into data/llm/ on first use). For each give one line each on: the number the formula would predict, why a formula might exist, the fastest test, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick together, then you follow agents/manager.md.
+
+Talk to me short and simple the whole time: plain words, short sentences, no jargon. Keep each option to 4 short lines and the whole list under 500 words. Give details only when I ask.
+```
+
+Check in every 15 minutes. The agents run the search; you steer and decide what goes in the paper.
+The paper-writing method is in [skill/writing-conference-paper](skill/writing-conference-paper/SKILL.md).
+
+## Or score a formula yourself in 3 commands
 
 ```bash
 git clone --depth 1 https://github.com/vukrosic/training-law-finder && cd training-law-finder
@@ -32,7 +51,7 @@ checks it, and the leaderboard records who found what first. How: [CONTRIBUTING.
 
 | file | what |
 |---|---|
-| [RESEARCH.md](RESEARCH.md) | how a result counts, a copy-paste prompt to research with a coding agent, your first training run |
+| [RESEARCH.md](RESEARCH.md) | how a result counts, your first training run, the worked example |
 | [IDEAS.md](IDEAS.md) | problems waiting for a folder and 60 topics a formula could answer |
 | [DATA.md](DATA.md) | the 39,598 real runs on Hugging Face, and how new runs flow in from GitHub to Hugging Face |
 | [METHOD.md](METHOD.md) | the full method |
