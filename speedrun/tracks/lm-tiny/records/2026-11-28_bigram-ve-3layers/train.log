@@ -1,0 +1,6 @@
+# The full stdout of this run was not kept (search/run_queue.py discarded it then; it now saves it).
+# Command: python3 search/search.py --size full --budget 1e14 --record --bigram-buckets 16384 --bigram-dim 64 --ve 3 --model l3 --lr-muon 0.025 --lr-table 0.3 --tag c1-bg16k-ve3-l3
+# Same model and flags as records/2026-11-28_bigram-ve-3layers/train.py --record. The result line below is copied from out/search/results.jsonl.
+# train_seconds 2197 is 4.1 s per step, 10x the baseline's 0.39 s; the cause is not known yet (the Mac ran other jobs before this run).
+artifact out/search/c1-bg16k-ve3-l3.xz: 12,053,604 bytes (limit 16,000,000)
+result {"val_bpb": 1.8273, "flops": 99978200000000.0, "budget": 100000000000000.0, "counter": "all-ops-v1", "steps": 532, "tokens": 8716288, "params": 3372736, "device": "mps", "train_seconds": 2197.0, "full_count": 100179000000000.0, "artifact_bytes": 12053604, "eval_seconds": 9.6, "val_docs": 1000, "val_tokens": 1881031, "val_bytes": 4654540, "nonstandard_ops": []}

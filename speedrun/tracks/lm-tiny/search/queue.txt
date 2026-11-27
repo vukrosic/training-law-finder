@@ -53,10 +53,16 @@ r3-l3-m025-e06     --model l3 --lr-muon 0.025 --lr-embed 0.6
 r3-l3-m05-e06      --model l3 --lr-muon 0.05 --lr-embed 0.6
 r3-l3-m05-e12      --model l3 --lr-muon 0.05 --lr-embed 1.2
 
-# r4 (d): best combination. Edit these lines after r1-r3: take the winner of each round with its best lrs.
-# --ve 4 together with --bigram-buckets 8192 is 18.4 MB at full size (refused); --ve 2 with 16384 x 64 fits.
-r4-ve2-bg16k-m025      --ve 2 --bigram-buckets 16384 --bigram-dim 64 --lr-muon 0.025 --lr-table 0.3
-r4-ve2-bg16k-half-m025 --ve 2 --bigram-buckets 16384 --bigram-dim 64 --batch half --lr-muon 0.025 --lr-table 0.3
+# r4 (d): combinations. r1-r3 at mini, 6e11 (base with muon 0.025: 2.6279): bigram 16384 x 64 2.4094 (table lr 0.3),
+# value embeddings 4 layers 2.5957, 3 layers 2.6054, width 160 2.6135, half batch 2.6262. All runs use the bigram table.
+r4-bg16k-t015-m025       --bigram-buckets 16384 --bigram-dim 64 --lr-muon 0.025 --lr-table 0.15
+r4-bg32k-d32-t03-m025    --bigram-buckets 32768 --bigram-dim 32 --lr-muon 0.025 --lr-table 0.3
+r4-bg16k-ve4-m025        --bigram-buckets 16384 --bigram-dim 64 --ve 4 --lr-muon 0.025 --lr-table 0.3
+r4-bg16k-l3-m025         --bigram-buckets 16384 --bigram-dim 64 --model l3 --lr-muon 0.025 --lr-table 0.3
+r4-bg16k-l3-m05          --bigram-buckets 16384 --bigram-dim 64 --model l3 --lr-muon 0.05 --lr-table 0.3
+r4-bg16k-ve3-l3-m025     --bigram-buckets 16384 --bigram-dim 64 --ve 3 --model l3 --lr-muon 0.025 --lr-table 0.3
+r4-bg16k-ve3-l3-m05      --bigram-buckets 16384 --bigram-dim 64 --ve 3 --model l3 --lr-muon 0.05 --lr-table 0.3
+r4-bg16k-half-m0125      --bigram-buckets 16384 --bigram-dim 64 --batch half --lr-muon 0.0125 --lr-table 0.3
 
 # r5 (e): 4,096 vocabulary. Run python3 search/make_vocab.py first (a few minutes of cpu, writes data/sp4096/).
 r5-v4096-m025-e03  --vocab 4096 --lr-muon 0.025 --lr-embed 0.3
@@ -64,6 +70,17 @@ r5-v4096-m025-e06  --vocab 4096 --lr-muon 0.025 --lr-embed 0.6
 r5-v4096-m05-e03   --vocab 4096 --lr-muon 0.05 --lr-embed 0.3
 r5-v4096-m05-e06   --vocab 4096 --lr-muon 0.05 --lr-embed 0.6
 
+# r6: 4,096 vocabulary with the r4 winners. r5 (vocab 4096 alone, muon 0.025, embed 0.6): 2.4287 at 77 steps.
+# Value-embedding tables are vocab x width, so with 4,096 tokens only small combinations fit 15.5 MB at full size.
+r6-v4096-l3-m025          --vocab 4096 --model l3 --lr-muon 0.025
+r6-v4096-l3-bg16kd32-m025 --vocab 4096 --model l3 --bigram-buckets 16384 --bigram-dim 32 --lr-muon 0.025 --lr-table 0.3
+r6-v4096-l3-ve1-m025      --vocab 4096 --model l3 --ve 1 --lr-muon 0.025 --lr-table 0.3
+r6-v4096-bg8kd32-m025     --vocab 4096 --bigram-buckets 8192 --bigram-dim 32 --lr-muon 0.025 --lr-table 0.3
+r6-v4096-ve1-m025         --vocab 4096 --ve 1 --lr-muon 0.025 --lr-table 0.3
+
 # Confirm (not queued; about 3-7 min each, one at a time, Vuk's OK): the best 1-2 at full size, e.g.
 #   python3 search/search.py --size full --budget 1e14 --record <winning flags> --tag confirm-<name>
 # A record needs val_bpb <= 1.9269 (0.005 below the baseline 1.9319).
+
+# Confirm runs at full size, 1e14, whole validation set, artifact saved and scored from the file (about 3-4 min each).
+c1-bg16k-ve3-l3   --size full --budget 1e14 --record --bigram-buckets 16384 --bigram-dim 64 --ve 3 --model l3 --lr-muon 0.025 --lr-table 0.3

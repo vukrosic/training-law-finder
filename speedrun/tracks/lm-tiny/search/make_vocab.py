@@ -20,7 +20,7 @@ from prepare_data import BOS, DATA, SHARD_TOKENS  # noqa: E402
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--vocab", type=int, default=4096)
-    ap.add_argument("--train-docs", type=int, default=40000, help="documents used to train the tokenizer")
+    ap.add_argument("--train-docs", type=int, default=20000, help="documents used to train the tokenizer")
     a = ap.parse_args()
     import sentencepiece as spm
     out = os.path.join(DATA, f"sp{a.vocab}")
@@ -33,7 +33,7 @@ def main():
         sentence_iterator=lines, model_prefix=model[:-len(".model")],
         model_type="bpe", vocab_size=a.vocab, byte_fallback=True, character_coverage=0.9995,
         normalization_rule_name="identity", add_dummy_prefix=False, remove_extra_whitespaces=False,
-        split_digits=True, unk_id=0, bos_id=BOS, eos_id=-1, pad_id=-1, input_sentence_size=4_000_000,
+        split_digits=True, unk_id=0, bos_id=BOS, eos_id=-1, pad_id=-1, input_sentence_size=2_000_000,
         shuffle_input_sentence=True, max_sentence_length=16384, num_threads=4, minloglevel=2)
     pd.encode(val, model).tofile(os.path.join(out, "val.bin"))  # encode() checks the text comes back exactly
     toks = pd.encode(train, model)
