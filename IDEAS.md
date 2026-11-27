@@ -9,7 +9,7 @@ The two open problems in [problems/](problems/README.md) have data, a scoring co
 ## Waiting for a folder
 
 Problems that the current data can already start on, waiting for a folder: fact memorization
-(bits stored per repeat count, `bits_by_k`), best learning rate per width, schedule shape at a fixed
+(bits stored per repeat count, `bits_by_k`), best learning rate per width (one number per sweep, not per run: see [GUIDE.md](GUIDE.md#1-pick-one-target)), schedule shape at a fixed
 learning-rate sum, mixture-of-experts load balance. Pull requests welcome.
 
 <details>

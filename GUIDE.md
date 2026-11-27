@@ -7,7 +7,9 @@ An AI coding agent trains small models, searches for a formula and writes the pa
 A target is one number about training that a formula should predict. Pick one of these:
 
 - An open problem from [problems/](problems/README.md): **forgetting** (how many facts a model still knows at the end of training) or **final-loss** (the final loss, from the training settings). Data and scoring are ready.
-- One direction from [IDEAS.md](IDEAS.md), for example "the best learning rate for each model width".
+- One direction from [IDEAS.md](IDEAS.md), for example "how large the weights grow during training".
+
+A target must be one number per run, because the scorers compare one predicted value with one measured value for each run. "The best learning rate for each model width" is one number per sweep of runs, not per run, so it cannot be scored as it is. Predict the loss of each run instead, and read the best learning rate off the formula.
 
 One target per paper. Two targets split the work, and neither gets done.
 
@@ -17,7 +19,7 @@ Not sure? Skip this step. The AI proposes 8-10 targets and recommends one.
 
 Paste the prompt from the [README](README.md#copy-this-prompt-to-your-ai-agent) into your coding agent, or just give it the link to this repo.
 
-The AI first asks a few questions: how you want to work, how much it should talk, whether you are a beginner or an experienced researcher, and which decisions you want to make yourself. Then it lists targets. Name yours, even if it is not on the list.
+The AI first asks a few questions: how you want to work, how much it should talk, whether you are a beginner or an experienced researcher, whether to open a public "Working on" issue on GitHub so others see your topic, and which decisions you want to make yourself. Then it lists targets. Name yours, even if it is not on the list.
 
 ## 3. Choose how to work
 
@@ -65,11 +67,13 @@ If the score did not move for 2-3 check-ins, say: "The direction is stuck. Propo
 
 ## 6. Optional: a watcher AI
 
-For long runs or several machines, open a second AI session in the same folder. It only keeps the machines busy; the first AI still decides what runs. Paste this, with your topic name:
+For long runs or several machines, open a second AI session inside the `training-law-finder` folder (the clone, not the empty folder you started in). It only keeps the machines busy; the first AI still decides what runs. Run `ls work/` there to see your topic name. Paste this, with that name:
 
 ```text
 You are the watcher for work/<topic>/ in training-law-finder. Read agents/watcher.md and agents/ops.md and follow them. Every 15 minutes, check that every machine is busy, restart crashed runs at a smaller size, and report in work/<topic>/LOG.md. Tell me only when a machine stays idle and you cannot fix it.
 ```
+
+An AI session has no clock: it acts only when you send a message. To make the checks repeat, use your agent's loop feature (in Claude Code: `/loop 15m` followed by the prompt) or paste the prompt again every 15 minutes.
 
 ## 7. Before you share
 

@@ -126,7 +126,7 @@ def main(argv=None):
     ap.add_argument("--data", default="fineweb", choices=list(DATASETS))
     ap.add_argument("--split", default="val", choices=["val", "test"], help="test only for final numbers")
     ap.add_argument("--size", default="S", choices=list(SIZES))
-    ap.add_argument("--device", default="cpu", help="cpu or cuda; the only change for a GPU run")
+    ap.add_argument("--device", default="cpu", help="cpu, cuda, mps, or auto (cuda, then mps, then cpu)")
     ap.add_argument("--tag", default="")
     ap.add_argument("--out", default="")
     a = ap.parse_args(argv)
@@ -145,6 +145,9 @@ def main(argv=None):
     cfg = types.SimpleNamespace(**c)
     cfg.l1_coeff_state = [cfg.l1_init]
     torch.manual_seed(cfg.seed)
+    if a.device == "auto":   # NVIDIA GPU, then Mac GPU, then CPU; the row records the device used
+        a.device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+        print(f"device {a.device}", flush=True)
     dev = torch.device(a.device)
     model = GPT(cfg).to(dev)
     total, active = model.count_params()

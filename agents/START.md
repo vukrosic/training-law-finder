@@ -6,6 +6,7 @@ Runs are small scale, so a laptop is enough. You are the student's AI agent and 
 
 You may have been given only the GitHub link, or the prompt in README.md. Either way, do these steps in order.
 
+0. **Resume or role first.** If the student pasted a role prompt (for example the watcher prompt from GUIDE.md), follow that role's file (for example [watcher.md](watcher.md)) and skip the steps below. If `work/STUDENT.md` or `work/*/STUDENT.md` exists, a project is already running: read it, `work/MACHINE.md` and the last lines of `work/<topic>/LOG.md`, then pick up where it stopped. Do not ask the start questions again and never overwrite STUDENT.md. If you cannot run commands, tell the student to open Claude Code or Codex and paste the prompt from README.md.
 1. **Get the repo.** Clone https://github.com/vukrosic/training-law-finder. If it is already cloned, run `git pull --rebase --autostash` in it. Pull again at every 15-minute check.
 2. **Read** README.md, GUIDE.md, RESEARCH.md, IDEAS.md, problems/README.md, METHOD.md, agents/README.md, agents/manager.md and agents/WORKFLOW.md. GUIDE.md is what the student reads; it tells you what they expect from you.
 3. **Ask the start questions** in [manager.md](manager.md#first-ask-how-the-student-wants-to-work), all in one short message: how they want to work, how much you should talk, beginner or experienced researcher, and which decisions they keep. Keep to the answers for the whole project and write them to `work/STUDENT.md`. Do not train anything yet.

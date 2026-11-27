@@ -25,8 +25,10 @@ python3 -I env/train.py --method dense --data fineweb_v1024 --steps 1024 \
 ```
 
 Give all overrides after one `--set`: a second `--set` replaces the first. This run takes about
-160 s on a laptop CPU. Keep `--steps` at 1024 or more with these facts: shorter runs cannot fit
-64 facts x up to 128 repeats into the window and stop with "too many bios per step".
+160 s on a laptop CPU. `--device auto` uses an NVIDIA GPU, then a Mac GPU (mps), then the CPU. If a
+run stops with "too many bios per step", the window cannot fit 64 facts x up to 128 repeats: use more
+steps or a larger batch (512 steps works with batch 64). To match a row of a problem's frozen data,
+use the command in that problem's README (`problems/final-loss/README.md`, `problems/forgetting/README.md`).
 
 `--set key=value` overrides any config field (`env/train.py` lists them: width `d_model`,
 `n_layers`, `lr`, `sched`, `min_lr_frac`, `mwd`, ...). Each run appends one JSON line with the
