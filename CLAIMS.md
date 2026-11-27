@@ -1,6 +1,7 @@
 # Claims for students
 
-22 claims from the data already in this repo, each sized for one paper. They are ranked by strength of
+22 claims from the data already in this repo, each sized for one paper. Each claim is stated boldly
+enough to fail. If it fails, the backup formula still gives a paper: fit it, score it, report the result. They are ranked by strength of
 evidence: matched pairs and held-out runs first, single groups last. All runs are small scale (widths 24-2048,
 1-12 layers, up to 16,384 steps, mostly Muon). Say "small scale" in any paper built on them.
 
@@ -25,18 +26,23 @@ problem (375 runs) never saw.
 
 Test plans use one run per setting. No seeds and no repeated runs.
 
+## Picking a claim
+
+Pick any claim; all are open to everyone. Check open PRs and `LEADERBOARD.md` first. Credit follows
+[CREDIT.md](CREDIT.md): whoever pushes to GitHub or posts a preprint first gets it. A result within the noise
+floor of a listed formula is a confirmation, credited with your name.
+
 ---
 
 ## C01. Depth changes loss but not forgetting
 
-**Claim:** Going from 3 to 6 layers lowers final loss by 0.042 in 134 of 144 matched pairs, while kept moves
-by only +0.005.
+**Claim:** Depth does not move forgetting: at any width, a doubling of depth changes kept by less than 0.01, while it lowers loss in over 90% of matched pairs (3→6 layers: loss −0.042 in 134 of 144 pairs, kept +0.005).
 
 **Evidence:** Every depth step lowers loss (1→2: 54/54 pairs, 2→3: 57/58, 6→8: 51/52). Kept changes by
 −0.002 to +0.012 at each step. 386 pairs in all. `python3 tools/claims_fits.py pairs layers`
 
-**How to test it:** Fix width 256, cosine, peak 8e-3. Train 1, 2, 4, 8 and 12 layers, one run each. The claim
-fails if kept moves by more than 0.03 across them while loss falls.
+**How to test it:** Width 256 and 1024, cosine, peak 8e-3. Train 1, 2, 4, 8 and 12 layers, one run each. The
+claim fails if kept moves by more than 0.01 between neighbouring depths.
 
 **Backup if it fails:** Fit kept = 1/(1+exp(q(z + ln S))) with z linear in ln(layers) and report the depth
 slope; the frozen end_z2 has a ln(layers/8) term of −0.12.
@@ -48,12 +54,12 @@ models forget less), arXiv:2605.26097. We add depth at fixed width, with loss an
 
 ## C02. Batch and sequence length set the forgetting clock
 
-**Claim:** Scaling the clock to S·(batch/64)^−0.19·(seq/64)^0.13 cuts the held-out error of the frozen end_z2
-formula from 0.061 to 0.049 on 556 unseen runs, with only 2 new constants.
+**Claim:** Batch and sequence length act only through the clock: with S·(batch/64)^−0.19·(seq/64)^0.13 and these 2 exponents fixed, the frozen end_z2 formula predicts any batch and sequence length to within 0.05 RMSE (0.049 on 556 unseen runs, down from 0.061).
 
 **Evidence:** Fit the 2 exponents on a random half of the unseen runs, score the other half. Extrapolation:
 width>128 0.115→0.084, seq>256 0.108→0.076. The batch term alone gives 0.053; the seq term adds 0.0046, just
-under the 0.005 rule on this split. `python3 tools/claims_fits.py batchseq`
+under the 0.005 rule on this split. Weak spot: fit on batch ≤64 and tested above 64, the error rises
+(0.0527 → 0.0546). `python3 tools/claims_fits.py batchseq`
 
 **How to test it:** 8 runs at width 256, 6 layers, batch 32 and 256 crossed with seq 128 and 512, two peaks.
 Write the predictions with `core/predict.py` before training. Fails if the error is not below the frozen
@@ -69,10 +75,11 @@ in steps and batch), arXiv:2505.13738. We add explicit exponents on the learning
 
 ## C03. WSD buys lower loss with fewer kept facts
 
-**Claim:** Warmup-stable-decay beats cosine on final loss by 0.037 in 107 of 113 matched pairs but keeps 8.5
-points fewer early facts.
+**Claim:** WSD pays for its lower loss in facts: it keeps fewer early facts than cosine in every matched setting, by about 8.5 points, while its loss is 0.037 lower (107 of 113 pairs).
 
-**Evidence:** Same width, depth, peak, steps and window. `python3 tools/claims_fits.py pairs sched`
+**Evidence:** Same width, depth, peak, steps and window. `python3 tools/claims_fits.py pairs sched`. Matching on
+width, layers, batch, seq, steps, peak, weight decay, final lr and window only, WSD keeps fewer facts in 156 of
+156 pairs.
 
 **How to test it:** 6 pairs (cosine vs WSD) at widths 128, 512 and 1024, two peaks. Fails if WSD keeps as many
 facts as cosine in 4 or more pairs.
@@ -86,8 +93,7 @@ fit, for example the share of S spent above half the peak.
 
 ## C04. One learning-rate clock predicts forgetting
 
-**Claim:** kept = 1/(1+exp(q(z + ln S))) with 10 constants scores 0.0441 held-out RMSE on 375 runs, against
-0.2177 for the mean and 0.8012 for the cumulative weight-decay rule.
+**Claim:** One number predicts forgetting, the sum of the learning rate after the facts (S): kept = 1/(1+exp(q(z + ln S))) with 10 constants scores 0.0441 held-out on 375 runs, against 0.2177 for the mean and 0.8012 for the cumulative weight-decay rule, and stays within 0.05 at width 1024 and above.
 
 **Evidence:** `python3 core/score.py forgetting problems/forgetting/formulas/end_z2.py` (floor 0.0126).
 Posted in the draft paper (doi:10.5281/zenodo.24575889).
@@ -105,15 +111,16 @@ arXiv:2207.00099.
 
 ## C05. The frozen forgetting formula transfers to unseen runs
 
-**Claim:** end_z2, frozen on 375 runs, predicts 1,103 unseen runs with RMSE 0.065 (0.042 at batch 64 and seq 64).
+**Claim:** Frozen end_z2 needs no refit at batch 64 and seq 64: it scores 0.039 RMSE on 443 unseen runs there, near its in-sample 0.0375, against 0.065 over all 1,103 unseen runs.
 
 **Evidence:** Errors grow with batch away from 64 (batch 16: bias +0.062; batch 1024: −0.087), with seq (seq 2048:
 +0.090) and at widths 192-512 (0.10-0.15).
 `python3 core/predict.py forgetting work/claims/forget_new/settings.jsonl problems/forgetting/formulas/end_z2.py > work/claims/forget_new/predictions.jsonl`
 then `python3 core/round_score.py work/claims/forget_new`.
 
-**How to test it:** Commit predictions for a new round (rounds/README.md) at widths 192-512 and batch 64. Fails
-if RMSE is above 0.08.
+**How to test it:** Commit predictions for a new round (rounds/README.md) at widths 128-2048, batch 64, seq 64.
+Fails if RMSE is above 0.05. Current width groups there: 0.054 at width 128, 0.058-0.070 at 512 and above, so
+it may fail.
 
 **Backup if it fails:** Add the C02 clock terms, then a width-by-peak term.
 
@@ -124,8 +131,7 @@ formula scored on unseen runs.
 
 ## C06. The area under the learning-rate curve predicts final loss
 
-**Claim:** lr_area (12 constants) scores 0.0839 held-out RMSE on 1,163 runs, against 0.1471 for the Chinchilla
-form E + A/N^a + B/D^b.
+**Claim:** Final loss depends on the schedule only through the area under the learning-rate curve: lr_area (12 constants) scores 0.0839 held-out on 1,163 runs, against 0.1471 for the Chinchilla form E + A/N^a + B/D^b, and keeps that lead at width 1024 and above.
 
 **Evidence:** `python3 core/score.py final-loss problems/final-loss/formulas/lr_area.py` (floor 0.0019).
 
@@ -140,9 +146,7 @@ chinchilla_lr (0.1350) on them.
 
 ## C07. Facts fade as a power of the learning-rate sum
 
-**Claim:** Inside a run, kept = (1 + S_t/s0)^−q extrapolates forward in time with median error 0.018 over 1,452
-runs, against 0.023 for a stretched exponential; in the Hill form the steepness q stays 1.0-1.2 at every width
-from 24 to 2048.
+**Claim:** Forgetting inside a run follows one law at every size: kept = 1/(1+(S_t/s0)^q) with q between 0.9 and 1.3 at any width (1.0-1.2 from width 24 to 2048, 1,452 runs); the power form (1 + S_t/s0)^−q forecasts forward with median error 0.018, against 0.023 for a stretched exponential.
 
 **Evidence:** Fit on the first 70% of readings per run, score on the last 30%. Hill with free q: 0.019; Hill with
 q=1: 0.022. `python3 tools/claims_fits.py curveshape`
@@ -158,8 +162,7 @@ fine-tuning), arXiv:2207.00099.
 
 ## C08. A final learning rate of 10% trades facts for loss
 
-**Claim:** Ending at 10% of peak instead of 0 lowers loss by 0.010 in 111 of 180 matched pairs but keeps 4.4
-points fewer facts; a constant schedule loses in loss in 79 of 79 pairs.
+**Claim:** Any final learning rate above zero costs facts: kept falls steadily as the final lr rises from 0 to the peak (−4.4 points at 10%, −22 points at 100%), while loss is lowest near 10% (−0.010 in 111 of 180 pairs; a constant schedule loses in 79 of 79).
 
 **Evidence:** `python3 tools/claims_fits.py pairs min_lr_frac`
 
@@ -175,8 +178,7 @@ given weight on facts.
 
 ## C09. Weight decay 0.1 trades facts for loss
 
-**Claim:** Weight decay 0.1 instead of 0 lowers loss by 0.024 in 90 of 128 matched pairs but keeps 4.6 points
-fewer facts; weight decay 1.0 is worse than 0.3 in loss in 24 of 24 pairs.
+**Claim:** Weight decay always costs facts: kept falls steadily as weight decay rises from 0 (−4.6 points at 0.1), while loss is lowest between 0.1 and 0.3 (0.1 beats 0 in 90 of 128 pairs; 1.0 loses to 0.3 in 24 of 24).
 
 **Evidence:** `python3 tools/claims_fits.py pairs wd`. The draft paper's rule 5 (weight decay speeds
 forgetting) covers the kept side.
@@ -193,7 +195,7 @@ helps plasticity), arXiv:2405.13698.
 
 ## C10. Small batch hurts loss and memory together
 
-**Claim:** At equal steps, batch 16 → 64 lowers loss by 0.39 and raises kept by 9.3 points in 9 of 9 matched pairs.
+**Claim:** Below batch 64, each doubling of batch at equal steps lowers loss and raises kept in at least 95% of matched pairs (16→64: loss −0.39, kept +9.3 points, 9 of 9).
 
 **Evidence:** 16→32: loss lower in 20/20, kept +2.3 points; 32→64: 22/23, +2.7 points. Above 64 the loss
 result is mixed (64→128 worse in 103/121 pairs, 128→256 better in 103/103), so the claim stops at 64.
@@ -209,7 +211,7 @@ result is mixed (64→128 worse in 103/121 pairs, 128→256 better in 103/103), 
 
 ## C11. Longer sequences forget more at the same steps
 
-**Claim:** At batch 64 and 128 with peak 8e-3, seq 64 → 1024 cuts kept from 0.14 to 0.04 and from 0.16 to 0.05.
+**Claim:** Longer training sequences forget more at equal steps: kept falls 3-4 times from seq 64 to 1024 (0.14 → 0.04 at batch 64, 0.16 → 0.05 at batch 128, peak 8e-3).
 
 **Evidence:** Mixed: flat at batch 16 and 32, and rising at peak 3.2e-2 and batch 64 (0.09 → 0.16). Pooled
 pairs: seq 256→1024 kept −3.5 points (12 pairs). The C02 seq exponent is +0.13. `python3 tools/claims_fits.py pairs seq`
@@ -226,8 +228,7 @@ sequence length.
 
 ## C12. The batch past which more batch stops saving facts grows with width
 
-**Claim:** At width 64-256, kept stops rising after batch 128-256; at width 512 it keeps rising to batch 1024
-(0.278 at batch 64 → 0.487).
+**Claim:** The batch size that saturates fact retention grows with width: kept stops rising after batch 128-256 at width 64-256, but still rises at batch 1024 at width 512 (0.278 at batch 64 → 0.487).
 
 **Evidence:** Cosine, peak 8e-3, 3 layers, seq 64. Width 64: 0.162-0.170 from batch 128 to 1024. Width 1024:
 0.262 → 0.440 from batch 64 to 512. `python3 tools/claims_fits.py batchwidth`
@@ -243,7 +244,7 @@ not model size). Our direction conflicts with them; their setting varies model s
 
 ## C13. A learning-rate cooldown does not bring facts back
 
-**Claim:** In 188 WSD runs, kept falls from 0.23 to 0.07 during the final decay and rises in only 23% of runs.
+**Claim:** A learning-rate cooldown never brings facts back: kept falls during the final decay of WSD runs (0.23 → 0.07 over 188 runs), and no run gains more than 0.03.
 
 **Evidence:** The flat stretch before it drops kept from 0.43 to 0.23 with a similar lr sum (1.13 vs 1.18).
 The loss falls in the decay; the facts do not return. `python3 tools/claims_fits.py decay`
@@ -259,12 +260,13 @@ Fails if kept rises by more than 0.03 in the decay.
 
 ## C14. Facts shown later are kept more
 
-**Claim:** Facts shown in a later window keep 35.6% against 10.7% for an early window, in 83 of 83 pairs.
+**Claim:** Window position acts only through S: at equal S, facts shown early and late are kept equally. Without matching S, a later window keeps 35.6% against 10.7% (83 of 83 pairs).
 
 **Evidence:** Draft paper rule 6 (doi:10.5281/zenodo.24575889). S is smaller for the later window, which C04
 already uses.
 
-**How to test it:** 3 windows (20%, 50%, 80% of steps) at width 512. Fails if kept does not rise with window position.
+**How to test it:** 3 windows (20%, 50%, 80% of steps) at width 512, with the peak set so S is equal. Fails if
+kept differs by more than 0.03.
 
 **Backup if it fails:** Fit kept against S only and check if window position adds anything at fixed S.
 
@@ -274,8 +276,7 @@ already uses.
 
 ## C15. Flat then linear decay beats cosine
 
-**Claim:** A flat schedule with a linear decay over the last 20% beats cosine on final loss in 105 of 109 pairs;
-cosine to 10% beats cosine to 0 in 91 of 153.
+**Claim:** Flat then linear decay over the last 20% beats cosine on final loss at every width (105 of 109 pairs so far); cosine to 10% beats cosine to 0 (91 of 153).
 
 **Evidence:** Posted on the direction-tree branch (TREE.md).
 
@@ -289,8 +290,7 @@ cosine to 10% beats cosine to 0 in 91 of 153.
 
 ## C16. Under Muon the best learning rate falls as width^−0.64
 
-**Claim:** The best peak learning rate scales as width^−0.64 in sweeps and width^−0.67 in the fit; depth shows no
-clear effect.
+**Claim:** Under Muon the best peak learning rate follows width^−0.64 to within a factor of 1.5 out to width 4096, and depth does not move it (−0.64 in sweeps, −0.67 in the fit).
 
 **Evidence:** Posted on the direction-tree branch (TREE.md) and final-loss-findings.
 
@@ -305,11 +305,12 @@ a factor of 1.5.
 
 ## C17. Fact recall is log-linear in repeats and size
 
-**Claim:** Recall falls by 0.61 bits per doubling of repeats and 1.46 bits per doubling of model size, held-out 4.84 bits.
+**Claim:** Fact recall is log-linear in repeats and size with no interaction: −0.61 bits per doubling of repeats and −1.46 bits per doubling of model size, held-out 4.84 bits.
 
 **Evidence:** Posted on the direction-tree branch (TREE.md).
 
-**How to test it:** 3 repeat counts at width 2048. Fails if the slope leaves 0.4-0.8 bits.
+**How to test it:** 3 repeat counts at width 2048. Fails if the slope leaves 0.4-0.8 bits or an interaction
+term lowers the held-out error.
 
 **Backup if it fails:** Fit bits = a − b·log2(repeats) − c·log2(params) + d·log2(repeats)·log2(params).
 
@@ -319,7 +320,7 @@ a factor of 1.5.
 
 ## C18. The cumulative weight-decay rule does not predict forgetting here
 
-**Claim:** The Bordt et al. rule scores 0.8012 held-out RMSE, against 0.0441 for the lr clock.
+**Claim:** Weight decay is not the clock of forgetting: runs with zero weight decay forget as much as the lr clock predicts, and the Bordt et al. rule scores 0.8012 held-out against 0.0441 for the lr clock.
 
 **Evidence:** `python3 core/score.py forgetting problems/forgetting/formulas/cum_wd.py`
 
@@ -334,12 +335,11 @@ One pair at width 256 decides it.
 
 ## C19. The Tissue annealing law scores worse than Chinchilla here
 
-**Claim:** The loss law of Tissue et al. (forward area plus annealing area) scores 0.1811 on the final-loss
-problem, against 0.1471 for Chinchilla.
+**Claim:** The Tissue et al. annealing law (forward area plus annealing area) scores worse than Chinchilla at every width: 0.1811 against 0.1471 overall.
 
 **Evidence:** Posted on the direction-tree branch (TREE.md).
 
-**How to test it:** Score it again on width-1024 runs only. Fails if it beats Chinchilla there.
+**How to test it:** Score both on each width group. Fails if it beats Chinchilla at any width.
 
 **Backup if it fails:** Add a width term to its annealing coefficient.
 
@@ -349,8 +349,7 @@ problem, against 0.1471 for Chinchilla.
 
 ## C20. Peri-LN beats Pre-LN
 
-**Claim:** Normalization before and after each sublayer beats pre-normalization by 0.32 in validation loss in
-13 of 13 matched cells.
+**Claim:** Peri-LN beats Pre-LN at any training length: normalization before and after each sublayer wins by 0.32 in validation loss in 13 of 13 cells at 150-600 steps, and by more than 0.05 at 2,400 steps.
 
 **Evidence:** Init search, 150-600 steps. The residual search agrees (+0.25, Pre-LN wins 0 of 8).
 `python3 tools/claims_fits.py other init norm_mode`
@@ -365,7 +364,7 @@ problem, against 0.1471 for Chinchilla.
 
 ## C21. Gated DeltaNet beats attention at short training
 
-**Claim:** Gated DeltaNet token mixing beats softmax attention by 0.26 in validation loss in 21 of 21 matched cells.
+**Claim:** Gated DeltaNet beats softmax attention at small scale for any training length: 0.26 lower validation loss in 21 of 21 cells at 150-600 steps, and at least half that gap at 4x the steps.
 
 **Evidence:** Mixing search, 150-600 steps. `python3 tools/claims_fits.py other mixing mix`
 
@@ -379,11 +378,12 @@ problem, against 0.1471 for Chinchilla.
 
 ## C22. Latent attention beats standard attention
 
-**Claim:** Multi-head latent attention beats standard attention by 0.068 in 30 of 34 matched cells.
+**Claim:** Latent attention beats standard attention at small scale, and the gap does not shrink with training: 0.068 lower validation loss in 30 of 34 cells.
 
 **Evidence:** Mixing search. `python3 tools/claims_fits.py other mixing mix`
 
-**How to test it:** 2 pairs at 4x the steps, with and without RoPE on the latent path.
+**How to test it:** 2 pairs at 4x the steps, with and without RoPE on the latent path. Fails if the gap falls
+below 0.03.
 
 **Backup if it fails:** Fit the gap against the latent rank.
 
