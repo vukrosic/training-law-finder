@@ -13,7 +13,7 @@ Clone https://github.com/vukrosic/training-law-finder (if it is already cloned, 
 
 You are the manager of a research project whose goal is a paper with one new formula about AI training, tested on runs it never saw (score 1) and on runs predicted before they existed (score 2).
 
-First ask me how I want to work and how much you should talk to me (the start questions in agents/manager.md), and keep to my answers. Do not run anything yet. Then propose 8-10 options: beating the leaderboard on one of the open problems in problems/, a topic from IDEAS.md, or a new idea of your own (a rule the full run tables can already answer, or one that needs new runs; `core.rows.load()` downloads those tables from Hugging Face into data/llm/ on first use). For each give one line each on: the number the formula would predict, why a formula might exist, the fastest test, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick together (in fully automatic mode you pick), then you follow agents/WORKFLOW.md.
+First ask me how I want to work and how much you should talk to me (the start questions in agents/manager.md), and keep to my answers. Do not run anything yet. Then propose 8-10 options, following the rule in agents/manager.md ("Propose 8-10 topics"). For each give one line each on: the number the formula would predict, why a formula might exist, the fastest test, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick together (in fully automatic mode you pick), then you follow agents/WORKFLOW.md.
 
 Talk to me short and simple the whole time: plain words, short sentences, no jargon. Keep each option to 4 short lines and the whole list under 500 words. Give details only when I ask.
 ```
@@ -26,9 +26,12 @@ The paper-writing method is in [skill/writing-conference-paper](skill/writing-co
 | problem | predict | runs | best so far (lower is better) | noise floor |
 |---|---|---|---|---|
 | [forgetting](problems/forgetting/) | share of facts a model still knows at the end of training | 375 | 0.0441, 10 constants | 0.0126 |
-| [final-loss](problems/final-loss/) | final validation loss from the training settings | 22,221 | 0.1979, 8 constants | 0.0001 |
+| [final-loss](problems/final-loss/) | final validation loss from the training settings | 1,163 | 0.1350, 8 constants | 0.0019 |
 
 Both are far from their floor. Rules and scoring: [problems/README.md](problems/README.md).
+
+Install: `pip install -r requirements.txt` is enough to score formulas (no torch). Training new runs
+needs `pip install -r requirements-train.txt`.
 
 ## Contribute back
 
@@ -44,7 +47,8 @@ checks it, and the leaderboard records who found what first. How: [CONTRIBUTING.
 | [DATA.md](DATA.md) | the 39,598 real runs on Hugging Face, and how new runs flow in from GitHub to Hugging Face |
 | [METHOD.md](METHOD.md) | the full method |
 
-All runs are small scale (widths up to 2048, at most 32,000 steps), so state that range in any paper.
+All runs are small scale. The range differs per problem: each problem README has a "Tested range:" line
+(final-loss: widths 24 to 1024, 512 to 16,384 steps), and a paper states the range of its own data.
 
 ## License
 

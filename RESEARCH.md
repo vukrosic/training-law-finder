@@ -15,7 +15,7 @@ The copy-paste prompt for a coding agent is in [README.md](README.md#copy-this-p
 ## Try it in 2 minutes
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-train.txt                 # training needs torch; scoring needs only requirements.txt
 python3 -I testbed/prepare_data.py --vocab 4096        # downloads a ~95 MB FineWeb-Edu shard, ~1 min
 python3 testbed/train.py --data data/fineweb_v4096 --d 64 --layers 2 --heads 2 --seq 128 --steps 100
 ```
@@ -82,4 +82,4 @@ python3 fit/laws.py results.jsonl --y reward --vars LR=lr W=width \
 | [examples/loss-law/](examples/loss-law/README.md) | A worked example end to end on a laptop in 20 minutes |
 
 > [!NOTE]
-> All runs are small scale: widths up to 2048 and at most 32,000 steps, on laptops and one GPU. A formula found here holds for that range; state the range in any paper.
+> All runs are small scale, on laptops and one GPU. The full tables reach widths of 2048 and 32,000 steps, but each problem covers less: its README has a "Tested range:" line. A formula holds for the range of the data it was fit on; state that range in the paper.

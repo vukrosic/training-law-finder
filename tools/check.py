@@ -12,7 +12,8 @@
              calls no open/exec/eval and no numpy/scipy file reader (load*, save*, genfromtxt, ...);
              reads no id or target column (a measured column is a warning). core/score.py also hides
              those columns from the rows a formula gets.
-6. scores    every line in scores.jsonl reproduces to 4 decimals on the current data and file
+6. scores    every line in scores.jsonl points to a file in problems/<name>/formulas/ that git tracks (or will
+             track: not ignored, so not work/), and reproduces to 4 decimals on the current data and file
 7. tables    LEADERBOARD.md equals what core/leaderboard.py builds
 8. papers    no .pdf anywhere; in papers/ and drafts/, images under 500 KB and each paper folder under 5 MB
 """
@@ -199,7 +200,7 @@ def target_columns(name):
         return set()
 
 
-def check_scores(name, safe):
+def check_scores(name, safe, files):
     p = load_problem(name)
     cache = {}
     for i, line in enumerate(open(os.path.join(ROOT, "problems", name, "scores.jsonl")), 1):
@@ -208,6 +209,13 @@ def check_scores(name, safe):
         path = os.path.join(ROOT, r["formula"])
         if not os.path.exists(path):
             errors.append(f"scores: {where}: {r['formula']} does not exist")
+            continue
+        if r["formula"] not in files:
+            errors.append(f"scores: {where}: {r['formula']} is not tracked by git (git ignores it, for example work/); "
+                          f"copy it into problems/{name}/formulas/ and score it again with --record")
+            continue
+        if not r["formula"].startswith(f"problems/{name}/formulas/"):
+            errors.append(f"scores: {where}: {r['formula']} is outside problems/{name}/formulas/; copy it there and score it again")
             continue
         if hashlib.sha256(open(path, "rb").read()).hexdigest()[:12] != r["sha"]:
             errors.append(f"scores: {where}: the formula file changed after scoring; score it again with --record")
@@ -245,7 +253,7 @@ def main():
                 if check_formula(path, cols, target_columns(name)):
                     safe.add(path)
         if not fast:
-            check_scores(name, safe)
+            check_scores(name, safe, set(files))
         if open(os.path.join(ROOT, "problems", name, "LEADERBOARD.md")).read() != leaderboard.build(name):
             errors.append(f"tables: problems/{name}/LEADERBOARD.md is out of date; run python3 core/leaderboard.py {name}")
     for w in warnings:
