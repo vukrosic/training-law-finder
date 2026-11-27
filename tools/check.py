@@ -16,6 +16,7 @@
              track: not ignored, so not work/), and reproduces to 4 decimals on the current data and file
 7. tables    LEADERBOARD.md equals what core/leaderboard.py builds
 8. papers    no .pdf anywhere; in papers/ and drafts/, images under 500 KB and each paper folder under 5 MB
+9. speedrun  no data in speedrun/ (it goes to Hugging Face); each file in speedrun/records/ under 50 KB
 """
 import ast
 import gzip
@@ -88,6 +89,17 @@ def check_papers(files):
     for d, n in sorted(folders.items()):
         if n > 5 * MB:
             errors.append(f"papers: {d}/ is {n / MB:.1f} MB (paper folder limit 5 MB)")
+
+
+def check_speedrun(files):
+    for f in files:
+        if not f.startswith("speedrun/"):
+            continue
+        n = os.path.getsize(os.path.join(ROOT, f))
+        if f.endswith((".bin", ".model", ".jsonl", ".gz", ".parquet", ".npy", ".pt")):
+            errors.append(f"speedrun: {f} is data; data goes to Hugging Face (speedrun/prepare_data.py)")
+        elif f.startswith("speedrun/records/") and n > 50_000:
+            errors.append(f"speedrun: {f} is {n / 1000:.0f} KB (records limit 50 KB; trim the log)")
 
 
 def scan(name, text):
@@ -239,6 +251,7 @@ def main():
     check_size(files)
     check_privacy(files)
     check_papers(files)
+    check_speedrun(files)
     cols = columns()
     safe = set()
     for name in problem_names():
