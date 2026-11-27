@@ -79,14 +79,22 @@ peak memory 1.7 GB on mps, 0.35 GB on cpu.
 | formula | constants | score 1 | idea |
 |---|---|---|---|
 | [end_z2](formulas/end_z2.py) | 10 | 0.0441 | forgetting clock = sum of the learning rate after the window; settings shift when it starts |
+| [end_z2_wd](formulas/end_z2_wd.py) | 10 | 0.0411 | end_z2 times the published weight decay bound (Bordt et al. 2025). No new constant |
 | [end_z3](formulas/end_z3.py) | 12 | 0.0366 | end_z2 plus two terms: weight decay costs more at a high peak learning rate, and learning rate spent late forgets less than the same amount spent early |
 | [lr_clock](formulas/lr_clock.py) | 2 | 0.1507 | the same clock with no settings |
 | [mean](formulas/mean.py) | 1 | 0.2177 | constant |
 | [cum_wd](formulas/cum_wd.py) | 0 | 0.8012 | published: cumulative weight decay (Bordt et al. 2025), no fitted constant |
 
-Floor 0.0126. Gap from end_z2 to the floor: 0.0315. Full table: [LEADERBOARD.md](LEADERBOARD.md).
+Floor 0.0126. Gap from end_z2_wd to the floor: 0.0285. Full table: [LEADERBOARD.md](LEADERBOARD.md).
 
-end_z2 is the formula to beat (★ in the leaderboard): end_z3 lowers score 1 by 0.0075 with two more constants, less than the constants rule asks ([rule 2](../README.md#rules)). On the run predicted before it ran (width 2048, 12 layers, measured 0.242) end_z2 gives 0.241 and end_z3, fitted afterwards, gives 0.203.
+end_z2_wd is the formula to beat (★ in the leaderboard). It has the same 10 constants as end_z2, the formula of the paper. end_z3 lowers score 1 by a further 0.0045 with two more constants, less than the constants rule asks ([rule 2](../README.md#rules)).
+
+Two runs outside the table ([rounds/002-forgetting](../../rounds/002-forgetting/)). end_z2 was frozen before the first run; the other two formulas were fitted afterwards.
+
+| run | measured | end_z2 | end_z2_wd | end_z3 |
+|---|---|---|---|---|
+| width 2048, 12 layers, no weight decay (predicted first) | 0.242 | 0.241 | 0.230 | 0.203 |
+| width 768, 10 layers, weight decay 0.3, batch 96 (the known miss) | 0.104 | 0.289 | 0.175 | 0.236 |
 
 ## Known open parts
 
