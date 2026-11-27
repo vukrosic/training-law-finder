@@ -1,6 +1,6 @@
 """Speedrun baseline: train a small GPT on FineWeb-Edu until the FLOP budget is used, then report validation bpb.
 
-    python3 train.py                  # from speedrun/tracks/lm-fineweb-1e14/, after python3 prepare_data.py
+    python3 train.py                  # from speedrun/tracks/lm-tiny/, after python3 prepare_data.py
     python3 train.py --budget 1e13    # shorter run, not a record
 
 Model: RMSNorm, RoPE, QK-norm, SwiGLU, no biases, untied head. Muon on block matrices, Adam on the rest.

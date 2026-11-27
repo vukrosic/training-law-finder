@@ -12,13 +12,20 @@ training tokens. The first track uses a FLOP budget, so its score does not depen
 
 | track | model | data | metric | constraint | hardware | best |
 |---|---|---|---|---|---|---|
-| [lm-fineweb-1e14](tracks/lm-fineweb-1e14/) | language model | FineWeb-Edu | validation bits per byte | 1e14 training FLOPs | MacBook (M4, mps) | 1.932 bpb |
+| [lm-tiny](tracks/lm-tiny/) | language model | FineWeb-Edu | validation bits per byte | 1e14 training FLOPs | MacBook (M4, mps) | 1.932 bpb |
 
 Planned:
 
-- lm-fineweb-1e15: the same language model track with 1e15 FLOPs, for one GPU. Not built yet.
-- A world-model track: predict the next frames of a video, scored by prediction error. Not built yet.
-- A small RL track. Not built yet.
+- lm-small: a larger language model track for one GPU. Not built yet.
+- world-model-tiny: predict the next frames of a video, scored by prediction error. Not built yet.
+- rl-tiny: a small reinforcement learning track. Not built yet.
+
+## Names
+
+A track is named `<model>-<size>`: `lm-tiny` is the tiny language model track. The dataset, budget, hardware
+and metric are not in the name; they are in the track's `README.md` and `track.json`. For `lm-tiny` those are
+FineWeb-Edu ([vukrosic/training-law-speedrun](https://huggingface.co/datasets/vukrosic/training-law-speedrun)),
+1e14 training FLOPs, a MacBook or any laptop, and validation bits per byte.
 
 ## Layout
 

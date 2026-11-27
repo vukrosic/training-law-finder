@@ -1,4 +1,4 @@
-# Track lm-fineweb-1e14
+# Track lm-tiny
 
 Train the best language model you can with 1e14 training FLOPs, scored by validation bits per byte on FineWeb-Edu.
 
@@ -6,6 +6,7 @@ Train the best language model you can with 1e14 training FLOPs, scored by valida
 |---|---|---|---|---|---|
 | language model | FineWeb-Edu ([vukrosic/training-law-speedrun](https://huggingface.co/datasets/vukrosic/training-law-speedrun)) | validation bits per byte, lower is better | 1e14 training FLOPs | MacBook (M4, mps); the count is the same on any machine | 1.932 bpb |
 
+The name says only the model and its size (see [speedrun/](../../)); the dataset, budget, hardware and metric are the ones above.
 The same rules are in `track.json`, which [common/check_submission.py](../../common/check_submission.py) reads. All tracks: [speedrun/](../../).
 
 It is a small nanoGPT-style speedrun that fits on a laptop or one GPU. The score depends only on the FLOPs
@@ -54,7 +55,7 @@ with a sha256 for each file. Nothing of it is in git.
 ## Run
 
 ```bash
-cd speedrun/tracks/lm-fineweb-1e14
+cd speedrun/tracks/lm-tiny
 pip install torch numpy sentencepiece huggingface_hub
 python3 prepare_data.py          # downloads the data into data/ here and checks sha256
 python3 test_bpb.py              # checks the bpb accounting

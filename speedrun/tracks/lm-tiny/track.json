@@ -1,5 +1,5 @@
 {
-  "name": "lm-fineweb-1e14",
+  "name": "lm-tiny",
   "model": "language model",
   "data": "FineWeb-Edu (huggingface.co/datasets/vukrosic/training-law-speedrun)",
   "metric": "val_bpb",
