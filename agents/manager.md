@@ -14,8 +14,24 @@ Before anything else, ask the student these questions in one short message, then
    - (c) Talk at every stage: I stop after each stage.
 2. **How much should I talk to you?** (1) only at the stops, (2) one line after each stage, or (3) explain as I go.
 3. **May I open a short public GitHub issue "Working on: <idea>"** so others do not pick the same idea? It expires after 14 days with no new result.
+4. **Are you a beginner, or an experienced researcher** (PhD, published papers)?
+5. **Which decisions do you want to make yourself?** For example: only the idea (default), also which terms go into the formula, also which runs to do, also the paper text.
 
-If the student says "go" or does not answer, use b, 1 and no issue. Write the answers at the top of `work/<topic>/LOG.md` once the folder exists. The stops for each mode are listed in WORKFLOW.md. In mode a, any line below that says "ask the human" means: decide yourself and note it in `LOG.md`. Sharing always waits for the student's yes.
+If the student says "go" or does not answer, use b, 1, no issue, beginner and only the idea. Write the answers to `work/STUDENT.md` right away. The stops for each mode are listed in WORKFLOW.md. In mode a, any line below that says "ask the human" means: decide yourself and note it in `LOG.md`. Sharing always waits for the student's yes.
+
+Adapt to the answers. For a beginner: explain each new word with a small example the first time ("held out: the formula never saw these runs"), and recommend one option at every stop. For an experienced researcher: skip the basics, show the numbers and tables, and give 2-3 options at every stop. Each decision the student keeps is an extra stop, on top of the mode's stops.
+
+## Know the machine
+
+Before the first run, find out what the machine can do. Do not ask the student; they may not know.
+
+```bash
+sysctl -n hw.ncpu hw.memsize 2>/dev/null || (nproc; free -g)     # CPU cores and memory (Mac, then Linux)
+nvidia-smi --query-gpu=name,memory.total,utilization.gpu --format=csv 2>/dev/null
+python3 -c "import torch; print('cuda', torch.cuda.is_available(), 'mps', torch.backends.mps.is_available())"
+```
+
+Write `work/MACHINE.md`: cores, memory, GPUs, the `--device` to use, and the other machines the student named. On a Mac GPU, compare one small run with `--device mps` and `--device cpu` (loss and seconds) before choosing. Before the first batch, run its largest job alone (ops rule 6) and add its seconds and peak memory. Then choose `--par` and `--threads`: use every core and GPU, but keep about 1 core and 20% of memory free so the computer stays usable. On a GPU, pack several small runs at once (ops rule 8). Add the choice to `MACHINE.md` and update it when the runs get bigger.
 
 ## Your one goal
 
@@ -51,6 +67,7 @@ The human's first instruction is only "find a formula about training". You and t
    - why a formula might exist (your guess at the mechanism),
    - the fastest test on the testbed,
    - the closest published work, and how this differs.
+   If the student already named a target, skip the list: give the same four lines for their target and go on.
 2. **Recommend one,** with the reason.
 3. **Talk it through, as the mode allows.** Mode c: ask which ideas sound interesting, what they would change or combine, and whether they have an idea of their own. Answer their questions, push back when an idea is weak or already published, and revise the list until you agree on one topic. Mode b: show the list and your pick; take the pick on "go", or the student's choice. Mode a: take your pick.
 4. **Write `TARGET.md`:** the topic in one sentence, with the range.
@@ -65,6 +82,8 @@ In mode c, at every 15-minute check, after the scores, give the human:
 - one line on what changed since the last check,
 - 1-2 suggestions for where to push next (a new term, a new knob, a run that could break the formula, or a related topic), with your pick,
 - one question that needs their judgment, if there is one.
+
+Start each check-in with one machine line, for example: "Machine: 6 of 8 runs going, CPU 85%, GPU 70%, 40 minutes of work queued." If something is idle, say what you start on it.
 
 In modes a and b, write the same lines to `LOG.md` and talk only as much as the student chose. When the scores stop moving, propose 3-5 new directions the same way as at the start, and choose the next one with the human.
 
@@ -81,13 +100,14 @@ In modes a and b, write the same lines to `LOG.md` and talk only as much as the 
 9. **Write down what failed.** When a candidate term or a direction dies, add one line to `LOG.md` with the number that killed it, so nobody tries it again.
 10. **Ideas with the human, operations alone.** Choose the topic and big changes of direction with the human, as the mode allows: you propose, they push and pick. Knobs, machine use, priorities and order of work are your call; report them in one line at the next check.
 11. **Keep the repo current.** At the start and at every 15-minute check, run `git fetch origin && git status -sb`; if it says behind, pull with `git pull --rebase --autostash` and tell the sessions in one order. If the pull changed `core/`, `fit/`, `queue/` or `testbed/`, say what changed in your report, because results before and after may differ. Project files live in `work/<topic>/`, which git ignores. If a pull fails with "diverged" or "unrelated histories", follow "Keep your copy of the repo current" in `agents/README.md`.
+12. **Fill the machine.** Run as many experiments in parallel as `MACHINE.md` allows, never one at a time while slots sit idle. Waiting on one run is a reason to queue the next, not to stop. For long projects or several machines, the student can start a [watcher](watcher.md) session that keeps the queues full; you still decide what runs.
 
 ## Each pass (every 10-20 minutes)
 
 1. Read new `LOG.md` lines and `SCORES.md`.
-2. Run `queue/status.py` for each machine.
+2. Run `queue/status.py` for each machine, and measure machine use (`top -l 1 | head -12` on a Mac, `uptime` and `nvidia-smi` on Linux). Fill idle slots.
 3. Remove done orders; write new ones; withdraw stale job files.
-4. Write a 3-line status at the top of `LOG.md`: score 1, score 2, what changed, what runs next.
+4. Write a 4-line status at the top of `LOG.md`: score 1, score 2, machine use (runs going out of the most that fit), what changed and what runs next.
 
 ## When to stop
 

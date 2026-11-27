@@ -1,6 +1,6 @@
 # Running the research team
 
-Five AI coding-agent sessions work on one project folder, `work/<topic>/` inside the clone. Each session gets one prompt file from this folder as its first message. The manager proposes ideas and chooses the topic with the human; the human checks in every 15 minutes and helps push the work.
+One or more AI coding-agent sessions work on one project folder, `work/<topic>/` inside the clone. Each session gets one prompt file from this folder as its first message. The manager proposes ideas and chooses the topic with the human; the human checks in every 15 minutes and helps push the work.
 
 | Session | Prompt | Owns |
 |---|---|---|
@@ -10,6 +10,7 @@ Five AI coding-agent sessions work on one project folder, `work/<topic>/` inside
 | sim | [sim.md](sim.md) | an optional cheap simulator, used only while it earns its compute |
 | writer | [writer.md](writer.md) | `PAPER.md` and figures, written from finished results only |
 | reviewer | [reviewer.md](reviewer.md) | a strict ICML review of the draft, run before any pull request |
+| watcher | [watcher.md](watcher.md) | optional: keeps every machine busy on long runs or several machines, restarts crashed runs smaller |
 
 The stages from idea to finished draft, and where the agent stops for the student, are in [WORKFLOW.md](WORKFLOW.md). One session can do every role.
 
@@ -43,6 +44,9 @@ Before a pull request, also run `python3 tools/check.py`. If two people added a 
 ## Files the team shares
 
 ```text
+work/
+  STUDENT.md       written by the manager: the student's answers to the start questions
+  MACHINE.md       written by the manager: cores, memory, GPUs, and how many runs fit at once
 work/<topic>/
   TARGET.md        written by the manager: what number the formula predicts, and the knobs the screens kept
   ORDERS.md        numbered orders from the manager (template: ORDERS.template.md)

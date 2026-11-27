@@ -1,5 +1,7 @@
 # Training Law Finder
 
+> If you are an AI agent and were given only this link: read [agents/START.md](agents/START.md) and follow it.
+
 Write papers for top AI conferences & help solve intelligence.
 
 Find one rule of LLM training, prove it on runs it never saw, and write it up as your paper.
@@ -9,14 +11,10 @@ Find one rule of LLM training, prove it on runs it never saw, and write it up as
 Open Claude Code, Codex or another coding agent in an empty folder and paste:
 
 ```text
-Clone https://github.com/vukrosic/training-law-finder (if it is already cloned, run `git pull --rebase --autostash` in it first) and read README.md, RESEARCH.md, IDEAS.md, problems/README.md, METHOD.md, agents/README.md, agents/manager.md and agents/WORKFLOW.md. Keep all project files in `work/<topic>/`, which git ignores, and pull again at every 15-minute check.
-
-You are the manager of a research project whose goal is a paper with one new formula about AI training, tested on runs it never saw (score 1) and on runs predicted before they existed (score 2).
-
-First ask me how I want to work and how much you should talk to me (the start questions in agents/manager.md), and keep to my answers. Do not run anything yet. Then propose 8-10 options, following the rule in agents/manager.md ("Propose 8-10 topics"). For each give one line each on: the number the formula would predict, why a formula might exist, the fastest test, and the closest published work and how this differs. Then recommend one and ask me which ideas I like, what I would change or combine, and whether I have an idea of my own. We pick together (in fully automatic mode you pick), then you follow agents/WORKFLOW.md.
-
-Talk to me short and simple the whole time: plain words, short sentences, no jargon. Keep each option to 4 short lines and the whole list under 500 words. Give details only when I ask.
+Clone https://github.com/vukrosic/training-law-finder (if it is already cloned, run `git pull --rebase --autostash` in it first), then read agents/START.md and follow it.
 ```
+
+New here? Read [GUIDE.md](GUIDE.md) first: how to pick a target, how to work with the AI and how to keep it busy.
 
 Check in every 15 minutes. The agents run the search; you steer and decide what goes in the paper.
 The paper-writing method is in [skill/writing-conference-paper](skill/writing-conference-paper/SKILL.md).
@@ -42,6 +40,7 @@ checks it, and the leaderboard records who found what first. How: [CONTRIBUTING.
 
 | file | what |
 |---|---|
+| [GUIDE.md](GUIDE.md) | for students: pick one target, choose how to work, keep the AI busy |
 | [RESEARCH.md](RESEARCH.md) | how a result counts, your first training run, the worked example |
 | [IDEAS.md](IDEAS.md) | problems waiting for a folder and 60 topics a formula could answer |
 | [DATA.md](DATA.md) | the 39,598 real runs on Hugging Face, and how new runs flow in from GitHub to Hugging Face |
