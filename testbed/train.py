@@ -60,6 +60,7 @@ def get_args(argv=None):
     # eval
     ap.add_argument("--eval_tokens", type=int, default=131072)
     ap.add_argument("--eval_every", type=int, default=0, help="0 = only at the end")
+    ap.add_argument("--band_cache", default="", help="folder to cache the token-band ids of --curve_points in")
     ap.add_argument("--curve_points", type=int, default=0,
                     help="log val loss and 4 frequency-band losses at this many evenly spaced steps; 0 = off")
     # planted facts
@@ -151,8 +152,8 @@ def evaluate_bands(model, val_windows, band, device):
     nb = len(BANDS)
     tot, cnt = np.zeros(nb), np.zeros(nb)
     band_t = torch.from_numpy(band).to(device)
-    for i in range(0, len(val_windows), 16):
-        w = torch.from_numpy(val_windows[i:i + 16]).to(device)
+    for i in range(0, len(val_windows), 64):
+        w = torch.from_numpy(val_windows[i:i + 64]).to(device)
         logits = model(w[:, :-1]).float()
         y = w[:, 1:].reshape(-1)
         ce = F.cross_entropy(logits.reshape(-1, logits.size(-1)), y, reduction="none")
@@ -195,7 +196,14 @@ def main(argv=None):
 
     lc = None
     if a.curve_points:
-        band = token_bands(data.train, vocab)
+        cache = os.path.join(a.band_cache, f"bands_{vocab}_{len(data.train)}.npy") if a.band_cache else ""
+        if cache and os.path.exists(cache):
+            band = np.load(cache)
+        else:
+            band = token_bands(data.train, vocab)
+            if cache:
+                os.makedirs(a.band_cache, exist_ok=True)
+                np.save(cache, band)
         lc = dict(points=curve_steps(a.steps, a.curve_points), step=[], lr_mult=[], val_loss=[], band_loss=[],
                   bands=list(BANDS))
         lc_at = set(lc["points"])
@@ -243,7 +251,7 @@ def main(argv=None):
 
     vl, bpb = evaluate(model, val_windows, val_bytes, device)
     row = dict(tag=a.tag, config={k: v for k, v in vars(a).items()
-                                  if k not in ("out", "tag", "save", "facts_dump", "device", "threads")},
+                                  if k not in ("out", "tag", "save", "facts_dump", "device", "threads", "band_cache")},
                vocab=vocab, params=model.n_params(False), nonemb_params=model.n_params(True),
                tokens=a.steps * a.batch * a.seq, val_loss=round(vl, 5), val_bpb=round(bpb, 5),
                train_loss=round(float(np.mean(recent)), 5), diverged=not math.isfinite(vl), device=device)

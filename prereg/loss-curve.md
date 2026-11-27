@@ -57,6 +57,35 @@ If the guess dies, the next candidate is the clock plus a term for the current l
 Tissue et al. 2024 and Luo et al. 2025, see `problems/loss-curve/LITERATURE.md`). The token-band rungs then
 start from that two-term form.
 
+## Update 2026-11-27, 20:55 SGT: small-run grid (before any small run)
+
+Vuk asked for small runs of a few seconds each on the MacBook instead of the 300-run grid. The 300-run grid
+above is parked. The new grid is `loss-curve-small.jsonl` (`python3 tools/loss_curve_small_grid.py`):
+228 runs, median about 7 s, longest about 14 s.
+
+| block | what changes | runs |
+|---|---|---|
+| S | widths 16, 24, 32, 48, 64, 96 x 128 / 256 / 512 steps x 3 schedules x peak 0.5x, 1x, 2x (no 512 steps at width 96; width 64 at 512 steps only at 1x) | 147 |
+| T | widths 16-64 x 384 steps x 3 schedules at 1x | 15 |
+| P | widths 16-64 x 256 steps x 3 schedules x peak 0.25x and 4x | 30 |
+| L | widths 16, 24 x 1,024 steps x 3 schedules at 1x | 6 |
+| D | 6 widths x WSD decay share 0.1 and 0.5, 256 steps | 12 |
+| E | 6 widths x cosine to 0.1 of peak, 256 steps | 6 |
+| F | widths 32, 64 x 1 and 4 layers x 3 schedules, 256 steps | 12 |
+
+Changed settings: batch 32 (was 64), 2 layers (was 3), 16,384 val tokens per reading (was 131,072).
+Peak 1x = e^-1.708 * width^-0.64 as before; the 0.25x-4x spread covers a shift of the best peak at these
+settings. Warmup stays 20 steps, so it is 16% of a 128-step run.
+
+The kill line above stays as written. Two notes on applying it to this grid:
+- Test 2 counts widths: "8 or more of the 12 widths" is applied as the same share, 4 or more of the 6 widths.
+  Pairs: WSD vs const at the same width, peak and step count (blocks S, T, L).
+- Test 1 uses each (width, layers) with 6+ runs; every width has 27+ runs at 2 layers.
+
+Before the switch, 12 runs of the 300-run grid finished (block A, 1,024 steps, widths 24-64). Their final
+losses were printed; the matched-clock comparison was not computed. They are not part of the small grid and
+are reported separately as an extra check of test 2.
+
 ## What was not decided here
 
 - The floor. The grid has no repeated settings. `floor()` in `problems/loss-curve/problem.py` computes it
