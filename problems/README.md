@@ -20,7 +20,7 @@ Beat the best formula and you have the core of a paper.
 | problem | predict | rows | best score 1 | floor | leaderboard |
 |---|---|---|---|---|---|
 | [forgetting](forgetting/) | share of facts a model still knows at the end of training | 375 | 0.0441 (end+z2, 10 constants) | 0.0126 | [LEADERBOARD](forgetting/LEADERBOARD.md) |
-| [final-loss](final-loss/) | final validation loss from the training settings | 1,163 | 0.1350 (Chinchilla + lr bowl, 8 constants) | 0.0019 | [LEADERBOARD](final-loss/LEADERBOARD.md) |
+| [final-loss](final-loss/) | final validation loss from the training settings | 1,163 | 0.0839 (lr_area: mean-lr Chinchilla + width bowl, 12 constants) | 0.0019 | [LEADERBOARD](final-loss/LEADERBOARD.md) |
 
 ## Score it
 

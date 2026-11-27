@@ -24,7 +24,7 @@ The paper-writing method is in [skill/writing-conference-paper](skill/writing-co
 | problem | predict | runs | best so far (lower is better) | noise floor |
 |---|---|---|---|---|
 | [forgetting](problems/forgetting/) | share of facts a model still knows at the end of training | 375 | 0.0441, 10 constants | 0.0126 |
-| [final-loss](problems/final-loss/) | final validation loss from the training settings | 1,163 | 0.1350, 8 constants | 0.0019 |
+| [final-loss](problems/final-loss/) | final validation loss from the training settings | 1,163 | 0.0839, 12 constants | 0.0019 |
 
 Both are far from their floor. Rules and scoring: [problems/README.md](problems/README.md).
 
