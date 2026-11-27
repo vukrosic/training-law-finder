@@ -9,5 +9,5 @@
   confirmation, with your name.
 - Before calling a formula new, compare its predictions with every listed formula that has the same number
   of constants or fewer. If they differ on average by less than the problem's noise floor, it is the same
-  result: a confirmation. Matching a formula with fewer constants than it has is a simplification, and counts.
+  result: a confirmation. A formula that matches the best with fewer constants is a simplification and counts as new.
 - A paper offers co-authorship to everyone whose finding it claims, and cites every formula and run it uses.
