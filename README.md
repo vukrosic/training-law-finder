@@ -28,8 +28,9 @@ Install: `pip install -r requirements.txt` to score formulas (no torch); `pip in
 |---|---|---|---|---|
 | [forgetting](problems/forgetting/) | share of facts a model still knows at the end of training | 375 | ★ in the [leaderboard](problems/forgetting/LEADERBOARD.md) | 0.0126 |
 | [final-loss](problems/final-loss/) | final validation loss from the training settings | 1,163 | ★ in the [leaderboard](problems/final-loss/LEADERBOARD.md) | 0.0019 |
+| [forgetting-curve](problems/forgetting-curve/) | share of facts a model still knows at each of 8 points after it last saw them | 1,283 | ★ in the [leaderboard](problems/forgetting-curve/LEADERBOARD.md) | 0.0043 |
 
-Both are far from their floor. Rules and scoring: [problems/README.md](problems/README.md).
+All three are far from their floor. Rules and scoring: [problems/README.md](problems/README.md).
 
 All runs are small scale. Each problem README has a "Tested range:" line (final-loss: widths 24 to 1024, 512 to 16,384 steps); a paper states the range of its own data.
 
