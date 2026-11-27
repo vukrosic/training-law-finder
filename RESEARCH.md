@@ -15,7 +15,7 @@ The copy-paste prompt for a coding agent is in [README.md](README.md#copy-this-p
 ## Try it in 2 minutes
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-train.txt                 # training needs torch; scoring needs only requirements.txt
 python3 -I testbed/prepare_data.py --vocab 4096        # downloads a ~95 MB FineWeb-Edu shard, ~1 min
 python3 testbed/train.py --data data/fineweb_v4096 --d 64 --layers 2 --heads 2 --seq 128 --steps 100
 ```

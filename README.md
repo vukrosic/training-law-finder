@@ -30,6 +30,9 @@ The paper-writing method is in [skill/writing-conference-paper](skill/writing-co
 
 Both are far from their floor. Rules and scoring: [problems/README.md](problems/README.md).
 
+Install: `pip install -r requirements.txt` is enough to score formulas (no torch). Training new runs
+needs `pip install -r requirements-train.txt`.
+
 ## Contribute back
 
 Send a better formula, new runs or a new problem as a pull request. Every one comes with the command that
