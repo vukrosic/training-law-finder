@@ -81,6 +81,8 @@ bf16 casts). `train.py` prints `standard ops, fast count is exact`, or names the
 
 - **Search small.** The baseline gets only 4 steps at 1e12, so search runs need a smaller model or batch, for
   example width 64 and batch 8 at 6e11 FLOPs: 113 steps, about 10 s of training on an M4.
+  `search/search.py` is that setup, with each record idea behind one flag (`--ve`, `--bigram-buckets`, `--batch`,
+  `--model`, `--vocab`); `search/run_queue.py` runs the ideas in `search/queue.txt` one after another.
 - **Score search runs on part of the validation set:** `--val-docs 100` takes 2 s instead of 33 s.
 - **Check an idea's cost before training.** The fast count prints FLOPs per step in under a second.
 - **Keep step shapes fixed during a search.** Then the fast count is cached and costs 0 s per run; changing only

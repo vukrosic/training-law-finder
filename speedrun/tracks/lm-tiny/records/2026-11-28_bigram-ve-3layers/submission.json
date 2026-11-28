@@ -1,0 +1,17 @@
+{
+  "name": "bigram-ve-3layers",
+  "github": "vukrosic",
+  "date": "2026-11-28",
+  "val_bpb": 1.8273,
+  "flops": 99978200000000.0,
+  "budget": 1e14,
+  "counter": "all-ops-v1",
+  "full_count": 100179000000000.0,
+  "artifact_bytes": 12053604,
+  "device": "mps (MacBook Pro M4, 16 GB)",
+  "train_seconds": 2197.0,
+  "tokenizer": "sp1024 (default)",
+  "params": 3372736,
+  "steps": 532,
+  "tokens": 8716288
+}
