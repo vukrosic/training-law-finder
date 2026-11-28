@@ -1,0 +1,19 @@
+device cpu, params 3,565,952 (3,434,880 without the embedding), budget 1e+14 FLOPs
+FLOPs per step 8.979e+10 (fast count, 0.69s), steps 1113, tokens 9,117,696; total 9.993e+13, 6ND 1.879e+14, 6ND + attention 2.094e+14
+standard ops, fast count is exact
+step 0/1113 loss 6.9315 flops 8.979e+10 time 2s
+step 100/1113 loss 3.7844 flops 9.068e+12 time 143s
+step 200/1113 loss 3.5704 flops 1.805e+13 time 286s
+step 300/1113 loss 3.5112 flops 2.703e+13 time 430s
+step 400/1113 loss 3.6762 flops 3.6e+13 time 574s
+step 500/1113 loss 3.1310 flops 4.498e+13 time 719s
+step 600/1113 loss 3.6535 flops 5.396e+13 time 863s
+step 700/1113 loss 3.4587 flops 6.294e+13 time 1008s
+step 800/1113 loss 3.0810 flops 7.192e+13 time 1153s
+step 900/1113 loss 3.3134 flops 8.09e+13 time 1301s
+step 1000/1113 loss 3.4672 flops 8.988e+13 time 1454s
+step 1100/1113 loss 3.0691 flops 9.885e+13 time 1609s
+step 1112/1113 loss 3.3248 flops 9.993e+13 time 1627s
+full count 9.979e+13 (-0.14% vs fast) {"total": 99792194411500, "steps": 1113, "step_kinds": 2, "per_step": [89660547788, 89665271244], "top_ops": {"mm": 77460444020736, "_scaled_dot_product_flash_attention_for_cpu_backward": 14340895801344, "_scaled_dot_product_flash_attention_for_cpu": 7170447900672, "mul": 362246064306, "add": 110907702003, "pow": 58690609152, "sum": 58353254400, "div": 33145534002, "mean": 29176627200, "cat": 28009562112, "clone": 21007171584, "silu": 19256573952}, "unknown_heavy": {}, "nonstandard": {}}
+artifact out/model.xz: 13,113,792 bytes (limit 16,000,000)
+result {"val_bpb": 1.8466, "flops": 99931800000000.0, "budget": 100000000000000.0, "counter": "all-ops-v1", "steps": 1113, "tokens": 9117696, "params": 3565952, "device": "cpu", "train_seconds": 1627.1, "full_count": 99792200000000.0, "artifact_bytes": 13113792, "eval_seconds": 83.9, "val_docs": 1000, "val_tokens": 1881031, "val_bytes": 4654540, "nonstandard_ops": []}

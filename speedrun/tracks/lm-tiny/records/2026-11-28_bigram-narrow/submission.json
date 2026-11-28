@@ -1,0 +1,17 @@
+{
+  "name": "bigram-narrow",
+  "github": "vukrosic",
+  "date": "2026-11-28",
+  "val_bpb": 1.8466,
+  "flops": 99931800000000.0,
+  "budget": 1e14,
+  "counter": "all-ops-v1",
+  "full_count": 99792200000000.0,
+  "artifact_bytes": 13113792,
+  "device": "cpu (Hetzner, 4 Neoverse-N1 cores, float32)",
+  "train_seconds": 1627.1,
+  "tokenizer": "sp1024 (default)",
+  "params": 3565952,
+  "steps": 1113,
+  "tokens": 9117696
+}
