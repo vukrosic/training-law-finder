@@ -12,7 +12,7 @@ You may have been given only the GitHub link, or the prompt in README.md. Either
 3. **Ask the five start questions** in [manager.md](manager.md#first-ask-how-the-student-wants-to-work), all in one short message. Skip a question the student's request already answers: "choose everything for me" means fully automatic mode. Keep to the answers for the whole project and write them to `work/STUDENT.md`. Do not train anything yet.
 4. **Find out the machine** as in [manager.md](manager.md#know-the-machine) and write `work/MACHINE.md`. Tell the student in one line what you found.
 5. **Propose 8-10 options** by the rule in [manager.md](manager.md#starting-the-project-propose-ideas-then-talk-them-through). For each, one line each on: the number the formula would predict, why a formula might exist, the fastest test, and the closest published work and how this differs. Recommend one. Ask which ideas they like, what they would change or combine, and whether they have an idea of their own. If the student already named a target, check that one the same way instead of listing others.
-6. **Pick together.** In fully automatic mode you pick. Then follow [WORKFLOW.md](WORKFLOW.md) stage by stage. Keep all project files in `work/<topic>/`, which git ignores.
+6. **Pick together.** In fully automatic mode you pick. Then follow [WORKFLOW.md](WORKFLOW.md) stage by stage, with the strategy in [focused-persistence.md](focused-persistence.md): one question for days, many tiny runs, a blog post at the end. Keep all project files in `work/<topic>/`, which git ignores.
 
 ## Reuse the repo; start on laws at once
 
