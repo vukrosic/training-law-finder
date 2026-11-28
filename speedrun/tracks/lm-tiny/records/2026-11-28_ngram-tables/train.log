@@ -1,0 +1,21 @@
+device cpu, params 35,023,232 (34,892,160 without the embedding), budget 1e+14 FLOPs
+FLOPs per step 8.047e+10 (fast count, 0.96s), steps 1242, tokens 10,174,464; total 9.994e+13, 6ND 2.13e+15, 6ND + attention 2.142e+15
+standard ops, fast count is exact
+step 0/1242 loss 6.9315 flops 8.047e+10 time 3s
+step 100/1242 loss 3.6700 flops 8.128e+12 time 162s
+step 200/1242 loss 3.4067 flops 1.617e+13 time 321s
+step 300/1242 loss 3.3324 flops 2.422e+13 time 478s
+step 400/1242 loss 3.5068 flops 3.227e+13 time 639s
+step 500/1242 loss 3.0016 flops 4.032e+13 time 796s
+step 600/1242 loss 3.4287 flops 4.836e+13 time 956s
+step 700/1242 loss 3.2648 flops 5.641e+13 time 1112s
+step 800/1242 loss 2.8854 flops 6.446e+13 time 1270s
+step 900/1242 loss 3.1399 flops 7.25e+13 time 1426s
+step 1000/1242 loss 3.3287 flops 8.055e+13 time 1586s
+step 1100/1242 loss 2.9281 flops 8.86e+13 time 1746s
+step 1200/1242 loss 3.0162 flops 9.664e+13 time 1909s
+step 1241/1242 loss 2.9866 flops 9.994e+13 time 1972s
+full count 9.976e+13 (-0.19% vs fast) {"total": 99757893098926, "steps": 1242, "step_kinds": 2, "per_step": [80320310355, 80387948371], "top_ops": {"mm": 86438339149824, "_scaled_dot_product_flash_attention_for_cpu_backward": 8001524072448, "_scaled_dot_product_flash_attention_for_cpu": 4000762036224, "mul": 404251808616, "add": 125084915064, "add_": 87374199474, "embedding_dense_backward": 84651540480, "div": 76057143912, "pow": 65493024768, "sum": 65116569600, "lerp_": 43498854144, "mul_": 42003207936}, "unknown_heavy": {}, "nonstandard": {}}
+artifact 16,624,532 bytes at 4 bits, over the limit; trying 3 bits
+artifact out/model.xz: 12,211,900 bytes (limit 16,000,000)
+result {"val_bpb": 1.7682, "flops": 99944100000000.0, "budget": 100000000000000.0, "counter": "all-ops-v1", "steps": 1242, "tokens": 10174464, "params": 35023232, "device": "cpu", "train_seconds": 1972.3, "full_count": 99757900000000.0, "qbits": 3, "artifact_bytes": 12211900, "eval_seconds": 84.4, "val_docs": 1000, "val_tokens": 1881031, "val_bytes": 4654540, "nonstandard_ops": []}
