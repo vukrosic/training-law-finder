@@ -1,8 +1,9 @@
 # Loss curve: predict the whole validation-loss curve from the training settings
 
 **195 real small runs are in `data/llm.jsonl.gz` (widths 16-96, 128-1,024 steps, MacBook CPU). The
-single-clock kill line is dead on both tests; see [RESULTS.md](RESULTS.md). The formulas are not yet scored on
-the real runs; the scores below are on the made-up fixture and say nothing about real training.**
+single-clock kill line is dead on both tests; see [RESULTS.md](RESULTS.md). Best formula on the real runs:
+clock_lr, 0.122 nats on held-out widths (table "llm" in [LEADERBOARD.md](LEADERBOARD.md)). The "synthetic" table
+is the made-up fixture and says nothing about real training.**
 
 A language model is trained with a given width, depth, step count, peak learning rate and schedule (cosine,
 WSD or constant). **Predict its validation loss at 32 evenly spaced points of training, from the settings
