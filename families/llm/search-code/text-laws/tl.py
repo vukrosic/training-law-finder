@@ -16,7 +16,9 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+ROOT = os.path.dirname(os.path.abspath(__file__))  # repo root: the first parent folder that has testbed/
+while not os.path.isdir(os.path.join(ROOT, "testbed")) and os.path.dirname(ROOT) != ROOT:
+    ROOT = os.path.dirname(ROOT)
 sys.path.insert(0, os.path.join(ROOT, "testbed"))
 from model import GPT  # noqa: E402
 from muon import build_optimizers  # noqa: E402

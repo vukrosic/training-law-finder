@@ -4,7 +4,9 @@ re-encode). Usage: python3 -I prep_vocab.py 1024"""
 import json, os, sys
 import numpy as np
 from tokenizers import Tokenizer, decoders, models, pre_tokenizers, trainers
-ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+ROOT = os.path.dirname(os.path.abspath(__file__))  # repo root: the first parent folder that has testbed/
+while not os.path.isdir(os.path.join(ROOT, "testbed")) and os.path.dirname(ROOT) != ROOT:
+    ROOT = os.path.dirname(ROOT)
 src = os.path.join(ROOT, "data", "fineweb_v4096")
 V = int(sys.argv[1])
 out = os.path.join(ROOT, "data", f"fineweb_v{V}")

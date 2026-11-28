@@ -11,4 +11,15 @@ The dial is X_p = U (S / S_max)^p Vᵀ, the SVD of the momentum matrix with its 
 - `sim/`: the noisy quadratic model used as a curvature check (`diag.py`, `nqm.py`).
 - `runpair.sh`, `run2.sh`, `run2b.sh`: launch helpers (two jobs at once, one on MPS and one on CPU).
 
+Run (from this folder; the scripts find the repo root by looking for `testbed/`):
+
+```sh
+python3 -I ../../../../testbed/prepare_data.py --vocab 4096   # data/fineweb_v4096
+python3 -I prep_vocab.py 1024                                   # data/fineweb_v1024
+mkdir -p jobs out
+python3 gen/spec4.py                                            # writes jobs/spec4_cpu.jsonl
+python3 -I blaw.py --jobs jobs/spec4_cpu.jsonl --out out/spec4.jsonl --device cpu
+python3 fits/spec_dial.py spec4                                 # best tuned run per p in each cell
+```
+
 Data: FineWeb-Edu, 1,024-token vocabulary (`prep_vocab.py`). Results, job files and a code snapshot are in the Hugging Face dataset [vukrosic/training-laws-research](https://huggingface.co/datasets/vukrosic/training-laws-research) under `studies/text-laws/`.

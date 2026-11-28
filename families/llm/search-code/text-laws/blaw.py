@@ -16,7 +16,9 @@ import torch
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from bgpt import BGPT, Opt  # noqa: E402
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+ROOT = os.path.dirname(os.path.abspath(__file__))  # repo root: the first parent folder that has testbed/
+while not os.path.isdir(os.path.join(ROOT, "testbed")) and os.path.dirname(ROOT) != ROOT:
+    ROOT = os.path.dirname(ROOT)
 DATA = None
 V = None
 POOL = 32_000_000
