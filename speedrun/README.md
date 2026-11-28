@@ -6,13 +6,14 @@ A track is one fixed competition: a model type, a dataset, one metric, one const
 meant for. Within a track everything else is free, so scores are comparable.
 
 The constraint differs per track. It can be training FLOPs, wall time, peak memory, parameter count or
-training tokens. The first track uses a FLOP budget, so its score does not depend on the machine.
+training tokens. The first track uses a FLOP budget that counts every op, so its score does not depend on how
+fast the machine is.
 
 ## Tracks
 
 | track | model | data | metric | constraint | hardware | best |
 |---|---|---|---|---|---|---|
-| [lm-tiny](tracks/lm-tiny/) | language model | FineWeb-Edu | validation bits per byte | 1e14 training FLOPs | MacBook (M4, mps) | 1.932 bpb |
+| [lm-tiny](tracks/lm-tiny/) | language model | FineWeb-Edu | validation bits per byte | 1e14 training FLOPs (every op), 16 MB artifact | MacBook (M4, mps) | 1.9319 bpb |
 
 Planned:
 
@@ -32,7 +33,8 @@ FineWeb-Edu ([vukrosic/training-law-speedrun](https://huggingface.co/datasets/vu
 ```
 speedrun/
   common/                 shared by all tracks
-    flops.py              exact FLOP counter (FlopCounterMode on the meta device)
+    flops.py              FLOP counter: every op of every training step, on the real device
+    test_flops.py         checks the counter against hand-worked numbers
     check_submission.py   checks a record folder against its track.json
   tracks/<track>/
     README.md             rules, data, how to run, leaderboard

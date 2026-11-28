@@ -26,4 +26,5 @@ drafts/*/numbers.json
 drafts/*/*.log
 drafts/*/*.out
 /speedrun/tracks/*/data/
+/speedrun/tracks/*/out/
 !prereg/*.jsonl

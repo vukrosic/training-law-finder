@@ -1,7 +1,11 @@
 """Speedrun baseline: train a small GPT on FineWeb-Edu until the FLOP budget is used, then report validation bpb.
 
     python3 train.py                  # from speedrun/tracks/lm-tiny/, after python3 prepare_data.py
-    python3 train.py --budget 1e13    # shorter run, not a record
+    python3 train.py --budget 1e12 --val-docs 100   # search run: small budget, first 100 validation documents
+    python3 train.py --record         # record run: also counts every step on this device, saves the
+                                      # 16 MB artifact (out/model.xz) and scores the model loaded from it
+
+FLOPs: one step is counted on the meta device before training (common/flops.py, every op charged, cached).
 
 Model: RMSNorm, RoPE, QK-norm, SwiGLU, no biases, untied head. Muon on block matrices, Adam on the rest.
 """
@@ -29,7 +33,7 @@ BUDGET = 1e14  # the speedrun budget, in FLOPs (README.md)
 VOCAB, BOS = 1024, 1
 D_MODEL, N_LAYERS, N_HEADS, D_MLP = 192, 4, 3, 512
 SEQ_LEN, BATCH = 256, 64
-MICRO = 32  # sequences per forward pass; smaller uses less memory, same FLOPs and same math
+MICRO = 32  # sequences per forward pass; smaller uses less memory, same math, about the same FLOPs
 LR_MUON, LR_EMBED, LR_HEAD, LR_SCALAR = 0.05, 0.6, 0.008, 0.04
 COOLDOWN = 0.4  # learning rate falls linearly to 0 over the last 40% of steps
 
@@ -175,7 +179,16 @@ def train_step(model, opts, x, y, dtype):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--budget", type=float, default=BUDGET)
+    ap.add_argument("--full-count", action="store_true",
+                    help="also count every op of every step on this device (about 2%% slower); needed only for "
+                         "entries with FFT, decompositions, sorts, scans or scatters")
+    ap.add_argument("--record", action="store_true",
+                    help="record run: --full-count, save the 16 MB artifact, score the model loaded from it")
+    ap.add_argument("--val-docs", type=int, default=0,
+                    help="score only the first N validation documents (fast, for search; not a record)")
     args = ap.parse_args()
+    assert not (args.record and args.val_docs), "a record is scored on the whole validation set"
+    full = args.full_count or args.record
     device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
     dtype = torch.bfloat16 if device in ("cuda", "mps") else torch.float32
     torch.manual_seed(0)
@@ -188,42 +201,71 @@ def main():
     n_matmul = n_params - model.embed.weight.numel()
     print(f"device {device}, params {n_params:,} ({n_matmul:,} without the embedding), budget {args.budget:.3g} FLOPs")
 
-    step_flops = flops.count_step(build, train_step, (BATCH, SEQ_LEN))
+    # Fast count: one step on the meta device, every op charged (common/flops.py), cached per code and shape.
+    t = time.time()
+    step_flops, rep = flops.fast_count(build, train_step, (BATCH, SEQ_LEN), key=flops.code_key(sys.modules[__name__]),
+                                       cache=os.path.join(ev.OUT, "flops_cache.json"))
     n_steps = int(args.budget // step_flops)
     tokens = n_steps * BATCH * SEQ_LEN
     est, est_attn = flops.estimate_6nd(n_matmul, tokens, SEQ_LEN, D_MODEL, N_LAYERS)
-    attn = flops.attention_flops(BATCH, SEQ_LEN, D_MODEL, N_LAYERS)
-    print(f"FLOPs per step {step_flops:.4g} (FlopCounterMode, of which attention {attn:.4g}), "
-          f"steps {n_steps}, tokens {tokens:,}")
-    print(f"FLOPs: counted {n_steps * step_flops:.4g}, 6ND {est:.4g}, 6ND + attention {est_attn:.4g}")
+    print(f"FLOPs per step {step_flops:.4g} (fast count, {time.time() - t:.2f}s), steps {n_steps}, tokens {tokens:,}; "
+          f"total {n_steps * step_flops:.4g}, 6ND {est:.4g}, 6ND + attention {est_attn:.4g}")
+    if rep["nonstandard"] and not full:
+        print(f"WARNING: non-standard ops {sorted(rep['nonstandard'])}: the fast count charges them by formula on "
+              f"the meta device; run with --full-count to see your real budget")
+    elif not rep["nonstandard"]:
+        print("standard ops, fast count is exact")
 
+    meter = flops.Meter() if full else None
     data = Batches()
     t0 = time.time()
     for i in range(n_steps):
-        frac = i / n_steps
-        scale = min(1.0, (1 - frac) / COOLDOWN)
+        scale = min(1.0, (1 - i / n_steps) / COOLDOWN)
         for o in opts:
             for g in o.param_groups:
                 g["lr"] = g["base_lr"] * scale
         x, y = data.next(device)
-        loss = train_step(model, opts, x, y, dtype)
+        with meter.step() if meter else contextlib.nullcontext():
+            loss = train_step(model, opts, x, y, dtype)
         if i % 100 == 0 or i == n_steps - 1:
             print(f"step {i}/{n_steps} loss {loss.item():.4f} flops {(i + 1) * step_flops:.4g} "
                   f"time {time.time() - t0:.0f}s", flush=True)
     if device == "mps":
         torch.mps.synchronize()
     train_time = time.time() - t0
+    used = n_steps * step_flops
+    result = dict(flops=float(f"{used:.6g}"), budget=args.budget, counter=flops.COUNTER, steps=n_steps,
+                  tokens=tokens, params=n_params, device=device, train_seconds=round(train_time, 1))
+    if meter:
+        diff = meter.total / used - 1
+        print(f"full count {meter.total:.4g} ({diff:+.2%} vs fast) " + json.dumps(meter.report()))
+        if abs(diff) > 0.01:  # README: past 1% the full count is the score
+            used = meter.total
+        result.update(flops=float(f"{used:.6g}"), full_count=float(f"{meter.total:.6g}"))
+    assert used <= args.budget, f"{used:.4g} FLOPs, over the budget {args.budget:.3g}"
 
-    model.eval()
+    if args.record:  # the scored model is the one loaded back from the 16 MB artifact (eval.py)
+        path = os.path.join(ev.OUT, "model.xz")
+        size = ev.save_artifact(path, {k: v.detach().cpu() for k, v in model.state_dict().items()},
+                                [os.path.abspath(__file__)], os.path.join(ev.DATA, "sp1024.model"))
+        print(f"artifact {os.path.relpath(path, TRACK)}: {size:,} bytes (limit {ev.SIZE_LIMIT:,})")
+        assert size <= ev.SIZE_LIMIT, "artifact over the size limit"
+        model = build()[0]
+        model.load_state_dict(ev.load_artifact(path)["state"])
+        model.to(device)
+        result["artifact_bytes"] = size
+    model.float().eval()  # float32: bf16 eval on mps gives NaN
     t1 = time.time()
     docs = ev.val_docs()
     val = np.fromfile(os.path.join(ev.DATA, "val.bin"), dtype=np.uint16)
-    nats = ev.total_nats(model.float(), val, SEQ_LEN, device)  # float32: bf16 eval on mps gives NaN
+    if args.val_docs:  # the stream up to the BOS of document N+1: the same bpb rule on fewer documents
+        docs = docs[:args.val_docs]
+        bos = np.flatnonzero(val == BOS)
+        val = val[:bos[args.val_docs]] if args.val_docs < len(bos) else val
+    nats = ev.total_nats(model, val, SEQ_LEN, device)
     n_bytes = ev.val_bytes(docs)
-    result = dict(val_bpb=round(ev.bpb(nats, n_bytes), 4), flops=float(f"{n_steps * step_flops:.6g}"),
-                  budget=args.budget, steps=n_steps, tokens=tokens, params=n_params, device=device,
-                  train_seconds=round(train_time, 1), eval_seconds=round(time.time() - t1, 1),
-                  val_tokens=len(val) - 1, val_bytes=n_bytes)
+    result = dict(val_bpb=round(ev.bpb(nats, n_bytes), 4), **result, eval_seconds=round(time.time() - t1, 1),
+                  val_docs=len(docs), val_tokens=len(val) - 1, val_bytes=n_bytes, nonstandard_ops=sorted(rep["nonstandard"]))
     print("result " + json.dumps(result))
 
 
