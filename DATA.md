@@ -23,6 +23,14 @@ Reading needs no account. Uploading to Hugging Face needs a free account and a w
 
 Training text: FineWeb-Edu (ODC-By), `shard_00000.parquet` of `karpathy/fineweb-edu-100b-shuffle`, pinned to one revision. Documents 0-511 are validation, the rest training.
 
+## Studies
+
+One-off studies keep their results, job files and a code snapshot under `studies/<name>/` of the dataset, outside `raw/`, `jobs/` and `code/`, which every refresh replaces.
+
+| folder | runs | what |
+|---|---|---|
+| `studies/text-laws/` | about 800 | optimizer dial p from Muon (p = 0) to normalized momentum (p = 1); code in [families/llm/search-code/text-laws/](families/llm/search-code/text-laws/) |
+
 ## Checkpoints
 
 [vukrosic/training-laws-checkpoints](https://huggingface.co/vukrosic/training-laws-checkpoints)

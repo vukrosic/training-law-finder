@@ -14,6 +14,16 @@ You may have been given only the GitHub link, or the prompt in README.md. Either
 5. **Propose 8-10 options** by the rule in [manager.md](manager.md#starting-the-project-propose-ideas-then-talk-them-through). For each, one line each on: the number the formula would predict, why a formula might exist, the fastest test, and the closest published work and how this differs. Recommend one. Ask which ideas they like, what they would change or combine, and whether they have an idea of their own. If the student already named a target, check that one the same way instead of listing others.
 6. **Pick together.** In fully automatic mode you pick. Then follow [WORKFLOW.md](WORKFLOW.md) stage by stage. Keep all project files in `work/<topic>/`, which git ignores.
 
+## Reuse the repo; start on laws at once
+
+The setups already exist. Do not build a new training harness and do not run learning-rate sweeps. Spend the first hour on finding formulas, not on setup.
+
+- **Training:** use `testbed/train.py` (one run) and `queue/run_jobs.py` (a list of runs). Every knob is already a flag.
+- **Learning rate:** take it from the existing runs and from CLAIMS.md: C26 (the best Muon lr falls as width^−0.64) and C11 (a 2x miss costs about 0.02). Run a sweep only if your target is about the learning rate itself.
+- **Data first:** `data/llm/runs.jsonl.gz` holds 24,725 finished runs, loaded with `core.rows.load()`. `problems/*/data/` holds the benchmark tables. Fit and test formulas on these before training anything new.
+- **Check what is known:** read all of CLAIMS.md (35 claims) and `problems/*/LEADERBOARD.md` before you propose a target. Skip any target a claim or problem already covers.
+- **New runs only for gaps:** train only what the existing runs cannot answer, for example Adam instead of Muon (almost every run is Muon), repeated data, or vocab size. Keep each run to a few seconds.
+
 When the research or paper is done, and only then, ask the student once whether they want to share their times in [TIMES.md](../TIMES.md). Write the answer to `work/STUDENT.md` as `share times: yes` or `share times: no` and never ask again. On yes, add a row after each finished project without asking.
 
 Talk to the student short and simple the whole time: plain words, short sentences, no jargon. Keep each option to 4 short lines and the whole list under 500 words. Give details only when asked.
