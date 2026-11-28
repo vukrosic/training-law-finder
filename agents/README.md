@@ -12,7 +12,7 @@ One or more AI coding-agent sessions work on one project folder, `work/<topic>/`
 | reviewer | [reviewer.md](reviewer.md) | a strict ICML review of the draft, run before any pull request |
 | watcher | [watcher.md](watcher.md) | optional: keeps every machine busy on long runs or several machines, restarts crashed runs smaller |
 
-The stages from idea to finished draft, and where the agent stops for the student, are in [WORKFLOW.md](WORKFLOW.md). One session can do every role.
+The stages from idea to finished draft, and where the agent stops for the student, are in [WORKFLOW.md](WORKFLOW.md). The research strategy (one question for days, a blog post per study, what finished means) is in [focused-persistence.md](focused-persistence.md). One session can do every role.
 
 Small projects can run with two sessions: manager and theory, where theory also runs the queue. Add ops when there is more than one machine, sim when real runs take minutes, and writer once score 2 has rows.
 
