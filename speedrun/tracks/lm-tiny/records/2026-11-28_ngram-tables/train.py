@@ -37,15 +37,23 @@ E = lambda k, d: type(d)(os.environ.get(k, d))
 D_MODEL, N_LAYERS, N_HEADS, D_MLP = E("D_MODEL", 128), E("N_LAYERS", 6), E("N_HEADS", 2), E("D_MLP", 352)
 SEQ_LEN, BATCH = E("SEQ_LEN", 128), E("BATCH", 64)
 MICRO = min(BATCH, 32)
-LR_MUON, LR_EMBED, LR_HEAD, LR_SCALAR = E("LR_MUON", 0.05), E("LR_EMBED", 0.3), E("LR_HEAD", 0.004), E("LR_SCALAR", 0.04)
+LR_MUON, LR_EMBED, LR_HEAD, LR_SCALAR = E("LR_MUON", 0.05), E("LR_EMBED", 0.3), E("LR_HEAD", 0.008), E("LR_SCALAR", 0.04)
 COOLDOWN = E("COOLDOWN", 0.6)
-BIGRAM = E("BIGRAM", 32768)
-TRIGRAM = E("TRIGRAM", 32768)  # rows of a hashed (two back, previous, token) embedding, 0 = off
+BIGRAM = E("BIGRAM", 131072)
+TRIGRAM = E("TRIGRAM", 131072)  # rows of a hashed (two back, previous, token) embedding, 0 = off
 ACT = E("ACT", "swiglu")  # swiglu or relu2 (relu squared, no gate: w3 unused)
 SOFTCAP = E("SOFTCAP", 0.0)  # logits = cap * tanh(logits / cap), 0 = off
 SAVE16 = E("SAVE16", 0)  # store the hashed tables in bf16 in the artifact
-SAVE8 = E("SAVE8", 1)  # store the hashed tables as int8 with one float16 scale per row
-MUON_MOM = E("MUON_MOM", 0.85)
+SAVE8 = E("SAVE8", 1)  # store the hashed tables as int8 levels with one float16 scale per row
+FOURGRAM = E("FOURGRAM", 0)  # rows of a hashed 4-gram embedding, 0 = off
+LR_TABLE = E("LR_TABLE", 0.15)  # Adam lr of the hashed tables, 0 = same as the token embedding
+MUON_MOM = E("MUON_MOM", 0.8)
+TABLE_EVERY = E("TABLE_EVERY", 0)  # 1: add the n-gram tables again before every block, times a learned scalar (starts 0)
+TABLE_OUT = E("TABLE_OUT", 0)  # 1: add the n-gram tables before the final norm, times a learned scalar (starts 0)
+SAVE16ALL = E("SAVE16ALL", 1)  # store every non-table weight in bf16 in the artifact
+QBITS = E("QBITS", 4)  # SAVE8 levels: values in [-(2^(QBITS-1)-1), 2^(QBITS-1)-1]; --record steps down until the artifact fits
+EVALQ = E("EVALQ", 0)  # search runs: score the model after the artifact round trip (pack, unpack)
+TABLE_DIM = E("TABLE_DIM", 0)  # width of the hashed tables, each projected to D_MODEL by a matrix (Muon); 0 = D_MODEL, no projection
 
 
 class Rotary(nn.Module):
@@ -92,25 +100,49 @@ class GPT(nn.Module):
         super().__init__()
         self.embed = nn.Embedding(VOCAB, D_MODEL)
         if BIGRAM:
-            self.bigram = nn.Embedding(BIGRAM, D_MODEL)
+            self.bigram = nn.Embedding(BIGRAM, TABLE_DIM or D_MODEL)
             nn.init.zeros_(self.bigram.weight)
+            if TABLE_DIM:
+                self.bigram_proj = nn.Linear(TABLE_DIM, D_MODEL, bias=False)
         if TRIGRAM:
-            self.trigram = nn.Embedding(TRIGRAM, D_MODEL)
+            self.trigram = nn.Embedding(TRIGRAM, TABLE_DIM or D_MODEL)
             nn.init.zeros_(self.trigram.weight)
+            if TABLE_DIM:
+                self.trigram_proj = nn.Linear(TABLE_DIM, D_MODEL, bias=False)
+        if FOURGRAM:
+            self.fourgram = nn.Embedding(FOURGRAM, TABLE_DIM or D_MODEL)
+            nn.init.zeros_(self.fourgram.weight)
+            if TABLE_DIM:
+                self.fourgram_proj = nn.Linear(TABLE_DIM, D_MODEL, bias=False)
         self.blocks = nn.ModuleList(Block() for _ in range(N_LAYERS))
         self.norm = nn.RMSNorm(D_MODEL)
         self.head = nn.Linear(D_MODEL, VOCAB, bias=False)
         nn.init.zeros_(self.head.weight)
+        if TABLE_EVERY:
+            self.lam = nn.Parameter(torch.zeros(N_LAYERS))
+        if TABLE_OUT:
+            self.lam_out = nn.Parameter(torch.zeros(1))
+
+    def tab(self, name, i):
+        h = getattr(self, name)(i)
+        return getattr(self, name + "_proj")(h) if TABLE_DIM else h
 
     def forward(self, idx):
         x = self.embed(idx)
+        x0 = x
         if BIGRAM:
-            x = x + self.bigram((F.pad(idx[:, :-1], (1, 0), value=BOS) * 1031 + idx) % BIGRAM)
+            x = x + self.tab("bigram", (F.pad(idx[:, :-1], (1, 0), value=BOS) * 1031 + idx) % BIGRAM)
         if TRIGRAM:
             p1, p2 = F.pad(idx[:, :-1], (1, 0), value=BOS), F.pad(idx[:, :-2], (2, 0), value=BOS)
-            x = x + self.trigram(((p2 * 1031 + p1) * 1033 + idx) % TRIGRAM)
-        for b in self.blocks:
-            x = b(x)
+            x = x + self.tab("trigram", ((p2 * 1031 + p1) * 1033 + idx) % TRIGRAM)
+        if FOURGRAM:
+            p1, p2, p3 = (F.pad(idx[:, :-k], (k, 0), value=BOS) for k in (1, 2, 3))
+            x = x + self.tab("fourgram", (((p3 * 1031 + p2) * 1033 + p1) * 1039 + idx) % FOURGRAM)
+        t = x - x0  # the n-gram tables' sum
+        for i, b in enumerate(self.blocks):
+            x = b(x + self.lam[i] * t if TABLE_EVERY else x)
+        if TABLE_OUT:
+            x = x + self.lam_out * t
         logits = self.head(self.norm(x))
         return SOFTCAP * torch.tanh(logits / SOFTCAP) if SOFTCAP else logits
 
@@ -174,10 +206,11 @@ class Batches:
 
 def build():
     model = GPT()
-    blocks = [p for n, p in model.named_parameters() if p.ndim == 2 and n.startswith("blocks.")]
+    blocks = [p for n, p in model.named_parameters() if p.ndim == 2 and (n.startswith("blocks.") or n.endswith("_proj.weight"))]
     scalars = [p for n, p in model.named_parameters() if p.ndim < 2]
     muon = Muon(blocks, lr=LR_MUON, momentum=MUON_MOM)
-    adam = torch.optim.Adam([dict(params=[model.embed.weight] + ([model.bigram.weight] if BIGRAM else []) + ([model.trigram.weight] if TRIGRAM else []), lr=LR_EMBED),
+    adam = torch.optim.Adam([dict(params=[model.embed.weight] + ([] if LR_TABLE else [p for n, p in model.named_parameters() if n.endswith("gram.weight")]), lr=LR_EMBED),
+                             *([dict(params=[p for n, p in model.named_parameters() if n.endswith("gram.weight")], lr=LR_TABLE)] if LR_TABLE else []),
                              dict(params=[model.head.weight], lr=LR_HEAD),
                              dict(params=scalars, lr=LR_SCALAR)], betas=(0.8, 0.95), eps=1e-10)
     return model, [muon, adam]
@@ -189,10 +222,11 @@ def pack(state):
     for k, v in state.items():
         v = v.detach().cpu()
         if k.endswith("gram.weight") and SAVE8:
-            s = (v.abs().amax(1, keepdim=True) / 127).clamp_min(1e-12)
+            s = (v.abs().amax(1, keepdim=True) / (2 ** (QBITS - 1) - 1)).clamp_min(1e-12)
             out[k + ".q"], out[k + ".s"] = (v / s).round().to(torch.int8), s.half()
         else:
-            out[k] = v.to(torch.bfloat16) if k.endswith("gram.weight") and SAVE16 else v
+            tab = k.endswith("gram.weight")
+            out[k] = v.to(torch.bfloat16) if (tab and SAVE16) or (not tab and SAVE16ALL and v.is_floating_point()) else v
     return out
 
 
@@ -291,14 +325,28 @@ def main():
 
     if args.record:  # the scored model is the one loaded back from the 16 MB artifact (eval.py)
         path = os.path.join(ev.OUT, "model.xz")
-        size = ev.save_artifact(path, pack(model.state_dict()),
-                                [os.path.abspath(__file__)], os.path.join(ev.DATA, "sp1024.model"))
+        global QBITS
+        while True:  # fewer table levels until the artifact fits
+            size = ev.save_artifact(path, pack(model.state_dict()),
+                                    [os.path.abspath(__file__)], os.path.join(ev.DATA, "sp1024.model"))
+            if size <= ev.SIZE_LIMIT or not SAVE8 or QBITS <= 2:
+                break
+            print(f"artifact {size:,} bytes at {QBITS} bits, over the limit; trying {QBITS - 1} bits")
+            QBITS -= 1
+        result["qbits"] = QBITS
         print(f"artifact {os.path.relpath(path, TRACK)}: {size:,} bytes (limit {ev.SIZE_LIMIT:,})")
         assert size <= ev.SIZE_LIMIT, "artifact over the size limit"
         model = build()[0]
         model.load_state_dict(unpack(ev.load_artifact(path)["state"]))
         model.to(device)
         result["artifact_bytes"] = size
+    if EVALQ and not args.record:
+        import io, lzma
+        packed = pack(model.state_dict())
+        buf = io.BytesIO()
+        torch.save(packed, buf)
+        print(f"packed weights, lzma: {len(lzma.compress(buf.getvalue(), preset=6)):,} bytes")
+        model.load_state_dict(unpack(packed))
     model.float().eval()  # float32: bf16 eval on mps gives NaN
     t1 = time.time()
     docs = ev.val_docs()
