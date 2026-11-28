@@ -1,4 +1,6 @@
-"""Speedrun baseline: train a small GPT on FineWeb-Edu until the FLOP budget is used, then report validation bpb.
+"""lm-tiny record ngram-tables (settings below are the defaults; each can be overridden by an env var of the same name).
+
+Speedrun baseline: train a small GPT on FineWeb-Edu until the FLOP budget is used, then report validation bpb.
 
     python3 train.py                  # from speedrun/tracks/lm-tiny/, after python3 prepare_data.py
     python3 train.py --budget 1e12 --val-docs 100   # search run: small budget, first 100 validation documents
@@ -7,7 +9,7 @@
 
 FLOPs: one step is counted on the meta device before training (common/flops.py, every op charged, cached).
 
-Model: RMSNorm, RoPE, QK-norm, SwiGLU, no biases, untied head, hashed bigram embedding. Muon on block matrices, Adam on the rest.
+Model: RMSNorm, RoPE, QK-norm, SwiGLU, no biases, untied head. Muon on block matrices, Adam on the rest.
 """
 import argparse
 import contextlib
@@ -31,12 +33,19 @@ import flops  # noqa: E402
 
 BUDGET = 1e14  # the speedrun budget, in FLOPs (README.md)
 VOCAB, BOS = 1024, 1
-D_MODEL, N_LAYERS, N_HEADS, D_MLP = 128, 6, 2, 352
-SEQ_LEN, BATCH = 256, 32
-MICRO = 32  # sequences per forward pass; smaller uses less memory, same math, about the same FLOPs
-LR_MUON, LR_EMBED, LR_HEAD, LR_SCALAR = 0.05, 0.3, 0.004, 0.04
-COOLDOWN = 0.4  # learning rate falls linearly to 0 over the last 40% of steps
-BIGRAM = 16384  # rows of a hashed (previous token, token) embedding added to the token embedding
+E = lambda k, d: type(d)(os.environ.get(k, d))
+D_MODEL, N_LAYERS, N_HEADS, D_MLP = E("D_MODEL", 128), E("N_LAYERS", 6), E("N_HEADS", 2), E("D_MLP", 352)
+SEQ_LEN, BATCH = E("SEQ_LEN", 128), E("BATCH", 64)
+MICRO = min(BATCH, 32)
+LR_MUON, LR_EMBED, LR_HEAD, LR_SCALAR = E("LR_MUON", 0.05), E("LR_EMBED", 0.3), E("LR_HEAD", 0.004), E("LR_SCALAR", 0.04)
+COOLDOWN = E("COOLDOWN", 0.6)
+BIGRAM = E("BIGRAM", 32768)
+TRIGRAM = E("TRIGRAM", 32768)  # rows of a hashed (two back, previous, token) embedding, 0 = off
+ACT = E("ACT", "swiglu")  # swiglu or relu2 (relu squared, no gate: w3 unused)
+SOFTCAP = E("SOFTCAP", 0.0)  # logits = cap * tanh(logits / cap), 0 = off
+SAVE16 = E("SAVE16", 0)  # store the hashed tables in bf16 in the artifact
+SAVE8 = E("SAVE8", 1)  # store the hashed tables as int8 with one float16 scale per row
+MUON_MOM = E("MUON_MOM", 0.85)
 
 
 class Rotary(nn.Module):
@@ -75,15 +84,19 @@ class Block(nn.Module):
         y = F.scaled_dot_product_attention(q, k, v, is_causal=True)
         x = x + self.o(y.transpose(1, 2).reshape(B, T, D_MODEL))
         h = self.n2(x)
-        return x + self.w2(F.silu(self.w1(h)) * self.w3(h))
+        return x + self.w2(F.silu(self.w1(h)) * self.w3(h) if ACT == "swiglu" else F.relu(self.w1(h)).square())
 
 
 class GPT(nn.Module):
     def __init__(self):
         super().__init__()
         self.embed = nn.Embedding(VOCAB, D_MODEL)
-        self.bigram = nn.Embedding(BIGRAM, D_MODEL)  # starts at zero, learned in the counted steps
-        nn.init.zeros_(self.bigram.weight)
+        if BIGRAM:
+            self.bigram = nn.Embedding(BIGRAM, D_MODEL)
+            nn.init.zeros_(self.bigram.weight)
+        if TRIGRAM:
+            self.trigram = nn.Embedding(TRIGRAM, D_MODEL)
+            nn.init.zeros_(self.trigram.weight)
         self.blocks = nn.ModuleList(Block() for _ in range(N_LAYERS))
         self.norm = nn.RMSNorm(D_MODEL)
         self.head = nn.Linear(D_MODEL, VOCAB, bias=False)
@@ -91,11 +104,15 @@ class GPT(nn.Module):
 
     def forward(self, idx):
         x = self.embed(idx)
-        prev = F.pad(idx[:, :-1], (1, 0), value=BOS)  # the token before each position, BOS at the start
-        x = x + self.bigram((prev * 1031 + idx) % BIGRAM)
+        if BIGRAM:
+            x = x + self.bigram((F.pad(idx[:, :-1], (1, 0), value=BOS) * 1031 + idx) % BIGRAM)
+        if TRIGRAM:
+            p1, p2 = F.pad(idx[:, :-1], (1, 0), value=BOS), F.pad(idx[:, :-2], (2, 0), value=BOS)
+            x = x + self.trigram(((p2 * 1031 + p1) * 1033 + idx) % TRIGRAM)
         for b in self.blocks:
             x = b(x)
-        return self.head(self.norm(x))
+        logits = self.head(self.norm(x))
+        return SOFTCAP * torch.tanh(logits / SOFTCAP) if SOFTCAP else logits
 
 
 def newton_schulz(G, steps=5):
@@ -119,6 +136,8 @@ class Muon(torch.optim.Optimizer):
     def step(self):
         for g in self.param_groups:
             for p in g["params"]:
+                if p.grad is None:
+                    continue
                 buf = self.state[p].setdefault("buf", torch.zeros_like(p))
                 buf.lerp_(p.grad, 1 - g["momentum"])
                 u = newton_schulz(p.grad.lerp(buf, g["momentum"]))
@@ -157,11 +176,32 @@ def build():
     model = GPT()
     blocks = [p for n, p in model.named_parameters() if p.ndim == 2 and n.startswith("blocks.")]
     scalars = [p for n, p in model.named_parameters() if p.ndim < 2]
-    muon = Muon(blocks, lr=LR_MUON)
-    adam = torch.optim.Adam([dict(params=[model.embed.weight, model.bigram.weight], lr=LR_EMBED),
+    muon = Muon(blocks, lr=LR_MUON, momentum=MUON_MOM)
+    adam = torch.optim.Adam([dict(params=[model.embed.weight] + ([model.bigram.weight] if BIGRAM else []) + ([model.trigram.weight] if TRIGRAM else []), lr=LR_EMBED),
                              dict(params=[model.head.weight], lr=LR_HEAD),
                              dict(params=scalars, lr=LR_SCALAR)], betas=(0.8, 0.95), eps=1e-10)
     return model, [muon, adam]
+
+
+def pack(state):
+    """Artifact weights: hashed tables in int8 (SAVE8) or bf16 (SAVE16), the rest float32."""
+    out = {}
+    for k, v in state.items():
+        v = v.detach().cpu()
+        if k.endswith("gram.weight") and SAVE8:
+            s = (v.abs().amax(1, keepdim=True) / 127).clamp_min(1e-12)
+            out[k + ".q"], out[k + ".s"] = (v / s).round().to(torch.int8), s.half()
+        else:
+            out[k] = v.to(torch.bfloat16) if k.endswith("gram.weight") and SAVE16 else v
+    return out
+
+
+def unpack(state):
+    out = {k: v for k, v in state.items() if not k.endswith((".q", ".s"))}
+    for k in state:
+        if k.endswith(".q"):
+            out[k[:-2]] = state[k].float() * state[k[:-2] + ".s"].float()
+    return out
 
 
 def autocast(device, dtype):
@@ -196,7 +236,7 @@ def main():
     full = args.full_count or args.record
     device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
     dtype = torch.bfloat16 if device in ("cuda", "mps") else torch.float32
-    torch.manual_seed(0)
+    torch.manual_seed(E("SEED", 0))
     model, opts = build()  # built on cpu so the starting weights are the same on every machine
     model.to(device)
     for o in opts:
@@ -251,12 +291,12 @@ def main():
 
     if args.record:  # the scored model is the one loaded back from the 16 MB artifact (eval.py)
         path = os.path.join(ev.OUT, "model.xz")
-        size = ev.save_artifact(path, {k: v.detach().cpu() for k, v in model.state_dict().items()},
+        size = ev.save_artifact(path, pack(model.state_dict()),
                                 [os.path.abspath(__file__)], os.path.join(ev.DATA, "sp1024.model"))
         print(f"artifact {os.path.relpath(path, TRACK)}: {size:,} bytes (limit {ev.SIZE_LIMIT:,})")
         assert size <= ev.SIZE_LIMIT, "artifact over the size limit"
         model = build()[0]
-        model.load_state_dict(ev.load_artifact(path)["state"])
+        model.load_state_dict(unpack(ev.load_artifact(path)["state"]))
         model.to(device)
         result["artifact_bytes"] = size
     model.float().eval()  # float32: bf16 eval on mps gives NaN

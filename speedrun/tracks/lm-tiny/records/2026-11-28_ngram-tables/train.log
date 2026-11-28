@@ -1,0 +1,20 @@
+device cpu, params 9,857,408 (9,726,336 without the embedding), budget 1e+14 FLOPs
+FLOPs per step 8.017e+10 (fast count, 0.89s), steps 1247, tokens 10,215,424; total 9.997e+13, 6ND 5.962e+14, 6ND + attention 6.082e+14
+standard ops, fast count is exact
+step 0/1247 loss 6.9315 flops 8.017e+10 time 1s
+step 100/1247 loss 3.7058 flops 8.097e+12 time 157s
+step 200/1247 loss 3.4461 flops 1.611e+13 time 311s
+step 300/1247 loss 3.3731 flops 2.413e+13 time 461s
+step 400/1247 loss 3.5487 flops 3.215e+13 time 621s
+step 500/1247 loss 3.0433 flops 4.016e+13 time 775s
+step 600/1247 loss 3.4790 flops 4.818e+13 time 927s
+step 700/1247 loss 3.3167 flops 5.62e+13 time 1077s
+step 800/1247 loss 2.9323 flops 6.421e+13 time 1238s
+step 900/1247 loss 3.1818 flops 7.223e+13 time 1389s
+step 1000/1247 loss 3.3869 flops 8.025e+13 time 1544s
+step 1100/1247 loss 2.9605 flops 8.826e+13 time 1699s
+step 1200/1247 loss 3.0708 flops 9.628e+13 time 1856s
+step 1246/1247 loss 3.0496 flops 9.997e+13 time 1927s
+full count 9.984e+13 (-0.12% vs fast) {"total": 99844318919501, "steps": 1247, "step_kinds": 2, "per_step": [80067603539, 80084909907], "top_ops": {"mm": 86786319581184, "_scaled_dot_product_flash_attention_for_cpu_backward": 8033736327168, "_scaled_dot_product_flash_attention_for_cpu": 4016868163584, "mul": 405879231356, "add": 125588477524, "pow": 65756684288, "sum": 65378713600, "div": 44981549564, "mean": 32689356800, "cat": 31381782528, "add_": 24962382403, "clone": 23536336896}, "unknown_heavy": {}, "nonstandard": {}}
+artifact out/model.xz: 13,507,696 bytes (limit 16,000,000)
+result {"val_bpb": 1.7829, "flops": 99968600000000.0, "budget": 100000000000000.0, "counter": "all-ops-v1", "steps": 1247, "tokens": 10215424, "params": 9857408, "device": "cpu", "train_seconds": 1927.1, "full_count": 99844300000000.0, "artifact_bytes": 13507696, "eval_seconds": 83.1, "val_docs": 1000, "val_tokens": 1881031, "val_bytes": 4654540, "nonstandard_ops": []}

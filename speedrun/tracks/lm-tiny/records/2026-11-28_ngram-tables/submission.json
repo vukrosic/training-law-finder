@@ -1,0 +1,17 @@
+{
+  "name": "ngram-tables",
+  "github": "vukrosic",
+  "date": "2026-11-28",
+  "val_bpb": 1.7829,
+  "flops": 99968600000000.0,
+  "budget": 1e14,
+  "counter": "all-ops-v1",
+  "full_count": 99844300000000.0,
+  "artifact_bytes": 13507696,
+  "device": "cpu (Hetzner, 4 Neoverse-N1 cores, float32)",
+  "train_seconds": 1927.1,
+  "tokenizer": "sp1024 (default)",
+  "params": 9857408,
+  "steps": 1247,
+  "tokens": 10215424
+}

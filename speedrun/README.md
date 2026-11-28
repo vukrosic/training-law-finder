@@ -13,7 +13,7 @@ fast the machine is.
 
 | track | model | data | metric | constraint | hardware | best |
 |---|---|---|---|---|---|---|
-| [lm-tiny](tracks/lm-tiny/) | language model | FineWeb-Edu | validation bits per byte | 1e14 training FLOPs (every op), 16 MB artifact | MacBook (M4, mps) | 1.8466 bpb |
+| [lm-tiny](tracks/lm-tiny/) | language model | FineWeb-Edu | validation bits per byte | 1e14 training FLOPs (every op), 16 MB artifact | MacBook (M4, mps) | 1.7829 bpb |
 
 Planned:
 

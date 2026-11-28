@@ -18,7 +18,7 @@ FLOP budget in place of 10 minutes on 8xH100.
 
 | bpb | FLOPs | date | name | who | what changed |
 |---|---|---|---|---|---|
-| 1.8466 | 9.993e13 | 2026-11-28 | [bigram-narrow](records/2026-11-28_bigram-narrow/) | vukrosic | hashed bigram embedding, 6 layers of width 128, batch 32 |
+| 1.7829 | 9.997e13 | 2026-11-28 | [ngram-tables](records/2026-11-28_ngram-tables/) | vukrosic | hashed bigram + trigram tables (int8 in the artifact), 6 layers of width 128, seq 128 |
 | 1.9319 | 9.986e13 | 2026-11-27 | [baseline](records/2026-11-27_baseline/) | vukrosic | 4 layers, width 192, Muon + Adam, sp1024 tokenizer |
 
 ## Rules
