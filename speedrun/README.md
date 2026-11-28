@@ -32,7 +32,7 @@ FineWeb-Edu ([vukrosic/training-law-speedrun](https://huggingface.co/datasets/vu
 ```
 speedrun/
   common/                 shared by all tracks
-    flops.py              exact FLOP counter (FlopCounterMode on the meta device)
+    flops.py              FLOP counter (FlopCounterMode plus every other op, on the meta device)
     check_submission.py   checks a record folder against its track.json
   tracks/<track>/
     README.md             rules, data, how to run, leaderboard

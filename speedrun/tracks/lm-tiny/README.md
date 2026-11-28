@@ -24,7 +24,9 @@ counted, not on the machine or on what else runs on it. The rules follow
 
 1. **Budget.** At most 1e14 training FLOPs, about 5 minutes on a MacBook (M4, mps). [common/flops.py](../../common/flops.py) counts them with
    `torch.utils.flop_counter.FlopCounterMode` on one full training step (forward, backward and optimizer step,
-   so Muon's Newton-Schulz is in it), times the number of steps. The step runs your real code at the real shapes
+   so Muon's Newton-Schulz is in it), times the number of steps. Matrix multiplies and attention count their real
+   FLOPs; every other op counts 1 per element of its largest input or output, so a matrix multiply written as a
+   broadcast multiply and a sum costs the same as `@`. The step runs your real code at the real shapes
    on the `meta` device, so the count is the same on every machine (`flops.py` says why). If your steps differ
    (for example a batch or sequence length schedule), count each kind of step. If your step does work the
    counter cannot see, such as a custom kernel, count it and say how. Evaluation is not part of the budget.

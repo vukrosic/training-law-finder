@@ -3,8 +3,11 @@
 count_step() runs one full training step (forward, backward and optimizer step, so Muon's Newton-Schulz matrix
 multiplies are in it) with the real code and the real shapes under torch.utils.flop_counter.FlopCounterMode,
 on the "meta" device: tensors with shapes but no numbers, so it needs no memory and takes a second.
-FlopCounterMode counts matrix multiplies and attention. It does not count elementwise work (norms, softmax,
-activations, Adam updates), which is a small share at these sizes. Evaluation is not part of the budget.
+FlopCounterMode counts matrix multiplies and attention. Every other op counts 1 FLOP per element of its largest
+input or output (norms, softmax, activations, Adam updates, embedding lookups: under 1% of the baseline step).
+Without that, a matrix multiply written as a broadcast multiply and a sum, (x[..., None] * W).sum(-2), would
+count as 0 FLOPs. Only views and pure data movement (copies, concatenation) count 0. Evaluation is not part of
+the budget.
 
 Why meta and not the GPU: on mps, linear layers run their backward pass as one fused op that FlopCounterMode does
 not know, so it misses about two thirds of the matrix FLOPs; on cpu the fused attention kernel counts as 0.
@@ -12,14 +15,38 @@ On meta every op is a plain matrix multiply, attention included, and the count m
 """
 import torch
 from torch.nn.attention import SDPBackend, sdpa_kernel
+from torch.utils._python_dispatch import TorchDispatchMode
+from torch.utils._pytree import tree_flatten
 from torch.utils.flop_counter import FlopCounterMode
+
+aten = torch.ops.aten
+MOVES = {aten._unsafe_view, aten.clone, aten.copy_, aten._to_copy, aten.cat, aten.stack, aten.detach,
+         aten.lift_fresh, aten.zeros_like, aten.ones_like, aten.empty_like, aten.fill_, aten.zero_}  # count 0
+
+
+class OtherOps(TorchDispatchMode):
+    """Counts 1 FLOP per element of the largest input or output of every op FlopCounterMode does not count."""
+
+    def __init__(self, skip):
+        super().__init__()
+        self.skip, self.flops = skip, 0
+
+    def __torch_dispatch__(self, func, types, args=(), kwargs=None):
+        out = func(*args, **(kwargs or {}))
+        op = func.overloadpacket
+        if op in self.skip or op in MOVES or func.is_view:
+            return out
+        ins = [t.numel() for t in tree_flatten((args, kwargs))[0] if isinstance(t, torch.Tensor)]
+        if ins:  # ops with no tensor input make new tensors (zeros, arange): 0
+            self.flops += max(ins + [t.numel() for t in tree_flatten(out)[0] if isinstance(t, torch.Tensor)])
+        return out
 
 
 def count(fn):
-    """Run fn() once and return the FLOPs FlopCounterMode saw."""
-    with FlopCounterMode(display=False) as fc, sdpa_kernel(SDPBackend.MATH):
+    """Run fn() once and return its FLOPs: FlopCounterMode's matrix multiplies plus 1 per element of other ops."""
+    with FlopCounterMode(display=False) as fc, sdpa_kernel(SDPBackend.MATH), OtherOps(set(fc.flop_registry)) as o:
         fn()
-    return fc.get_total_flops()
+    return fc.get_total_flops() + o.flops
 
 
 def count_step(build, train_step, batch_shape):
